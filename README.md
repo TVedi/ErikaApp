@@ -35,6 +35,21 @@ World-class sprint kayak coaching platform for Erika Medveczky — Olympic athle
 
 - Next.js App Router, TypeScript, Tailwind CSS, shadcn/ui
 - Supabase Auth, Postgres, Row Level Security, Storage
+- **Mobile**: Expo (React Native) in `mobile/` — see [mobile/README.md](mobile/README.md)
+
+## Mobile app (Expo)
+
+Try the same Phase 1 experience on your phone:
+
+```bash
+cd mobile
+npm install
+cp .env.example .env
+# Same Supabase URL + anon key as web `.env.local`
+npm start
+```
+
+Scan the QR code with **Expo Go** on your phone, or press `w` for web preview.
 
 ## Prerequisites
 
@@ -146,6 +161,7 @@ src/
     auth/           # Minor consent, role helpers
     supabase/       # Client, server, middleware
   types/            # TypeScript types
+mobile/             # Expo React Native app (Phase 1 companion)
 supabase/
   migrations/     # SQL migrations
   seed.sql          # Credentials + camps seed data
