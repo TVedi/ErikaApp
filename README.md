@@ -18,7 +18,7 @@ World-class sprint kayak coaching platform for Erika Medveczky — Olympic athle
 - Full database schema with RLS policies
 - Private `videos` storage bucket (configured for future uploads, not used yet)
 - Centralized marketing copy in `src/content/copy.ts` for future i18n
-- Tests for minor consent logic, role helpers, and RLS expectations
+- Tests for minor consent logic, role helpers, RLS expectations, and opt-in Supabase RLS integration tests
 
 ### Intentionally not built (later phases)
 
@@ -102,6 +102,12 @@ Migrations live in `supabase/migrations/`:
 - `20250620000001_initial_schema.sql` — tables, helpers, storage bucket
 - `20250620000002_rls_policies.sql` — Row Level Security
 
+Migrations live in `supabase/migrations/`:
+
+- `20250620000001_initial_schema.sql` — tables, helpers, storage bucket
+- `20250620000002_rls_policies.sql` — Row Level Security
+- `20250621000003_security_rls_hardening.sql` — profile trigger guard + camp application policy hardening
+
 ### 4. Seed mock users (safe — no passwords in repo)
 
 **Never commit real passwords.** Create test users through the app or Supabase Dashboard.
@@ -109,16 +115,28 @@ Migrations live in `supabase/migrations/`:
 #### Via signup UI (easiest)
 
 1. **Adult athlete** — `/signup` with DOB making them 18+
-2. **Minor with consent** — `/signup` with DOB under 18, guardian email, consent checked
-3. **Minor without consent** — sign up as minor but do not check consent (dashboard will block)
-4. **Coach** — sign up as adult, then in SQL Editor:
+2. **Minor with consent** — `/signup` with DOB under 18, guardian email, and parental consent checked
+
+**Minor signup note:** Phase 1 requires `guardian_email` and `parental_consent` during signup for minors. A pending-consent signup UI flow is **not** implemented. The app blocks dashboard access when consent is missing, but minors cannot complete signup without checking consent in the current UI.
+
+3. **Minor without consent (SQL-only test row)** — for testing blocked dashboard access, insert via SQL or `seed_profiles.sql` comment template. This row exists only to test blocked access behavior, not normal signup.
+
+4. **Coach** — create via service role (athletes cannot self-promote to coach):
 
 ```sql
-update public.profiles set role = 'coach' where email = 'your-coach-email@example.com';
--- Note: email is in auth.users, not profiles — use:
-update public.profiles set role = 'coach'
-where id = (select id from auth.users where email = 'coach@example.com');
+-- After creating auth user in Dashboard, insert profile with service role / SQL Editor:
+insert into public.profiles (id, full_name, role, date_of_birth, is_minor, parental_consent)
+values (
+  (select id from auth.users where email = 'coach@example.com'),
+  'Coach Name',
+  'coach',
+  '1985-03-15',
+  false,
+  false
+);
 ```
+
+Direct `update profiles set role = 'coach'` by a normal athlete is blocked by a database trigger.
 
 #### Mock subscriptions
 
@@ -147,8 +165,46 @@ Open [http://localhost:3000](http://localhost:3000).
 | `npm run build` | Production build |
 | `npm run start` | Start production server |
 | `npm run lint` | ESLint |
-| `npm test` | Run Vitest tests |
+| `npm test` | Run Vitest unit tests (integration tests skip if env not set) |
 | `npm run test:watch` | Vitest watch mode |
+| `npm run test:integration` | Run Supabase RLS integration tests (requires env below) |
+
+### RLS integration tests (opt-in)
+
+Unit tests (`npm test`) always run and skip integration tests when env is missing.
+
+To run real Supabase RLS integration tests:
+
+1. Start local Supabase and apply migrations:
+
+```bash
+supabase start
+supabase db reset
+```
+
+2. Export test credentials (from `supabase status`):
+
+```bash
+export SUPABASE_TEST_URL=http://127.0.0.1:54321
+export SUPABASE_TEST_ANON_KEY=<anon-key>
+export SUPABASE_TEST_SERVICE_ROLE_KEY=<service-role-key>
+```
+
+On PowerShell:
+
+```powershell
+$env:SUPABASE_TEST_URL="http://127.0.0.1:54321"
+$env:SUPABASE_TEST_ANON_KEY="<anon-key>"
+$env:SUPABASE_TEST_SERVICE_ROLE_KEY="<service-role-key>"
+```
+
+3. Run:
+
+```bash
+npm run test:integration
+```
+
+Integration tests use attack → re-read → assert final state for profile role escalation, `is_minor` derivation, camp application self-approval, subscription tier regression, plan assignment, athlete isolation, and coach access.
 
 ## Project structure
 
@@ -188,9 +244,26 @@ Future implementation should support:
 
 ## Minor safeguarding
 
-- Under-18 athletes require guardian email and parental consent at signup
-- `is_minor` is calculated from `date_of_birth`
+- Under-18 athletes require guardian email and parental consent at signup (self-attested in Phase 1 — full guardian verification is not implemented)
+- `is_minor` is derived server-side from `date_of_birth` via a database trigger on profile insert/update (write-time snapshot — see technical debt)
 - Minors without `parental_consent` cannot access dashboard features (blocked state)
+- Pending-consent minor signup via UI is not implemented in Phase 1
+
+## Security (Phase 1)
+
+- Profile `role` cannot be self-escalated to `coach` by authenticated athletes (trigger + RLS)
+- `is_minor` is server-derived; client-supplied values are ignored on write
+- `service_role` and null-JWT paths can still create coach profiles (trigger carve-out)
+- Athletes cannot update `camp_applications.status` (coach-only update policy)
+- `subscriptions.tier` and `athlete_assigned_plans` writes remain coach-only (regression-tested)
+
+## Technical debt
+
+- **`payment_audit_events`** — should become service-role append-only before real Stripe/payment integration
+- **`is_minor`** — write-time snapshot in Phase 1; a 17-year-old will not automatically become non-minor in the stored field without a future refresh/recalculation job
+- **Guardian verification** — Phase 1 uses self-attested parental consent only; no verified guardian email flow
+- **Next.js middleware** — Next 16 `middleware` → `proxy` deprecation warning is non-blocking
+- **Google Fonts** — `next/font` Google-hosted fonts may fail in offline/no-network CI builds; consider local/system fonts later
 
 ## Acceptance checklist
 
@@ -199,7 +272,7 @@ Future implementation should support:
 3. Waitlist form stores emails
 4. Adult athlete signup works
 5. Minor signup requires guardian email + consent
-6. Minor without consent blocked on dashboard
+6. Minor without consent blocked on dashboard (SQL-only test row or seed_profiles comment)
 7. Logged-in athlete sees dashboard shell
 8. Camps loaded from `camps` table
 9. App builds with `npm run build`
