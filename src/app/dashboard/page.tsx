@@ -56,7 +56,7 @@ export default async function DashboardPage() {
         <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <h1 className="text-2xl font-bold text-navy sm:text-3xl">
+              <h1 className="font-brand text-2xl font-bold text-gray-900 sm:text-3xl">
                 {dashboard.welcome}, {typedProfile.full_name}
               </h1>
               <p className="mt-1 text-sm text-muted-foreground">{auth.safetyDisclaimer}</p>
@@ -80,10 +80,10 @@ export default async function DashboardPage() {
           ) : (
             <>
               <div className="mt-8 grid gap-4 sm:grid-cols-3">
-                <Card className="border-border/60">
+                <Card className="card-soft ring-0">
                   <CardHeader className="pb-2">
                     <CardDescription>{dashboard.currentTier}</CardDescription>
-                    <CardTitle className="text-navy">
+                    <CardTitle className="text-gray-900">
                       {typedSubscription
                         ? formatTierLabel(typedSubscription.tier)
                         : "No active plan"}
@@ -95,19 +95,19 @@ export default async function DashboardPage() {
                     )}
                   </CardContent>
                 </Card>
-                <Card className="border-border/60">
+                <Card className="card-soft ring-0">
                   <CardHeader className="pb-2">
                     <CardDescription>{dashboard.profileStatus}</CardDescription>
-                    <CardTitle className="text-navy">
+                    <CardTitle className="text-gray-900">
                       {typedProfile.is_minor ? dashboard.minor : dashboard.adult}
                     </CardTitle>
                   </CardHeader>
                 </Card>
                 {typedProfile.is_minor && (
-                  <Card className="border-border/60">
+                  <Card className="card-soft ring-0">
                     <CardHeader className="pb-2">
                       <CardDescription>Consent</CardDescription>
-                      <CardTitle className="text-navy">
+                      <CardTitle className="text-gray-900">
                         {typedProfile.parental_consent
                           ? dashboard.consentGiven
                           : dashboard.consentMissing}
@@ -127,16 +127,16 @@ export default async function DashboardPage() {
                   <Card key={card.title} className="border-border/60">
                     <CardHeader>
                       <div className="flex items-center justify-between">
-                        <CardTitle className="text-base text-navy">{card.title}</CardTitle>
+                        <CardTitle className="text-base text-gray-900">{card.title}</CardTitle>
                         <Badge variant="outline">{dashboard.comingSoon}</Badge>
                       </div>
                       <CardDescription>{card.description}</CardDescription>
                     </CardHeader>
                   </Card>
                 ))}
-                <Card className="border-border/60 ring-1 ring-water/30">
+                <Card className="card-soft ring-1 ring-violet-200">
                   <CardHeader>
-                    <CardTitle className="text-base text-navy">
+                    <CardTitle className="text-base text-gray-900">
                       {dashboard.cards.trainingCamps.title}
                     </CardTitle>
                     <CardDescription>
@@ -144,7 +144,7 @@ export default async function DashboardPage() {
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <LinkButton size="sm" href="/camps" className="bg-navy hover:bg-navy-light">
+                    <LinkButton size="sm" href="/camps" gradient>
                       {nav.camps}
                     </LinkButton>
                   </CardContent>

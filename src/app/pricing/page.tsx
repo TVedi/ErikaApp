@@ -12,7 +12,7 @@ export default function PricingPage() {
   return (
     <PublicLayout>
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
-        <h1 className="text-3xl font-bold text-navy sm:text-4xl">{pricing.title}</h1>
+        <h1 className="section-title sm:text-4xl">{pricing.title}</h1>
         <p className="mt-2 text-muted-foreground">{pricing.subtitle}</p>
 
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
@@ -22,7 +22,7 @@ export default function PricingPage() {
               className={`border-border/60 ${i === 2 ? "ring-2 ring-water/50" : ""}`}
             >
               <CardHeader>
-                <CardTitle className="text-navy">{tier.name}</CardTitle>
+                <CardTitle className="text-gray-900">{tier.name}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">{tier.description}</p>
@@ -41,7 +41,7 @@ export default function PricingPage() {
 
         <Card className="mt-10 border-border/60 bg-muted/30">
           <CardHeader>
-            <CardTitle className="text-navy">{pricing.campsNote.title}</CardTitle>
+            <CardTitle className="text-gray-900">{pricing.campsNote.title}</CardTitle>
           </CardHeader>
           <CardContent>
             <ul className="space-y-2">
@@ -52,7 +52,7 @@ export default function PricingPage() {
                 </li>
               ))}
             </ul>
-            <LinkButton href="/camps" className="mt-6 bg-navy hover:bg-navy-light">
+            <LinkButton href="/camps" gradient className="mt-6">
               View camps
             </LinkButton>
           </CardContent>

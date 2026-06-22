@@ -7,6 +7,7 @@ type LinkButtonProps = VariantProps<typeof buttonVariants> & {
   href: string;
   className?: string;
   children: React.ReactNode;
+  gradient?: boolean;
 };
 
 export function LinkButton({
@@ -15,7 +16,22 @@ export function LinkButton({
   variant,
   size,
   children,
+  gradient,
 }: LinkButtonProps) {
+  if (gradient) {
+    return (
+      <Link
+        href={href}
+        className={cn(
+          size === "lg" ? "btn-gradient-lg" : "btn-gradient-sm",
+          className
+        )}
+      >
+        {children}
+      </Link>
+    );
+  }
+
   return (
     <Link
       href={href}

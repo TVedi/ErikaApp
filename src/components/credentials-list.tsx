@@ -8,9 +8,7 @@ export function CredentialsList({
   variant?: "default" | "compact";
 }) {
   if (credentials.length === 0) {
-    return (
-      <p className="text-sm text-muted-foreground">Credentials loading…</p>
-    );
+    return <p className="text-sm text-gray-500">Credentials loading…</p>;
   }
 
   return (
@@ -21,30 +19,30 @@ export function CredentialsList({
           className={
             variant === "compact"
               ? "flex items-start gap-3"
-              : "rounded-xl border border-border bg-card p-5 shadow-sm"
+              : "card-soft p-5"
           }
         >
           {variant === "compact" ? (
             <>
-              <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-water" />
+              <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-gradient-to-r from-violet-500 to-cyan-500" />
               <div>
-                <p className="font-medium text-navy">
+                <p className="font-medium text-gray-900">
                   {cred.label}
                   {cred.year ? ` (${cred.year})` : ""}
                 </p>
                 {cred.detail && (
-                  <p className="text-sm text-muted-foreground">{cred.detail}</p>
+                  <p className="text-sm text-gray-600">{cred.detail}</p>
                 )}
               </div>
             </>
           ) : (
             <>
-              <p className="font-semibold text-navy">{cred.label}</p>
+              <p className="font-semibold text-gray-900">{cred.label}</p>
               {cred.year && (
-                <p className="mt-1 text-sm font-medium text-water">{cred.year}</p>
+                <p className="mt-1 text-sm font-semibold text-violet-600">{cred.year}</p>
               )}
               {cred.detail && (
-                <p className="mt-2 text-sm text-muted-foreground">{cred.detail}</p>
+                <p className="mt-2 text-sm text-gray-600">{cred.detail}</p>
               )}
             </>
           )}

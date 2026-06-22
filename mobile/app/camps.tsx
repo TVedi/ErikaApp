@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { Text } from "react-native";
-import { useRouter } from "expo-router";
-import { ScreenScroll, Card, Title, Subtitle, Body, Button } from "../components/ui";
+import { Text, StyleSheet } from "react-native";
+import { MobileScreen } from "../components/mobile-screen";
+import { FeatureCard } from "../components/feature-card";
 import { supabase, type Camp } from "../lib/supabase";
 import { camps } from "../content/copy";
+import { colors } from "../constants/theme";
 
 function formatDate(d: string) {
   return new Date(d + "T00:00:00").toLocaleDateString("en-US", {
@@ -14,7 +15,6 @@ function formatDate(d: string) {
 }
 
 export default function CampsScreen() {
-  const router = useRouter();
   const [campList, setCampList] = useState<Camp[]>([]);
 
   useEffect(() => {
@@ -26,38 +26,35 @@ export default function CampsScreen() {
   }, []);
 
   return (
-    <ScreenScroll>
-      <Title>{camps.title}</Title>
-      <Subtitle>{camps.subtitle}</Subtitle>
-
+    <MobileScreen title={camps.title} subtitle={camps.subtitle} showBack>
       {campList.length === 0 ? (
-        <Body>{camps.empty}</Body>
+        <Text style={styles.empty}>{camps.empty}</Text>
       ) : (
         campList.map((camp) => (
-          <Card key={camp.id}>
-            <Text style={{ fontWeight: "700", fontSize: 18, color: "#1a2744" }}>{camp.title}</Text>
-            <Body>{camp.location}</Body>
-            <Text style={{ color: "#64748b", marginTop: 4 }}>
-              {formatDate(camp.start_date)} — {formatDate(camp.end_date)}
-            </Text>
-            {camp.price != null && (
-              <Text style={{ color: "#3d7ea6", fontWeight: "600", marginTop: 4 }}>
-                ${camp.price}
-              </Text>
-            )}
-            {camp.capacity != null && (
-              <Text style={{ color: "#64748b", marginTop: 4 }}>Capacity: {camp.capacity}</Text>
-            )}
-            {camp.description ? <Body>{camp.description}</Body> : null}
-            <Button
-              label={camps.registerInterest}
-              variant="outline"
-              onPress={() => router.push("/login")}
-            />
-            <Text style={{ fontSize: 12, color: "#64748b", marginTop: 8 }}>{camps.comingSoon}</Text>
-          </Card>
+          <FeatureCard
+            key={camp.id}
+            title={camp.title}
+            description={`${camp.location}\n${formatDate(camp.start_date)} — ${formatDate(camp.end_date)}${camp.price != null ? `\n$${camp.price}` : ""}${camp.description ? `\n\n${camp.description}` : ""}`}
+            badge={camps.registerInterest}
+          />
         ))
       )}
-    </ScreenScroll>
+      <Text style={styles.note}>{camps.comingSoon}</Text>
+    </MobileScreen>
   );
 }
+
+const styles = StyleSheet.create({
+  empty: {
+    fontSize: 15,
+    color: colors.textMuted,
+    fontFamily: "Manrope_400Regular",
+  },
+  note: {
+    fontSize: 13,
+    color: colors.textMuted,
+    marginTop: 8,
+    lineHeight: 20,
+    fontFamily: "Manrope_400Regular",
+  },
+});

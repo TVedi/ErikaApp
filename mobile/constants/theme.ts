@@ -1,13 +1,15 @@
 export const colors = {
-  navy: "#1a2744",
-  navyLight: "#243556",
-  water: "#3d7ea6",
+  background: "#f9fafb",
   white: "#ffffff",
-  background: "#f8fafc",
-  card: "#ffffff",
-  text: "#1a2744",
-  textMuted: "#64748b",
-  border: "#e2e8f0",
+  text: "#111827",
+  textMuted: "#6b7280",
+  border: "#e5e7eb",
+  violet: "#7c3aed",
+  fuchsia: "#c026d3",
+  cyan: "#06b6d4",
+  violetLight: "#f5f3ff",
+  fuchsiaLight: "#fdf4ff",
+  skyLight: "#f0f9ff",
   destructive: "#dc2626",
   destructiveBg: "#fef2f2",
 };
@@ -18,4 +20,9 @@ export const spacing = {
   md: 16,
   lg: 24,
   xl: 32,
+};
+
+export const gradients = {
+  brand: ["#7c3aed", "#c026d3", "#06b6d4"],
+  hero: ["#eff6ff", "#ffffff", "#faf5ff"],
 };

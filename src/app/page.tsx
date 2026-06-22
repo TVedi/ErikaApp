@@ -27,26 +27,29 @@ export default async function HomePage() {
 
   return (
     <PublicLayout>
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-navy text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,oklch(0.45_0.12_220/0.3),transparent_60%)]" />
-        <div className="relative mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
-          <p className="text-sm font-medium tracking-wide text-water/90 uppercase">
-            {brand.tagline}
-          </p>
-          <h1 className="mt-4 max-w-2xl text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-            {hero.title}
+      <section className="relative overflow-hidden hero-surface">
+        <div className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-violet-200/50 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-cyan-200/50 blur-3xl" />
+        <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
+          <p className="brand-label">{brand.tagline}</p>
+          <h1 className="mt-4 max-w-2xl font-brand text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+            Train with Olympic-Level{" "}
+            <span
+              className="font-display italic brand-shimmer-text bg-gradient-to-r from-violet-600 via-fuchsia-600 to-cyan-500 bg-clip-text text-transparent"
+            >
+              Precision
+            </span>
           </h1>
-          <p className="mt-6 max-w-xl text-lg text-white/80">{hero.subtitle}</p>
+          <p className="mt-6 max-w-xl text-lg text-gray-600">{hero.subtitle}</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <LinkButton size="lg" href="/signup" className="bg-white text-navy hover:bg-white/90">
+            <LinkButton size="lg" href="/signup" gradient>
               {hero.ctaStart}
             </LinkButton>
             <LinkButton
               size="lg"
               variant="outline"
               href="/pricing"
-              className="border-white/30 text-white hover:bg-white/10"
+              className="rounded-full border-gray-200 bg-white/70 text-gray-900 backdrop-blur-sm hover:bg-white"
             >
               {hero.ctaPlans}
             </LinkButton>
@@ -54,7 +57,7 @@ export default async function HomePage() {
               size="lg"
               variant="ghost"
               href="#waitlist"
-              className="text-white hover:bg-white/10"
+              className="rounded-full text-gray-700 hover:bg-white/60"
             >
               {hero.ctaWaitlist}
             </LinkButton>
@@ -62,66 +65,60 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Value proposition */}
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <h2 className="text-2xl font-bold text-navy sm:text-3xl">
-          {valueProposition.title}
-        </h2>
-        <p className="mt-4 max-w-3xl text-lg text-muted-foreground">
-          {valueProposition.body}
-        </p>
+        <h2 className="section-title">{valueProposition.title}</h2>
+        <p className="mt-4 max-w-3xl text-lg text-gray-600">{valueProposition.body}</p>
       </section>
 
-      {/* Credibility */}
-      <section className="bg-muted/40 py-16">
+      <section className="py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <h2 className="text-2xl font-bold text-navy sm:text-3xl">
-            Verified credentials
-          </h2>
-          <p className="mt-2 text-muted-foreground">
-            Competition and coaching credentials loaded from our database — editable without code changes.
-          </p>
-          <div className="mt-8">
-            <CredentialsList credentials={(credentials as CoachCredential[]) ?? []} />
+          <div className="card-gradient p-6 sm:p-8">
+            <h2 className="section-title">Verified credentials</h2>
+            <p className="mt-2 text-gray-600">
+              Competition and coaching credentials loaded from our database — editable without code changes.
+            </p>
+            <div className="mt-8">
+              <CredentialsList credentials={(credentials as CoachCredential[]) ?? []} />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* How it works */}
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <h2 className="text-2xl font-bold text-navy sm:text-3xl">{howItWorks.title}</h2>
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <h2 className="section-title">{howItWorks.title}</h2>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {howItWorks.steps.map((step, i) => (
-            <Card key={step.title} className="border-border/60">
+            <Card key={step.title} className="card-soft ring-0">
               <CardHeader>
-                <span className="text-sm font-bold text-water">Step {i + 1}</span>
-                <CardTitle className="text-navy">{step.title}</CardTitle>
+                <span className="text-xs font-bold uppercase tracking-wider text-violet-600">
+                  Step {i + 1}
+                </span>
+                <CardTitle className="font-brand text-gray-900">{step.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground">{step.description}</p>
+                <p className="text-sm text-gray-600">{step.description}</p>
               </CardContent>
             </Card>
           ))}
         </div>
       </section>
 
-      {/* Plans overview */}
-      <section className="bg-muted/40 py-16">
+      <section className="py-16 bg-white">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <h2 className="text-2xl font-bold text-navy sm:text-3xl">{plansOverview.title}</h2>
-          <p className="mt-2 text-muted-foreground">{plansOverview.subtitle}</p>
-          <div className="mt-8 grid gap-6 lg:grid-cols-3">
+          <h2 className="section-title">{plansOverview.title}</h2>
+          <p className="mt-2 text-gray-600">{plansOverview.subtitle}</p>
+          <div className="mt-8 grid gap-4 lg:grid-cols-3">
             {plansOverview.tiers.map((tier) => (
-              <Card key={tier.name} className="border-border/60">
+              <Card key={tier.name} className="card-soft ring-0">
                 <CardHeader>
-                  <CardTitle className="text-navy">{tier.name}</CardTitle>
+                  <CardTitle className="font-brand text-gray-900">{tier.name}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground">{tier.description}</p>
+                  <p className="text-sm text-gray-600">{tier.description}</p>
                   <ul className="mt-4 space-y-2">
                     {tier.features.map((f) => (
-                      <li key={f} className="flex items-start gap-2 text-sm">
-                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-water" />
+                      <li key={f} className="flex items-start gap-2 text-sm text-gray-600">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-r from-violet-500 to-cyan-500" />
                         {f}
                       </li>
                     ))}
@@ -131,68 +128,59 @@ export default async function HomePage() {
             ))}
           </div>
           <div className="mt-8 text-center">
-            <LinkButton href="/pricing" className="bg-navy hover:bg-navy-light">
-              View full pricing
-            </LinkButton>
+            <LinkButton href="/pricing" gradient>View full pricing</LinkButton>
           </div>
         </div>
       </section>
 
-      {/* Video analysis */}
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
           <div>
-            <h2 className="text-2xl font-bold text-navy sm:text-3xl">{videoAnalysis.title}</h2>
-            <p className="mt-4 text-muted-foreground">{videoAnalysis.body}</p>
+            <h2 className="section-title">{videoAnalysis.title}</h2>
+            <p className="mt-4 text-gray-600">{videoAnalysis.body}</p>
           </div>
-          <div className="rounded-2xl border border-border bg-card p-8 shadow-sm">
-            <div className="flex h-40 items-center justify-center rounded-lg bg-muted/50">
-              <span className="text-sm text-muted-foreground">Video review preview — coming soon</span>
+          <div className="card-soft p-8">
+            <div className="flex h-40 items-center justify-center rounded-2xl bg-gray-50">
+              <span className="text-sm text-gray-500">Video review preview — coming soon</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Training plans */}
-      <section className="bg-muted/40 py-16">
+      <section className="bg-white py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <h2 className="text-2xl font-bold text-navy sm:text-3xl">{trainingPlans.title}</h2>
-          <p className="mt-4 max-w-3xl text-muted-foreground">{trainingPlans.body}</p>
+          <h2 className="section-title">{trainingPlans.title}</h2>
+          <p className="mt-4 max-w-3xl text-gray-600">{trainingPlans.body}</p>
         </div>
       </section>
 
-      {/* Training camps */}
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <h2 className="text-2xl font-bold text-navy sm:text-3xl">{trainingCamps.title}</h2>
-        <p className="mt-4 max-w-3xl text-muted-foreground">{trainingCamps.body}</p>
-        <LinkButton href="/camps" className="mt-6 bg-navy hover:bg-navy-light">
-          View camps
-        </LinkButton>
+        <h2 className="section-title">{trainingCamps.title}</h2>
+        <p className="mt-4 max-w-3xl text-gray-600">{trainingCamps.body}</p>
+        <LinkButton href="/camps" gradient className="mt-6">View camps</LinkButton>
       </section>
 
-      {/* FAQ */}
-      <section className="bg-muted/40 py-16">
+      <section className="bg-white py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <h2 className="text-2xl font-bold text-navy sm:text-3xl">{faq.title}</h2>
-          <div className="mt-8 space-y-6">
+          <h2 className="section-title">{faq.title}</h2>
+          <div className="mt-8 space-y-4">
             {faq.items.map((item) => (
-              <div key={item.question} className="rounded-xl border border-border bg-card p-6">
-                <h3 className="font-semibold text-navy">{item.question}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{item.answer}</p>
+              <div key={item.question} className="card-soft p-6">
+                <h3 className="font-brand font-semibold text-gray-900">{item.question}</h3>
+                <p className="mt-2 text-sm text-gray-600">{item.answer}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Waitlist */}
       <section id="waitlist" className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <div className="text-center">
-          <h2 className="text-2xl font-bold text-navy sm:text-3xl">{waitlist.title}</h2>
-          <p className="mt-2 text-muted-foreground">{waitlist.subtitle}</p>
-        </div>
-        <div className="mt-8">
-          <WaitlistForm />
+        <div className="glass-card mx-auto max-w-lg p-8 text-center">
+          <h2 className="section-title">{waitlist.title}</h2>
+          <p className="mt-2 text-gray-600">{waitlist.subtitle}</p>
+          <div className="mt-6">
+            <WaitlistForm />
+          </div>
         </div>
       </section>
     </PublicLayout>

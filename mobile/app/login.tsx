@@ -1,7 +1,19 @@
 import { useState } from "react";
-import { Text } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  Pressable,
+  StyleSheet,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
 import { useRouter } from "expo-router";
-import { ScreenScroll, Card, Title, Body, Input, Button } from "../components/ui";
+import { AuthBackground } from "../components/phone-shell";
+import { StatusBarRow, AuthHero, HomeIndicator } from "../components/auth-hero";
+import { GlassCard } from "../components/glass-card";
+import { GradientButton } from "../components/gradient-button";
+import { AuthInput } from "../components/auth-input";
 import { supabase } from "../lib/supabase";
 import { auth } from "../content/copy";
 
@@ -16,7 +28,7 @@ export default function LoginScreen() {
     setLoading(true);
     setError(null);
     const { error: authError } = await supabase.auth.signInWithPassword({
-      email,
+      email: email.trim(),
       password,
     });
     setLoading(false);
@@ -24,35 +36,101 @@ export default function LoginScreen() {
       setError(authError.message);
       return;
     }
-    router.replace("/dashboard");
+    router.replace("/(tabs)");
   }
 
   return (
-    <ScreenScroll>
-      <Card>
-        <Title>{auth.loginTitle}</Title>
-        <Body>{auth.safetyDisclaimer}</Body>
-        <Input
-          label={auth.email}
-          value={email}
-          onChangeText={setEmail}
-          keyboardType="email-address"
-          autoCapitalize="none"
-        />
-        <Input
-          label={auth.password}
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry
-        />
-        {error ? <Text style={{ color: "#dc2626", marginBottom: 8 }}>{error}</Text> : null}
-        <Button label={auth.loginButton} onPress={handleLogin} disabled={loading} />
-        <Button
-          label={auth.signupLink}
-          variant="ghost"
-          onPress={() => router.push("/signup")}
-        />
-      </Card>
-    </ScreenScroll>
+    <AuthBackground>
+      <KeyboardAvoidingView
+        style={styles.flex}
+        behavior={Platform.OS === "ios" ? "padding" : undefined}
+      >
+        <StatusBarRow />
+        <ScrollView
+          contentContainerStyle={styles.scroll}
+          keyboardShouldPersistTaps="handled"
+          showsVerticalScrollIndicator={false}
+        >
+          <AuthHero />
+          <GlassCard>
+            <View style={styles.cardHeader}>
+              <Text style={styles.cardTitle}>{auth.loginTitle}</Text>
+              <Text style={styles.cardSubtitle}>{auth.safetyDisclaimer}</Text>
+            </View>
+            <AuthInput
+              placeholder="email@domain.com"
+              value={email}
+              onChangeText={setEmail}
+              keyboardType="email-address"
+              autoCapitalize="none"
+            />
+            <AuthInput
+              placeholder="Password"
+              value={password}
+              onChangeText={setPassword}
+              secureTextEntry
+            />
+            {error ? <Text style={styles.error}>{error}</Text> : null}
+            <GradientButton
+              label={loading ? "Signing in…" : "Continue"}
+              onPress={handleLogin}
+              disabled={loading}
+            />
+            <Pressable onPress={() => router.push("/signup")} style={styles.switch}>
+              <Text style={styles.switchText}>
+                {auth.noAccount}{" "}
+                <Text style={styles.link}>{auth.signupLink}</Text>
+              </Text>
+            </Pressable>
+          </GlassCard>
+        </ScrollView>
+        <HomeIndicator />
+      </KeyboardAvoidingView>
+    </AuthBackground>
   );
 }
+
+const styles = StyleSheet.create({
+  flex: { flex: 1 },
+  scroll: {
+    paddingHorizontal: 24,
+    paddingBottom: 16,
+  },
+  cardHeader: {
+    alignItems: "center",
+    marginBottom: 16,
+  },
+  cardTitle: {
+    fontSize: 26,
+    fontWeight: "700",
+    color: "#111827",
+    fontFamily: "Manrope_700Bold",
+  },
+  cardSubtitle: {
+    fontSize: 13,
+    color: "#6b7280",
+    marginTop: 8,
+    textAlign: "center",
+    lineHeight: 18,
+    fontFamily: "Manrope_400Regular",
+  },
+  error: {
+    color: "#dc2626",
+    fontSize: 13,
+    marginBottom: 8,
+    textAlign: "center",
+  },
+  switch: {
+    marginTop: 20,
+    alignItems: "center",
+  },
+  switchText: {
+    fontSize: 14,
+    color: "#6b7280",
+    fontFamily: "Manrope_400Regular",
+  },
+  link: {
+    color: "#2563eb",
+    fontWeight: "600",
+  },
+});

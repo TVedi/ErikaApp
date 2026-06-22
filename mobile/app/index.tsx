@@ -1,173 +1,153 @@
-import { useEffect, useState } from "react";
-import { View, Text, StyleSheet, TextInput } from "react-native";
+import { View, Text, ScrollView, Pressable, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
-import {
-  ScreenScroll,
-  Card,
-  Title,
-  Subtitle,
-  Body,
-  Button,
-  LinkRow,
-} from "../components/ui";
-import { supabase, type CoachCredential } from "../lib/supabase";
-import {
-  brand,
-  hero,
-  nav,
-  valueProposition,
-  waitlist,
-} from "../content/copy";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { LinearGradient } from "expo-linear-gradient";
+import { AuthHero, HomeIndicator, StatusBarRow } from "../components/auth-hero";
+import { GradientButton } from "../components/gradient-button";
+import { brand, hero, nav, valueProposition } from "../content/copy";
 import { colors, spacing } from "../constants/theme";
 
-export default function HomeScreen() {
+export default function LandingScreen() {
   const router = useRouter();
-  const [credentials, setCredentials] = useState<CoachCredential[]>([]);
-  const [waitlistEmail, setWaitlistEmail] = useState("");
-  const [waitlistStatus, setWaitlistStatus] = useState<"idle" | "ok" | "dup" | "err">("idle");
-
-  useEffect(() => {
-    supabase
-      .from("coach_credentials")
-      .select("*")
-      .order("sort_order", { ascending: true })
-      .then(({ data }) => setCredentials(data ?? []));
-  }, []);
-
-  async function joinWaitlist() {
-    const email = waitlistEmail.trim().toLowerCase();
-    if (!email) return;
-    const { error } = await supabase.from("waitlist").insert({ email });
-    if (!error) {
-      setWaitlistStatus("ok");
-      setWaitlistEmail("");
-    } else if (error.code === "23505") {
-      setWaitlistStatus("dup");
-    } else {
-      setWaitlistStatus("err");
-    }
-  }
+  const insets = useSafeAreaInsets();
 
   return (
-    <ScreenScroll>
-      <View style={styles.hero}>
-        <Text style={styles.heroTag}>{brand.tagline}</Text>
-        <Text style={styles.heroTitle}>{hero.title}</Text>
-        <Text style={styles.heroSub}>{hero.subtitle}</Text>
-        <Button label={hero.ctaStart} onPress={() => router.push("/signup")} />
-        <Button
-          label={hero.ctaPlans}
-          variant="outline"
-          onPress={() => router.push("/pricing")}
+    <View style={styles.root}>
+      <LinearGradient
+        colors={["#eff6ff", "#ffffff", "#faf5ff"]}
+        style={StyleSheet.absoluteFill}
+      />
+      <StatusBarRow />
+      <ScrollView
+        contentContainerStyle={[
+          styles.scroll,
+          { paddingBottom: insets.bottom + spacing.lg },
+        ]}
+        showsVerticalScrollIndicator={false}
+      >
+        <AuthHero />
+
+        <View style={styles.introCard}>
+          <Text style={styles.introTitle}>{valueProposition.title}</Text>
+          <Text style={styles.introBody}>{valueProposition.body}</Text>
+        </View>
+
+        <GradientButton
+          label={hero.ctaStart}
+          onPress={() => router.push("/signup")}
         />
-      </View>
+        <Pressable
+          style={styles.secondaryBtn}
+          onPress={() => router.push("/login")}
+        >
+          <Text style={styles.secondaryBtnText}>{nav.login}</Text>
+        </Pressable>
 
-      <Card>
-        <Title>{valueProposition.title}</Title>
-        <Body>{valueProposition.body}</Body>
-      </Card>
+        <Text style={styles.exploreLabel}>Explore</Text>
+        {[
+          { label: nav.about, href: "/about" as const },
+          { label: nav.pricing, href: "/pricing" as const },
+          { label: nav.camps, href: "/camps" as const },
+        ].map((item) => (
+          <Pressable
+            key={item.href}
+            style={styles.linkRow}
+            onPress={() => router.push(item.href)}
+          >
+            <Text style={styles.linkText}>{item.label}</Text>
+            <Text style={styles.chevron}>›</Text>
+          </Pressable>
+        ))}
 
-      <Card>
-        <Title>Verified credentials</Title>
-        {credentials.length === 0 ? (
-          <Body>Connect Supabase to load credentials.</Body>
-        ) : (
-          credentials.map((c) => (
-            <View key={c.id} style={styles.credRow}>
-              <Text style={styles.credLabel}>
-                {c.label}
-                {c.year ? ` (${c.year})` : ""}
-              </Text>
-              {c.detail ? <Text style={styles.credDetail}>{c.detail}</Text> : null}
-            </View>
-          ))
-        )}
-      </Card>
-
-      <Card>
-        <Title>{waitlist.title}</Title>
-        <Subtitle>{waitlist.subtitle}</Subtitle>
-        <TextInput
-          style={styles.waitlistInput}
-          placeholder={waitlist.placeholder}
-          placeholderTextColor={colors.textMuted}
-          value={waitlistEmail}
-          onChangeText={setWaitlistEmail}
-          keyboardType="email-address"
-          autoCapitalize="none"
-        />
-        <Button label={waitlist.button} onPress={joinWaitlist} />
-        {waitlistStatus === "ok" && <Text style={styles.ok}>{waitlist.success}</Text>}
-        {waitlistStatus === "dup" && <Text style={styles.muted}>{waitlist.duplicate}</Text>}
-        {waitlistStatus === "err" && <Text style={styles.err}>{waitlist.error}</Text>}
-      </Card>
-
-      <Card>
-        <Title>Explore</Title>
-        <LinkRow label={nav.about} onPress={() => router.push("/about")} />
-        <LinkRow label={nav.pricing} onPress={() => router.push("/pricing")} />
-        <LinkRow label={nav.camps} onPress={() => router.push("/camps")} />
-        <LinkRow label={nav.login} onPress={() => router.push("/login")} />
-        <LinkRow label={nav.signup} onPress={() => router.push("/signup")} />
-        <LinkRow label={nav.dashboard} onPress={() => router.push("/dashboard")} />
-      </Card>
-    </ScreenScroll>
+        <Text style={styles.footerNote}>{brand.positioning}</Text>
+      </ScrollView>
+      <HomeIndicator />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  hero: {
-    backgroundColor: colors.navy,
-    borderRadius: 16,
+  root: {
+    flex: 1,
+    backgroundColor: colors.background,
+  },
+  scroll: {
+    paddingHorizontal: spacing.md + 4,
+  },
+  introCard: {
+    backgroundColor: colors.white,
+    borderRadius: 24,
     padding: spacing.lg,
-    marginBottom: spacing.md,
-  },
-  heroTag: {
-    color: colors.water,
-    fontSize: 12,
-    fontWeight: "600",
-    textTransform: "uppercase",
-    marginBottom: spacing.sm,
-  },
-  heroTitle: {
-    color: colors.white,
-    fontSize: 26,
-    fontWeight: "700",
-    marginBottom: spacing.sm,
-  },
-  heroSub: {
-    color: "rgba(255,255,255,0.8)",
-    fontSize: 15,
-    lineHeight: 22,
-    marginBottom: spacing.md,
-  },
-  credRow: {
-    marginTop: spacing.sm,
-    paddingTop: spacing.sm,
-    borderTopWidth: 1,
-    borderTopColor: colors.border,
-  },
-  credLabel: {
-    fontWeight: "600",
-    color: colors.navy,
-    fontSize: 15,
-  },
-  credDetail: {
-    color: colors.textMuted,
-    fontSize: 14,
-    marginTop: 4,
-  },
-  waitlistInput: {
     borderWidth: 1,
     borderColor: colors.border,
-    borderRadius: 10,
-    paddingHorizontal: 14,
-    paddingVertical: 12,
-    fontSize: 16,
+    marginBottom: spacing.lg,
+  },
+  introTitle: {
+    fontSize: 20,
+    fontWeight: "700",
+    color: colors.text,
+    marginBottom: spacing.sm,
+    fontFamily: "Manrope_700Bold",
+  },
+  introBody: {
+    fontSize: 15,
+    lineHeight: 22,
+    color: colors.textMuted,
+    fontFamily: "Manrope_400Regular",
+  },
+  secondaryBtn: {
+    marginTop: spacing.sm,
+    paddingVertical: 16,
+    borderRadius: 16,
+    borderWidth: 2,
+    borderColor: colors.border,
     backgroundColor: colors.white,
+    alignItems: "center",
+    marginBottom: spacing.lg,
+  },
+  secondaryBtnText: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: colors.text,
+    fontFamily: "Manrope_600SemiBold",
+  },
+  exploreLabel: {
+    fontSize: 12,
+    fontWeight: "700",
+    letterSpacing: 1.5,
+    textTransform: "uppercase",
+    color: colors.textMuted,
+    marginBottom: spacing.sm,
+    fontFamily: "Manrope_700Bold",
+  },
+  linkRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    backgroundColor: colors.white,
+    borderRadius: 16,
+    paddingVertical: 18,
+    paddingHorizontal: spacing.md,
+    borderWidth: 1,
+    borderColor: colors.border,
     marginBottom: spacing.sm,
   },
-  ok: { color: "#15803d", marginTop: spacing.sm },
-  muted: { color: colors.textMuted, marginTop: spacing.sm },
-  err: { color: colors.destructive, marginTop: spacing.sm },
+  linkText: {
+    fontSize: 17,
+    fontWeight: "600",
+    color: colors.text,
+    fontFamily: "Manrope_600SemiBold",
+  },
+  chevron: {
+    fontSize: 22,
+    color: colors.textMuted,
+  },
+  footerNote: {
+    marginTop: spacing.lg,
+    fontSize: 13,
+    lineHeight: 20,
+    color: colors.textMuted,
+    textAlign: "center",
+    fontFamily: "Manrope_400Regular",
+  },
 });

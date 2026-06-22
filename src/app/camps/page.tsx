@@ -31,7 +31,7 @@ export default async function CampsPage() {
   return (
     <PublicLayout>
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
-        <h1 className="text-3xl font-bold text-navy sm:text-4xl">{camps.title}</h1>
+        <h1 className="section-title sm:text-4xl">{camps.title}</h1>
         <p className="mt-2 text-muted-foreground">{camps.subtitle}</p>
 
         {campsData.length === 0 ? (
@@ -42,7 +42,7 @@ export default async function CampsPage() {
               <Card key={camp.id} className="border-border/60">
                 <CardHeader>
                   <div className="flex items-start justify-between gap-4">
-                    <CardTitle className="text-navy">{camp.title}</CardTitle>
+                    <CardTitle className="text-gray-900">{camp.title}</CardTitle>
                     {camp.price != null && (
                       <Badge variant="secondary">${camp.price}</Badge>
                     )}
@@ -64,7 +64,7 @@ export default async function CampsPage() {
                   <LinkButton
                     variant="outline"
                     href="/login"
-                    className="border-navy text-navy hover:bg-navy/5"
+                    className="rounded-full border-gray-200 text-gray-900 hover:bg-gray-50"
                   >
                     {camps.registerInterest}
                   </LinkButton>

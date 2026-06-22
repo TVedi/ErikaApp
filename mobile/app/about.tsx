@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Text, View, StyleSheet } from "react-native";
-import { ScreenScroll, Card, Title, Body, Badge } from "../components/ui";
+import { View, Text, StyleSheet } from "react-native";
+import { MobileScreen } from "../components/mobile-screen";
 import { supabase, type CoachCredential } from "../lib/supabase";
 import { about } from "../content/copy";
 import { colors, spacing } from "../constants/theme";
@@ -17,54 +17,71 @@ export default function AboutScreen() {
   }, []);
 
   return (
-    <ScreenScroll>
-      <Title>{about.title}</Title>
-      <Body>{about.intro}</Body>
+    <MobileScreen title={about.title} subtitle={about.intro} showBack>
+      <Text style={styles.sectionTitle}>Biography</Text>
+      <Text style={styles.body}>{about.biographyPlaceholder}</Text>
 
-      <Card>
-        <Text style={styles.sectionTitle}>Professional biography</Text>
-        <Body>{about.biographyPlaceholder}</Body>
-      </Card>
+      <Text style={styles.sectionTitle}>{about.philosophyTitle}</Text>
+      <Text style={styles.body}>{about.philosophy}</Text>
 
-      <Card>
-        <Text style={styles.sectionTitle}>{about.philosophyTitle}</Text>
-        <Body>{about.philosophy}</Body>
-      </Card>
+      <Text style={styles.sectionTitle}>Credentials</Text>
+      {credentials.length === 0 ? (
+        <Text style={styles.muted}>Credentials loading…</Text>
+      ) : (
+        credentials.map((c) => (
+          <Text key={c.id} style={styles.credItem}>
+            • {c.label}{c.year ? ` (${c.year})` : ""}
+          </Text>
+        ))
+      )}
 
-      <Card>
-        <Text style={styles.sectionTitle}>Credentials</Text>
-        {credentials.map((c) => (
-          <View key={c.id} style={styles.credRow}>
-            <Text style={styles.credLabel}>
-              {c.label}
-              {c.year ? ` (${c.year})` : ""}
-            </Text>
-            {c.detail ? <Text style={styles.credDetail}>{c.detail}</Text> : null}
-          </View>
+      <Text style={styles.sectionTitle}>{about.focusAreasTitle}</Text>
+      <View style={styles.tags}>
+        {about.focusAreas.map((area) => (
+          <Text key={area} style={styles.tag}>{area}</Text>
         ))}
-      </Card>
-
-      <Card>
-        <Text style={styles.sectionTitle}>{about.focusAreasTitle}</Text>
-        <View style={styles.tags}>
-          {about.focusAreas.map((area) => (
-            <Badge key={area}>{area}</Badge>
-          ))}
-        </View>
-      </Card>
-    </ScreenScroll>
+      </View>
+    </MobileScreen>
   );
 }
 
 const styles = StyleSheet.create({
   sectionTitle: {
-    fontSize: 18,
-    fontWeight: "600",
-    color: colors.navy,
+    fontSize: 17,
+    fontWeight: "700",
+    color: colors.text,
     marginBottom: spacing.sm,
+    marginTop: spacing.sm,
+    fontFamily: "Manrope_700Bold",
   },
-  credRow: { marginTop: spacing.sm },
-  credLabel: { fontWeight: "600", color: colors.navy },
-  credDetail: { color: colors.textMuted, fontSize: 14, marginTop: 4 },
-  tags: { flexDirection: "row", flexWrap: "wrap", gap: 8 },
+  body: {
+    fontSize: 15,
+    lineHeight: 22,
+    color: colors.textMuted,
+    fontFamily: "Manrope_400Regular",
+  },
+  credItem: {
+    fontSize: 15,
+    color: colors.text,
+    marginBottom: 8,
+    fontFamily: "Manrope_400Regular",
+  },
+  muted: {
+    color: colors.textMuted,
+    fontFamily: "Manrope_400Regular",
+  },
+  tags: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 8,
+  },
+  tag: {
+    backgroundColor: colors.violetLight,
+    color: colors.violet,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 999,
+    fontSize: 13,
+    fontFamily: "Manrope_600SemiBold",
+  },
 });

@@ -1,8 +1,20 @@
 # Elite Paddle Coaching — Mobile (Expo)
 
-Companion mobile app for the Phase 1 web foundation. Same Supabase backend, same auth and dashboard shell.
+Companion mobile app for Phase 1 — **native-style mobile UX**, not a responsive website.
 
-## Quick start
+## App structure
+
+- **Public landing** (`/`) — premium mobile hero + explore links
+- **Auth** (`/signup`, `/login`) — step-by-step glass-card flow
+- **Main app tabs** (after sign-in):
+  - **Home** — coaching dashboard cards
+  - **Plans** — coming soon
+  - **Videos** — coming soon
+  - **Progress** — coming soon
+  - **Account** — profile, sign out, legal links
+
+Bottom tab navigation matches the Family app philosophy: large touch targets, vertical flow, rounded cards.
+
 
 ```bash
 cd mobile

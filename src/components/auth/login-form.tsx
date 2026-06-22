@@ -31,29 +31,29 @@ export function LoginForm() {
   }
 
   return (
-    <Card className="w-full max-w-md border-border/60 shadow-sm">
+    <Card className="glass-card w-full max-w-md ring-0">
       <CardHeader>
-        <CardTitle className="text-navy">{auth.loginTitle}</CardTitle>
-        <CardDescription>{auth.safetyDisclaimer}</CardDescription>
+        <CardTitle className="font-brand text-gray-900">{auth.loginTitle}</CardTitle>
+        <CardDescription className="text-gray-600">{auth.safetyDisclaimer}</CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="email">{auth.email}</Label>
-            <Input id="email" name="email" type="email" required autoComplete="email" />
+            <Input id="email" name="email" type="email" required autoComplete="email" className="rounded-xl border-gray-200" />
           </div>
           <div className="space-y-2">
             <Label htmlFor="password">{auth.password}</Label>
-            <Input id="password" name="password" type="password" required autoComplete="current-password" />
+            <Input id="password" name="password" type="password" required autoComplete="current-password" className="rounded-xl border-gray-200" />
           </div>
           {error && <p className="text-sm text-destructive">{error}</p>}
-          <Button type="submit" disabled={loading} className="w-full bg-navy hover:bg-navy-light">
+          <Button type="submit" disabled={loading} className="btn-gradient w-full rounded-2xl border-0">
             {auth.loginButton}
           </Button>
         </form>
-        <p className="mt-4 text-center text-sm text-muted-foreground">
+        <p className="mt-4 text-center text-sm text-gray-500">
           {auth.noAccount}{" "}
-          <Link href="/signup" className="font-medium text-navy hover:underline">
+          <Link href="/signup" className="font-medium text-violet-700 hover:underline">
             {auth.signupLink}
           </Link>
         </p>

@@ -1,32 +1,42 @@
-import { Text } from "react-native";
-import { ScreenScroll, Card, Title, Subtitle, Body } from "../components/ui";
+import { Text, StyleSheet } from "react-native";
+import { MobileScreen } from "../components/mobile-screen";
+import { FeatureCard } from "../components/feature-card";
 import { pricing, plansOverview } from "../content/copy";
-import { spacing } from "../constants/theme";
+import { colors, spacing } from "../constants/theme";
 
 export default function PricingScreen() {
   return (
-    <ScreenScroll>
-      <Title>{pricing.title}</Title>
-      <Subtitle>{pricing.subtitle}</Subtitle>
-
+    <MobileScreen title={pricing.title} subtitle={pricing.subtitle} showBack>
       {plansOverview.tiers.map((tier) => (
-        <Card key={tier.name}>
-          <Text style={{ fontWeight: "700", fontSize: 18, color: "#1a2744" }}>{tier.name}</Text>
-          <Body>{tier.description}</Body>
-          {tier.features.map((f) => (
-            <Text key={f} style={{ color: "#64748b", marginTop: 6, fontSize: 14 }}>• {f}</Text>
-          ))}
-        </Card>
+        <FeatureCard
+          key={tier.name}
+          title={tier.name}
+          description={tier.description}
+          badge="Info only"
+        />
       ))}
-
-      <Card>
-        <Text style={{ fontWeight: "700", fontSize: 18, color: "#1a2744", marginBottom: spacing.sm }}>
-          {pricing.campsNote.title}
-        </Text>
-        {pricing.campsNote.items.map((item) => (
-          <Text key={item} style={{ color: "#64748b", marginTop: 6, fontSize: 14 }}>• {item}</Text>
-        ))}
-      </Card>
-    </ScreenScroll>
+      <Text style={styles.campsTitle}>{pricing.campsNote.title}</Text>
+      {pricing.campsNote.items.map((item) => (
+        <Text key={item} style={styles.campsItem}>• {item}</Text>
+      ))}
+    </MobileScreen>
   );
 }
+
+const styles = StyleSheet.create({
+  campsTitle: {
+    fontSize: 17,
+    fontWeight: "700",
+    color: colors.text,
+    marginTop: spacing.md,
+    marginBottom: spacing.sm,
+    fontFamily: "Manrope_700Bold",
+  },
+  campsItem: {
+    fontSize: 15,
+    color: colors.textMuted,
+    marginBottom: 8,
+    lineHeight: 22,
+    fontFamily: "Manrope_400Regular",
+  },
+});

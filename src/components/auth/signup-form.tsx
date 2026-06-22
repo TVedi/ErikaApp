@@ -40,10 +40,10 @@ export function SignupForm() {
   }
 
   return (
-    <Card className="w-full max-w-md border-border/60 shadow-sm">
+    <Card className="glass-card w-full max-w-md ring-0">
       <CardHeader>
-        <CardTitle className="text-navy">{auth.signupTitle}</CardTitle>
-        <CardDescription>{auth.safetyDisclaimer}</CardDescription>
+        <CardTitle className="font-brand text-gray-900">{auth.signupTitle}</CardTitle>
+        <CardDescription className="text-gray-600">{auth.safetyDisclaimer}</CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -99,13 +99,13 @@ export function SignupForm() {
           )}
 
           {error && <p className="text-sm text-destructive">{error}</p>}
-          <Button type="submit" disabled={loading} className="w-full bg-navy hover:bg-navy-light">
+          <Button type="submit" disabled={loading} className="btn-gradient w-full rounded-2xl border-0">
             {auth.signupButton}
           </Button>
         </form>
-        <p className="mt-4 text-center text-sm text-muted-foreground">
+        <p className="mt-4 text-center text-sm text-gray-500">
           {auth.hasAccount}{" "}
-          <Link href="/login" className="font-medium text-navy hover:underline">
+          <Link href="/login" className="font-medium text-violet-700 hover:underline">
             {auth.loginLink}
           </Link>
         </p>
