@@ -1,11 +1,26 @@
 -- Seed data for Elite Paddle Coaching Phase 1
 -- Auth users must be created separately (see README). This seeds public reference data.
 
--- Coach credentials (editable — not hardcoded in UI)
+-- Coach credentials (editable placeholders — replace with verified records in production)
 insert into public.coach_credentials (label, year, detail, sort_order) values
-  ('Olympic Sprint Kayaker', 2008, 'Represented Hungary in Olympic sprint kayaking', 1),
-  ('World Champion', 2006, 'Gold medal — sprint kayak world championship', 2),
-  ('European Champion', 2005, 'Gold medal — European sprint kayak championship', 3);
+  (
+    'Example credential — replace with verified record',
+    null,
+    'Olympic athlete credential placeholder — edit in coach_credentials table',
+    1
+  ),
+  (
+    'World-level racing experience placeholder',
+    null,
+    'Example credential — replace with verified competition record',
+    2
+  ),
+  (
+    'Elite coaching credential placeholder',
+    null,
+    'Example credential — replace with verified coaching qualification',
+    3
+  );
 
 -- Training camps in Gainesville, Georgia
 insert into public.camps (title, location, start_date, end_date, price, capacity, description) values

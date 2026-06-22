@@ -9,6 +9,13 @@
  * profiles:
  *   - Athletes can read/update only their own row (id = auth.uid())
  *   - Coaches can read all profiles via is_coach()
+ *   - Trigger profiles_guard_privileged_fields forces role=athlete on insert,
+ *     preserves role on athlete update, derives is_minor from date_of_birth
+ *   - service_role and null JWT paths bypass trigger restrictions (coach creation)
+ *
+ * camp_applications:
+ *   - Athletes can insert own rows with status=interested only
+ *   - Athletes cannot update status (coach-only update policy)
  *
  * subscriptions:
  *   - Athletes read only where profile_id = auth.uid()
