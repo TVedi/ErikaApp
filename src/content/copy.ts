@@ -17,6 +17,7 @@ export const cta = {
 
 export const hero = {
   title: "Train with the experience of an Olympian and World Champion.",
+  titleAccentWord: "experience",
   subtitle:
     "Elite Paddle Coaching helps motivated kayakers improve technique, training structure, and race preparation through Erika Medveczky’s world-class paddling experience.",
   locationLabel: "Gainesville, Georgia",

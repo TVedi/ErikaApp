@@ -4,6 +4,8 @@ type PhotoPlaceholderProps = {
   label: string;
   variant?: "hero" | "portrait" | "wide" | "card";
   className?: string;
+  /** Applies reusable dark overlay for readable text when a real photo is added */
+  withDarkOverlay?: boolean;
 };
 
 /**
@@ -14,6 +16,7 @@ export function PhotoPlaceholder({
   label,
   variant = "card",
   className,
+  withDarkOverlay = false,
 }: PhotoPlaceholderProps) {
   const heights = {
     hero: "min-h-[280px] sm:min-h-[360px]",
@@ -25,14 +28,24 @@ export function PhotoPlaceholder({
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-2xl border border-border/60 bg-gradient-to-br from-navy/[0.04] via-water/[0.08] to-gold/[0.06]",
+        "relative overflow-hidden rounded-2xl border border-border/60 bg-gradient-to-br from-[var(--hero-bg)]/10 via-water/[0.08] to-gold/[0.08]",
         heights[variant],
         className
       )}
     >
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,oklch(0.55_0.12_220/0.12),transparent_55%)]" />
+      {withDarkOverlay && (
+        <div className="photo-dark-overlay absolute inset-0" aria-hidden="true" />
+      )}
       <div className="relative flex h-full items-center justify-center p-6">
-        <p className="max-w-xs text-center text-sm text-muted-foreground">{label}</p>
+        <p
+          className={cn(
+            "max-w-xs text-center text-sm",
+            withDarkOverlay ? "text-[var(--hero-subhead)]" : "text-muted-foreground"
+          )}
+        >
+          {label}
+        </p>
       </div>
     </div>
   );
