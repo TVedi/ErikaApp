@@ -1,11 +1,16 @@
 -- Seed data for Elite Paddle Coaching Phase 1
 -- Auth users must be created separately (see README). This seeds public reference data.
 
--- Coach credentials (editable — not hardcoded in UI)
-insert into public.coach_credentials (label, year, detail, sort_order) values
-  ('Olympic Sprint Kayaker', 2008, 'Represented Hungary in Olympic sprint kayaking', 1),
-  ('World Champion', 2006, 'Gold medal — sprint kayak world championship', 2),
-  ('European Champion', 2005, 'Gold medal — European sprint kayak championship', 3);
+-- Coach credentials — verified from Erika Medveczky's official CV (editable in coach_credentials table)
+insert into public.coach_credentials (label, detail, year, sort_order, featured) values
+  ('Olympic Finalist', 'K2 500m — Tokyo 2020, 4th place', 2020, 1, true),
+  ('8× World Champion', 'Sprint kayak', null, 2, true),
+  ('6× European Champion', null, null, 3, true),
+  ('3× World Championship Bronze', null, null, 4, false),
+  ('4× European Silver, 1× Bronze', null, null, 5, false),
+  ('21× Hungarian Champion', 'Youth & senior', null, 6, false),
+  ('Lifetime Champion of Hungarian Canoe-Kayak', null, 2018, 7, false),
+  ('27+ Years in the Sport', null, null, 8, false);
 
 -- Training camps in Gainesville, Georgia
 insert into public.camps (title, location, start_date, end_date, price, capacity, description) values

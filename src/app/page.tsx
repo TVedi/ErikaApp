@@ -3,6 +3,7 @@ import { CredentialsList } from "@/components/credentials-list";
 import { WaitlistForm } from "@/components/waitlist-form";
 import { LinkButton } from "@/components/ui/link-button";
 import { PhotoPlaceholder } from "@/components/marketing/photo-placeholder";
+import { CredibilityStrip } from "@/components/marketing/credibility-strip";
 import { ProgramCard } from "@/components/marketing/program-card";
 import { StartCoachingButton } from "@/components/marketing/start-coaching-button";
 import { createClient } from "@/lib/supabase/server";
@@ -37,6 +38,9 @@ export default async function HomePage() {
     .select("*")
     .order("sort_order", { ascending: true });
 
+  const allCredentials = (credentials as CoachCredential[]) ?? [];
+  const featuredCredentials = allCredentials.filter((c) => c.featured);
+
   return (
     <PublicLayout>
       {/* Hero */}
@@ -68,15 +72,8 @@ export default async function HomePage() {
             {!isExternalCheckout() && (
               <p className="mt-3 text-sm text-white/60">{launch.checkoutNote}</p>
             )}
-            <div className="mt-8 flex flex-wrap gap-2">
-              {hero.credibility.map((item) => (
-                <span
-                  key={item}
-                  className="rounded-full border border-white/20 bg-white/5 px-3 py-1 text-xs font-medium text-white/90"
-                >
-                  {item}
-                </span>
-              ))}
+            <div className="mt-8">
+              <CredibilityStrip featuredCredentials={featuredCredentials} variant="hero" />
             </div>
           </div>
           <PhotoPlaceholder
@@ -204,7 +201,7 @@ export default async function HomePage() {
             <PhotoPlaceholder variant="portrait" label="TODO: Erika portrait photo" />
           </div>
           <div className="mt-12">
-            <CredentialsList credentials={(credentials as CoachCredential[]) ?? []} />
+            <CredentialsList credentials={allCredentials} />
           </div>
         </div>
       </section>

@@ -28,6 +28,7 @@ export interface CoachCredential {
   year: number | null;
   detail: string | null;
   sort_order: number;
+  featured: boolean;
   created_at: string;
 }
 

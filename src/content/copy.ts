@@ -19,12 +19,7 @@ export const hero = {
   title: "Train with the experience of an Olympian and World Champion.",
   subtitle:
     "Elite Paddle Coaching helps motivated kayakers improve technique, training structure, and race preparation through Erika Medveczky’s world-class paddling experience.",
-  credibility: [
-    "Olympic Finalist",
-    "World Champion",
-    "European Champion",
-    "Gainesville, GA",
-  ],
+  locationLabel: "Gainesville, Georgia",
 };
 
 export const launch = {
@@ -120,9 +115,9 @@ export const launch = {
   aboutPreview: {
     title: "Coached by Olympic experience",
     body:
-      "Hungarian Olympic sprint kayaker and elite coach Erika Medveczky brings world-class kayak knowledge to athletes in the U.S. and worldwide. Nearly 30 years in the sport — from Olympic finals to coaching on the water in Gainesville, Georgia.",
+      "Hungarian Olympic sprint kayaker and elite coach Erika Medveczky brings world-class kayak knowledge to athletes in the U.S. and worldwide.",
     credentialNote:
-      "Final competition record must be verified by Erika before production launch.",
+      "Credentials below are loaded from the database and editable without code changes.",
   },
   testimonials: {
     title: "Athlete stories",
@@ -263,13 +258,13 @@ export const waitlist = {
 export const about = {
   title: "About Erika Medveczky",
   intro:
-    "Olympic sprint kayaker, Tokyo 2020 Olympian, World Champion, European Champion, and elite kayak coach — Erika Medveczky brings nearly 30 years in paddling to athletes who want world-class eyes on their technique.",
+    "TODO: Owners will write final About prose. Olympic sprint kayaker, elite coach, and sports leader — Erika Medveczky coaches from Gainesville, Georgia.",
   storyTitle: "Erika’s story",
   story:
-    "From Olympic finals in the K2 500m to world and European titles, Erika has spent nearly three decades in sprint kayaking — as an athlete and as a coach. She now shares that experience through online coaching, video technique analysis, and in-person training in Gainesville, Georgia.",
+    "TODO: Final biography and career narrative will be added here. Verified competition credentials are listed below from the coach_credentials table.",
   philosophyTitle: "Coaching philosophy",
   philosophy:
-    "Great paddling is built on fundamentals executed consistently — catch, rotation, leg drive, rhythm, and boat stability — combined with race-ready preparation. Coaching is direct, structured, and athlete-centered. Erika looks for clear technical priorities, not generic fixes.",
+    "TODO: Final coaching philosophy will be added here. Technique focus areas include catch, rotation, leg drive, rhythm, and boat stability.",
   videoTitle: "Why video feedback works",
   videoBody:
     "Video allows precise observation of catch timing, posture, rotation, and boat stability. Erika reviews footage manually and provides structured feedback — not automated AI scoring.",
@@ -277,7 +272,7 @@ export const about = {
   gainesvilleBody:
     "Erika coaches from Gainesville, Georgia — a training base for on-water sessions, camps, and in-person technical work on the lake.",
   biographyPlaceholder:
-    "Extended biography placeholder — verified career narrative will be finalized with Erika. Final competition record must be verified by Erika before production launch.",
+    "TODO: Extended biography placeholder — owners will write final About prose.",
   focusAreasTitle: "What Erika looks for in technique",
   focusAreas: [
     "catch",
@@ -289,7 +284,7 @@ export const about = {
     "race preparation",
   ],
   credentialNote:
-    "Final competition record must be verified by Erika before production launch.",
+    "Credentials are loaded from the database and editable without code changes.",
 };
 
 export const pricing = {

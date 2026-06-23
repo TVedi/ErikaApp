@@ -10,7 +10,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About Erika",
   description:
-    "Olympic sprint kayaker, World Champion, and elite coach Erika Medveczky — nearly 30 years in paddling, coaching from Gainesville, Georgia.",
+    "Olympic sprint kayaker and elite kayak coach Erika Medveczky — coaching from Gainesville, Georgia.",
 };
 
 export default async function AboutPage() {

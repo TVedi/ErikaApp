@@ -226,6 +226,7 @@ Configure the Stripe Payment Link success URL to:
 ### `/apply` coaching inquiries
 
 - Table: `coaching_inquiries` (migration `20250622000004_coaching_inquiries.sql`)
+- Coach credentials: migration `20250622000005_seed_coach_credentials.sql` adds `featured` column and verified CV data
 - Submissions go through a server action — not direct browser-to-Supabase
 - RLS: anonymous INSERT only with consent flags; no public SELECT
 - Coach read via `is_coach()` depends on `profiles.role` — hardened when `security/rls-hardening` merges
