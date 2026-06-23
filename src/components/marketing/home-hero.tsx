@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { LinkButton } from "@/components/ui/link-button";
 import { CredibilityStrip } from "@/components/marketing/credibility-strip";
 import { HeroHeadline } from "@/components/marketing/hero-headline";
@@ -25,6 +26,14 @@ export function HomeHero({ featuredCredentials }: HomeHeroProps) {
         className="absolute inset-0 bg-[var(--hero-bg)]"
         data-hero-photo="TODO: Erika action photo — hero paddling image"
         aria-hidden="true"
+      />
+      <Image
+        src="/hero.jpg"
+        alt="Erika Medveczky paddling"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-[right_center]"
       />
 
       {/*
