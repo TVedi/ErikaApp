@@ -3,16 +3,13 @@ import { CredentialsList } from "@/components/credentials-list";
 import { WaitlistForm } from "@/components/waitlist-form";
 import { LinkButton } from "@/components/ui/link-button";
 import { PhotoPlaceholder } from "@/components/marketing/photo-placeholder";
-import { CredibilityStrip } from "@/components/marketing/credibility-strip";
+import { HomeHero } from "@/components/marketing/home-hero";
 import { ProgramCard } from "@/components/marketing/program-card";
-import { HeroHeadline } from "@/components/marketing/hero-headline";
 import { StartCoachingButton } from "@/components/marketing/start-coaching-button";
 import { createClient } from "@/lib/supabase/server";
 import { isExternalCheckout } from "@/lib/marketing/cta";
 import {
-  brand,
   cta,
-  hero,
   launch,
   faq,
   waitlist,
@@ -47,69 +44,7 @@ export default async function HomePage() {
 
   return (
     <PublicLayout>
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-background">
-        <div className="mx-auto grid max-w-6xl lg:grid-cols-2 lg:items-stretch">
-          <div
-            className="relative px-4 py-16 sm:px-6 sm:py-24 lg:px-10"
-            style={{ backgroundColor: "var(--hero-bg)" }}
-          >
-            <p className="eyebrow-label">{brand.tagline}</p>
-            <h1
-              className="mt-4 font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl"
-              style={{ color: "var(--hero-headline)" }}
-            >
-              <HeroHeadline
-                title={hero.title}
-                accentWord={hero.titleAccentWord}
-              />
-            </h1>
-            <div
-              className="mt-5 h-0.5 w-12 bg-accent-gold"
-              aria-hidden="true"
-            />
-            <p
-              className="mt-6 text-lg leading-relaxed"
-              style={{ color: "var(--hero-subhead)" }}
-            >
-              {hero.subtitle}
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <StartCoachingButton
-                size="lg"
-                className="bg-[var(--hero-headline)] text-[var(--hero-bg)] hover:bg-[color-mix(in_srgb,var(--hero-headline)_90%,white)] w-full sm:w-auto"
-              />
-              <LinkButton
-                size="lg"
-                variant="outline"
-                href="/apply"
-                className="border-white/25 text-[var(--hero-headline)] hover:bg-white/10 w-full sm:w-auto"
-              >
-                {cta.requestEvaluation}
-              </LinkButton>
-            </div>
-            {!isExternalCheckout() && (
-              <p className="mt-3 text-sm text-[color-mix(in_srgb,var(--hero-subhead)_85%,transparent)]">
-                {launch.checkoutNote}
-              </p>
-            )}
-            <div className="mt-8">
-              <CredibilityStrip
-                featuredCredentials={featuredCredentials}
-                variant="hero"
-              />
-            </div>
-          </div>
-          <div className="relative min-h-[280px] sm:min-h-[360px] lg:min-h-0">
-            <PhotoPlaceholder
-              variant="hero"
-              label="TODO: Erika action photo — hero paddling image"
-              className="h-full min-h-[280px] rounded-none border-0 sm:min-h-[360px] lg:min-h-full"
-              withDarkOverlay
-            />
-          </div>
-        </div>
-      </section>
+      <HomeHero featuredCredentials={featuredCredentials} />
 
       {/* Who it's for */}
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
