@@ -39,7 +39,10 @@ export default async function HomePage() {
     .order("sort_order", { ascending: true });
 
   const allCredentials = (credentials as CoachCredential[]) ?? [];
-  const featuredCredentials = allCredentials.filter((c) => c.featured);
+  const featuredCredentials = allCredentials
+    .filter((c) => c.featured)
+    .sort((a, b) => a.sort_order - b.sort_order)
+    .slice(0, 3);
 
   return (
     <PublicLayout>

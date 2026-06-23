@@ -1,5 +1,9 @@
 -- coaching_inquiries — public marketing intake (launch)
 -- Anon: INSERT only with required consent flags. No public readback.
+--
+-- Pre-launch safety: coach/admin read policies for coaching_inquiries are intentionally
+-- deferred until security/rls-hardening is merged and profile role escalation is fixed.
+-- Service role can still manage server-side (bypasses RLS).
 
 create table public.coaching_inquiries (
   id uuid primary key default gen_random_uuid(),
@@ -34,12 +38,5 @@ create policy "Public insert coaching inquiries with consent"
     and privacy_consent = true
   );
 
--- Coaches can read and manage inquiries (depends on is_coach() / profiles.role)
-create policy "Coaches read coaching inquiries"
-  on public.coaching_inquiries for select
-  using (public.is_coach(auth.uid()));
-
-create policy "Coaches manage coaching inquiries"
-  on public.coaching_inquiries for all
-  using (public.is_coach(auth.uid()))
-  with check (public.is_coach(auth.uid()));
+-- No SELECT, UPDATE, or DELETE policies for anon/authenticated users at launch.
+-- Coach/admin inquiry management will be added after security/rls-hardening merges.

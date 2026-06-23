@@ -22,7 +22,7 @@ World-class sprint kayak coaching platform for Erika Medveczky — Olympic athle
 
 ### Intentionally not built (later phases)
 
-- Stripe payments and checkout
+- Full Stripe Billing / checkout API / webhook integration (see Marketing launch for Payment Link only)
 - Real video upload and private storage usage
 - Coach video review workflow
 - AI analysis or automated coaching
@@ -207,14 +207,18 @@ Future implementation should support:
 
 ## Marketing launch (Stripe Payment Link)
 
-The public site uses a **Stripe Payment Link** for Starter Guidance — not full Stripe Billing integration.
+Phase 1 core platform does **not** include Stripe Billing, SDK, webhooks, or automatic subscription unlock.
+
+The **marketing launch** branch adds a public **Stripe Payment Link** URL only via `NEXT_PUBLIC_STRIPE_STARTER_PAYMENT_LINK`. This is manual checkout — not full Stripe integration. Full Stripe Billing/webhook integration remains a later phase.
 
 | Variable | Description |
 |----------|-------------|
+| `NEXT_PUBLIC_SUPABASE_URL` | Required for public pages that fetch `coach_credentials` / `camps` at render time |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anon key (public pages) |
 | `NEXT_PUBLIC_STRIPE_STARTER_PAYMENT_LINK` | Public Stripe hosted checkout URL for “Start Coaching” |
 | `NEXT_PUBLIC_STARTER_PRICE_LABEL` | Optional price display (e.g. `$99`) |
 | `NEXT_PUBLIC_SITE_URL` | Production URL for Origin checks on `/apply` |
-| `SUPABASE_SERVICE_ROLE_KEY` | Server-only — coaching inquiry inserts |
+| `SUPABASE_SERVICE_ROLE_KEY` | Server-only — required for `/apply` coaching inquiry inserts |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` / `TURNSTILE_SECRET_KEY` | Optional Cloudflare Turnstile |
 
 **Important:** `NEXT_PUBLIC_*` values are baked at **build time** in Next.js. After setting the Stripe link in Vercel, **redeploy** for the CTA to update.
@@ -223,13 +227,28 @@ Configure the Stripe Payment Link success URL to:
 
 `https://YOUR_DOMAIN/welcome`
 
+`/welcome` is a post-checkout informational return page only — it does not verify payment, unlock the dashboard, or update subscriptions.
+
+### Vercel preview readiness
+
+**Public marketing pages** (home, about, pricing, camps) need `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` if credentials/camps are loaded from Supabase at render time.
+
+**`/apply` submissions** require:
+
+- Cloud Supabase migrations applied (`20250622000004`, `20250622000005`)
+- `SUPABASE_SERVICE_ROLE_KEY` set server-side in Vercel
+- Turnstile env vars only if captcha is enabled
+
+Do not apply production migrations or configure Vercel in code — set env vars in the Vercel dashboard and redeploy.
+
 ### `/apply` coaching inquiries
 
 - Table: `coaching_inquiries` (migration `20250622000004_coaching_inquiries.sql`)
 - Coach credentials: migration `20250622000005_seed_coach_credentials.sql` adds `featured` column and verified CV data
 - Submissions go through a server action — not direct browser-to-Supabase
-- RLS: anonymous INSERT only with consent flags; no public SELECT
-- Coach read via `is_coach()` depends on `profiles.role` — hardened when `security/rls-hardening` merges
+- RLS at launch: **public INSERT only** with consent flags; no anon SELECT/UPDATE/DELETE
+- **Coach/admin viewing of inquiries is intentionally deferred** until `security/rls-hardening` is merged and profile role escalation is fixed
+- Server-side inserts use **service role** (bypasses RLS); coach-facing inquiry UI/policies come after the security PR
 
 ### Launch security protections
 

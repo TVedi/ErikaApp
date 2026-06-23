@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Welcome",
-  description: "Thank you for your Starter Guidance payment.",
+  description: "Post-checkout next steps for Elite Paddle Coaching Starter Guidance.",
 };
 
 export default function WelcomePage() {

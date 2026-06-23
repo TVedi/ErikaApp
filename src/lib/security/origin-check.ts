@@ -1,34 +1,61 @@
 /**
  * Origin / host allowlist for public form submissions.
+ * Uses exact host matching — no substring checks.
  */
 
-export function isAllowedRequestOrigin(headers: Headers): boolean {
-  const origin = headers.get("origin");
-  const host = headers.get("x-forwarded-host") ?? headers.get("host");
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
+const DEV_HOSTS = [
+  "localhost:3000",
+  "127.0.0.1:3000",
+  "localhost:3001",
+  "127.0.0.1:3001",
+];
 
-  const allowedOrigins = new Set<string>([
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-  ]);
+function getRequestHost(headers: Headers): string | null {
+  const forwarded = headers.get("x-forwarded-host");
+  if (forwarded) {
+    return forwarded.split(",")[0]?.trim() ?? null;
+  }
+  return headers.get("host");
+}
 
+function buildAllowedHosts(headers: Headers): Set<string> {
+  const allowed = new Set<string>(DEV_HOSTS);
+
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
   if (siteUrl) {
-    allowedOrigins.add(siteUrl);
     try {
-      const u = new URL(siteUrl);
-      allowedOrigins.add(`${u.protocol}//${u.host}`);
+      allowed.add(new URL(siteUrl).host);
     } catch {
-      // ignore invalid site url
+      // ignore invalid NEXT_PUBLIC_SITE_URL
     }
   }
 
-  if (host?.endsWith(".vercel.app")) {
-    return !origin || origin.includes(host);
+  const requestHost = getRequestHost(headers);
+  if (requestHost?.endsWith(".vercel.app")) {
+    allowed.add(requestHost);
   }
+
+  return allowed;
+}
+
+/**
+ * Validates that a browser form submission originated from an allowed host.
+ * Missing Origin is allowed only when the request Host matches the allowlist
+ * (typical same-origin Next.js server action from the app itself).
+ */
+export function isAllowedRequestOrigin(headers: Headers): boolean {
+  const allowedHosts = buildAllowedHosts(headers);
+  const requestHost = getRequestHost(headers);
+  const origin = headers.get("origin");
 
   if (!origin) {
-    return true;
+    return requestHost !== null && allowedHosts.has(requestHost);
   }
 
-  return allowedOrigins.has(origin);
+  try {
+    const originHost = new URL(origin).host;
+    return allowedHosts.has(originHost);
+  } catch {
+    return false;
+  }
 }

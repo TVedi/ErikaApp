@@ -478,8 +478,8 @@ export const thankYou = {
 };
 
 export const welcome = {
-  title: "Payment received — thank you",
-  body: "Erika will personally reach out within 48 hours to begin onboarding.",
+  title: "Thank you — next steps",
+  body: "If your checkout completed successfully, Erika will personally follow up within 48 hours to begin onboarding.",
 };
 
 export const footer = {
