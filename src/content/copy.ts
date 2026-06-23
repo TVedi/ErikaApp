@@ -5,18 +5,133 @@
 
 export const brand = {
   name: "Elite Paddle Coaching",
-  tagline: "World-class kayak coaching from an Olympic athlete",
+  tagline: "Olympic and World Champion kayak coaching",
   positioning:
-    "World-class kayak coaching from an Olympic athlete, World Champion, and European Champion. Personalized training plans, expert video feedback, progress tracking, and future training camps.",
+    "Olympic and World Champion kayak coaching through personalized training guidance, expert video technique analysis, and elite training camps in Gainesville, Georgia.",
+};
+
+export const cta = {
+  startCoaching: "Start Coaching",
+  requestEvaluation: "Request an Evaluation",
 };
 
 export const hero = {
-  title: "Train with Olympic-Level Precision",
+  title: "Train with the experience of an Olympian and World Champion.",
   subtitle:
-    "Personalized sprint kayak coaching from Erika Medveczky — Olympic athlete, World Champion, and elite performance coach.",
-  ctaStart: "Start Coaching",
-  ctaPlans: "View Plans",
-  ctaWaitlist: "Join Waitlist",
+    "Elite Paddle Coaching helps motivated kayakers improve technique, training structure, and race preparation through Erika Medveczky’s world-class paddling experience.",
+  credibility: [
+    "Olympic Finalist",
+    "World Champion",
+    "European Champion",
+    "Gainesville, GA",
+  ],
+};
+
+export const launch = {
+  whoItsFor: {
+    title: "Who this is for",
+    audiences: [
+      "Competitive junior kayakers",
+      "Ambitious club athletes",
+      "Masters paddlers",
+      "Parents and coaches seeking expert technical feedback",
+      "Athletes preparing for races or selection events",
+    ],
+  },
+  howItWorks: {
+    title: "How it works",
+    steps: [
+      {
+        title: "Choose coaching or request an evaluation",
+        description:
+          "Start with Starter Guidance via secure checkout, or apply for Technique Review and Elite Coaching.",
+      },
+      {
+        title: "Share your goals",
+        description:
+          "Tell us about your level, events, and training focus. Onboarding is personal at launch.",
+      },
+      {
+        title: "Improve with expert feedback",
+        description:
+          "Receive Erika’s feedback, drills, and training direction — including video review when applicable.",
+      },
+    ],
+    manualNote:
+      "At launch, every athlete is onboarded personally by Erika and her team after payment or application review.",
+  },
+  programs: {
+    title: "Coaching options",
+    starter: {
+      name: "Starter Guidance",
+      description:
+        "Training direction and basic structure — a strong first step for motivated athletes.",
+      features: [
+        "General training direction",
+        "Structured starting point for online coaching",
+        "Manual personal onboarding after payment",
+      ],
+      cta: "start",
+    },
+    technique: {
+      name: "Technique Review",
+      description:
+        "Video-based technique feedback with technical priorities and drill recommendations.",
+      features: [
+        "Manual video technique review",
+        "Technical priorities and corrections",
+        "Drill recommendations and next focus",
+      ],
+      cta: "apply",
+      priceNote: "Pricing and availability confirmed after application review.",
+    },
+    elite: {
+      name: "Elite Coaching",
+      description:
+        "Deeper personal guidance, training plan direction, progress review, and camp priority consideration.",
+      features: [
+        "Individualized coaching direction",
+        "Training plan guidance",
+        "Progress review",
+        "Limited availability",
+      ],
+      cta: "apply",
+      priceNote: "Pricing and availability confirmed after application review.",
+    },
+  },
+  videoSection: {
+    title: "Expert video technique analysis",
+    body:
+      "Athletes can share paddling footage for manual review by Erika. Feedback may address catch, posture, rotation, leg drive, rhythm, boat stability, race preparation, drills, and next training focus. This is not automated AI scoring.",
+    points: [
+      "Catch and posture",
+      "Rotation and leg drive",
+      "Rhythm and boat stability",
+      "Race preparation",
+      "Priority drills and next focus",
+    ],
+  },
+  campsPreview: {
+    title: "Gainesville training camps",
+    body:
+      "Future small-group kayak training camps in Gainesville, Georgia — technical water sessions, coach consultation, video review, race preparation, and limited capacity.",
+    cta: "Request an Evaluation",
+  },
+  aboutPreview: {
+    title: "Coached by Olympic experience",
+    body:
+      "Hungarian Olympic sprint kayaker and elite coach Erika Medveczky brings world-class kayak knowledge to athletes in the U.S. and worldwide. Nearly 30 years in the sport — from Olympic finals to coaching on the water in Gainesville, Georgia.",
+    credentialNote:
+      "Final competition record must be verified by Erika before production launch.",
+  },
+  testimonials: {
+    title: "Athlete stories",
+    placeholder: "Athlete stories coming soon.",
+  },
+  finalCta: {
+    title: "Ready to improve your paddling with world-class eyes on your technique?",
+  },
+  checkoutNote: "Secure checkout link coming soon",
 };
 
 export const valueProposition = {
@@ -125,7 +240,7 @@ export const faq = {
     {
       question: "Are payments available now?",
       answer:
-        "Payments and Stripe integration are not available in Phase 1. You can join the waitlist or create an account to explore the platform foundation.",
+        "Starter Guidance may be purchased through a secure Stripe checkout link. Technique Review and Elite Coaching are reviewed manually before onboarding. Full automatic subscription access is planned for a later phase.",
     },
     {
       question: "Where are training camps held?",
@@ -148,36 +263,49 @@ export const waitlist = {
 export const about = {
   title: "About Erika Medveczky",
   intro:
-    "Erika Medveczky brings Olympic sprint kayaking experience and world-class coaching to athletes who want to paddle with precision, power, and purpose.",
-  biographyPlaceholder:
-    "Professional biography placeholder — Erika's full career story, competition highlights, and coaching journey will be added here. This section is designed to be updated without code changes as verified content is finalized.",
+    "Olympic sprint kayaker, Tokyo 2020 Olympian, World Champion, European Champion, and elite kayak coach — Erika Medveczky brings nearly 30 years in paddling to athletes who want world-class eyes on their technique.",
+  storyTitle: "Erika’s story",
+  story:
+    "From Olympic finals in the K2 500m to world and European titles, Erika has spent nearly three decades in sprint kayaking — as an athlete and as a coach. She now shares that experience through online coaching, video technique analysis, and in-person training in Gainesville, Georgia.",
   philosophyTitle: "Coaching philosophy",
   philosophy:
-    "Great paddling is built on fundamentals executed consistently. Erika focuses on clear technical priorities — catch, rotation, leg drive, rhythm, and boat stability — combined with race-ready preparation and sustainable long-term development. Coaching is direct, structured, and athlete-centered.",
-  focusAreasTitle: "Focus areas",
+    "Great paddling is built on fundamentals executed consistently — catch, rotation, leg drive, rhythm, and boat stability — combined with race-ready preparation. Coaching is direct, structured, and athlete-centered. Erika looks for clear technical priorities, not generic fixes.",
+  videoTitle: "Why video feedback works",
+  videoBody:
+    "Video allows precise observation of catch timing, posture, rotation, and boat stability. Erika reviews footage manually and provides structured feedback — not automated AI scoring.",
+  gainesvilleTitle: "Gainesville, Georgia",
+  gainesvilleBody:
+    "Erika coaches from Gainesville, Georgia — a training base for on-water sessions, camps, and in-person technical work on the lake.",
+  biographyPlaceholder:
+    "Extended biography placeholder — verified career narrative will be finalized with Erika. Final competition record must be verified by Erika before production launch.",
+  focusAreasTitle: "What Erika looks for in technique",
   focusAreas: [
-    "technique",
     "catch",
+    "posture",
     "rotation",
     "leg drive",
     "rhythm",
     "boat stability",
     "race preparation",
-    "long-term athlete development",
   ],
+  credentialNote:
+    "Final competition record must be verified by Erika before production launch.",
 };
 
 export const pricing = {
-  title: "Pricing",
-  subtitle: "Information only — payments coming in a future phase.",
+  title: "Programs",
+  subtitle:
+    "Choose the level of coaching that fits your goals. Starter may use secure Stripe checkout at launch; other programs are reviewed manually.",
+  stripeNote:
+    "Starter payments may be handled through secure Stripe checkout links during launch. Technique Review and Elite Coaching are reviewed manually before onboarding.",
+  manualReviewNote: "Pricing and availability confirmed after application review.",
   campsNote: {
     title: "Training camps",
     items: [
-      "Future in-person kayak training camps in Gainesville, Georgia",
-      "Technical sessions",
-      "Coach consultation",
-      "Limited capacity",
-      "Registration coming later",
+      "Small-group kayak camps in Gainesville, Georgia",
+      "Technical water sessions and coach consultation",
+      "Video review and race preparation",
+      "Limited capacity — dates announced soon",
     ],
   },
 };
@@ -185,9 +313,27 @@ export const pricing = {
 export const camps = {
   title: "Training camps",
   subtitle: "In-person sprint kayak camps in Gainesville, Georgia.",
-  registerInterest: "Register interest",
-  comingSoon: "Registration coming in a future phase. Sign in or create an account to express interest.",
-  empty: "No camps scheduled yet. Check back soon.",
+  whyTitle: "Why train in person",
+  whyBody:
+    "On-water sessions with direct coach feedback accelerate technique changes that are hard to see from the dock alone.",
+  includesTitle: "What camps include",
+  includes: [
+    "Technical water sessions",
+    "Coach consultation",
+    "Video review",
+    "Race preparation focus",
+    "Limited capacity",
+  ],
+  whoTitle: "Who should apply",
+  whoBody:
+    "Motivated club, junior, masters, and competitive athletes who want intensive technical work with an Olympic-level coach.",
+  locationTitle: "Gainesville, Georgia",
+  locationBody:
+    "Training on the water in Gainesville, Georgia — Erika’s U.S. training base for camps and in-person coaching.",
+  datesPlaceholder: "Upcoming camp dates will be announced.",
+  registerInterest: "Request camp interest",
+  comingSoon: "Camp registration is reviewed manually at launch.",
+  empty: "Upcoming camp dates will be announced.",
 };
 
 export const auth = {
@@ -250,24 +396,101 @@ export const dashboard = {
 export const legal = {
   terms: {
     title: "Terms of Service",
-    body: "Terms of Service placeholder. Full legal terms will be added before public launch.",
+    body:
+      "DRAFT placeholder — Terms of Service will be provided and reviewed by qualified counsel before accepting live payments. Real legal copy must be supplied/reviewed by a human before taking live payments.",
   },
   privacy: {
     title: "Privacy Policy",
-    body: "Privacy Policy placeholder. Full privacy terms will be added before public launch.",
+    body:
+      "DRAFT placeholder — Privacy Policy will be provided and reviewed before launch. Coaching inquiries and application data are processed to respond to your request. Real legal copy must be supplied/reviewed by a human before taking live payments.",
   },
   refund: {
     title: "Refund Policy",
-    body: "Refund Policy placeholder. Full refund terms will be added before public launch.",
+    body:
+      "DRAFT placeholder — Refund terms for coaching programs and camps will be defined before live payments. Real legal copy must be supplied/reviewed by a human before taking live payments.",
   },
   medical: {
     title: "Medical Disclaimer",
     body:
-      "This coaching platform does not provide medical advice, injury diagnosis, physical therapy, or emergency care. Athletes should consult a qualified healthcare professional for pain, injury, or medical concerns.",
+      "This coaching platform does not provide medical advice, injury diagnosis, physical therapy, or emergency care. Athletes should consult a qualified healthcare professional for pain, injury, or medical concerns. Coaching inquiries are not medical consultations.",
   },
 };
 
+export const apply = {
+  title: "Request an Evaluation",
+  subtitle:
+    "Tell us about your goals, level, and interests. Erika reviews every application personally.",
+  minorNote:
+    "For athletes under 18, a parent or guardian must be involved before coaching begins.",
+  fields: {
+    fullName: "Full name",
+    email: "Email",
+    location: "Country / location",
+    athleteAge: "Athlete age",
+    guardianEmail: "Guardian email (if under 18)",
+    athleteLevel: "Athlete level",
+    mainGoal: "Main goal",
+    eventFocus: "Primary event or distance",
+    hasVideo: "Do you already have paddling video available?",
+    interests: "Interests",
+    message: "Short message",
+  },
+  athleteLevels: [
+    { value: "beginner", label: "Beginner" },
+    { value: "club", label: "Club athlete" },
+    { value: "competitive_junior", label: "Competitive junior" },
+    { value: "national_level", label: "National-level" },
+    { value: "masters", label: "Masters" },
+    { value: "coach", label: "Coach" },
+    { value: "parent", label: "Parent" },
+  ],
+  mainGoals: [
+    { value: "technique_improvement", label: "Technique improvement" },
+    { value: "race_preparation", label: "Race preparation" },
+    { value: "training_plan", label: "Training plan" },
+    { value: "video_review", label: "Video review" },
+    { value: "gainesville_camp", label: "Gainesville camp" },
+    { value: "other", label: "Other" },
+  ],
+  eventFocuses: [
+    { value: "200m", label: "200m" },
+    { value: "500m", label: "500m" },
+    { value: "1000m", label: "1000m" },
+    { value: "marathon", label: "Marathon" },
+    { value: "recreational", label: "Recreational" },
+    { value: "other", label: "Other" },
+  ],
+  hasVideoOptions: { yes: "Yes", no: "No" },
+  interestOptions: [
+    { value: "online_coaching", label: "Online coaching" },
+    { value: "video_analysis", label: "Video analysis" },
+    { value: "training_plan", label: "Training plan" },
+    { value: "gainesville_camp", label: "Gainesville camp" },
+    { value: "not_sure", label: "Not sure yet" },
+  ],
+  checkboxes: {
+    medical:
+      "I understand this is a coaching inquiry and not medical, injury, physical therapy, or emergency advice.",
+    privacyPrefix: "I consent to Elite Paddle Coaching processing my information to respond to this inquiry. See our",
+  },
+  submit: "Submit application",
+  submitting: "Submitting…",
+};
+
+export const thankYou = {
+  title: "Thank you for your application",
+  body: "We’ll review your goals and follow up personally.",
+};
+
+export const welcome = {
+  title: "Payment received — thank you",
+  body: "Erika will personally reach out within 48 hours to begin onboarding.",
+};
+
 export const footer = {
+  startCoaching: "Start Coaching",
+  apply: "Apply / Request Evaluation",
+  camps: "Camps",
   terms: "Terms",
   privacy: "Privacy",
   refund: "Refund Policy",
@@ -275,10 +498,11 @@ export const footer = {
 };
 
 export const nav = {
-  about: "About",
-  pricing: "Pricing",
+  home: "Home",
+  about: "About Erika",
+  programs: "Programs",
   camps: "Camps",
+  apply: "Apply",
   login: "Sign in",
-  signup: "Sign up",
   dashboard: "Dashboard",
 };

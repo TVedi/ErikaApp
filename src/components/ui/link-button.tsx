@@ -7,6 +7,7 @@ type LinkButtonProps = VariantProps<typeof buttonVariants> & {
   href: string;
   className?: string;
   children: React.ReactNode;
+  external?: boolean;
 };
 
 export function LinkButton({
@@ -15,12 +16,26 @@ export function LinkButton({
   variant,
   size,
   children,
+  external,
 }: LinkButtonProps) {
+  const isExternal = external ?? href.startsWith("http");
+  const classes = cn(buttonVariants({ variant, size }), className);
+
+  if (isExternal) {
+    return (
+      <a
+        href={href}
+        className={classes}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {children}
+      </a>
+    );
+  }
+
   return (
-    <Link
-      href={href}
-      className={cn(buttonVariants({ variant, size }), className)}
-    >
+    <Link href={href} className={classes}>
       {children}
     </Link>
   );

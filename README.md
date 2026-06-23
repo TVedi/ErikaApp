@@ -205,6 +205,47 @@ Future implementation should support:
 9. App builds with `npm run build`
 10. Tests pass with `npm test`
 
+## Marketing launch (Stripe Payment Link)
+
+The public site uses a **Stripe Payment Link** for Starter Guidance — not full Stripe Billing integration.
+
+| Variable | Description |
+|----------|-------------|
+| `NEXT_PUBLIC_STRIPE_STARTER_PAYMENT_LINK` | Public Stripe hosted checkout URL for “Start Coaching” |
+| `NEXT_PUBLIC_STARTER_PRICE_LABEL` | Optional price display (e.g. `$99`) |
+| `NEXT_PUBLIC_SITE_URL` | Production URL for Origin checks on `/apply` |
+| `SUPABASE_SERVICE_ROLE_KEY` | Server-only — coaching inquiry inserts |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY` / `TURNSTILE_SECRET_KEY` | Optional Cloudflare Turnstile |
+
+**Important:** `NEXT_PUBLIC_*` values are baked at **build time** in Next.js. After setting the Stripe link in Vercel, **redeploy** for the CTA to update.
+
+Configure the Stripe Payment Link success URL to:
+
+`https://YOUR_DOMAIN/welcome`
+
+### `/apply` coaching inquiries
+
+- Table: `coaching_inquiries` (migration `20250622000004_coaching_inquiries.sql`)
+- Submissions go through a server action — not direct browser-to-Supabase
+- RLS: anonymous INSERT only with consent flags; no public SELECT
+- Coach read via `is_coach()` depends on `profiles.role` — hardened when `security/rls-hardening` merges
+
+### Launch security protections
+
+- Server-side Zod validation
+- Honeypot field (silent success, no insert)
+- Optional Cloudflare Turnstile
+- In-memory per-IP rate limiting (technical debt — replace with durable limiter before serious traffic)
+- Origin/Host allowlist on submissions
+- Generic user-facing errors only
+- Security headers via `next.config.ts` (conservative CSP allowing Turnstile + Stripe checkout frames)
+- No file upload on `/apply`
+- `/welcome` does not unlock dashboard or update subscriptions
+
+### Legal pages
+
+Terms, Privacy, Refund Policy, and Medical Disclaimer show **DRAFT** placeholders until reviewed by a human before live payments.
+
 ## License
 
 Private — Elite Paddle Coaching / Erika Medveczky.

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { brand } from "@/content/copy";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,10 +14,17 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: brand.name,
-    template: `%s | ${brand.name}`,
+    default: "Elite Paddle Coaching | Olympic Kayak Coaching by Erika Medveczky",
+    template: "%s | Elite Paddle Coaching",
   },
-  description: brand.positioning,
+  description:
+    "Online kayak coaching, expert video technique analysis, and training camp opportunities with Olympic sprint kayaker and World Champion Erika Medveczky.",
+  openGraph: {
+    title: "Elite Paddle Coaching | Olympic Kayak Coaching by Erika Medveczky",
+    description:
+      "Online kayak coaching, expert video technique analysis, and training camps in Gainesville, Georgia.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
