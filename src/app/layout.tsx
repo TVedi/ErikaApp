@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist_Mono } from "next/font/google";
 import { fraunces, inter } from "@/lib/fonts";
 import "./globals.css";
@@ -21,6 +21,12 @@ export const metadata: Metadata = {
       "Online kayak coaching, expert video technique analysis, and training camps in Gainesville, Georgia.",
     type: "website",
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0e2436",
 };
 
 export default function RootLayout({
