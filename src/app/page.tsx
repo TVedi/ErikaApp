@@ -3,6 +3,7 @@ import { CredentialsList } from "@/components/credentials-list";
 import { WaitlistForm } from "@/components/waitlist-form";
 import { LinkButton } from "@/components/ui/link-button";
 import { MarketingPhoto } from "@/components/marketing/marketing-photo";
+import { PhotoBand } from "@/components/marketing/photo-band";
 import { HomeHero } from "@/components/marketing/home-hero";
 import { ProgramCard } from "@/components/marketing/program-card";
 import { StartCoachingButton } from "@/components/marketing/start-coaching-button";
@@ -48,25 +49,27 @@ export default async function HomePage() {
       <HomeHero featuredCredentials={featuredCredentials} />
 
       {/* Who it's for */}
-      <section className="section-cream mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-        <ScrollReveal>
-          <h2 className="text-2xl font-bold text-navy sm:text-3xl">
-            {launch.whoItsFor.title}
-          </h2>
-        </ScrollReveal>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {launch.whoItsFor.audiences.map((item, i) => (
-            <ScrollReveal key={item} delayMs={i * 90}>
-              <div className="rounded-2xl border border-border/60 bg-card p-5 shadow-sm">
-                <p className="font-medium text-navy">{item}</p>
-              </div>
-            </ScrollReveal>
-          ))}
+      <section className="section-cream section-pad w-full">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <ScrollReveal>
+            <h2 className="text-2xl font-bold text-navy sm:text-3xl">
+              {launch.whoItsFor.title}
+            </h2>
+          </ScrollReveal>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {launch.whoItsFor.audiences.map((item, i) => (
+              <ScrollReveal key={item} delayMs={i * 90}>
+                <div className="h-full rounded-2xl border border-border/60 bg-card p-5 shadow-sm">
+                  <p className="font-medium text-navy">{item}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* How it works */}
-      <section className="section-navy-soft py-16 sm:py-20">
+      <section className="section-navy-soft section-pad w-full">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <ScrollReveal>
             <h2 className="text-2xl font-bold text-navy sm:text-3xl">
@@ -79,7 +82,7 @@ export default async function HomePage() {
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {launch.howItWorks.steps.map((step, i) => (
               <ScrollReveal key={step.title} delayMs={i * 100}>
-                <div className="rounded-2xl border border-border/60 bg-card p-6 shadow-sm">
+                <div className="h-full rounded-2xl border border-border/60 bg-card p-6 shadow-sm">
                   <span className="text-sm font-bold text-water">Step {i + 1}</span>
                   <h3 className="mt-2 font-semibold text-navy">{step.title}</h3>
                   <p className="mt-2 text-sm text-muted-foreground">{step.description}</p>
@@ -91,80 +94,68 @@ export default async function HomePage() {
       </section>
 
       {/* Programs */}
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-        <ScrollReveal>
-          <h2 className="text-2xl font-bold text-navy sm:text-3xl">
-            {launch.programs.title}
-          </h2>
-        </ScrollReveal>
-        <div className="mt-8 grid gap-6 lg:grid-cols-3">
-          {(["starter", "technique", "elite"] as const).map((tier, i) => (
-            <ScrollReveal key={tier} delayMs={i * 110}>
-              <ProgramCard tier={tier} />
-            </ScrollReveal>
-          ))}
+      <section className="section-pad w-full bg-background">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <ScrollReveal>
+            <h2 className="text-2xl font-bold text-navy sm:text-3xl">
+              {launch.programs.title}
+            </h2>
+          </ScrollReveal>
+          <div className="mt-8 grid gap-6 lg:grid-cols-3">
+            {(["starter", "technique", "elite"] as const).map((tier, i) => (
+              <ScrollReveal key={tier} delayMs={i * 110}>
+                <ProgramCard tier={tier} />
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Video analysis */}
-      <section className="section-cream py-16 sm:py-20">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center">
+      {/* Full-bleed: video technique */}
+      <PhotoBand
+        photo={sitePhotos.videoTechnique}
+        headline={launch.videoSection.title}
+      />
+
+      {/* Video analysis detail */}
+      <section className="section-cream section-pad w-full">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <ScrollReveal>
-            <div>
-              <h2 className="text-2xl font-bold text-navy sm:text-3xl">
-                {launch.videoSection.title}
-              </h2>
-              <p className="mt-4 text-muted-foreground leading-relaxed">
-                {launch.videoSection.body}
-              </p>
-              <ul className="mt-6 space-y-2">
-                {launch.videoSection.points.map((p) => (
-                  <li key={p} className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-                    {p}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </ScrollReveal>
-          <ScrollReveal delayMs={120}>
-            <MarketingPhoto
-              photo={sitePhotos.videoTechnique}
-              variant="wide"
-              parallax
-            />
+            <p className="text-muted-foreground leading-relaxed">
+              {launch.videoSection.body}
+            </p>
+            <ul className="mt-6 space-y-2">
+              {launch.videoSection.points.map((p) => (
+                <li key={p} className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
+                  {p}
+                </li>
+              ))}
+            </ul>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* Camps preview */}
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+      {/* Full-bleed: camps / on-water */}
+      <PhotoBand
+        photo={sitePhotos.campsRacing}
+        headline={launch.campsPreview.title}
+        subheadline={launch.campsPreview.body}
+      />
+
+      {/* Camps CTA */}
+      <section className="section-pad w-full bg-background">
+        <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
           <ScrollReveal>
-            <MarketingPhoto
-              photo={sitePhotos.campsLake}
-              variant="wide"
-              parallax
-            />
-          </ScrollReveal>
-          <ScrollReveal delayMs={100}>
-            <div>
-              <h2 className="text-2xl font-bold text-navy sm:text-3xl">
-                {launch.campsPreview.title}
-              </h2>
-              <p className="mt-4 text-muted-foreground leading-relaxed">
-                {launch.campsPreview.body}
-              </p>
-              <LinkButton href="/apply" className="mt-6 bg-navy hover:bg-navy-light">
-                {launch.campsPreview.cta}
-              </LinkButton>
-            </div>
+            <LinkButton href="/apply" size="lg" className="bg-navy hover:bg-navy-light">
+              {launch.campsPreview.cta}
+            </LinkButton>
           </ScrollReveal>
         </div>
       </section>
 
       {/* About preview + credentials */}
-      <section className="section-navy-soft py-16 sm:py-20">
+      <section className="section-navy-soft section-pad w-full">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
             <ScrollReveal>
@@ -194,15 +185,17 @@ export default async function HomePage() {
       </section>
 
       {/* Testimonials placeholder */}
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 text-center">
-        <ScrollReveal>
-          <h2 className="text-2xl font-bold text-navy">{launch.testimonials.title}</h2>
-          <p className="mt-4 text-muted-foreground">{launch.testimonials.placeholder}</p>
-        </ScrollReveal>
+      <section className="section-pad w-full bg-background text-center">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <ScrollReveal>
+            <h2 className="text-2xl font-bold text-navy">{launch.testimonials.title}</h2>
+            <p className="mt-4 text-muted-foreground">{launch.testimonials.placeholder}</p>
+          </ScrollReveal>
+        </div>
       </section>
 
       {/* Final CTA */}
-      <section className="bg-navy py-16 sm:py-20 text-white">
+      <section className="section-pad w-full bg-navy text-white">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
           <ScrollReveal>
             <h2 className="text-2xl font-bold sm:text-3xl text-balance">
@@ -227,24 +220,26 @@ export default async function HomePage() {
       </section>
 
       {/* FAQ */}
-      <section className="section-cream mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-        <ScrollReveal>
-          <h2 className="text-2xl font-bold text-navy sm:text-3xl">{faq.title}</h2>
-        </ScrollReveal>
-        <div className="mt-8 space-y-4">
-          {faq.items.map((item, i) => (
-            <ScrollReveal key={item.question} delayMs={i * 70}>
-              <div className="rounded-xl border border-border bg-card p-6 shadow-sm">
-                <h3 className="font-semibold text-navy">{item.question}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{item.answer}</p>
-              </div>
-            </ScrollReveal>
-          ))}
+      <section className="section-cream section-pad w-full">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <ScrollReveal>
+            <h2 className="text-2xl font-bold text-navy sm:text-3xl">{faq.title}</h2>
+          </ScrollReveal>
+          <div className="mt-8 space-y-4">
+            {faq.items.map((item, i) => (
+              <ScrollReveal key={item.question} delayMs={i * 70}>
+                <div className="rounded-xl border border-border bg-card p-6 shadow-sm">
+                  <h3 className="font-semibold text-navy">{item.question}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{item.answer}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Waitlist */}
-      <section id="waitlist" className="section-navy-soft py-16 sm:py-20">
+      <section id="waitlist" className="section-navy-soft section-pad w-full">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <ScrollReveal className="text-center">
             <h2 className="text-2xl font-bold text-navy sm:text-3xl">{waitlist.title}</h2>

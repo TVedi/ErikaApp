@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useLayoutEffect, useRef, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 type ScrollRevealProps = {
@@ -10,58 +10,50 @@ type ScrollRevealProps = {
 };
 
 /**
- * Subtle scroll-reveal. Content is visible without JS; motion enhances when allowed.
+ * Scroll-reveal via DOM classes (useLayoutEffect) so content is never stuck hidden.
+ * Without JS or with reduced motion: no classes added — fully visible.
  */
 export function ScrollReveal({ children, className, delayMs = 0 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const [motionEnabled, setMotionEnabled] = useState(false);
-  const [visible, setVisible] = useState(false);
 
-  useEffect(() => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) return;
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return;
 
-    setMotionEnabled(true);
-    const node = ref.current;
-    if (!node) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
 
-    const inViewOnMount =
-      node.getBoundingClientRect().top < window.innerHeight * 0.92 &&
-      node.getBoundingClientRect().bottom > 0;
+    el.classList.add("scroll-reveal");
+    if (delayMs > 0) {
+      el.style.transitionDelay = `${delayMs}ms`;
+    }
 
-    if (inViewOnMount) {
-      setVisible(true);
+    const rect = el.getBoundingClientRect();
+    const inView =
+      rect.top < window.innerHeight * 0.92 && rect.bottom > 0;
+
+    if (inView) {
+      el.classList.add("scroll-reveal-visible");
       return;
     }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setVisible(true);
+          el.classList.add("scroll-reveal-visible");
           observer.disconnect();
         }
       },
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
+      { rootMargin: "0px 0px -5% 0px", threshold: 0.05 }
     );
 
-    observer.observe(node);
+    observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [delayMs]);
 
   return (
-    <div
-      ref={ref}
-      className={cn(
-        motionEnabled && "scroll-reveal",
-        motionEnabled && visible && "scroll-reveal-visible",
-        className
-      )}
-      style={
-        motionEnabled && visible && delayMs > 0
-          ? { transitionDelay: `${delayMs}ms` }
-          : undefined
-      }
-    >
+    <div ref={ref} className={cn(className)}>
       {children}
     </div>
   );

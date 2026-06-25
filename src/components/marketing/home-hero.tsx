@@ -27,14 +27,18 @@ export function HomeHero({ featuredCredentials }: HomeHeroProps) {
         data-hero-photo="TODO: Erika action photo — hero paddling image"
         aria-hidden="true"
       />
-      <Image
-        src="/hero.jpg"
-        alt="Erika Medveczky paddling"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-[right_center] hero-ken-burns"
-      />
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 hero-ken-burns">
+          <Image
+            src="/hero.jpg"
+            alt="Erika Medveczky paddling"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[right_center]"
+          />
+        </div>
+      </div>
 
       {/*
         Layer 2: left-weighted overlay — keeps Fraunces headline, gold eyebrow, and Inter

@@ -43,7 +43,7 @@ export default async function CampsPage() {
             </div>
           </ScrollReveal>
           <ScrollReveal delayMs={120}>
-            <MarketingPhoto photo={sitePhotos.campsRacing} variant="wide" parallax />
+            <MarketingPhoto photo={sitePhotos.campsRacing} variant="wide" />
           </ScrollReveal>
         </div>
 
