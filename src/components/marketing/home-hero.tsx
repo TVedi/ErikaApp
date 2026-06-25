@@ -33,7 +33,7 @@ export function HomeHero({ featuredCredentials }: HomeHeroProps) {
         fill
         priority
         sizes="100vw"
-        className="object-cover object-[right_center]"
+        className="object-cover object-[right_center] hero-ken-burns"
       />
 
       {/*
