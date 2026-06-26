@@ -1,9 +1,9 @@
 export const HERO_SLIDE_INTERVAL_MS = 5000;
 export const HERO_CROSSFADE_MS = 1400;
 
-/** Ken-Burns zoom range — subtle editorial drift over one full slideshow loop. */
+/** Ken-Burns zoom range — subtle per-slide drift while active. */
 export const HERO_KEN_BURNS_SCALE_START = 1;
-export const HERO_KEN_BURNS_SCALE_END = 1.08;
+export const HERO_KEN_BURNS_SCALE_END = 1.06;
 
 /** Future slow horizontal pan: set end offset (e.g. "-2%") and wire into keyframes in globals.css. */
 export const HERO_KEN_BURNS_PAN_X_END = "0%";
@@ -18,14 +18,12 @@ export type HeroSlide = {
 /** Hero background rotation — order is display order (first = default / reduced-motion). */
 export const HERO_SLIDESHOW_IMAGES: HeroSlide[] = [
   { src: "/hero.jpg", objectPosition: "right 25%" },
-  { src: "/egyenes.jpeg", objectPosition: "center 30%" },
   { src: "/tokeletes.jpg", objectPosition: "center 15%" },
+  { src: "/hero2.jpg", objectPosition: "right 25%" },
   { src: "/Erika regi.jpg", objectPosition: "center 30%" },
 ];
 
-/** One continuous Ken-Burns cycle spans all slides (no per-slide reset). */
-export function getHeroKenBurnsCycleMs(
-  slideCount = HERO_SLIDESHOW_IMAGES.length
-): number {
-  return HERO_SLIDE_INTERVAL_MS * slideCount;
+/** Per-slide Ken-Burns duration while the slide is active. */
+export function getHeroKenBurnsDurationMs(): number {
+  return HERO_SLIDE_INTERVAL_MS + HERO_CROSSFADE_MS;
 }

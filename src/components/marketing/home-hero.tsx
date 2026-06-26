@@ -21,12 +21,6 @@ export function HomeHero({ featuredCredentials }: HomeHeroProps) {
       className="relative w-full min-h-[70vh] lg:min-h-[85vh]"
       aria-label="Hero"
     >
-      {/* Layer 1: hero photo (next/image) — TODO: Erika action photo — hero paddling image */}
-      <div
-        className="absolute inset-0 bg-[var(--hero-bg)]"
-        data-hero-photo="TODO: Erika action photo — hero paddling image"
-        aria-hidden="true"
-      />
       <HeroSlideshowBackground />
 
       {/*
