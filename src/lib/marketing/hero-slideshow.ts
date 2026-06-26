@@ -16,7 +16,7 @@ export type HeroSlide = {
 /** Hero background rotation — order is display order (first = default / reduced-motion). */
 export const HERO_SLIDESHOW_IMAGES: HeroSlide[] = [
   { src: "/hero.jpg", objectPosition: "right center" },
-  { src: "/2017.1.jpg", objectPosition: "center 30%" },
+  { src: "/2017.1.jpg", objectPosition: "center top" },
   { src: "/Erika regi.jpg", objectPosition: "center 30%" },
   { src: "/Erika bajnok.jpg", objectPosition: "center 25%" },
 ];
