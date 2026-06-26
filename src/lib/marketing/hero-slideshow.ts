@@ -17,7 +17,8 @@ export type HeroSlide = {
 export const HERO_SLIDESHOW_IMAGES: HeroSlide[] = [
   { src: "/hero.jpg", objectPosition: "right center" },
   { src: "/2017.1.jpg", objectPosition: "center 30%" },
-  { src: "/Erika Rami.jpg", objectPosition: "center 25%" },
+  { src: "/Erika regi.jpg", objectPosition: "center 30%" },
+  { src: "/Erika bajnok.jpg", objectPosition: "center 25%" },
 ];
 
 /** One continuous Ken-Burns cycle spans all slides (no per-slide reset). */
