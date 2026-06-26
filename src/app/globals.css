@@ -175,10 +175,11 @@
   }
 
   html {
+    @apply font-sans;
     overflow-anchor: none;
   }
 
-  /* Split-screen layout — content-driven height, left column vertically centered */
+  /* Split-screen layout — left column vertically centered */
   .split-screen-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -224,14 +225,12 @@
   }
 
   @media (min-width: 1024px) {
-    .split-screen-photo-col {
-      min-height: min(560px, 62vh);
-      height: 100%;
+    .section-screen .split-screen-photo-col {
+      min-height: 100%;
+      height: auto;
     }
   }
-  html {
-    @apply font-sans;
-  }
+
   h1,
   h2,
   h3 {
@@ -297,10 +296,33 @@
     );
   }
 
-  /* Hero fills viewport below sticky header (h-16 = 4rem) — vh fallback, dvh for mobile */
+  /* Full viewport below sticky header (h-16 = 4rem) — shared by hero + main sections */
+  .section-screen,
   .hero-viewport-min {
     min-height: calc(100vh - 4rem);
     min-height: calc(100dvh - 4rem);
+  }
+
+  .section-screen-center {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section-screen-center > .section-screen-inner,
+  .section-screen-center > .split-screen-grid {
+    flex: 1;
+    width: 100%;
+    min-height: 0;
+  }
+
+  .section-screen-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .section-screen > .split-screen-grid {
+    min-height: 100%;
   }
 
   .section-cream {

@@ -55,8 +55,8 @@ export default async function HomePage() {
       <HowItWorksSection />
 
       {/* Programs */}
-      <section className="section-emerald-surface section-pad w-full">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <section className="section-emerald-surface section-screen section-screen-center section-pad w-full">
+        <div className="section-screen-inner mx-auto max-w-6xl px-4 sm:px-6">
           <ScrollReveal>
             <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
               {launch.programs.title}
@@ -79,8 +79,8 @@ export default async function HomePage() {
       />
 
       {/* Video analysis detail */}
-      <section className="section-cream section-atmo-glow-alt section-pad w-full">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6">
+      <section className="section-cream section-atmo-glow-alt section-screen section-screen-center section-pad w-full">
+        <div className="section-screen-inner mx-auto max-w-3xl px-4 sm:px-6">
           <ScrollReveal>
             <p className="text-muted-foreground leading-relaxed">
               {launch.videoSection.body}
@@ -105,8 +105,8 @@ export default async function HomePage() {
       />
 
       {/* Camps CTA */}
-      <section className="section-emerald-surface section-pad w-full">
-        <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
+      <section className="section-emerald-surface section-screen section-screen-center section-pad w-full">
+        <div className="section-screen-inner mx-auto max-w-3xl px-4 text-center sm:px-6">
           <ScrollReveal>
             <LinkButton href="/apply" size="lg" className="btn-cta-primary">
               {launch.campsPreview.cta}
@@ -116,8 +116,8 @@ export default async function HomePage() {
       </section>
 
       {/* About preview + credentials */}
-      <section className="section-navy-soft section-atmo-glow-alt section-pad w-full">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <section className="section-navy-soft section-atmo-glow-alt section-screen section-screen-center section-pad w-full">
+        <div className="section-screen-inner mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
             <ScrollReveal>
               <div>
@@ -146,8 +146,8 @@ export default async function HomePage() {
       </section>
 
       {/* Testimonials placeholder */}
-      <section className="section-emerald-surface section-pad w-full">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <section className="section-emerald-surface section-screen section-screen-center section-pad w-full">
+        <div className="section-screen-inner mx-auto max-w-6xl px-4 sm:px-6">
           <ScrollReveal>
             <h2 className="text-2xl font-bold text-foreground">{launch.testimonials.title}</h2>
             <p className="mt-4 text-muted-foreground">{launch.testimonials.placeholder}</p>
@@ -156,8 +156,8 @@ export default async function HomePage() {
       </section>
 
       {/* Final CTA */}
-      <section className="section-navy-soft section-pad w-full">
-        <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
+      <section className="section-navy-soft section-screen section-screen-center section-pad w-full">
+        <div className="section-screen-inner mx-auto max-w-3xl px-4 text-center sm:px-6">
           <ScrollReveal>
             <h2 className="text-2xl font-bold sm:text-3xl text-balance text-foreground">
               {launch.finalCta.title}
@@ -181,8 +181,8 @@ export default async function HomePage() {
       </section>
 
       {/* FAQ */}
-      <section className="section-cream section-atmo-glow-none section-pad w-full">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <section className="section-cream section-atmo-glow-none section-screen section-screen-center section-pad w-full">
+        <div className="section-screen-inner mx-auto max-w-6xl px-4 sm:px-6">
           <ScrollReveal>
             <h2 className="text-2xl font-bold text-foreground sm:text-3xl">{faq.title}</h2>
           </ScrollReveal>
@@ -200,8 +200,8 @@ export default async function HomePage() {
       </section>
 
       {/* Waitlist */}
-      <section id="waitlist" className="section-navy-soft section-pad w-full">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <section id="waitlist" className="section-navy-soft section-screen section-screen-center section-pad w-full">
+        <div className="section-screen-inner mx-auto max-w-6xl px-4 sm:px-6">
           <ScrollReveal className="text-center">
             <h2 className="text-2xl font-bold text-foreground sm:text-3xl">{waitlist.title}</h2>
             <p className="mt-2 text-muted-foreground">{waitlist.subtitle}</p>
