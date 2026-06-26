@@ -15,7 +15,7 @@ import {
 
 type SlideState = {
   active: number;
-  /** Slide fading out during cross-fade; null when idle. */
+  /** Slide fading out on top during cross-fade; null when idle. */
   outgoing: number | null;
 };
 
@@ -26,14 +26,38 @@ type SlideState = {
 export function HeroSlideshowBackground() {
   const [slideState, setSlideState] = useState<SlideState>({ active: 0, outgoing: null });
   const [motionEnabled, setMotionEnabled] = useState(false);
+  /** After a frame at opacity 1, outgoing animates to 0 (avoids hidden→outgoing with no fade). */
+  const [outgoingFadeToZero, setOutgoingFadeToZero] = useState(false);
   const slideStateRef = useRef(slideState);
   const fadeTimerRef = useRef<number | null>(null);
+  const outgoingRafRef = useRef<number | null>(null);
 
   const kenBurnsCycleMs = getHeroKenBurnsCycleMs();
 
   useEffect(() => {
     slideStateRef.current = slideState;
   }, [slideState]);
+
+  useEffect(() => {
+    if (slideState.outgoing === null) {
+      setOutgoingFadeToZero(false);
+      return;
+    }
+
+    setOutgoingFadeToZero(false);
+    outgoingRafRef.current = window.requestAnimationFrame(() => {
+      outgoingRafRef.current = window.requestAnimationFrame(() => {
+        setOutgoingFadeToZero(true);
+        outgoingRafRef.current = null;
+      });
+    });
+
+    return () => {
+      if (outgoingRafRef.current !== null) {
+        window.cancelAnimationFrame(outgoingRafRef.current);
+      }
+    };
+  }, [slideState.active, slideState.outgoing]);
 
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -96,19 +120,20 @@ export function HeroSlideshowBackground() {
               }
             : undefined;
 
-        const layerOpacity = !motionEnabled
-          ? index === 0
-            ? 1
-            : 0
-          : isActive
-            ? 1
-            : isOutgoing
-              ? 0
-              : 0;
+        let layerOpacity = 0;
+        if (!motionEnabled) {
+          layerOpacity = index === 0 ? 1 : 0;
+        } else if (isActive) {
+          // Incoming sits fully opaque underneath the fading-out layer (no base bleed).
+          layerOpacity = 1;
+        } else if (isOutgoing) {
+          // Start at 1, then rAF triggers transition to 0 (true 1→0 fade).
+          layerOpacity = outgoingFadeToZero ? 0 : 1;
+        }
 
         const layerStyle: CSSProperties = {
           opacity: layerOpacity,
-          zIndex: isActive ? 2 : isOutgoing ? 1 : -1,
+          zIndex: isOutgoing ? 2 : isActive ? 1 : -1,
           visibility: participates || !motionEnabled ? "visible" : "hidden",
           transitionProperty: motionEnabled && participates ? "opacity" : "none",
           transitionDuration:
