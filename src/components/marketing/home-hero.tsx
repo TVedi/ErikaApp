@@ -32,12 +32,14 @@ export function HomeHero({ featuredCredentials }: HomeHeroProps) {
         aria-hidden="true"
       />
 
-      {/* Layer 3: text content */}
-      <div className="relative z-10 mx-auto flex min-h-[70vh] max-w-6xl items-center px-4 py-16 sm:px-6 sm:py-20 lg:min-h-[85vh] lg:py-24">
-        <div className="w-full max-w-[640px]">
+      {/* Layer 3: text content — left column, upper-third anchor, bold display scale */}
+      <div
+        className="relative z-10 mx-auto flex min-h-[70vh] max-w-6xl items-start px-4 pb-14 pt-[12vh] sm:px-6 sm:pb-16 sm:pt-[14vh] lg:min-h-[85vh] lg:pb-20 lg:pt-[15vh] xl:pt-[16vh]"
+      >
+        <div className="w-full max-w-[min(100%,38rem)]">
           <p className="eyebrow-label">{brand.tagline}</p>
           <h1
-            className="mt-4 font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl"
+            className="mt-3 font-display text-[2rem] font-semibold leading-[1.08] tracking-[-0.025em] text-balance sm:mt-4 sm:text-4xl sm:leading-[1.07] lg:text-6xl lg:leading-[1.05] xl:text-7xl xl:leading-[1.04]"
             style={{ color: "var(--hero-headline)" }}
           >
             <HeroHeadline
@@ -46,16 +48,16 @@ export function HomeHero({ featuredCredentials }: HomeHeroProps) {
             />
           </h1>
           <div
-            className="mt-5 h-0.5 w-12 bg-accent-gold"
+            className="mt-4 h-0.5 w-12 bg-accent-gold lg:mt-5"
             aria-hidden="true"
           />
           <p
-            className="mt-6 text-lg leading-relaxed"
+            className="mt-5 max-w-[36rem] text-base leading-relaxed sm:text-lg lg:mt-6"
             style={{ color: "var(--hero-subhead)" }}
           >
             {hero.subtitle}
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="mt-6 flex flex-col gap-3 sm:mt-7 sm:flex-row sm:flex-wrap lg:mt-8">
             <StartCoachingButton
               size="lg"
               className="btn-cta-primary w-full sm:w-auto"
@@ -74,7 +76,7 @@ export function HomeHero({ featuredCredentials }: HomeHeroProps) {
               {launch.checkoutNote}
             </p>
           )}
-          <div className="mt-8">
+          <div className="mt-6 lg:mt-7">
             <CredibilityStrip
               featuredCredentials={featuredCredentials}
               variant="hero"
