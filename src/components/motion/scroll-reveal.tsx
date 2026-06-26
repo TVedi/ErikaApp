@@ -24,6 +24,11 @@ export function ScrollReveal({ children, className, delayMs = 0 }: ScrollRevealP
       return;
     }
 
+    /* Split-screen columns: always visible — opacity reveal here caused wheel-scroll jumps */
+    if (el.closest(".split-screen-content-col")) {
+      return;
+    }
+
     el.classList.add("scroll-reveal");
     if (delayMs > 0) {
       el.style.transitionDelay = `${delayMs}ms`;

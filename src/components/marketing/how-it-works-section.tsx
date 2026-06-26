@@ -14,11 +14,9 @@ export function HowItWorksSection() {
       className="section-navy-soft w-full"
       aria-labelledby="how-it-works-heading"
     >
-      <div className="lg:grid lg:grid-cols-2 lg:min-h-[min(840px,94vh)]">
+      <div className="split-screen-grid">
         {/* Photo — top on mobile, right on desktop */}
-        <div
-          className="split-screen-photo relative order-1 min-h-[min(48vh,400px)] w-full lg:order-2 lg:min-h-full"
-        >
+        <div className="split-screen-photo-col order-1 lg:order-2">
           <div className="split-photo-mask absolute inset-0">
             <Image
               src={photo.src}
@@ -32,9 +30,7 @@ export function HowItWorksSection() {
         </div>
 
         {/* Content — below photo on mobile, left on desktop */}
-        <div
-          className="order-2 flex flex-col justify-center px-4 py-16 sm:px-6 sm:py-20 lg:order-1 lg:px-8 lg:py-20 xl:px-10 xl:py-24"
-        >
+        <div className="split-screen-content-col order-2 lg:order-1">
           <ScrollReveal>
             <h2
               id="how-it-works-heading"
