@@ -79,7 +79,7 @@ export default async function HomePage() {
       />
 
       {/* Video analysis detail */}
-      <section className="section-cream section-pad w-full">
+      <section className="section-cream section-atmo-glow-alt section-pad w-full">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <ScrollReveal>
             <p className="text-muted-foreground leading-relaxed">
@@ -116,7 +116,7 @@ export default async function HomePage() {
       </section>
 
       {/* About preview + credentials */}
-      <section className="section-navy-soft section-pad w-full">
+      <section className="section-navy-soft section-atmo-glow-alt section-pad w-full">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
             <ScrollReveal>
@@ -156,7 +156,7 @@ export default async function HomePage() {
       </section>
 
       {/* Final CTA */}
-      <section className="section-pad w-full bg-brand-base-muted">
+      <section className="section-navy-soft section-pad w-full">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
           <ScrollReveal>
             <h2 className="text-2xl font-bold sm:text-3xl text-balance text-foreground">
@@ -181,7 +181,7 @@ export default async function HomePage() {
       </section>
 
       {/* FAQ */}
-      <section className="section-cream section-pad w-full">
+      <section className="section-cream section-atmo-glow-none section-pad w-full">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <ScrollReveal>
             <h2 className="text-2xl font-bold text-foreground sm:text-3xl">{faq.title}</h2>

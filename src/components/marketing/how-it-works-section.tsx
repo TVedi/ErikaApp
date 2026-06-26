@@ -27,14 +27,8 @@ export function HowItWorksSection() {
             className="object-cover"
             style={{ objectPosition: photo.objectPosition }}
           />
-          <div
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-[var(--brand-base-muted)] lg:hidden"
-            aria-hidden="true"
-          />
-          <div
-            className="pointer-events-none absolute inset-y-0 left-0 hidden w-[min(28%,120px)] bg-gradient-to-r from-[var(--brand-base-muted)] to-transparent lg:block"
-            aria-hidden="true"
-          />
+          <div className="split-photo-feather-mobile lg:hidden" aria-hidden="true" />
+          <div className="split-photo-feather-desktop hidden lg:block" aria-hidden="true" />
         </div>
 
         {/* Content — below photo on mobile, left on desktop */}

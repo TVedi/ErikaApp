@@ -64,6 +64,7 @@
   --brand-base: #145a55;
   --brand-base-light: #1a6d67;
   --brand-base-muted: #0f4541;
+  --brand-base-deep: #0a2f2c;
   --brand-coral: #ff6f61;
   --brand-coral-hover: #e85a4d;
   --brand-turquoise: #1abc9c;
@@ -238,11 +239,153 @@
   }
 
   .section-cream {
+    --split-feather-tone: color-mix(in srgb, var(--brand-base) 88%, var(--brand-base-muted));
+    position: relative;
+    isolation: isolate;
     background-color: var(--brand-base);
+    background-image:
+      linear-gradient(
+        168deg,
+        color-mix(in srgb, var(--brand-base-light) 32%, var(--brand-base)) 0%,
+        var(--brand-base) 38%,
+        color-mix(in srgb, var(--brand-base-muted) 55%, var(--brand-base)) 100%
+      ),
+      radial-gradient(
+        ellipse 130% 90% at 22% -8%,
+        color-mix(in srgb, var(--brand-base-light) 38%, transparent) 0%,
+        transparent 58%
+      );
   }
 
   .section-navy-soft {
+    --split-feather-tone: color-mix(in srgb, var(--brand-base-muted) 82%, var(--brand-base-deep));
+    position: relative;
+    isolation: isolate;
     background-color: var(--brand-base-muted);
+    background-image:
+      linear-gradient(
+        182deg,
+        color-mix(in srgb, var(--brand-base) 28%, var(--brand-base-muted)) 0%,
+        var(--brand-base-muted) 46%,
+        color-mix(in srgb, var(--brand-base-deep) 65%, var(--brand-base-muted)) 100%
+      ),
+      radial-gradient(
+        ellipse 115% 75% at 78% 6%,
+        color-mix(in srgb, var(--brand-base-light) 22%, transparent) 0%,
+        transparent 62%
+      );
+  }
+
+  /* Atmospheric grain + glow — ::before grain, ::after soft luminance */
+  .section-cream::before,
+  .section-navy-soft::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.032;
+    mix-blend-mode: soft-light;
+    background-image: repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.04) 0px,
+        transparent 1px,
+        transparent 2px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.05) 0px,
+        transparent 1px,
+        transparent 3px
+      );
+  }
+
+  .section-cream::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(
+      ellipse 90% 72% at 14% 10%,
+      color-mix(in srgb, var(--brand-turquoise) 11%, transparent) 0%,
+      transparent 64%
+    );
+  }
+
+  .section-navy-soft::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(
+      ellipse 88% 70% at 86% 12%,
+      color-mix(in srgb, var(--brand-turquoise) 9%, transparent) 0%,
+      transparent 66%
+    );
+  }
+
+  /* Alternate glow position for rhythm on consecutive same-tone sections */
+  .section-atmo-glow-alt.section-cream::after {
+    background: radial-gradient(
+      ellipse 85% 68% at 88% 14%,
+      color-mix(in srgb, var(--brand-turquoise) 10%, transparent) 0%,
+      transparent 65%
+    );
+  }
+
+  .section-atmo-glow-alt.section-navy-soft::after {
+    background: radial-gradient(
+      ellipse 78% 62% at 12% 88%,
+      color-mix(in srgb, var(--brand-base-light) 12%, transparent) 0%,
+      transparent 68%
+    );
+  }
+
+  .section-atmo-glow-none.section-cream::after,
+  .section-atmo-glow-none.section-navy-soft::after {
+    content: none;
+  }
+
+  .section-cream > *,
+  .section-navy-soft > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Split-screen photo → emerald seam (shared by Who-this-is-for + How-it-works) */
+  .split-photo-feather-mobile {
+    pointer-events: none;
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: min(42vh, 200px);
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      color-mix(in srgb, var(--split-feather-tone) 14%, transparent) 22%,
+      color-mix(in srgb, var(--split-feather-tone) 42%, transparent) 48%,
+      color-mix(in srgb, var(--split-feather-tone) 78%, transparent) 72%,
+      var(--split-feather-tone) 100%
+    );
+  }
+
+  .split-photo-feather-desktop {
+    pointer-events: none;
+    position: absolute;
+    inset-block: 0;
+    left: 0;
+    width: min(46%, 240px);
+    background: linear-gradient(
+      to right,
+      var(--split-feather-tone) 0%,
+      color-mix(in srgb, var(--split-feather-tone) 82%, transparent) 18%,
+      color-mix(in srgb, var(--split-feather-tone) 48%, transparent) 38%,
+      color-mix(in srgb, var(--split-feather-tone) 18%, transparent) 58%,
+      transparent 78%,
+      transparent 100%
+    );
   }
 
   .who-its-for-card {
