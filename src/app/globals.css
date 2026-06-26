@@ -234,6 +234,24 @@
     background-color: var(--brand-base-muted);
   }
 
+  .who-its-for-card {
+    transition:
+      transform 180ms ease-out,
+      box-shadow 180ms ease-out,
+      border-color 180ms ease-out;
+    will-change: transform;
+  }
+
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .who-its-for-card:hover {
+      transform: translate3d(0, -5px, 0);
+      border-color: color-mix(in srgb, var(--accent-turquoise) 55%, transparent);
+      box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.22),
+        0 0 0 1px color-mix(in srgb, var(--accent-turquoise) 25%, transparent);
+    }
+  }
+
   .photo-band-overlay {
     background: linear-gradient(
       to right,
