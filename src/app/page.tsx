@@ -55,7 +55,7 @@ export default async function HomePage() {
       <HowItWorksSection />
 
       {/* Programs */}
-      <section className="section-emerald-surface section-edge-prev-muted section-edge-next-dark section-pad w-full">
+      <section className="section-emerald-surface section-pad w-full">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <ScrollReveal>
             <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
@@ -76,11 +76,10 @@ export default async function HomePage() {
       <PhotoBand
         photo={sitePhotos.videoTechnique}
         headline={launch.videoSection.title}
-        className="photo-band-edge-prev-muted photo-band-edge-next-muted"
       />
 
       {/* Video analysis detail */}
-      <section className="section-cream section-atmo-glow-alt section-edge-prev-dark section-edge-next-dark section-pad w-full">
+      <section className="section-cream section-atmo-glow-alt section-pad w-full">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <ScrollReveal>
             <p className="text-muted-foreground leading-relaxed">
@@ -103,11 +102,10 @@ export default async function HomePage() {
         photo={sitePhotos.campsRacing}
         headline={launch.campsPreview.title}
         subheadline={launch.campsPreview.body}
-        className="photo-band-edge-prev-muted photo-band-edge-next-base"
       />
 
       {/* Camps CTA */}
-      <section className="section-emerald-surface section-edge-prev-dark section-edge-next-muted section-pad w-full">
+      <section className="section-emerald-surface section-pad w-full">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
           <ScrollReveal>
             <LinkButton href="/apply" size="lg" className="btn-cta-primary">
@@ -118,7 +116,7 @@ export default async function HomePage() {
       </section>
 
       {/* About preview + credentials */}
-      <section className="section-navy-soft section-atmo-glow-alt section-edge-prev-base section-edge-next-muted section-pad w-full">
+      <section className="section-navy-soft section-atmo-glow-alt section-pad w-full">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
             <ScrollReveal>
@@ -148,7 +146,7 @@ export default async function HomePage() {
       </section>
 
       {/* Testimonials placeholder */}
-      <section className="section-emerald-surface section-edge-prev-dark section-edge-next-muted section-pad w-full">
+      <section className="section-emerald-surface section-pad w-full">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <ScrollReveal>
             <h2 className="text-2xl font-bold text-foreground">{launch.testimonials.title}</h2>
@@ -158,7 +156,7 @@ export default async function HomePage() {
       </section>
 
       {/* Final CTA */}
-      <section className="section-navy-soft section-edge-prev-muted section-pad w-full">
+      <section className="section-navy-soft section-pad w-full">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
           <ScrollReveal>
             <h2 className="text-2xl font-bold sm:text-3xl text-balance text-foreground">
@@ -183,7 +181,7 @@ export default async function HomePage() {
       </section>
 
       {/* FAQ */}
-      <section className="section-cream section-atmo-glow-none section-edge-prev-muted section-pad w-full">
+      <section className="section-cream section-atmo-glow-none section-pad w-full">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <ScrollReveal>
             <h2 className="text-2xl font-bold text-foreground sm:text-3xl">{faq.title}</h2>
@@ -202,7 +200,7 @@ export default async function HomePage() {
       </section>
 
       {/* Waitlist */}
-      <section id="waitlist" className="section-navy-soft section-edge-prev-base section-pad w-full">
+      <section id="waitlist" className="section-navy-soft section-pad w-full">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <ScrollReveal className="text-center">
             <h2 className="text-2xl font-bold text-foreground sm:text-3xl">{waitlist.title}</h2>

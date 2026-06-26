@@ -11,7 +11,7 @@ const photo = sitePhotos.whoItsFor;
 export function WhoItsForSection() {
   return (
     <section
-      className="section-cream section-edge-prev-dark w-full min-h-[min(52vh,560px)] lg:min-h-[82vh]"
+      className="section-cream w-full min-h-[min(52vh,560px)] lg:min-h-[82vh]"
       aria-labelledby="who-its-for-heading"
     >
       <div className="split-screen-grid min-h-full lg:min-h-[82vh]">
