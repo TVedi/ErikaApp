@@ -17,18 +17,18 @@ export function HowItWorksSection() {
       <div className="lg:grid lg:grid-cols-2 lg:min-h-[min(840px,94vh)]">
         {/* Photo — top on mobile, right on desktop */}
         <div
-          className="relative order-1 min-h-[min(48vh,400px)] w-full lg:order-2 lg:min-h-full"
+          className="split-screen-photo relative order-1 min-h-[min(48vh,400px)] w-full lg:order-2 lg:min-h-full"
         >
-          <Image
-            src={photo.src}
-            alt={photo.alt}
-            fill
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-cover"
-            style={{ objectPosition: photo.objectPosition }}
-          />
-          <div className="split-photo-feather-mobile lg:hidden" aria-hidden="true" />
-          <div className="split-photo-feather-desktop hidden lg:block" aria-hidden="true" />
+          <div className="split-photo-mask absolute inset-0">
+            <Image
+              src={photo.src}
+              alt={photo.alt}
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+              style={{ objectPosition: photo.objectPosition }}
+            />
+          </div>
         </div>
 
         {/* Content — below photo on mobile, left on desktop */}

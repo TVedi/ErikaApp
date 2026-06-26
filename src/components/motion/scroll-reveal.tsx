@@ -45,7 +45,7 @@ export function ScrollReveal({ children, className, delayMs = 0 }: ScrollRevealP
           observer.disconnect();
         }
       },
-      { rootMargin: "0px 0px -5% 0px", threshold: 0.05 }
+      { threshold: 0.01 }
     );
 
     observer.observe(el);

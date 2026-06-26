@@ -41,8 +41,8 @@ export function ParallaxPhotoLayer({
       const viewport = window.innerHeight;
       if (rect.bottom < 0 || rect.top > viewport) return;
       const progress = (viewport - rect.top) / (viewport + rect.height);
-      const offset = (progress - 0.5) * 32;
-      layer.style.transform = `translate3d(0, ${offset}px, 0) scale(1.06)`;
+      const offset = (progress - 0.5) * 16;
+      layer.style.transform = `translate3d(0, ${offset}px, 0) scale(1.04)`;
     };
 
     const onScroll = () => {

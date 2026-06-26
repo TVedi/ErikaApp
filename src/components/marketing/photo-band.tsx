@@ -28,7 +28,7 @@ export function PhotoBand({
   return (
     <section
       className={cn(
-        "relative w-full overflow-hidden bg-[var(--hero-bg)]",
+        "photo-band-surface relative w-full overflow-hidden bg-[var(--hero-bg)]",
         minHeightClass,
         className
       )}
