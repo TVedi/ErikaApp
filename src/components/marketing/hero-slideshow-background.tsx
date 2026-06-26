@@ -15,13 +15,19 @@ import {
 
 /**
  * Uniform opacity cross-fade: one activeIndex, all layers always mounted with always-on transitions.
+ * Ken-Burns stays on outgoing slides until the crossfade finishes (transform reset while invisible).
  * prefers-reduced-motion: first image only, static.
  */
 export function HeroSlideshowBackground() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [motionEnabled, setMotionEnabled] = useState(false);
   const [imagesReady, setImagesReady] = useState(false);
+  /** Slides that keep Ken-Burns running (active + outgoing until fade completes). */
+  const [kenBurnsIndices, setKenBurnsIndices] = useState<Set<number>>(
+    () => new Set([0])
+  );
   const activeIndexRef = useRef(0);
+  const kenBurnsResetTimerRef = useRef<number | null>(null);
 
   const kenBurnsDurationMs = getHeroKenBurnsDurationMs();
 
@@ -69,6 +75,7 @@ export function HeroSlideshowBackground() {
     if (reduced || HERO_SLIDESHOW_IMAGES.length <= 1) {
       setMotionEnabled(false);
       setActiveIndex(0);
+      setKenBurnsIndices(new Set([0]));
       return;
     }
 
@@ -87,6 +94,34 @@ export function HeroSlideshowBackground() {
     return () => window.clearInterval(interval);
   }, [imagesReady]);
 
+  useEffect(() => {
+    if (!motionEnabled) {
+      setKenBurnsIndices(new Set([0]));
+      return;
+    }
+
+    setKenBurnsIndices((prev) => {
+      const next = new Set(prev);
+      next.add(activeIndex);
+      return next;
+    });
+
+    if (kenBurnsResetTimerRef.current !== null) {
+      window.clearTimeout(kenBurnsResetTimerRef.current);
+    }
+
+    kenBurnsResetTimerRef.current = window.setTimeout(() => {
+      setKenBurnsIndices(new Set([activeIndex]));
+      kenBurnsResetTimerRef.current = null;
+    }, HERO_CROSSFADE_MS);
+
+    return () => {
+      if (kenBurnsResetTimerRef.current !== null) {
+        window.clearTimeout(kenBurnsResetTimerRef.current);
+      }
+    };
+  }, [activeIndex, motionEnabled]);
+
   return (
     <div
       className="absolute inset-0 overflow-hidden bg-[var(--brand-base)]"
@@ -95,6 +130,8 @@ export function HeroSlideshowBackground() {
       {HERO_SLIDESHOW_IMAGES.map((slide, index) => {
         const isActive = motionEnabled ? index === activeIndex : index === 0;
         const layerOpacity = isActive ? 1 : 0;
+        const kenBurnsOn =
+          motionEnabled && kenBurnsIndices.has(index);
 
         return (
           <div
@@ -108,10 +145,10 @@ export function HeroSlideshowBackground() {
             <div
               className={cn(
                 "absolute inset-0",
-                motionEnabled && isActive && "hero-slideshow-ken-burns"
+                kenBurnsOn && "hero-slideshow-ken-burns"
               )}
               style={
-                motionEnabled && isActive
+                kenBurnsOn
                   ? {
                       ["--hero-ken-burns-scale-start" as string]: HERO_KEN_BURNS_SCALE_START,
                       ["--hero-ken-burns-scale-end" as string]: HERO_KEN_BURNS_SCALE_END,

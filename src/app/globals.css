@@ -283,7 +283,8 @@
     .hero-slideshow-ken-burns {
       animation-name: hero-slideshow-ken-burns;
       animation-timing-function: linear;
-      animation-iteration-count: infinite;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
       will-change: transform;
     }
 
