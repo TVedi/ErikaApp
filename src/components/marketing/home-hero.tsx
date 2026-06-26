@@ -17,14 +17,14 @@ type HomeHeroProps = {
 export function HomeHero({ featuredCredentials }: HomeHeroProps) {
   return (
     <section
-      className="relative w-full min-h-[70vh] lg:min-h-[85vh]"
+      className="hero-viewport-min relative w-full"
       aria-label="Hero"
     >
       <HeroSlideshowBackground />
 
       <div className="absolute inset-0 hero-text-overlay" aria-hidden="true" />
 
-      <div className="relative z-10 mx-auto min-h-[70vh] max-w-6xl px-4 sm:px-6 lg:min-h-[85vh]">
+      <div className="hero-viewport-min relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
         {/* Top-left: eyebrow + headline + divider */}
         <div className="pt-[11vh] sm:pt-[12vh] lg:absolute lg:left-4 lg:top-0 lg:pt-[13vh] lg:max-w-[min(44%,36rem)] xl:left-6">
           <p className="eyebrow-label">{brand.tagline}</p>
