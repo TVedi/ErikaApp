@@ -32,6 +32,7 @@ export const launch = {
       "Masters paddlers",
       "Parents and coaches seeking expert technical feedback",
       "Athletes preparing for races or selection events",
+      "Individual and team preparation for international races and the Olympic Games",
     ],
   },
   howItWorks: {

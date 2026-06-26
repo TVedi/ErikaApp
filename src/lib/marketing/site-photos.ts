@@ -43,6 +43,13 @@ export const sitePhotos = {
     width: 2048,
     height: 1241,
   },
+  whoItsFor: {
+    src: "/DSC09954[1].jpg",
+    alt: "Erika Medveczky coaching on the water",
+    objectPosition: "center 35%",
+    width: 2000,
+    height: 1333,
+  },
 } as const satisfies Record<string, SitePhoto>;
 
 export type SitePhotoKey = keyof typeof sitePhotos;

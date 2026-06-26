@@ -5,6 +5,7 @@ import { LinkButton } from "@/components/ui/link-button";
 import { MarketingPhoto } from "@/components/marketing/marketing-photo";
 import { PhotoBand } from "@/components/marketing/photo-band";
 import { HomeHero } from "@/components/marketing/home-hero";
+import { WhoItsForSection } from "@/components/marketing/who-its-for-section";
 import { ProgramCard } from "@/components/marketing/program-card";
 import { StartCoachingButton } from "@/components/marketing/start-coaching-button";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
@@ -48,25 +49,7 @@ export default async function HomePage() {
     <PublicLayout>
       <HomeHero featuredCredentials={featuredCredentials} />
 
-      {/* Who it's for */}
-      <section className="section-cream section-pad w-full">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <ScrollReveal>
-            <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
-              {launch.whoItsFor.title}
-            </h2>
-          </ScrollReveal>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {launch.whoItsFor.audiences.map((item, i) => (
-              <ScrollReveal key={item} delayMs={i * 90}>
-                <div className="h-full rounded-2xl border border-border/60 bg-card p-5 shadow-sm">
-                  <p className="font-medium text-foreground">{item}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <WhoItsForSection />
 
       {/* How it works */}
       <section className="section-navy-soft section-pad w-full">
