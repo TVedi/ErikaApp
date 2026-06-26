@@ -11,14 +11,19 @@ export const HERO_KEN_BURNS_PAN_X_END = "0%";
 export type HeroSlide = {
   src: string;
   objectPosition: string;
+  /** Default cover; contain shows full frame (letterboxed on navy) when cover crops key content. */
+  objectFit?: "cover" | "contain";
 };
 
 /** Hero background rotation — order is display order (first = default / reduced-motion). */
 export const HERO_SLIDESHOW_IMAGES: HeroSlide[] = [
-  { src: "/hero.jpg", objectPosition: "right center" },
-  { src: "/2017.1.jpg", objectPosition: "center top" },
+  { src: "/hero.jpg", objectPosition: "right 25%" },
+  {
+    src: "/2017.1.jpg",
+    objectPosition: "center center",
+    objectFit: "contain",
+  },
   { src: "/Erika regi.jpg", objectPosition: "center 30%" },
-  { src: "/Erika bajnok.jpg", objectPosition: "center 25%" },
 ];
 
 /** One continuous Ken-Burns cycle spans all slides (no per-slide reset). */

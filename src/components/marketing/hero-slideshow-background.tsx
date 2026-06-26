@@ -79,7 +79,7 @@ export function HeroSlideshowBackground() {
                 fill
                 priority={index === 0}
                 sizes="100vw"
-                className="object-cover"
+                className={slide.objectFit === "contain" ? "object-contain" : "object-cover"}
                 style={{ objectPosition: slide.objectPosition }}
               />
             </div>
