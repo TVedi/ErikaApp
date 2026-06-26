@@ -19,6 +19,7 @@ import {
  */
 export function HeroSlideshowBackground() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [outgoingIndex, setOutgoingIndex] = useState<number | null>(null);
   const [motionEnabled, setMotionEnabled] = useState(false);
 
   const kenBurnsCycleMs = getHeroKenBurnsCycleMs();
@@ -28,20 +29,47 @@ export function HeroSlideshowBackground() {
     if (reduced || HERO_SLIDESHOW_IMAGES.length <= 1) {
       setMotionEnabled(false);
       setActiveIndex(0);
+      setOutgoingIndex(null);
       return;
     }
 
     setMotionEnabled(true);
+
+    for (const slide of HERO_SLIDESHOW_IMAGES) {
+      const img = new window.Image();
+      img.src = slide.src;
+    }
+
     const timer = window.setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % HERO_SLIDESHOW_IMAGES.length);
+      setActiveIndex((prev) => {
+        const next = (prev + 1) % HERO_SLIDESHOW_IMAGES.length;
+        setOutgoingIndex(prev);
+        return next;
+      });
     }, HERO_SLIDE_INTERVAL_MS);
 
     return () => window.clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    if (outgoingIndex === null || !motionEnabled) {
+      return;
+    }
+
+    const timeout = window.setTimeout(() => {
+      setOutgoingIndex(null);
+    }, HERO_CROSSFADE_MS);
+
+    return () => window.clearTimeout(timeout);
+  }, [outgoingIndex, activeIndex, motionEnabled]);
+
   return (
     <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
       {HERO_SLIDESHOW_IMAGES.map((slide, index) => {
+        const isActive = index === activeIndex;
+        const isOutgoing = outgoingIndex === index;
+        const participates = isActive || isOutgoing;
+
         const kenBurnsStyle: CSSProperties | undefined = motionEnabled
           ? {
               ["--hero-ken-burns-scale-start" as string]: HERO_KEN_BURNS_SCALE_START,
@@ -57,14 +85,19 @@ export function HeroSlideshowBackground() {
             key={slide.src}
             className={cn(
               "absolute inset-0",
-              motionEnabled && "transition-opacity ease-in-out",
-              index === activeIndex ? "opacity-100" : "opacity-0"
+              motionEnabled && participates && "transition-opacity ease-in-out",
+              isActive ? "opacity-100" : "opacity-0",
+              !participates && "pointer-events-none"
             )}
-            style={
-              motionEnabled
+            style={{
+              zIndex: isActive ? 2 : isOutgoing ? 1 : 0,
+              visibility: participates || !motionEnabled ? "visible" : "hidden",
+              ...(motionEnabled && participates
                 ? { transitionDuration: `${HERO_CROSSFADE_MS}ms` }
-                : { opacity: index === 0 ? 1 : 0 }
-            }
+                : !motionEnabled
+                  ? { opacity: index === 0 ? 1 : 0 }
+                  : { transitionDuration: "0ms" }),
+            }}
           >
             <div
               className={cn(

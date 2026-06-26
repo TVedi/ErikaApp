@@ -18,12 +18,9 @@ export type HeroSlide = {
 /** Hero background rotation — order is display order (first = default / reduced-motion). */
 export const HERO_SLIDESHOW_IMAGES: HeroSlide[] = [
   { src: "/hero.jpg", objectPosition: "right 25%" },
-  {
-    src: "/2017.1.jpg",
-    objectPosition: "center center",
-    objectFit: "contain",
-  },
   { src: "/Erika regi.jpg", objectPosition: "center 30%" },
+  { src: "/egyeni.jpg", objectPosition: "center 28%" },
+  { src: "/egyenes.jpg", objectPosition: "center 30%" },
 ];
 
 /** One continuous Ken-Burns cycle spans all slides (no per-slide reset). */
