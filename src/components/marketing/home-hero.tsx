@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { HeroSlideshowBackground } from "@/components/marketing/hero-slideshow-background";
 import { LinkButton } from "@/components/ui/link-button";
 import { CredibilityStrip } from "@/components/marketing/credibility-strip";
 import { HeroHeadline } from "@/components/marketing/hero-headline";
@@ -27,18 +27,7 @@ export function HomeHero({ featuredCredentials }: HomeHeroProps) {
         data-hero-photo="TODO: Erika action photo — hero paddling image"
         aria-hidden="true"
       />
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 hero-ken-burns">
-          <Image
-            src="/hero.jpg"
-            alt="Erika Medveczky paddling"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-[right_center]"
-          />
-        </div>
-      </div>
+      <HeroSlideshowBackground />
 
       {/*
         Layer 2: left-weighted overlay — keeps Fraunces headline, gold eyebrow, and Inter
