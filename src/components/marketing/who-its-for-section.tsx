@@ -11,12 +11,12 @@ const photo = sitePhotos.whoItsFor;
 export function WhoItsForSection() {
   return (
     <section
-      className="section-cream section-edge-prev-dark w-full"
+      className="section-cream section-edge-prev-dark w-full min-h-[min(52vh,560px)] lg:min-h-[82vh]"
       aria-labelledby="who-its-for-heading"
     >
-      <div className="split-screen-grid">
+      <div className="split-screen-grid min-h-full lg:min-h-[82vh]">
         {/* Photo — top on mobile, right on desktop */}
-        <div className="split-screen-photo-col order-1 lg:order-2">
+        <div className="split-screen-photo-col order-1 min-h-[min(48vh,400px)] lg:order-2 lg:min-h-full lg:h-full">
           <div className="split-photo-mask absolute inset-0">
             <Image
               src={photo.src}
