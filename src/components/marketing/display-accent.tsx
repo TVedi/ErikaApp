@@ -11,7 +11,7 @@ export function DisplayAccent({
   className?: string;
 }) {
   return (
-    <span className={cn("font-display italic font-medium", className)}>
+    <span className={cn("font-display italic font-medium text-accent-coral", className)}>
       {children}
     </span>
   );

@@ -123,7 +123,7 @@ export default async function CampsPage() {
         </ScrollReveal>
 
         <ScrollReveal className="mt-12 text-center">
-          <LinkButton href="/apply" size="lg" className="bg-navy hover:bg-navy-light">
+          <LinkButton href="/apply" size="lg" className="btn-cta-primary">
             {camps.registerInterest}
           </LinkButton>
           <p className="mt-3 text-sm text-muted-foreground">

@@ -19,7 +19,7 @@ export default function WelcomePage() {
           personally.
         </p>
         <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:justify-center">
-          <LinkButton href="/about" className="bg-navy hover:bg-navy-light">
+          <LinkButton href="/about" className="btn-cta-primary">
             About Erika
           </LinkButton>
           <LinkButton href="/camps" variant="outline" className="border-navy text-navy">

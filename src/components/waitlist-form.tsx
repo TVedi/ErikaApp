@@ -39,7 +39,7 @@ export function WaitlistForm() {
           required
           className="flex-1"
         />
-        <Button type="submit" disabled={loading} className="bg-navy hover:bg-navy-light">
+        <Button type="submit" disabled={loading} className="btn-cta-primary">
           {waitlist.button}
         </Button>
       </form>

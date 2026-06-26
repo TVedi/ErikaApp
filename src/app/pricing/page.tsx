@@ -47,7 +47,7 @@ export default function PricingPage() {
                 </li>
               ))}
             </ul>
-            <LinkButton href="/camps" className="mt-6 bg-navy hover:bg-navy-light">
+            <LinkButton href="/camps" className="mt-6 btn-cta-primary">
               View camps
             </LinkButton>
           </CardContent>

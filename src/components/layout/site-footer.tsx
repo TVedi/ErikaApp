@@ -14,7 +14,7 @@ export function SiteFooter() {
               {brand.positioning}
             </p>
             <div className="mt-4 flex flex-wrap gap-3">
-              <StartCoachingButton size="sm" className="bg-navy hover:bg-navy-light" />
+              <StartCoachingButton size="sm" />
               <Link
                 href="/apply"
                 className="inline-flex h-8 items-center rounded-lg border border-navy/20 px-3 text-sm font-medium text-navy hover:bg-navy/5"
@@ -24,19 +24,19 @@ export function SiteFooter() {
             </div>
           </div>
           <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
-            <Link href="/camps" className="text-muted-foreground transition-colors hover:text-accent-gold">
+            <Link href="/camps" className="text-muted-foreground transition-colors hover:text-navy">
               {footer.camps}
             </Link>
-            <Link href="/medical-disclaimer" className="text-muted-foreground transition-colors hover:text-accent-gold">
+            <Link href="/medical-disclaimer" className="text-muted-foreground transition-colors hover:text-navy">
               {footer.medical}
             </Link>
-            <Link href="/privacy" className="text-muted-foreground transition-colors hover:text-accent-gold">
+            <Link href="/privacy" className="text-muted-foreground transition-colors hover:text-navy">
               {footer.privacy}
             </Link>
-            <Link href="/terms" className="text-muted-foreground transition-colors hover:text-accent-gold">
+            <Link href="/terms" className="text-muted-foreground transition-colors hover:text-navy">
               {footer.terms}
             </Link>
-            <Link href="/refund-policy" className="text-muted-foreground transition-colors hover:text-accent-gold">
+            <Link href="/refund-policy" className="text-muted-foreground transition-colors hover:text-navy">
               {footer.refund}
             </Link>
           </div>

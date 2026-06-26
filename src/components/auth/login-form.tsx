@@ -47,7 +47,7 @@ export function LoginForm() {
             <Input id="password" name="password" type="password" required autoComplete="current-password" />
           </div>
           {error && <p className="text-sm text-destructive">{error}</p>}
-          <Button type="submit" disabled={loading} className="w-full bg-navy hover:bg-navy-light">
+          <Button type="submit" disabled={loading} className="w-full btn-cta-primary">
             {auth.loginButton}
           </Button>
         </form>

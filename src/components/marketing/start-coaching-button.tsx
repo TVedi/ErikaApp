@@ -20,7 +20,7 @@ export function StartCoachingButton({
       href={href}
       size={size}
       external={external}
-      className={className ?? "bg-navy hover:bg-navy-light"}
+      className={className ?? "btn-cta-primary"}
     >
       {cta.startCoaching}
     </LinkButton>

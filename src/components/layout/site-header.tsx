@@ -13,19 +13,19 @@ export function SiteHeader() {
           </span>
         </Link>
         <nav className="hidden items-center gap-6 text-sm font-medium text-muted-foreground lg:flex">
-          <Link href="/" className="transition-colors hover:text-accent-gold">
+          <Link href="/" className="transition-colors hover:text-navy">
             {nav.home}
           </Link>
-          <Link href="/about" className="transition-colors hover:text-accent-gold">
+          <Link href="/about" className="transition-colors hover:text-navy">
             {nav.about}
           </Link>
-          <Link href="/pricing" className="transition-colors hover:text-accent-gold">
+          <Link href="/pricing" className="transition-colors hover:text-navy">
             {nav.programs}
           </Link>
-          <Link href="/camps" className="transition-colors hover:text-accent-gold">
+          <Link href="/camps" className="transition-colors hover:text-navy">
             {nav.camps}
           </Link>
-          <Link href="/apply" className="transition-colors hover:text-accent-gold">
+          <Link href="/apply" className="transition-colors hover:text-navy">
             {nav.apply}
           </Link>
         </nav>
@@ -38,7 +38,7 @@ export function SiteHeader() {
           >
             {cta.requestEvaluation}
           </LinkButton>
-          <StartCoachingButton size="sm" className="bg-navy hover:bg-navy-light" />
+          <StartCoachingButton size="sm" />
         </div>
       </div>
     </header>

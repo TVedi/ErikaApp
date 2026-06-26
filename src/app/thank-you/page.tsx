@@ -14,7 +14,7 @@ export default function ThankYouPage() {
         <h1 className="text-3xl font-bold text-navy">{thankYou.title}</h1>
         <p className="mt-4 text-lg text-muted-foreground">{thankYou.body}</p>
         <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:justify-center">
-          <LinkButton href="/" className="bg-navy hover:bg-navy-light">
+          <LinkButton href="/" className="btn-cta-primary">
             Back to homepage
           </LinkButton>
           <LinkButton href="/about" variant="outline" className="border-navy text-navy">

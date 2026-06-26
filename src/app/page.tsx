@@ -147,7 +147,7 @@ export default async function HomePage() {
       <section className="section-pad w-full bg-background">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
           <ScrollReveal>
-            <LinkButton href="/apply" size="lg" className="bg-navy hover:bg-navy-light">
+            <LinkButton href="/apply" size="lg" className="btn-cta-primary">
               {launch.campsPreview.cta}
             </LinkButton>
           </ScrollReveal>

@@ -144,7 +144,7 @@ export default async function DashboardPage() {
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <LinkButton size="sm" href="/camps" className="bg-navy hover:bg-navy-light">
+                    <LinkButton size="sm" href="/camps" className="btn-cta-primary">
                       {nav.camps}
                     </LinkButton>
                   </CardContent>

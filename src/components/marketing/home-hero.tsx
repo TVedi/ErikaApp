@@ -34,7 +34,7 @@ export function HomeHero({ featuredCredentials }: HomeHeroProps) {
         subhead readable over the photo. Do not remove or significantly lighten this gradient.
       */}
       <div
-        className="absolute inset-0 bg-gradient-to-r from-[rgba(8,18,28,0.85)] to-[rgba(8,18,28,0.35)]"
+        className="absolute inset-0 hero-text-overlay"
         aria-hidden="true"
       />
 
@@ -64,13 +64,13 @@ export function HomeHero({ featuredCredentials }: HomeHeroProps) {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <StartCoachingButton
               size="lg"
-              className="w-full bg-[var(--hero-headline)] text-[var(--hero-bg)] hover:bg-[color-mix(in_srgb,var(--hero-headline)_90%,white)] sm:w-auto"
+              className="btn-cta-primary w-full sm:w-auto"
             />
             <LinkButton
               size="lg"
               variant="outline"
               href="/apply"
-              className="w-full border-2 border-[color-mix(in_srgb,var(--hero-headline)_50%,transparent)] bg-[rgba(255,255,255,0.1)] text-[var(--hero-headline)] shadow-sm hover:bg-[rgba(255,255,255,0.18)] sm:w-auto"
+              className="w-full border-2 border-[color-mix(in_srgb,var(--accent-turquoise)_70%,var(--hero-headline))] bg-[rgba(255,255,255,0.1)] text-[var(--hero-headline)] shadow-sm hover:bg-[color-mix(in_srgb,var(--accent-turquoise)_18%,transparent)] sm:w-auto"
             >
               {cta.requestEvaluation}
             </LinkButton>

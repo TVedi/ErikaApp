@@ -36,7 +36,7 @@ export function ProgramCard({ tier }: { tier: ProgramKey }) {
           ))}
         </ul>
         {program.cta === "start" ? (
-          <StartCoachingButton size="sm" className="bg-navy hover:bg-navy-light" />
+          <StartCoachingButton size="sm" />
         ) : (
           <LinkButton
             href="/apply"
