@@ -19,7 +19,7 @@ export type HeroSlide = {
 export const HERO_SLIDESHOW_IMAGES: HeroSlide[] = [
   { src: "/hero.jpg", objectPosition: "right 25%" },
   { src: "/tokeletes.jpg", objectPosition: "center 15%" },
-  { src: "/hero2.jpg", objectPosition: "right 25%" },
+  { src: "/hero2.jpeg", objectPosition: "right 25%" },
   { src: "/Erika regi.jpg", objectPosition: "center 30%" },
 ];
 
