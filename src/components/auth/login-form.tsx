@@ -33,7 +33,7 @@ export function LoginForm() {
   return (
     <Card className="w-full max-w-md border-border/60 shadow-sm">
       <CardHeader>
-        <CardTitle className="text-navy">{auth.loginTitle}</CardTitle>
+        <CardTitle className="text-foreground">{auth.loginTitle}</CardTitle>
         <CardDescription>{auth.safetyDisclaimer}</CardDescription>
       </CardHeader>
       <CardContent>
@@ -53,7 +53,7 @@ export function LoginForm() {
         </form>
         <p className="mt-4 text-center text-sm text-muted-foreground">
           {auth.noAccount}{" "}
-          <Link href="/signup" className="font-medium text-navy hover:underline">
+          <Link href="/signup" className="font-medium text-foreground hover:underline">
             {auth.signupLink}
           </Link>
         </p>

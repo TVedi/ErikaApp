@@ -22,7 +22,7 @@ export function ProgramCard({ tier }: { tier: ProgramKey }) {
   return (
     <Card className="border-border/60 h-full">
       <CardHeader>
-        <CardTitle className="text-navy">{program.name}</CardTitle>
+        <CardTitle className="text-foreground">{program.name}</CardTitle>
         <p className="text-sm font-medium text-water">{priceLabel}</p>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -42,7 +42,7 @@ export function ProgramCard({ tier }: { tier: ProgramKey }) {
             href="/apply"
             size="sm"
             variant="outline"
-            className="border-navy text-navy hover:bg-navy/5"
+            className="border-foreground/25 text-foreground hover:bg-foreground/10"
           >
             {cta.requestEvaluation}
           </LinkButton>

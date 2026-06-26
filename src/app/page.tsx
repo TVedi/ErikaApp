@@ -52,7 +52,7 @@ export default async function HomePage() {
       <section className="section-cream section-pad w-full">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <ScrollReveal>
-            <h2 className="text-2xl font-bold text-navy sm:text-3xl">
+            <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
               {launch.whoItsFor.title}
             </h2>
           </ScrollReveal>
@@ -60,7 +60,7 @@ export default async function HomePage() {
             {launch.whoItsFor.audiences.map((item, i) => (
               <ScrollReveal key={item} delayMs={i * 90}>
                 <div className="h-full rounded-2xl border border-border/60 bg-card p-5 shadow-sm">
-                  <p className="font-medium text-navy">{item}</p>
+                  <p className="font-medium text-foreground">{item}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -72,7 +72,7 @@ export default async function HomePage() {
       <section className="section-navy-soft section-pad w-full">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <ScrollReveal>
-            <h2 className="text-2xl font-bold text-navy sm:text-3xl">
+            <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
               {launch.howItWorks.title}
             </h2>
             <p className="mt-3 max-w-2xl text-muted-foreground">
@@ -84,7 +84,7 @@ export default async function HomePage() {
               <ScrollReveal key={step.title} delayMs={i * 100}>
                 <div className="h-full rounded-2xl border border-border/60 bg-card p-6 shadow-sm">
                   <span className="text-sm font-bold text-water">Step {i + 1}</span>
-                  <h3 className="mt-2 font-semibold text-navy">{step.title}</h3>
+                  <h3 className="mt-2 font-semibold text-foreground">{step.title}</h3>
                   <p className="mt-2 text-sm text-muted-foreground">{step.description}</p>
                 </div>
               </ScrollReveal>
@@ -97,7 +97,7 @@ export default async function HomePage() {
       <section className="section-pad w-full bg-background">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <ScrollReveal>
-            <h2 className="text-2xl font-bold text-navy sm:text-3xl">
+            <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
               {launch.programs.title}
             </h2>
           </ScrollReveal>
@@ -160,7 +160,7 @@ export default async function HomePage() {
           <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
             <ScrollReveal>
               <div>
-                <h2 className="text-2xl font-bold text-navy sm:text-3xl">
+                <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
                   {launch.aboutPreview.title}
                 </h2>
                 <p className="mt-4 text-muted-foreground leading-relaxed">
@@ -169,7 +169,7 @@ export default async function HomePage() {
                 <p className="mt-4 text-xs text-muted-foreground">
                   {launch.aboutPreview.credentialNote}
                 </p>
-                <LinkButton href="/about" variant="outline" className="mt-6 border-navy text-navy">
+                <LinkButton href="/about" variant="outline" className="mt-6 border-foreground/25 text-foreground">
                   About Erika
                 </LinkButton>
               </div>
@@ -188,29 +188,29 @@ export default async function HomePage() {
       <section className="section-pad w-full bg-background text-center">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <ScrollReveal>
-            <h2 className="text-2xl font-bold text-navy">{launch.testimonials.title}</h2>
+            <h2 className="text-2xl font-bold text-foreground">{launch.testimonials.title}</h2>
             <p className="mt-4 text-muted-foreground">{launch.testimonials.placeholder}</p>
           </ScrollReveal>
         </div>
       </section>
 
       {/* Final CTA */}
-      <section className="section-pad w-full bg-navy text-white">
+      <section className="section-pad w-full bg-brand-base-muted">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
           <ScrollReveal>
-            <h2 className="text-2xl font-bold sm:text-3xl text-balance">
+            <h2 className="text-2xl font-bold sm:text-3xl text-balance text-foreground">
               {launch.finalCta.title}
             </h2>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
               <StartCoachingButton
                 size="lg"
-                className="bg-white text-navy hover:bg-white/90 w-full sm:w-auto"
+                className="btn-cta-primary w-full sm:w-auto"
               />
               <LinkButton
                 size="lg"
                 variant="outline"
                 href="/apply"
-                className="border-white/30 text-white hover:bg-white/10 w-full sm:w-auto"
+                className="border-foreground/30 text-foreground hover:bg-foreground/10 w-full sm:w-auto"
               >
                 {cta.requestEvaluation}
               </LinkButton>
@@ -223,13 +223,13 @@ export default async function HomePage() {
       <section className="section-cream section-pad w-full">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <ScrollReveal>
-            <h2 className="text-2xl font-bold text-navy sm:text-3xl">{faq.title}</h2>
+            <h2 className="text-2xl font-bold text-foreground sm:text-3xl">{faq.title}</h2>
           </ScrollReveal>
           <div className="mt-8 space-y-4">
             {faq.items.map((item, i) => (
               <ScrollReveal key={item.question} delayMs={i * 70}>
                 <div className="rounded-xl border border-border bg-card p-6 shadow-sm">
-                  <h3 className="font-semibold text-navy">{item.question}</h3>
+                  <h3 className="font-semibold text-foreground">{item.question}</h3>
                   <p className="mt-2 text-sm text-muted-foreground">{item.answer}</p>
                 </div>
               </ScrollReveal>
@@ -242,7 +242,7 @@ export default async function HomePage() {
       <section id="waitlist" className="section-navy-soft section-pad w-full">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <ScrollReveal className="text-center">
-            <h2 className="text-2xl font-bold text-navy sm:text-3xl">{waitlist.title}</h2>
+            <h2 className="text-2xl font-bold text-foreground sm:text-3xl">{waitlist.title}</h2>
             <p className="mt-2 text-muted-foreground">{waitlist.subtitle}</p>
           </ScrollReveal>
           <ScrollReveal className="mt-8" delayMs={100}>

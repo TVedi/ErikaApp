@@ -11,7 +11,7 @@ export const HERO_KEN_BURNS_PAN_X_END = "0%";
 export type HeroSlide = {
   src: string;
   objectPosition: string;
-  /** Default cover; contain shows full frame (letterboxed on navy) when cover crops key content. */
+  /** Default cover; contain shows full frame (letterboxed on neutral dark) when cover crops key content. */
   objectFit?: "cover" | "contain";
 };
 

@@ -12,7 +12,7 @@ export default function MedicalDisclaimerPage() {
     <PublicLayout>
       <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
         <DraftLegalBanner />
-        <h1 className="text-3xl font-bold text-navy">{legal.medical.title}</h1>
+        <h1 className="text-3xl font-bold text-foreground">{legal.medical.title}</h1>
         <p className="mt-6 text-muted-foreground leading-relaxed">{legal.medical.body}</p>
       </div>
     </PublicLayout>

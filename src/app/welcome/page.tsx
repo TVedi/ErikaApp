@@ -12,7 +12,7 @@ export default function WelcomePage() {
   return (
     <PublicLayout>
       <div className="mx-auto max-w-xl px-4 py-16 text-center sm:px-6 sm:py-24">
-        <h1 className="text-3xl font-bold text-navy">{welcome.title}</h1>
+        <h1 className="text-3xl font-bold text-foreground">{welcome.title}</h1>
         <p className="mt-4 text-lg text-muted-foreground">{welcome.body}</p>
         <p className="mt-4 text-sm text-muted-foreground">
           Your app dashboard is not automatically unlocked at launch — Erika will onboard you
@@ -22,10 +22,10 @@ export default function WelcomePage() {
           <LinkButton href="/about" className="btn-cta-primary">
             About Erika
           </LinkButton>
-          <LinkButton href="/camps" variant="outline" className="border-navy text-navy">
+          <LinkButton href="/camps" variant="outline" className="border-foreground/25 text-foreground">
             View Camps
           </LinkButton>
-          <LinkButton href="/" variant="outline" className="border-navy text-navy">
+          <LinkButton href="/" variant="outline" className="border-foreground/25 text-foreground">
             Back to homepage
           </LinkButton>
         </div>

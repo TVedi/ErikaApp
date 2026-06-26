@@ -28,7 +28,7 @@ export function CredentialsList({
             <>
               <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-water" />
               <div>
-                <p className="font-medium text-navy">
+                <p className="font-medium text-foreground">
                   {cred.label}
                   {cred.year ? ` (${cred.year})` : ""}
                 </p>
@@ -39,7 +39,7 @@ export function CredentialsList({
             </>
           ) : (
             <>
-              <p className="font-semibold text-navy">{cred.label}</p>
+              <p className="font-semibold text-foreground">{cred.label}</p>
               {cred.year && (
                 <p className="mt-1 text-sm font-medium text-water">{cred.year}</p>
               )}

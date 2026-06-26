@@ -9,7 +9,7 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         <div className="flex flex-col gap-8 md:flex-row md:justify-between">
           <div>
-            <p className="text-lg font-semibold text-navy">{brand.name}</p>
+            <p className="text-lg font-semibold text-foreground">{brand.name}</p>
             <p className="mt-2 max-w-sm text-sm text-muted-foreground">
               {brand.positioning}
             </p>
@@ -17,26 +17,26 @@ export function SiteFooter() {
               <StartCoachingButton size="sm" />
               <Link
                 href="/apply"
-                className="inline-flex h-8 items-center rounded-lg border border-navy/20 px-3 text-sm font-medium text-navy hover:bg-navy/5"
+                className="inline-flex h-8 items-center rounded-lg border border-foreground/25 px-3 text-sm font-medium text-foreground hover:bg-foreground/10"
               >
                 {footer.apply}
               </Link>
             </div>
           </div>
           <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
-            <Link href="/camps" className="text-muted-foreground transition-colors hover:text-navy">
+            <Link href="/camps" className="text-muted-foreground transition-colors hover:text-accent-turquoise">
               {footer.camps}
             </Link>
-            <Link href="/medical-disclaimer" className="text-muted-foreground transition-colors hover:text-navy">
+            <Link href="/medical-disclaimer" className="text-muted-foreground transition-colors hover:text-accent-turquoise">
               {footer.medical}
             </Link>
-            <Link href="/privacy" className="text-muted-foreground transition-colors hover:text-navy">
+            <Link href="/privacy" className="text-muted-foreground transition-colors hover:text-accent-turquoise">
               {footer.privacy}
             </Link>
-            <Link href="/terms" className="text-muted-foreground transition-colors hover:text-navy">
+            <Link href="/terms" className="text-muted-foreground transition-colors hover:text-accent-turquoise">
               {footer.terms}
             </Link>
-            <Link href="/refund-policy" className="text-muted-foreground transition-colors hover:text-navy">
+            <Link href="/refund-policy" className="text-muted-foreground transition-colors hover:text-accent-turquoise">
               {footer.refund}
             </Link>
           </div>

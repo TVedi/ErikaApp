@@ -15,7 +15,7 @@ export default function PricingPage() {
   return (
     <PublicLayout>
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
-        <h1 className="text-3xl font-bold text-navy sm:text-4xl">{pricing.title}</h1>
+        <h1 className="text-3xl font-bold text-foreground sm:text-4xl">{pricing.title}</h1>
         <p className="mt-2 max-w-2xl text-muted-foreground">{pricing.subtitle}</p>
 
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
@@ -26,7 +26,7 @@ export default function PricingPage() {
 
         <Card className="mt-10 border-border/60 bg-muted/30">
           <CardHeader>
-            <CardTitle className="text-navy text-lg">Launch payment note</CardTitle>
+            <CardTitle className="text-foreground text-lg">Launch payment note</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4 text-sm text-muted-foreground">
             <p>{pricing.stripeNote}</p>
@@ -36,7 +36,7 @@ export default function PricingPage() {
 
         <Card className="mt-6 border-border/60">
           <CardHeader>
-            <CardTitle className="text-navy">{pricing.campsNote.title}</CardTitle>
+            <CardTitle className="text-foreground">{pricing.campsNote.title}</CardTitle>
           </CardHeader>
           <CardContent>
             <ul className="space-y-2">

@@ -36,7 +36,7 @@ export function PhotoBand({
     >
       <ParallaxPhotoLayer photo={photo} sizes="100vw" />
       <div
-        className="absolute inset-0 bg-gradient-to-r from-[rgba(8,18,28,0.82)] via-[rgba(8,18,28,0.55)] to-[rgba(8,18,28,0.35)]"
+        className="absolute inset-0 photo-band-overlay"
         aria-hidden="true"
       />
       <div

@@ -12,6 +12,8 @@
   --color-accent-gold: var(--accent-gold);
   --color-accent-coral: var(--accent-coral);
   --color-accent-turquoise: var(--accent-turquoise);
+  --color-on-base: var(--text-on-base);
+  --color-brand-base: var(--brand-base);
   --color-cta-primary: var(--cta-primary);
   --color-cta-primary-hover: var(--cta-primary-hover);
   --color-background: var(--background);
@@ -61,10 +63,20 @@
   /* Brand palette — single source of truth */
   --brand-base: #145a55;
   --brand-base-light: #1a6d67;
+  --brand-base-muted: #0f4541;
   --brand-coral: #ff6f61;
   --brand-coral-hover: #e85a4d;
   --brand-turquoise: #1abc9c;
   --brand-turquoise-hover: #16a689;
+
+  /* Text on emerald base surfaces */
+  --text-on-base: #f5f2ea;
+  --text-on-base-muted: #c5d4d0;
+
+  /* Photo layers — neutral only (never tint photos with brand green) */
+  --photo-letterbox: #0a0a0a;
+  --photo-scrim-strong: rgba(0, 0, 0, 0.75);
+  --photo-scrim-soft: rgba(0, 0, 0, 0.35);
 
   /* Legacy token names (propagate via Tailwind utilities) */
   --navy: var(--brand-base);
@@ -79,27 +91,27 @@
   --cta-primary-hover: var(--brand-coral-hover);
   --cta-primary-foreground: #ffffff;
 
-  --hero-bg: var(--brand-base);
-  --hero-headline: #f5f2ea;
-  --hero-subhead: #b8d4cf;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
+  --hero-bg: var(--photo-letterbox);
+  --hero-headline: var(--text-on-base);
+  --hero-subhead: var(--text-on-base-muted);
+  --background: var(--brand-base);
+  --foreground: var(--text-on-base);
+  --card: color-mix(in srgb, var(--brand-base-light) 55%, var(--brand-base-muted));
+  --card-foreground: var(--text-on-base);
+  --popover: var(--brand-base-light);
+  --popover-foreground: var(--text-on-base);
   --primary: var(--brand-coral);
   --primary-foreground: var(--cta-primary-foreground);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --secondary: color-mix(in srgb, var(--brand-base-light) 40%, var(--brand-base));
+  --secondary-foreground: var(--text-on-base);
+  --muted: color-mix(in srgb, var(--brand-base-muted) 70%, black);
+  --muted-foreground: var(--text-on-base-muted);
+  --accent: color-mix(in srgb, var(--brand-base-light) 35%, var(--brand-base));
+  --accent-foreground: var(--text-on-base);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --border: color-mix(in srgb, var(--text-on-base) 14%, transparent);
+  --input: color-mix(in srgb, var(--text-on-base) 18%, transparent);
+  --ring: var(--brand-turquoise);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -195,12 +207,12 @@
     background-color: var(--cta-primary-hover);
   }
 
-  /* Hero left-weighted emerald scrim for slideshow text contrast */
+  /* Hero left-weighted neutral scrim for slideshow text contrast (no color tint) */
   .hero-text-overlay {
     background: linear-gradient(
       to right,
-      color-mix(in srgb, var(--hero-bg) 85%, transparent),
-      color-mix(in srgb, var(--hero-bg) 35%, transparent)
+      var(--photo-scrim-strong),
+      var(--photo-scrim-soft)
     );
   }
 
@@ -209,17 +221,30 @@
     pointer-events: none;
     background: linear-gradient(
       135deg,
-      color-mix(in srgb, var(--hero-bg) 72%, transparent),
-      color-mix(in srgb, var(--hero-bg) 48%, transparent)
+      rgba(0, 0, 0, 0.68),
+      rgba(0, 0, 0, 0.42)
     );
   }
 
   .section-cream {
-    background-color: #f8f6f2;
+    background-color: var(--brand-base);
   }
 
   .section-navy-soft {
-    background-color: color-mix(in srgb, var(--hero-bg) 7%, #f8f6f2);
+    background-color: var(--brand-base-muted);
+  }
+
+  .photo-band-overlay {
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.82),
+      rgba(0, 0, 0, 0.55),
+      rgba(0, 0, 0, 0.35)
+    );
+  }
+
+  .photo-card-overlay {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.55), transparent);
   }
 
   .section-pad {

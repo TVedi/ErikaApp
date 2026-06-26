@@ -9,7 +9,7 @@ export function StickyMobileCta() {
         <StartCoachingButton size="sm" className="flex-1 btn-cta-primary" />
         <Link
           href="/apply"
-          className="inline-flex flex-1 items-center justify-center rounded-lg border border-navy/20 px-3 text-sm font-medium text-navy hover:bg-navy/5"
+          className="inline-flex flex-1 items-center justify-center rounded-lg border border-foreground/25 px-3 text-sm font-medium text-foreground hover:bg-foreground/10"
         >
           {cta.requestEvaluation}
         </Link>

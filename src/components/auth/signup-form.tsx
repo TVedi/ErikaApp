@@ -42,7 +42,7 @@ export function SignupForm() {
   return (
     <Card className="w-full max-w-md border-border/60 shadow-sm">
       <CardHeader>
-        <CardTitle className="text-navy">{auth.signupTitle}</CardTitle>
+        <CardTitle className="text-foreground">{auth.signupTitle}</CardTitle>
         <CardDescription>{auth.safetyDisclaimer}</CardDescription>
       </CardHeader>
       <CardContent>
@@ -105,7 +105,7 @@ export function SignupForm() {
         </form>
         <p className="mt-4 text-center text-sm text-muted-foreground">
           {auth.hasAccount}{" "}
-          <Link href="/login" className="font-medium text-navy hover:underline">
+          <Link href="/login" className="font-medium text-foreground hover:underline">
             {auth.loginLink}
           </Link>
         </p>

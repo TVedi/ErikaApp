@@ -28,7 +28,7 @@ export function PhotoPlaceholder({
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-2xl border border-border/60 bg-gradient-to-br from-[var(--hero-bg)]/10 via-water/[0.08] to-gold/[0.08]",
+        "relative overflow-hidden rounded-2xl border border-border/60 bg-gradient-to-br from-black/10 via-water/[0.08] to-gold/[0.08]",
         heights[variant],
         className
       )}

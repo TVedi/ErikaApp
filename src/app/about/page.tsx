@@ -28,7 +28,7 @@ export default async function AboutPage() {
         <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
           <ScrollReveal>
             <div>
-              <h1 className="text-3xl font-bold text-navy sm:text-4xl">{about.title}</h1>
+              <h1 className="text-3xl font-bold text-foreground sm:text-4xl">{about.title}</h1>
               <p className="mt-4 max-w-3xl text-lg text-muted-foreground leading-relaxed">
                 {about.intro}
               </p>
@@ -41,14 +41,14 @@ export default async function AboutPage() {
 
         <ScrollReveal className="mt-12">
           <section>
-            <h2 className="text-xl font-semibold text-navy">{about.storyTitle}</h2>
+            <h2 className="text-xl font-semibold text-foreground">{about.storyTitle}</h2>
             <p className="mt-4 max-w-3xl text-muted-foreground leading-relaxed">{about.story}</p>
           </section>
         </ScrollReveal>
 
         <ScrollReveal className="mt-12" delayMs={80}>
           <section>
-            <h2 className="text-xl font-semibold text-navy">{about.philosophyTitle}</h2>
+            <h2 className="text-xl font-semibold text-foreground">{about.philosophyTitle}</h2>
             <p className="mt-4 max-w-3xl text-muted-foreground leading-relaxed">
               {about.philosophy}
             </p>
@@ -57,14 +57,14 @@ export default async function AboutPage() {
 
         <ScrollReveal className="mt-12" delayMs={80}>
           <section>
-            <h2 className="text-xl font-semibold text-navy">{about.videoTitle}</h2>
+            <h2 className="text-xl font-semibold text-foreground">{about.videoTitle}</h2>
             <p className="mt-4 max-w-3xl text-muted-foreground leading-relaxed">{about.videoBody}</p>
           </section>
         </ScrollReveal>
 
         <ScrollReveal className="mt-12" delayMs={80}>
           <section>
-            <h2 className="text-xl font-semibold text-navy">{about.gainesvilleTitle}</h2>
+            <h2 className="text-xl font-semibold text-foreground">{about.gainesvilleTitle}</h2>
             <p className="mt-4 max-w-3xl text-muted-foreground leading-relaxed">
               {about.gainesvilleBody}
             </p>
@@ -73,7 +73,7 @@ export default async function AboutPage() {
 
         <ScrollReveal className="mt-12">
           <section>
-            <h2 className="text-xl font-semibold text-navy">Credentials</h2>
+            <h2 className="text-xl font-semibold text-foreground">Credentials</h2>
             <p className="mt-2 text-xs text-muted-foreground">{about.credentialNote}</p>
             <div className="mt-6">
               <CredentialsList
@@ -86,7 +86,7 @@ export default async function AboutPage() {
 
         <ScrollReveal className="mt-12" delayMs={80}>
           <section>
-            <h2 className="text-xl font-semibold text-navy">{about.focusAreasTitle}</h2>
+            <h2 className="text-xl font-semibold text-foreground">{about.focusAreasTitle}</h2>
             <div className="mt-4 flex flex-wrap gap-2">
               {about.focusAreas.map((area) => (
                 <Badge key={area} variant="secondary" className="text-sm">

@@ -53,7 +53,7 @@ export function MarketingPhoto({
       </div>
       {overlay && (
         <div
-          className="absolute inset-0 bg-gradient-to-r from-[rgba(8,18,28,0.55)] to-transparent"
+          className="absolute inset-0 photo-card-overlay"
           aria-hidden="true"
         />
       )}
