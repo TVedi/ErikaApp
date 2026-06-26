@@ -5,6 +5,7 @@ import { LinkButton } from "@/components/ui/link-button";
 import { MarketingPhoto } from "@/components/marketing/marketing-photo";
 import { PhotoBand } from "@/components/marketing/photo-band";
 import { HomeHero } from "@/components/marketing/home-hero";
+import { HowItWorksSection } from "@/components/marketing/how-it-works-section";
 import { WhoItsForSection } from "@/components/marketing/who-its-for-section";
 import { ProgramCard } from "@/components/marketing/program-card";
 import { StartCoachingButton } from "@/components/marketing/start-coaching-button";
@@ -51,30 +52,7 @@ export default async function HomePage() {
 
       <WhoItsForSection />
 
-      {/* How it works */}
-      <section className="section-navy-soft section-pad w-full">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <ScrollReveal>
-            <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
-              {launch.howItWorks.title}
-            </h2>
-            <p className="mt-3 max-w-2xl text-muted-foreground">
-              {launch.howItWorks.manualNote}
-            </p>
-          </ScrollReveal>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {launch.howItWorks.steps.map((step, i) => (
-              <ScrollReveal key={step.title} delayMs={i * 100}>
-                <div className="h-full rounded-2xl border border-border/60 bg-card p-6 shadow-sm">
-                  <span className="text-sm font-bold text-water">Step {i + 1}</span>
-                  <h3 className="mt-2 font-semibold text-foreground">{step.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{step.description}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <HowItWorksSection />
 
       {/* Programs */}
       <section className="section-pad w-full bg-background">

@@ -216,6 +216,17 @@
     );
   }
 
+  /* Localized scrim behind hero support block (bottom-right diagonal layout) */
+  .hero-support-scrim {
+    background: linear-gradient(
+      145deg,
+      rgba(0, 0, 0, 0.78) 0%,
+      rgba(0, 0, 0, 0.62) 55%,
+      rgba(0, 0, 0, 0.52) 100%
+    );
+    box-shadow: 0 10px 36px rgba(0, 0, 0, 0.28);
+  }
+
   /* Reusable dark overlay for text-over-photo hero/media slots */
   .photo-dark-overlay {
     pointer-events: none;
