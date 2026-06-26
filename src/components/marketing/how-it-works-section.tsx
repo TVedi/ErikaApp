@@ -14,7 +14,7 @@ export function HowItWorksSection() {
       className="section-navy-soft section-screen section-screen-center w-full"
       aria-labelledby="how-it-works-heading"
     >
-      <div className="split-screen-grid min-h-full">
+      <div className="split-screen-grid">
         {/* Photo — top on mobile, right on desktop */}
         <div className="split-screen-photo-col order-1 lg:order-2">
           <div className="split-photo-mask absolute inset-0">
