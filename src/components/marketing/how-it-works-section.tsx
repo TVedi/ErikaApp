@@ -31,7 +31,7 @@ export function HowItWorksSection() {
 
         {/* Content — below photo on mobile, left on desktop */}
         <div className="split-screen-content-col order-2 lg:order-1">
-          <div className="-translate-y-4 sm:-translate-y-5">
+          <div className="-translate-y-8 sm:-translate-y-10">
             <ScrollReveal>
               <h2
                 id="how-it-works-heading"
