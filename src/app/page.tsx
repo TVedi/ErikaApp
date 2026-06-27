@@ -5,6 +5,7 @@ import { LinkButton } from "@/components/ui/link-button";
 import { MarketingPhoto } from "@/components/marketing/marketing-photo";
 // import { PhotoBand } from "@/components/marketing/photo-band";
 import { HomeHero } from "@/components/marketing/home-hero";
+import { CampsSection } from "@/components/marketing/camps-section";
 import { HowItWorksSection } from "@/components/marketing/how-it-works-section";
 import { VideoAnalysisSection } from "@/components/marketing/video-analysis-section";
 import { WhoItsForSection } from "@/components/marketing/who-its-for-section";
@@ -94,16 +95,7 @@ export default async function HomePage() {
       />
       */}
 
-      {/* Camps CTA */}
-      <section className="section-emerald-surface section-screen section-screen-center section-pad w-full">
-        <div className="section-screen-inner mx-auto max-w-3xl px-4 text-center sm:px-6">
-          <ScrollReveal>
-            <LinkButton href="/apply" size="lg" className="btn-cta-primary">
-              {launch.campsPreview.cta}
-            </LinkButton>
-          </ScrollReveal>
-        </div>
-      </section>
+      <CampsSection />
 
       {/* About preview + credentials */}
       <section className="section-navy-soft section-atmo-glow-alt section-screen section-screen-center section-pad w-full">

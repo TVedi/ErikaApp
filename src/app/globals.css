@@ -696,68 +696,23 @@
       );
   }
 
-  /* Camps CTA — deeper exclusive emerald + cloudy top blend from video analysis */
-  .section-camps-cta {
+  /* Camps — full-bleed camp.jpg + hero-style Ken-Burns (snap stays on) */
+  .section-camps {
     position: relative;
     isolation: isolate;
+    overflow: hidden;
     overflow-anchor: none;
-    background-color: var(--brand-base-deep);
-    background-image:
-      linear-gradient(
-        188deg,
-        color-mix(in srgb, var(--brand-base) 22%, var(--brand-base-deep)) 0%,
-        var(--brand-base-deep) 34%,
-        color-mix(in srgb, var(--brand-base-muted) 72%, var(--brand-base-deep)) 78%,
-        color-mix(in srgb, var(--brand-base-deep) 88%, black) 100%
-      ),
-      radial-gradient(
-        ellipse 118% 92% at 76% -16%,
-        color-mix(in srgb, var(--brand-base-light) 26%, transparent) 0%,
-        transparent 56%
-      ),
-      radial-gradient(
-        ellipse 88% 72% at 14% 102%,
-        color-mix(in srgb, var(--brand-turquoise) 14%, transparent) 0%,
-        transparent 64%
-      );
   }
 
-  .section-camps-cta::before {
-    content: "";
-    position: absolute;
-    left: -10%;
-    right: -10%;
-    top: -3rem;
-    height: 8rem;
-    pointer-events: none;
-    z-index: 0;
-    background:
-      radial-gradient(
-        ellipse 72% 58% at 22% 100%,
-        color-mix(in srgb, var(--brand-base) 46%, transparent) 0%,
-        transparent 74%
-      ),
-      radial-gradient(
-        ellipse 68% 54% at 55% 100%,
-        color-mix(in srgb, var(--brand-base-muted) 40%, transparent) 0%,
-        transparent 72%
-      ),
-      radial-gradient(
-        ellipse 80% 62% at 84% 100%,
-        color-mix(in srgb, var(--brand-base-deep) 38%, transparent) 0%,
-        transparent 76%
-      );
-    filter: blur(20px);
-    opacity: 0.92;
-  }
-
-  .section-camps-cta > * {
-    position: relative;
-    z-index: 1;
-  }
-
-  .section-camps-cta.section-screen-center > .section-screen-inner {
+  .section-camps.section-screen-center > .section-screen-inner {
     min-height: 0;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .camps-ken-burns {
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+    }
   }
 
   .section-atmo-glow-alt.section-navy-soft::after {

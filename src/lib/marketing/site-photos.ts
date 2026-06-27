@@ -50,6 +50,13 @@ export const sitePhotos = {
     width: 2048,
     height: 1241,
   },
+  campsBackground: {
+    src: "/camp.jpg",
+    alt: "Kayak training camp on the water",
+    objectPosition: "center 35%",
+    width: 4000,
+    height: 2667,
+  },
   whoItsFor: {
     src: "/DSC09954[1].jpg",
     alt: "Erika Medveczky coaching on the water",
