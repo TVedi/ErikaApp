@@ -5,7 +5,7 @@ import { StartCoachingButton } from "@/components/marketing/start-coaching-butto
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/90">
+    <header className="site-header-premium sticky top-0 z-50">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
         <Link href="/" className="shrink-0">
           <span className="text-base font-semibold tracking-tight text-foreground sm:text-lg">

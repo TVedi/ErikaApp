@@ -281,6 +281,41 @@
     background-color: var(--cta-primary-hover);
   }
 
+  /* Sticky nav — deep emerald + soft bottom fade into page content (no hard border) */
+  .site-header-premium {
+    isolation: isolate;
+    background-color: var(--brand-base-deep);
+    background-image:
+      linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--brand-base-muted) 62%, var(--brand-base-deep)) 0%,
+        var(--brand-base-deep) 48%,
+        color-mix(in srgb, var(--brand-base) 55%, var(--brand-base-deep)) 100%
+      ),
+      radial-gradient(
+        ellipse 130% 95% at 18% -35%,
+        color-mix(in srgb, var(--brand-base-light) 32%, transparent) 0%,
+        transparent 58%
+      );
+  }
+
+  .site-header-premium::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    height: 1.25rem;
+    pointer-events: none;
+    z-index: -1;
+    background: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--brand-base-deep) 92%, transparent) 0%,
+      color-mix(in srgb, var(--brand-base-deep) 52%, transparent) 45%,
+      transparent 100%
+    );
+  }
+
   /* Hero left-weighted neutral scrim for slideshow text contrast (no color tint) */
   .hero-text-overlay {
     background: linear-gradient(
