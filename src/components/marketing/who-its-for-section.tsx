@@ -42,9 +42,7 @@ export function WhoItsForSection() {
           <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:mt-10">
             {launch.whoItsFor.audiences.map((item, i) => (
               <ScrollReveal key={item} delayMs={i * 70}>
-                <div
-                  className="who-its-for-card h-full rounded-xl border border-accent-turquoise/20 border-l-[3px] border-l-accent-turquoise bg-[color-mix(in_srgb,var(--accent-turquoise)_10%,var(--brand-base))] p-4 shadow-sm"
-                >
+                <div className="program-card-glass h-full rounded-xl border-l-[3px] border-l-accent-turquoise p-4">
                   <p className="font-display text-base font-medium leading-snug text-foreground sm:text-[1.05rem]">
                     {item}
                   </p>

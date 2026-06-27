@@ -46,7 +46,7 @@ export function HowItWorksSection() {
             <div className="mt-8 space-y-4 lg:mt-10">
               {launch.howItWorks.steps.map((step, i) => (
                 <ScrollReveal key={step.title} delayMs={i * 90}>
-                  <div className="rounded-xl border border-border/60 bg-card p-4 shadow-sm sm:p-5">
+                  <div className="program-card-glass rounded-xl p-4 sm:p-5">
                     <span className="text-xs font-bold uppercase tracking-wide text-water sm:text-sm">
                       Step {i + 1}
                     </span>

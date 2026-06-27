@@ -708,13 +708,6 @@
     min-height: 0;
   }
 
-  @media (prefers-reduced-motion: no-preference) {
-    .camps-ken-burns {
-      animation-iteration-count: infinite;
-      animation-direction: alternate;
-    }
-  }
-
   .section-atmo-glow-alt.section-navy-soft::after {
     background: radial-gradient(
       ellipse 105% 78% at 10% 90%,
@@ -877,6 +870,14 @@
       animation-iteration-count: 1;
       animation-fill-mode: forwards;
       will-change: transform;
+    }
+
+    /* Camps: continuous gentle zoom — overrides hero single-iteration + forwards */
+    .camps-ken-burns.hero-slideshow-ken-burns {
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      animation-fill-mode: none;
+      transform-origin: center center;
     }
 
     @keyframes hero-slideshow-ken-burns {
