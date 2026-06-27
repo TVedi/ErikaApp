@@ -338,6 +338,55 @@
     min-height: 0;
   }
 
+  /* Coaching options — fixed magyarock reveal (desktop); snap excepted for smooth scroll-through */
+  .section-coaching-options.section-screen {
+    scroll-snap-align: none;
+  }
+
+  .section-coaching-fixed-bg {
+    position: relative;
+    isolation: isolate;
+    overflow-anchor: none;
+    background-color: var(--brand-base-deep);
+    background-image: url("/magyarock.png");
+    background-size: cover;
+    background-position: center 28%;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+  }
+
+  .section-coaching-fixed-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.58) 0%,
+      rgba(0, 0, 0, 0.48) 42%,
+      rgba(0, 0, 0, 0.62) 100%
+    );
+  }
+
+  .section-coaching-fixed-bg > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Desktop fine pointer: pinned background reveal while content scrolls over */
+  @media (min-width: 1024px) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .section-coaching-fixed-bg {
+      background-attachment: fixed;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .section-coaching-fixed-bg {
+      background-attachment: scroll;
+    }
+  }
+
   @media (max-width: 1023px) {
     .section-screen > .split-screen-grid {
       grid-template-rows: 1fr auto;

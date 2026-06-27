@@ -50,9 +50,9 @@ export default async function HomePage() {
 
       <HowItWorksSection />
 
-      {/* Programs — Coaching options */}
+      {/* Programs — Coaching options (fixed-bg reveal on desktop) */}
       <section
-        className="section-emerald-surface section-coaching-options section-screen section-screen-center w-full"
+        className="section-coaching-options section-coaching-fixed-bg section-screen section-screen-center w-full"
         aria-labelledby="coaching-options-heading"
       >
         <div className="section-screen-inner mx-auto max-w-6xl px-4 sm:px-6">
