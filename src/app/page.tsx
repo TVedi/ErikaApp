@@ -68,7 +68,7 @@ export default async function HomePage() {
             <div className="mt-8 grid gap-6 lg:grid-cols-3">
               {(["starter", "technique", "elite"] as const).map((tier, i) => (
                 <ScrollReveal key={tier} delayMs={i * 110}>
-                  <ProgramCard tier={tier} />
+                  <ProgramCard tier={tier} variant="glass" />
                 </ScrollReveal>
               ))}
             </div>

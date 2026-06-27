@@ -281,16 +281,17 @@
     background-color: var(--cta-primary-hover);
   }
 
-  /* Sticky nav — deep emerald + soft bottom fade into page content (no hard border) */
+  /* Sticky nav — deep emerald + soft curtain fade into page (no hard horizontal cut) */
   .site-header-premium {
     isolation: isolate;
     background-color: var(--brand-base-deep);
     background-image:
       linear-gradient(
         180deg,
-        color-mix(in srgb, var(--brand-base-muted) 62%, var(--brand-base-deep)) 0%,
-        var(--brand-base-deep) 48%,
-        color-mix(in srgb, var(--brand-base) 55%, var(--brand-base-deep)) 100%
+        color-mix(in srgb, var(--brand-base-muted) 65%, var(--brand-base-deep)) 0%,
+        var(--brand-base-deep) 38%,
+        color-mix(in srgb, var(--brand-base-deep) 96%, transparent) 72%,
+        color-mix(in srgb, var(--brand-base-deep) 52%, transparent) 100%
       ),
       radial-gradient(
         ellipse 130% 95% at 18% -35%,
@@ -299,19 +300,43 @@
       );
   }
 
+  .site-header-premium > * {
+    position: relative;
+    z-index: 2;
+  }
+
   .site-header-premium::after {
     content: "";
     position: absolute;
     left: 0;
     right: 0;
     top: 100%;
-    height: 1.25rem;
+    height: 5.5rem;
     pointer-events: none;
-    z-index: -1;
+    z-index: 1;
     background: linear-gradient(
       to bottom,
-      color-mix(in srgb, var(--brand-base-deep) 92%, transparent) 0%,
-      color-mix(in srgb, var(--brand-base-deep) 52%, transparent) 45%,
+      color-mix(in srgb, var(--brand-base-deep) 62%, transparent) 0%,
+      color-mix(in srgb, var(--brand-base-deep) 42%, transparent) 22%,
+      color-mix(in srgb, var(--brand-base-deep) 24%, transparent) 48%,
+      color-mix(in srgb, var(--brand-base-deep) 12%, transparent) 72%,
+      color-mix(in srgb, var(--brand-base-deep) 4%, transparent) 88%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 18%,
+      rgba(0, 0, 0, 0.72) 42%,
+      rgba(0, 0, 0, 0.38) 68%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 18%,
+      rgba(0, 0, 0, 0.72) 42%,
+      rgba(0, 0, 0, 0.38) 68%,
       transparent 100%
     );
   }
@@ -622,6 +647,49 @@
         black 32%,
         black 100%
       );
+    }
+  }
+
+  /* Coaching options — frosted glass cards over fixed MAGYAROCK background */
+  .program-card-glass {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: color-mix(in srgb, var(--brand-base-deep) 36%, transparent);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    box-shadow:
+      0 10px 32px rgba(0, 0, 0, 0.32),
+      0 1px 0 rgba(255, 255, 255, 0.1) inset;
+    transition:
+      transform 220ms ease-out,
+      border-color 220ms ease-out,
+      background 220ms ease-out,
+      box-shadow 220ms ease-out;
+  }
+
+  @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+    .program-card-glass {
+      background: color-mix(in srgb, var(--brand-base-deep) 82%, var(--brand-base-muted));
+    }
+  }
+
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .program-card-glass {
+      will-change: transform;
+    }
+
+    .program-card-glass:hover {
+      transform: translate3d(0, -4px, 0);
+      border-color: rgba(255, 255, 255, 0.28);
+      background: color-mix(in srgb, var(--brand-base-deep) 44%, transparent);
+      box-shadow:
+        0 14px 36px rgba(0, 0, 0, 0.38),
+        0 1px 0 rgba(255, 255, 255, 0.14) inset;
+    }
+
+    @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+      .program-card-glass:hover {
+        background: color-mix(in srgb, var(--brand-base-deep) 88%, var(--brand-base-muted));
+      }
     }
   }
 
