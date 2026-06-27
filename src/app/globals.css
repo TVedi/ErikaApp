@@ -290,33 +290,6 @@
     );
   }
 
-  /* Feathered localized scrim behind hero support text — no card, border, or rounded panel */
-  .hero-support-scrim {
-    position: relative;
-    isolation: isolate;
-  }
-
-  .hero-support-scrim::before {
-    content: "";
-    position: absolute;
-    inset: -2.75rem -2rem -3rem -2.5rem;
-    pointer-events: none;
-    z-index: -1;
-    background:
-      radial-gradient(
-        ellipse 118% 105% at 22% 58%,
-        rgba(0, 0, 0, 0.62) 0%,
-        rgba(0, 0, 0, 0.42) 32%,
-        rgba(0, 0, 0, 0.18) 52%,
-        transparent 70%
-      ),
-      radial-gradient(
-        ellipse 95% 80% at 78% 72%,
-        rgba(0, 0, 0, 0.28) 0%,
-        transparent 65%
-      );
-  }
-
   /* Reusable dark overlay for text-over-photo hero/media slots */
   .photo-dark-overlay {
     pointer-events: none;
