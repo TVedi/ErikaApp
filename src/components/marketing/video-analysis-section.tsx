@@ -7,8 +7,8 @@ import { sitePhotos } from "@/lib/marketing/site-photos";
 
 const photo = sitePhotos.videoAnalysis1Kep;
 
-/** Matches CSS: 800ms transition + 120ms delay on the right slide. */
-const SLIDE_IN_MS = 920;
+/** Matches CSS: 1.1s transition + 150ms delay on the right slide. */
+const SLIDE_IN_MS = 1250;
 
 /**
  * Split-screen video analysis — replays slide-in on each viewport entry;
