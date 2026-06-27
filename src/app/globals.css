@@ -449,8 +449,12 @@
     scroll-snap-align: none;
   }
 
-  /* Video analysis split-screen — snap excepted for slide-in entrance */
+  /* Video analysis — hybrid snap: start when settled, off during slide-in replay */
   .section-video-analysis.section-screen {
+    scroll-snap-align: start;
+  }
+
+  .section-video-analysis.section-screen.video-analysis-snap-off {
     scroll-snap-align: none;
   }
 
@@ -672,6 +676,88 @@
     );
   }
 
+  /* Video analysis → camps: melt bottom edge into deeper emerald (no hard seam) */
+  .section-video-analysis.section-atmo-glow-alt.section-cream::after {
+    background:
+      radial-gradient(
+        ellipse 115% 82% at 88% 12%,
+        color-mix(in srgb, var(--brand-turquoise) 19%, transparent) 0%,
+        color-mix(in srgb, var(--brand-turquoise) 7%, transparent) 40%,
+        transparent 70%
+      ),
+      linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 48%,
+        color-mix(in srgb, var(--brand-base-deep) 20%, transparent) 68%,
+        color-mix(in srgb, var(--brand-base-deep) 52%, transparent) 100%
+      );
+  }
+
+  /* Camps CTA — deeper exclusive emerald + cloudy top blend from video analysis */
+  .section-camps-cta {
+    position: relative;
+    isolation: isolate;
+    overflow-anchor: none;
+    background-color: var(--brand-base-deep);
+    background-image:
+      linear-gradient(
+        188deg,
+        color-mix(in srgb, var(--brand-base) 22%, var(--brand-base-deep)) 0%,
+        var(--brand-base-deep) 34%,
+        color-mix(in srgb, var(--brand-base-muted) 72%, var(--brand-base-deep)) 78%,
+        color-mix(in srgb, var(--brand-base-deep) 88%, black) 100%
+      ),
+      radial-gradient(
+        ellipse 118% 92% at 76% -16%,
+        color-mix(in srgb, var(--brand-base-light) 26%, transparent) 0%,
+        transparent 56%
+      ),
+      radial-gradient(
+        ellipse 88% 72% at 14% 102%,
+        color-mix(in srgb, var(--brand-turquoise) 14%, transparent) 0%,
+        transparent 64%
+      );
+  }
+
+  .section-camps-cta::before {
+    content: "";
+    position: absolute;
+    left: -10%;
+    right: -10%;
+    top: -3rem;
+    height: 8rem;
+    pointer-events: none;
+    z-index: 0;
+    background:
+      radial-gradient(
+        ellipse 72% 58% at 22% 100%,
+        color-mix(in srgb, var(--brand-base) 46%, transparent) 0%,
+        transparent 74%
+      ),
+      radial-gradient(
+        ellipse 68% 54% at 55% 100%,
+        color-mix(in srgb, var(--brand-base-muted) 40%, transparent) 0%,
+        transparent 72%
+      ),
+      radial-gradient(
+        ellipse 80% 62% at 84% 100%,
+        color-mix(in srgb, var(--brand-base-deep) 38%, transparent) 0%,
+        transparent 76%
+      );
+    filter: blur(20px);
+    opacity: 0.92;
+  }
+
+  .section-camps-cta > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-camps-cta.section-screen-center > .section-screen-inner {
+    min-height: 0;
+  }
+
   .section-atmo-glow-alt.section-navy-soft::after {
     background: radial-gradient(
       ellipse 105% 78% at 10% 90%,
@@ -783,27 +869,6 @@
       .program-card-glass:hover {
         background: color-mix(in srgb, var(--brand-base-deep) 88%, var(--brand-base-muted));
       }
-    }
-  }
-
-  .who-its-for-card {
-    transition:
-      transform 180ms ease-out,
-      box-shadow 180ms ease-out,
-      border-color 180ms ease-out;
-  }
-
-  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-    .who-its-for-card {
-      will-change: transform;
-    }
-
-    .who-its-for-card:hover {
-      transform: translate3d(0, -5px, 0);
-      border-color: color-mix(in srgb, var(--accent-turquoise) 55%, transparent);
-      box-shadow:
-        0 12px 28px rgba(0, 0, 0, 0.22),
-        0 0 0 1px color-mix(in srgb, var(--accent-turquoise) 25%, transparent);
     }
   }
 
