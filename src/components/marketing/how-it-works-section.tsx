@@ -31,33 +31,35 @@ export function HowItWorksSection() {
 
         {/* Content — below photo on mobile, left on desktop */}
         <div className="split-screen-content-col order-2 lg:order-1">
-          <ScrollReveal>
-            <h2
-              id="how-it-works-heading"
-              className="text-2xl font-bold text-foreground sm:text-3xl"
-            >
-              {launch.howItWorks.title}
-            </h2>
-            <p className="mt-3 max-w-xl text-sm text-muted-foreground sm:text-base">
-              {launch.howItWorks.manualNote}
-            </p>
-          </ScrollReveal>
-          <div className="mt-8 space-y-4 lg:mt-10">
-            {launch.howItWorks.steps.map((step, i) => (
-              <ScrollReveal key={step.title} delayMs={i * 90}>
-                <div className="rounded-xl border border-border/60 bg-card p-4 shadow-sm sm:p-5">
-                  <span className="text-xs font-bold uppercase tracking-wide text-water sm:text-sm">
-                    Step {i + 1}
-                  </span>
-                  <h3 className="mt-2 font-semibold text-foreground text-base sm:text-lg">
-                    {step.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {step.description}
-                  </p>
-                </div>
-              </ScrollReveal>
-            ))}
+          <div className="-translate-y-4 sm:-translate-y-5">
+            <ScrollReveal>
+              <h2
+                id="how-it-works-heading"
+                className="text-2xl font-bold text-foreground sm:text-3xl"
+              >
+                {launch.howItWorks.title}
+              </h2>
+              <p className="mt-3 max-w-xl text-sm text-muted-foreground sm:text-base">
+                {launch.howItWorks.manualNote}
+              </p>
+            </ScrollReveal>
+            <div className="mt-8 space-y-4 lg:mt-10">
+              {launch.howItWorks.steps.map((step, i) => (
+                <ScrollReveal key={step.title} delayMs={i * 90}>
+                  <div className="rounded-xl border border-border/60 bg-card p-4 shadow-sm sm:p-5">
+                    <span className="text-xs font-bold uppercase tracking-wide text-water sm:text-sm">
+                      Step {i + 1}
+                    </span>
+                    <h3 className="mt-2 font-semibold text-foreground text-base sm:text-lg">
+                      {step.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {step.description}
+                    </p>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
           </div>
         </div>
       </div>

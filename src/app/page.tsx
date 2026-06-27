@@ -50,20 +50,28 @@ export default async function HomePage() {
 
       <HowItWorksSection />
 
-      {/* Programs */}
-      <section className="section-emerald-surface section-screen section-screen-center section-pad w-full">
+      {/* Programs — Coaching options */}
+      <section
+        className="section-emerald-surface section-coaching-options section-screen section-screen-center w-full"
+        aria-labelledby="coaching-options-heading"
+      >
         <div className="section-screen-inner mx-auto max-w-6xl px-4 sm:px-6">
-          <ScrollReveal>
-            <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
-              {launch.programs.title}
-            </h2>
-          </ScrollReveal>
-          <div className="mt-8 grid gap-6 lg:grid-cols-3">
-            {(["starter", "technique", "elite"] as const).map((tier, i) => (
-              <ScrollReveal key={tier} delayMs={i * 110}>
-                <ProgramCard tier={tier} />
-              </ScrollReveal>
-            ))}
+          <div className="my-auto w-full">
+            <ScrollReveal>
+              <h2
+                id="coaching-options-heading"
+                className="text-2xl font-bold text-foreground sm:text-3xl"
+              >
+                {launch.programs.title}
+              </h2>
+            </ScrollReveal>
+            <div className="mt-8 grid gap-6 lg:grid-cols-3">
+              {(["starter", "technique", "elite"] as const).map((tier, i) => (
+                <ScrollReveal key={tier} delayMs={i * 110}>
+                  <ProgramCard tier={tier} />
+                </ScrollReveal>
+              ))}
+            </div>
           </div>
         </div>
       </section>

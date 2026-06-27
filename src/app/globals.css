@@ -333,6 +333,11 @@
     min-height: calc(100dvh - 4rem);
   }
 
+  /* Coaching options — inner fits section so justify-center balances heading + cards */
+  .section-coaching-options.section-screen-center > .section-screen-inner {
+    min-height: 0;
+  }
+
   @media (max-width: 1023px) {
     .section-screen > .split-screen-grid {
       grid-template-rows: 1fr auto;
