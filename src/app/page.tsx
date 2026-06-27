@@ -6,6 +6,7 @@ import { MarketingPhoto } from "@/components/marketing/marketing-photo";
 // import { PhotoBand } from "@/components/marketing/photo-band";
 import { HomeHero } from "@/components/marketing/home-hero";
 import { HowItWorksSection } from "@/components/marketing/how-it-works-section";
+import { VideoAnalysisSection } from "@/components/marketing/video-analysis-section";
 import { WhoItsForSection } from "@/components/marketing/who-its-for-section";
 import { ProgramCard } from "@/components/marketing/program-card";
 import { StartCoachingButton } from "@/components/marketing/start-coaching-button";
@@ -83,24 +84,7 @@ export default async function HomePage() {
       />
       */}
 
-      {/* Video analysis detail */}
-      <section className="section-cream section-atmo-glow-alt section-screen section-screen-center section-pad w-full">
-        <div className="section-screen-inner mx-auto max-w-3xl px-4 sm:px-6">
-          <ScrollReveal>
-            <p className="text-muted-foreground leading-relaxed">
-              {launch.videoSection.body}
-            </p>
-            <ul className="mt-6 space-y-2">
-              {launch.videoSection.points.map((p) => (
-                <li key={p} className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
-                  {p}
-                </li>
-              ))}
-            </ul>
-          </ScrollReveal>
-        </div>
-      </section>
+      <VideoAnalysisSection />
 
       {/* Half-height photo bands removed — broke scroll-snap; restore as split-screen later
       <PhotoBand

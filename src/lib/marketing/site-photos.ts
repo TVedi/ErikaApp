@@ -29,6 +29,13 @@ export const sitePhotos = {
     width: 1081,
     height: 720,
   },
+  videoAnalysis1Kep: {
+    src: "/1.kép.jpg",
+    alt: "Erika Medveczky paddling — video technique analysis",
+    objectPosition: "center 32%",
+    width: 1209,
+    height: 805,
+  },
   campsLake: {
     src: "/camps-lake.jpg",
     alt: "Erika Medveczky with racing kayak at the lake",
