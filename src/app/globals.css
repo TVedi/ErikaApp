@@ -169,23 +169,34 @@
   }
   body {
     @apply bg-background text-foreground font-sans;
+    overflow-anchor: none;
   }
   main.main-scroll-surface {
     overflow-anchor: none;
   }
 
+  /*
+   * Document scroll root — html is the scrolling element (body/main do not overflow-scroll).
+   * Pure CSS settle: proximity snap + scroll-behavior smooth. No JS scroll controller.
+   */
   html {
     @apply font-sans;
     overflow-anchor: none;
-    /* Sticky header (h-16) — snap + anchor links land below header */
+    /* Sticky header (h-16) — snap targets land below header without end re-correction */
     scroll-padding-top: 4rem;
   }
 
-  /* Wheel/trackpad: gentle proximity snap + smooth settle (desktop fine pointer) */
+  /* Smooth glide for snap settle + anchor links — all pointers when motion allowed */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* Proximity snap — fine pointer only; assists near boundaries, does not trap */
   @media (pointer: fine) and (prefers-reduced-motion: no-preference) {
     html {
       scroll-snap-type: y proximity;
-      scroll-behavior: smooth;
     }
   }
 
@@ -414,6 +425,8 @@
     min-height: calc(100vh - 4rem);
     min-height: calc(100dvh - 4rem);
     scroll-snap-align: start;
+    scroll-snap-stop: normal;
+    overflow-anchor: none;
   }
 
   .section-screen-center {
