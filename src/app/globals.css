@@ -465,6 +465,10 @@
   }
 
   /* Video analysis — hybrid snap: start when settled, off during slide-in replay */
+  .section-video-analysis {
+    overflow-x: clip;
+  }
+
   .section-video-analysis.section-screen {
     scroll-snap-align: start;
   }
