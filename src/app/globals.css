@@ -88,8 +88,12 @@
   --accent-coral: var(--brand-coral);
   --accent-turquoise: var(--brand-turquoise);
 
-  --cta-primary: var(--brand-coral);
-  --cta-primary-hover: var(--brand-coral-hover);
+  --cta-primary-highlight: #d65a52;
+  --cta-primary: #c9473c;
+  --cta-primary-deep: #b83d35;
+  --cta-primary-hover-highlight: #cc5048;
+  --cta-primary-hover: #b33a32;
+  --cta-primary-hover-deep: #a3322b;
   --cta-primary-foreground: #ffffff;
 
   --hero-bg: var(--photo-letterbox);
@@ -271,14 +275,41 @@
     color: var(--accent-coral);
   }
 
-  /* Primary CTA — coral fill, white label (use on buttons, not body copy) */
+  /* Primary CTA — rich coral gradient, white label (≥3:1); accents keep --brand-coral */
   .btn-cta-primary {
-    background-color: var(--cta-primary);
     color: var(--cta-primary-foreground);
+    background-color: var(--cta-primary);
+    background-image: linear-gradient(
+      180deg,
+      var(--cta-primary-highlight) 0%,
+      var(--cta-primary) 54%,
+      var(--cta-primary-deep) 100%
+    );
+    border: 1px solid color-mix(in srgb, var(--cta-primary-deep) 82%, black);
+    box-shadow:
+      0 1px 0 color-mix(in srgb, white 24%, transparent) inset,
+      0 4px 14px color-mix(in srgb, var(--cta-primary-deep) 40%, transparent),
+      0 1px 3px rgba(0, 0, 0, 0.2);
+    transition:
+      background-color 0.22s ease,
+      background-image 0.22s ease,
+      border-color 0.22s ease,
+      box-shadow 0.22s ease;
   }
 
   .btn-cta-primary:hover {
     background-color: var(--cta-primary-hover);
+    background-image: linear-gradient(
+      180deg,
+      var(--cta-primary-hover-highlight) 0%,
+      var(--cta-primary-hover) 54%,
+      var(--cta-primary-hover-deep) 100%
+    );
+    border-color: color-mix(in srgb, var(--cta-primary-hover-deep) 88%, black);
+    box-shadow:
+      0 1px 0 color-mix(in srgb, white 18%, transparent) inset,
+      0 6px 22px color-mix(in srgb, var(--cta-primary-hover) 50%, transparent),
+      0 2px 6px rgba(0, 0, 0, 0.26);
   }
 
   /* Sticky nav — deep emerald + cloudy soft fade (no horizontal stripe) */
