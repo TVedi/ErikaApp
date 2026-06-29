@@ -300,6 +300,7 @@
   /* Sticky nav — deep emerald + cloudy soft fade (no horizontal stripe) */
   .site-header-premium {
     isolation: isolate;
+    overflow-x: clip;
     background-color: var(--brand-base-deep);
     background-image:
       linear-gradient(
@@ -321,12 +322,12 @@
     z-index: 3;
   }
 
-  /* Overlapping cloud puffs — blur the nav/hero seam */
+  /* Overlapping cloud puffs — blur the nav/hero seam (inset within header bounds) */
   .site-header-premium::before {
     content: "";
     position: absolute;
-    left: -10%;
-    right: -10%;
+    left: 0;
+    right: 0;
     top: 38%;
     height: 9.5rem;
     pointer-events: none;
@@ -359,8 +360,8 @@
   .site-header-premium::after {
     content: "";
     position: absolute;
-    left: -12%;
-    right: -12%;
+    left: 0;
+    right: 0;
     top: calc(100% - 1rem);
     height: 8rem;
     pointer-events: none;
@@ -469,6 +470,10 @@
 
   /* Video analysis — hybrid snap: start when settled, off during slide-in replay */
   .section-video-analysis {
+    overflow-x: clip;
+  }
+
+  .section-video-analysis .split-screen-grid {
     overflow-x: clip;
   }
 
@@ -918,4 +923,13 @@
       transform: none;
     }
   }
+}
+
+/*
+ * Horizontal overflow guard — unlayered so Tailwind v4 emits it on the document root.
+ * html is the vertical + horizontal scroll owner (main scrollWidth matches clientWidth).
+ */
+html,
+body {
+  overflow-x: clip;
 }
