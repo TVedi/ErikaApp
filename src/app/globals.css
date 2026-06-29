@@ -170,6 +170,7 @@
   body {
     @apply bg-background text-foreground font-sans;
     overflow-anchor: none;
+    overflow-x: clip;
   }
   main.main-scroll-surface {
     overflow-anchor: none;
@@ -178,10 +179,12 @@
   /*
    * Document scroll root — html is the scrolling element (body/main do not overflow-scroll).
    * Pure CSS settle: proximity snap + scroll-behavior smooth. No JS scroll controller.
+   * overflow-x: clip — page-level guard; clips slide-in transforms + header cloud pseudo overflow.
    */
   html {
     @apply font-sans;
     overflow-anchor: none;
+    overflow-x: clip;
     /* Sticky header (h-16) — snap targets land below header without end re-correction */
     scroll-padding-top: 4rem;
   }
