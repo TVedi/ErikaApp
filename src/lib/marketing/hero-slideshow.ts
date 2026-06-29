@@ -20,7 +20,7 @@ export const HERO_SLIDESHOW_IMAGES: HeroSlide[] = [
   { src: "/hero.jpg", objectPosition: "right 25%" },
   { src: "/tokeletes.jpg", objectPosition: "center 15%" },
   { src: "/Tokio6.jpg", objectPosition: "center 28%" },
-  { src: "/Erika regi.jpg", objectPosition: "center 30%" },
+  { src: "/Erika regi.png", objectPosition: "center 30%" },
 ];
 
 /** Per-slide Ken-Burns duration while the slide is active. */
