@@ -178,34 +178,18 @@
 
   /*
    * Document scroll root — html is the scrolling element (body/main do not overflow-scroll).
-   * Pure CSS settle: proximity snap + scroll-behavior smooth. No JS scroll controller.
+   * Scroll settle (smooth + proximity snap) lives in unlayered rules at file end — Tailwind v4
+   * layers strip/bury @layer base scroll-* (computed scroll-behavior was auto without unlayered).
    * overflow-x: clip — page-level guard; clips slide-in transforms + header cloud pseudo overflow.
    */
   html {
     @apply font-sans;
     overflow-anchor: none;
     overflow-x: clip;
-    /* Sticky header (h-16) — snap targets land below header without end re-correction */
-    scroll-padding-top: 4rem;
-  }
-
-  /* Smooth glide for snap settle + anchor links — all pointers when motion allowed */
-  @media (prefers-reduced-motion: no-preference) {
-    html {
-      scroll-behavior: smooth;
-    }
-  }
-
-  /* Proximity snap — fine pointer only; assists near boundaries, does not trap */
-  @media (pointer: fine) and (prefers-reduced-motion: no-preference) {
-    html {
-      scroll-snap-type: y proximity;
-    }
   }
 
   @media (prefers-reduced-motion: reduce) {
     html {
-      scroll-snap-type: none;
       scroll-behavior: auto;
     }
   }
@@ -926,10 +910,34 @@
 }
 
 /*
- * Horizontal overflow guard — unlayered so Tailwind v4 emits it on the document root.
+ * Document scroll + overflow — unlayered so Tailwind v4 emits on html (layers bury @layer base).
  * html is the vertical + horizontal scroll owner (main scrollWidth matches clientWidth).
  */
 html,
 body {
   overflow-x: clip;
+}
+
+html {
+  scroll-padding-top: 4rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Proximity only — assists near boundaries, does not trap; fine pointer desktop */
+  @media (pointer: fine) {
+    html {
+      scroll-snap-type: y proximity;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+    scroll-snap-type: none;
+  }
 }
