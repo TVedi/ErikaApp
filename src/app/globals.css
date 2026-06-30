@@ -947,7 +947,7 @@ body,
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  background-image: var(--magyarock-brighten-lift), url("/piros kajak.png");
+  background-image: var(--magyarock-brighten-lift), url("/steg.png");
   background-size: cover;
   background-position: center 28%;
   background-repeat: no-repeat;
