@@ -21,7 +21,7 @@ export function CredentialsList({
           className={
             variant === "compact"
               ? "flex items-start gap-3"
-              : "rounded-xl border border-border bg-card p-5 shadow-sm"
+              : "program-card-glass rounded-xl p-5"
           }
         >
           {variant === "compact" ? (

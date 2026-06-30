@@ -108,6 +108,7 @@
   --photo-letterbox: #0a0a0a;
   --photo-scrim-strong: rgba(0, 0, 0, 0.75);
   --photo-scrim-soft: rgba(0, 0, 0, 0.35);
+  --photo-vibrance-filter: brightness(1.14) saturate(1.1) contrast(1.02);
 
   /* Legacy token names (propagate via Tailwind utilities) */
   --navy: var(--brand-base);
@@ -449,7 +450,7 @@
    * Camps and other photo bands keep the default full .hero-text-overlay above.
    */
   .home-hero > .absolute.inset-0.overflow-hidden img {
-    filter: brightness(1.14) saturate(1.1) contrast(1.02);
+    filter: var(--photo-vibrance-filter);
   }
 
   .home-hero .hero-text-overlay {
@@ -594,41 +595,52 @@
     isolation: isolate;
     overflow-anchor: none;
     background-color: var(--brand-base-deep);
-    background-image: url("/magyarock.png");
-    background-size: cover;
-    background-position: center 28%;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
   }
 
+  /* magyarock.png — same vibrance as hero; filter requires pseudo layer */
   .section-coaching-fixed-bg::before {
     content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
     z-index: 0;
+    background-image: url("/magyarock.png");
+    background-size: cover;
+    background-position: center 28%;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    filter: var(--photo-vibrance-filter);
+  }
+
+  /* Scrim between bright magyarock and glass cards — tuned for readability */
+  .section-coaching-fixed-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
     background: linear-gradient(
       180deg,
-      rgba(0, 0, 0, 0.58) 0%,
-      rgba(0, 0, 0, 0.48) 42%,
-      rgba(0, 0, 0, 0.62) 100%
+      rgba(0, 0, 0, 0.62) 0%,
+      rgba(0, 0, 0, 0.5) 42%,
+      rgba(0, 0, 0, 0.66) 100%
     );
   }
 
   .section-coaching-fixed-bg > * {
     position: relative;
-    z-index: 1;
+    z-index: 2;
   }
 
   /* Desktop fine pointer: pinned background reveal while content scrolls over */
   @media (min-width: 1024px) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-    .section-coaching-fixed-bg {
+    .section-coaching-fixed-bg::before {
       background-attachment: fixed;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .section-coaching-fixed-bg {
+    .section-coaching-fixed-bg::before {
       background-attachment: scroll;
     }
   }

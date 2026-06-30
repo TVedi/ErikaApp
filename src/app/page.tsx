@@ -171,7 +171,7 @@ export default async function HomePage() {
           <div className="mt-8 space-y-4">
             {faq.items.map((item, i) => (
               <ScrollReveal key={item.question} delayMs={i * 70}>
-                <div className="rounded-xl border border-border bg-card p-6 shadow-sm">
+                <div className="program-card-glass rounded-xl p-6">
                   <h3 className="font-semibold text-foreground">{item.question}</h3>
                   <p className="mt-2 text-sm text-muted-foreground">{item.answer}</p>
                 </div>
