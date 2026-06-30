@@ -109,6 +109,13 @@
   --photo-scrim-strong: rgba(0, 0, 0, 0.75);
   --photo-scrim-soft: rgba(0, 0, 0, 0.35);
   --photo-vibrance-filter: brightness(1.14) saturate(1.1) contrast(1.02);
+  /* White lift over magyarock — brightness that works with background-attachment: fixed */
+  --magyarock-brighten-lift: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.14) 0%,
+    rgba(255, 255, 255, 0.07) 45%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
 
   /* Legacy token names (propagate via Tailwind utilities) */
   --navy: var(--brand-base);
@@ -597,52 +604,11 @@
     background-color: var(--brand-base-deep);
   }
 
-  /* magyarock.png — same vibrance as hero; filter requires pseudo layer */
-  .section-coaching-fixed-bg::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    background-image: url("/magyarock.png");
-    background-size: cover;
-    background-position: center 28%;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    filter: var(--photo-vibrance-filter);
-  }
-
-  /* Scrim between bright magyarock and glass cards — tuned for readability */
-  .section-coaching-fixed-bg::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 1;
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.62) 0%,
-      rgba(0, 0, 0, 0.5) 42%,
-      rgba(0, 0, 0, 0.66) 100%
-    );
-  }
+  /* magyarock layers — full paint rules unlayered at file end (fixed + filter + scrim) */
 
   .section-coaching-fixed-bg > * {
     position: relative;
     z-index: 2;
-  }
-
-  /* Desktop fine pointer: pinned background reveal while content scrolls over */
-  @media (min-width: 1024px) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-    .section-coaching-fixed-bg::before {
-      background-attachment: fixed;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .section-coaching-fixed-bg::before {
-      background-attachment: scroll;
-    }
   }
 
   @media (max-width: 1023px) {
@@ -952,4 +918,49 @@ body,
   pointer-events: none;
   z-index: 0;
   background: var(--brand-emerald-unified-radiance);
+}
+
+/*
+ * MAGYAROCK fixed bg — UNLAYERED (Tailwind layers + fixed/filter quirks).
+ * ::before = image-only layer: white lift gradient + saturate/contrast (fixed-safe).
+ * ::after  = lighter scrim so brightening is visible; glass cards stay readable.
+ */
+.section-coaching-fixed-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: var(--magyarock-brighten-lift), url("/magyarock.png");
+  background-size: cover;
+  background-position: center 28%;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  filter: saturate(1.1) contrast(1.02);
+}
+
+.section-coaching-fixed-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.36) 0%,
+    rgba(0, 0, 0, 0.24) 42%,
+    rgba(0, 0, 0, 0.38) 100%
+  );
+}
+
+@media (min-width: 1024px) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .section-coaching-fixed-bg::before {
+    background-attachment: fixed;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-coaching-fixed-bg::before {
+    background-attachment: scroll;
+  }
 }
