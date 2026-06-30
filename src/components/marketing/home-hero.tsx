@@ -10,7 +10,7 @@ import { brand, cta, hero } from "@/content/copy";
 export function HomeHero() {
   return (
     <section
-      className="section-screen relative w-full"
+      className="home-hero section-screen relative w-full"
       aria-label="Hero"
     >
       <HeroSlideshowBackground />
