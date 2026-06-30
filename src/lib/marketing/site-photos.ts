@@ -57,6 +57,13 @@ export const sitePhotos = {
     width: 4000,
     height: 2667,
   },
+  coachedByOlympicBackground: {
+    src: "/gyerek.png",
+    alt: "Young athlete paddling a kayak on the water",
+    objectPosition: "left center",
+    width: 1536,
+    height: 1024,
+  },
   whoItsFor: {
     src: "/DSC09954[1].jpg",
     alt: "Erika Medveczky coaching on the water",

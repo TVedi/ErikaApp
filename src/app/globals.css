@@ -680,8 +680,83 @@
     overflow-anchor: none;
   }
 
-  .section-camps.section-screen-center > .section-screen-inner {
+  .section-camps.section-screen-center > .section-screen-inner,
+  .section-about-olympic.section-screen-center > .section-screen-inner {
     min-height: 0;
+  }
+
+  /* Coached by Olympic experience — bright gyerek.png Ken-Burns + localized scrim */
+  .section-about-olympic {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    overflow-anchor: none;
+  }
+
+  .section-about-olympic .about-olympic-photo {
+    filter: var(--photo-vibrance-filter);
+  }
+
+  .section-about-olympic .about-olympic-text-scrim {
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.58) 0%,
+      rgba(0, 0, 0, 0.38) 22%,
+      rgba(0, 0, 0, 0.12) 42%,
+      transparent 58%
+    );
+  }
+
+  @media (min-width: 768px) {
+    .section-about-olympic .about-olympic-text-scrim {
+      background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.72) 0%,
+        rgba(0, 0, 0, 0.48) 18%,
+        rgba(0, 0, 0, 0.22) 32%,
+        rgba(0, 0, 0, 0.06) 42%,
+        transparent 52%
+      );
+    }
+  }
+
+  /* About Erika CTA — over open water, right of the child (tune top/left/right) */
+  .section-about-olympic .about-olympic-cta {
+    position: absolute;
+    z-index: 20;
+    top: 34%;
+    left: 58%;
+    min-height: 2.875rem;
+    padding: 0.625rem 1.625rem;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+  }
+
+  @media (max-width: 767px) {
+    .section-about-olympic .about-olympic-cta {
+      top: auto;
+      left: 50%;
+      right: auto;
+      bottom: 18%;
+      transform: translateX(-50%);
+      min-height: 3rem;
+      padding: 0.75rem 1.75rem;
+      font-size: 1.0625rem;
+    }
+
+    .section-about-olympic .about-olympic-text-scrim {
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.62) 0%,
+        rgba(0, 0, 0, 0.34) 28%,
+        rgba(0, 0, 0, 0.08) 48%,
+        transparent 62%
+      );
+    }
   }
 
   .section-cream > *,

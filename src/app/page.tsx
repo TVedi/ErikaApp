@@ -1,10 +1,9 @@
 import { PublicLayout } from "@/components/layout/public-layout";
-import { CredentialsList } from "@/components/credentials-list";
 import { WaitlistForm } from "@/components/waitlist-form";
 import { LinkButton } from "@/components/ui/link-button";
-import { MarketingPhoto } from "@/components/marketing/marketing-photo";
 // import { PhotoBand } from "@/components/marketing/photo-band";
 import { HomeHero } from "@/components/marketing/home-hero";
+import { AboutOlympicSection } from "@/components/marketing/about-olympic-section";
 import { CampsSection } from "@/components/marketing/camps-section";
 import { HowItWorksSection } from "@/components/marketing/how-it-works-section";
 import { VideoAnalysisSection } from "@/components/marketing/video-analysis-section";
@@ -97,35 +96,7 @@ export default async function HomePage() {
 
       <CampsSection />
 
-      {/* About preview + credentials */}
-      <section className="section-navy-soft section-atmo-glow-alt section-screen section-screen-center section-pad w-full">
-        <div className="section-screen-inner mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
-            <ScrollReveal>
-              <div>
-                <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
-                  {launch.aboutPreview.title}
-                </h2>
-                <p className="mt-4 text-muted-foreground leading-relaxed">
-                  {launch.aboutPreview.body}
-                </p>
-                <p className="mt-4 text-xs text-muted-foreground">
-                  {launch.aboutPreview.credentialNote}
-                </p>
-                <LinkButton href="/about" variant="outline" className="mt-6 border-foreground/25 text-foreground">
-                  About Erika
-                </LinkButton>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delayMs={120}>
-              <MarketingPhoto photo={sitePhotos.aboutPortrait} variant="portrait" />
-            </ScrollReveal>
-          </div>
-          <ScrollReveal className="mt-12">
-            <CredentialsList credentials={allCredentials} />
-          </ScrollReveal>
-        </div>
-      </section>
+      <AboutOlympicSection credentials={allCredentials} />
 
       {/* Testimonials placeholder */}
       <section className="section-emerald-surface section-screen section-screen-center section-pad w-full">
