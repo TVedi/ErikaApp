@@ -13,19 +13,19 @@ export function SiteHeader() {
           </span>
         </Link>
         <nav className="hidden items-center gap-6 text-sm font-medium text-muted-foreground lg:flex">
-          <Link href="/" className="transition-colors hover:text-accent-turquoise">
+          <Link href="/" className="text-link-coral">
             {nav.home}
           </Link>
-          <Link href="/about" className="transition-colors hover:text-accent-turquoise">
+          <Link href="/about" className="text-link-coral">
             {nav.about}
           </Link>
-          <Link href="/pricing" className="transition-colors hover:text-accent-turquoise">
+          <Link href="/pricing" className="text-link-coral">
             {nav.programs}
           </Link>
-          <Link href="/camps" className="transition-colors hover:text-accent-turquoise">
+          <Link href="/camps" className="text-link-coral">
             {nav.camps}
           </Link>
-          <Link href="/apply" className="transition-colors hover:text-accent-turquoise">
+          <Link href="/apply" className="text-link-coral">
             {nav.apply}
           </Link>
         </nav>

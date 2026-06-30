@@ -105,7 +105,7 @@ export function SignupForm() {
         </form>
         <p className="mt-4 text-center text-sm text-muted-foreground">
           {auth.hasAccount}{" "}
-          <Link href="/login" className="font-medium text-foreground hover:underline">
+          <Link href="/login" className="text-link-coral font-medium text-foreground hover:underline">
             {auth.loginLink}
           </Link>
         </p>

@@ -785,6 +785,22 @@
     }
   }
 
+  /* Navigating text links — coral hover/focus (not buttons) */
+  .text-link-coral {
+    transition: color 0.2s ease;
+  }
+
+  .text-link-coral:hover {
+    color: var(--brand-coral);
+  }
+
+  .text-link-coral:focus-visible {
+    color: var(--brand-coral);
+    outline: 2px solid color-mix(in srgb, var(--brand-coral) 75%, white);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
   .photo-band-overlay {
     background: linear-gradient(
       to right,

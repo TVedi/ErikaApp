@@ -24,19 +24,19 @@ export function SiteFooter() {
             </div>
           </div>
           <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
-            <Link href="/camps" className="text-muted-foreground transition-colors hover:text-accent-turquoise">
+            <Link href="/camps" className="text-link-coral text-muted-foreground">
               {footer.camps}
             </Link>
-            <Link href="/medical-disclaimer" className="text-muted-foreground transition-colors hover:text-accent-turquoise">
+            <Link href="/medical-disclaimer" className="text-link-coral text-muted-foreground">
               {footer.medical}
             </Link>
-            <Link href="/privacy" className="text-muted-foreground transition-colors hover:text-accent-turquoise">
+            <Link href="/privacy" className="text-link-coral text-muted-foreground">
               {footer.privacy}
             </Link>
-            <Link href="/terms" className="text-muted-foreground transition-colors hover:text-accent-turquoise">
+            <Link href="/terms" className="text-link-coral text-muted-foreground">
               {footer.terms}
             </Link>
-            <Link href="/refund-policy" className="text-muted-foreground transition-colors hover:text-accent-turquoise">
+            <Link href="/refund-policy" className="text-link-coral text-muted-foreground">
               {footer.refund}
             </Link>
           </div>

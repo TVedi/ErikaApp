@@ -205,7 +205,7 @@ export function ApplyForm({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
           />
           <span>
             {applyCopy.checkboxes.privacyPrefix}{" "}
-            <Link href="/privacy" className="font-medium text-foreground underline">
+            <Link href="/privacy" className="text-link-coral font-medium text-foreground underline">
               Privacy Policy
             </Link>
             .

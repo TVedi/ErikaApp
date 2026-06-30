@@ -53,7 +53,7 @@ export function LoginForm() {
         </form>
         <p className="mt-4 text-center text-sm text-muted-foreground">
           {auth.noAccount}{" "}
-          <Link href="/signup" className="font-medium text-foreground hover:underline">
+          <Link href="/signup" className="text-link-coral font-medium text-foreground hover:underline">
             {auth.signupLink}
           </Link>
         </p>
