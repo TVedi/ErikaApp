@@ -22,7 +22,7 @@ export function WhoItsForSection() {
               src={photo.src}
               alt={photo.alt}
               fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
+              sizes="(max-width: 1023px) 100vw, 38vw"
               className="object-cover"
               style={{ objectPosition: photo.objectPosition }}
             />
@@ -42,7 +42,7 @@ export function WhoItsForSection() {
           <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:mt-10">
             {launch.whoItsFor.audiences.map((item, i) => (
               <ScrollReveal key={item} delayMs={i * 70}>
-                <div className="program-card-glass h-full rounded-xl border-l-[3px] border-l-accent-turquoise p-4">
+                <div className="audience-card-quiet h-full rounded-xl p-4">
                   <p className="font-display text-base font-medium leading-snug text-foreground sm:text-[1.05rem]">
                     {item}
                   </p>

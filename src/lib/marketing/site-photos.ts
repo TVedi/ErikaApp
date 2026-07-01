@@ -58,11 +58,11 @@ export const sitePhotos = {
     height: 2667,
   },
   coachedByOlympicBackground: {
-    src: "/gyerek.png",
+    src: "/piros kajak.png",
     alt: "Young athlete paddling a kayak on the water",
     objectPosition: "left center",
-    width: 1536,
-    height: 1024,
+    width: 1672,
+    height: 941,
   },
   whoItsFor: {
     src: "/DSC09954[1].jpg",

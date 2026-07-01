@@ -66,31 +66,22 @@
   --brand-base-muted: #156860;
   --brand-base-deep: #0c4843;
   /*
-   * Unified site emerald — matches nav (.site-header-premium) reference.
-   * Applied unlayered to nav + all section-* backgrounds (see file end).
+   * Restrained emerald tonal system — canvas/surface/raised; #187870 highlight only.
+   * One continuous main canvas; section aliases stay transparent over it.
    */
-  --brand-emerald-unified: #0c4843;
-  --brand-emerald-unified-blend: #156860;
-  --brand-emerald-unified-glow: #1f9188;
+  --emerald-canvas: #062f2b;
+  --emerald-surface: #0c4843;
+  --emerald-raised: #10544d;
+  --emerald-highlight: #187870;
+  --brand-emerald-unified: var(--emerald-surface);
+  --brand-emerald-unified-blend: #10544d;
+  --brand-emerald-unified-glow: #187870;
   --brand-emerald-unified-surface: linear-gradient(
       180deg,
-      color-mix(in srgb, var(--brand-emerald-unified-blend) 62%, var(--brand-emerald-unified))
-        0%,
-      var(--brand-emerald-unified) 54%,
-      color-mix(in srgb, var(--brand-emerald-unified) 80%, transparent) 90%,
-      color-mix(in srgb, var(--brand-emerald-unified) 34%, transparent) 100%
-    ),
-    radial-gradient(
-      ellipse 125% 90% at 15% -40%,
-      color-mix(in srgb, var(--brand-emerald-unified-glow) 30%, transparent) 0%,
-      transparent 60%
+      color-mix(in srgb, var(--emerald-raised) 40%, var(--emerald-surface)) 0%,
+      var(--emerald-surface) 100%
     );
-  --brand-emerald-unified-radiance: radial-gradient(
-    ellipse 125% 90% at 15% -8%,
-    color-mix(in srgb, var(--brand-emerald-unified-glow) 22%, transparent) 0%,
-    color-mix(in srgb, var(--brand-emerald-unified-glow) 8%, transparent) 42%,
-    transparent 68%
-  );
+  --brand-emerald-unified-radiance: none;
   /* Legacy aliases — all resolve to nav-matched unified emerald */
   --brand-emerald-radiant: var(--brand-emerald-unified);
   --brand-emerald-radiant-light: var(--brand-emerald-unified-glow);
@@ -137,7 +128,7 @@
   --hero-bg: var(--photo-letterbox);
   --hero-headline: var(--text-on-base);
   --hero-subhead: var(--text-on-base-muted);
-  --background: var(--brand-emerald-unified);
+  --background: var(--emerald-canvas);
   --foreground: var(--text-on-base);
   --card: color-mix(in srgb, var(--brand-base-light) 55%, var(--brand-base-muted));
   --card-foreground: var(--text-on-base);
@@ -244,7 +235,7 @@
 
   @media (min-width: 1024px) {
     .split-screen-grid {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 62fr 38fr;
       align-items: stretch;
     }
   }
@@ -265,13 +256,18 @@
   @media (min-width: 1024px) {
     .split-screen-content-col {
       min-height: 100%;
-      padding: 3rem 2rem;
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+      padding-right: 2rem;
+      padding-left: max(1.5rem, calc((100vw - 72rem) / 2 + 1.5rem));
     }
   }
 
   @media (min-width: 1280px) {
     .split-screen-content-col {
-      padding: 3.5rem 2.5rem;
+      padding-top: 3.5rem;
+      padding-bottom: 3.5rem;
+      padding-right: 2.5rem;
     }
   }
 
@@ -285,6 +281,7 @@
     .section-screen .split-screen-photo-col {
       min-height: 100%;
       height: auto;
+      overflow: hidden;
     }
   }
 
@@ -625,39 +622,16 @@
   .section-cream,
   .section-navy-soft,
   .section-emerald-surface {
-    --split-feather-tone: color-mix(
-      in srgb,
-      var(--brand-emerald-unified) 92%,
-      var(--brand-emerald-unified-blend)
-    );
     position: relative;
     isolation: isolate;
     overflow-anchor: none;
   }
 
-  /* Atmospheric grain + glow — ::before grain, ::after soft luminance */
+  /* Section grain/radiance removed — continuous main canvas (see unlayered rules) */
   .section-cream::before,
   .section-navy-soft::before,
   .section-emerald-surface::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.038;
-    mix-blend-mode: soft-light;
-    background-image: repeating-linear-gradient(
-        0deg,
-        rgba(255, 255, 255, 0.04) 0px,
-        transparent 1px,
-        transparent 2px
-      ),
-      repeating-linear-gradient(
-        90deg,
-        rgba(0, 0, 0, 0.05) 0px,
-        transparent 1px,
-        transparent 3px
-      );
+    content: none;
   }
 
   /* Section ::after radiance — unified unlayered at file end (layered rules removed) */
@@ -694,7 +668,7 @@
   }
 
   .section-about-olympic .about-olympic-photo {
-    filter: var(--photo-vibrance-filter);
+    filter: brightness(1.08) saturate(1.1) contrast(1.02);
   }
 
   .section-about-olympic .about-olympic-text-scrim {
@@ -796,24 +770,35 @@
     .split-photo-mask {
       -webkit-mask-image: linear-gradient(
         to right,
-        transparent 0%,
-        rgba(0, 0, 0, 0.12) 6%,
-        rgba(0, 0, 0, 0.38) 14%,
-        rgba(0, 0, 0, 0.68) 22%,
-        rgba(0, 0, 0, 0.9) 28%,
-        black 32%,
+        transparent 0,
+        rgba(0, 0, 0, 0.2) 24px,
+        rgba(0, 0, 0, 0.55) 52px,
+        rgba(0, 0, 0, 0.85) 80px,
+        black 100px,
         black 100%
       );
       mask-image: linear-gradient(
         to right,
-        transparent 0%,
-        rgba(0, 0, 0, 0.12) 6%,
-        rgba(0, 0, 0, 0.38) 14%,
-        rgba(0, 0, 0, 0.68) 22%,
-        rgba(0, 0, 0, 0.9) 28%,
-        black 32%,
+        transparent 0,
+        rgba(0, 0, 0, 0.2) 24px,
+        rgba(0, 0, 0, 0.55) 52px,
+        rgba(0, 0, 0, 0.85) 80px,
+        black 100px,
         black 100%
       );
+    }
+  }
+
+  /* Audience cards — quiet raised surface (Who this is for) */
+  .audience-card-quiet {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: color-mix(in srgb, var(--emerald-raised) 58%, transparent);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.14);
+  }
+
+  @supports not (color: color-mix(in srgb, white, black)) {
+    .audience-card-quiet {
+      background: rgba(16, 84, 77, 0.72);
     }
   }
 
@@ -988,27 +973,39 @@ html {
 }
 
 /*
- * Unified radiant emerald — UNLAYERED so Tailwind v4 cannot strip/override.
- * Nav + body + every section-* alias share the exact same surface + radiance.
+ * Continuous emerald canvas on main; nav flat surface; section aliases transparent.
+ * Photo-background sections (hero, camps, coaching fixed, about-olympic) stay exceptions.
  */
-body,
-.site-header-premium,
+body {
+  background-color: var(--emerald-canvas);
+}
+
+.main-scroll-surface {
+  background-color: var(--emerald-canvas);
+  background-image: linear-gradient(
+    180deg,
+    var(--emerald-canvas) 0%,
+    color-mix(in srgb, var(--emerald-surface) 88%, var(--emerald-canvas)) 55%,
+    var(--emerald-surface) 100%
+  );
+}
+
+.site-header-premium {
+  background-color: var(--emerald-surface);
+  background-image: none;
+}
+
 .section-cream,
 .section-navy-soft,
 .section-emerald-surface {
-  background-color: var(--brand-emerald-unified);
-  background-image: var(--brand-emerald-unified-surface);
+  background-color: transparent;
+  background-image: none;
 }
 
 .section-cream::after,
 .section-navy-soft::after,
 .section-emerald-surface::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background: var(--brand-emerald-unified-radiance);
+  content: none;
 }
 
 /*

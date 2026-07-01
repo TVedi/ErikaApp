@@ -102,7 +102,7 @@ export function VideoAnalysisSection() {
               src={photo.src}
               alt={photo.alt}
               fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
+              sizes="(max-width: 1023px) 100vw, 38vw"
               className="object-cover"
               style={{ objectPosition: photo.objectPosition }}
             />
