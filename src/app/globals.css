@@ -202,11 +202,7 @@
   }
   body {
     @apply bg-background text-foreground font-sans;
-    overflow-anchor: none;
     overflow-x: clip;
-  }
-  main.main-scroll-surface {
-    overflow-anchor: none;
   }
 
   /*
@@ -217,7 +213,6 @@
    */
   html {
     @apply font-sans;
-    overflow-anchor: none;
     overflow-x: clip;
   }
 
@@ -235,7 +230,7 @@
 
   @media (min-width: 1024px) {
     .split-screen-grid {
-      grid-template-columns: 62fr 38fr;
+      grid-template-columns: 1fr 1fr;
       align-items: stretch;
     }
   }
@@ -274,7 +269,6 @@
   .split-screen-photo-col {
     position: relative;
     min-height: min(48vh, 400px);
-    overflow-anchor: none;
   }
 
   @media (min-width: 1024px) {
@@ -495,9 +489,6 @@
   .hero-viewport-min {
     min-height: calc(100vh - 4rem);
     min-height: calc(100dvh - 4rem);
-    scroll-snap-align: start;
-    scroll-snap-stop: normal;
-    overflow-anchor: none;
   }
 
   .section-screen-center {
@@ -530,26 +521,13 @@
     min-height: 0;
   }
 
-  /* Coaching options — fixed magyarock reveal (desktop); snap excepted for smooth scroll-through */
-  .section-coaching-options.section-screen {
-    scroll-snap-align: none;
-  }
-
-  /* Video analysis — hybrid snap: start when settled, off during slide-in replay */
+  /* Video analysis — slide-in replay; overflow clipped for transforms */
   .section-video-analysis {
     overflow-x: clip;
   }
 
   .section-video-analysis .split-screen-grid {
     overflow-x: clip;
-  }
-
-  .section-video-analysis.section-screen {
-    scroll-snap-align: start;
-  }
-
-  .section-video-analysis.section-screen.video-analysis-snap-off {
-    scroll-snap-align: none;
   }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -601,8 +579,6 @@
     background-color: var(--brand-base-deep);
   }
 
-  /* magyarock layers — full paint rules unlayered at file end (fixed + filter + scrim) */
-
   .section-coaching-fixed-bg > * {
     position: relative;
     z-index: 2;
@@ -624,7 +600,6 @@
   .section-emerald-surface {
     position: relative;
     isolation: isolate;
-    overflow-anchor: none;
   }
 
   /* Section grain/radiance removed — continuous main canvas (see unlayered rules) */
@@ -651,7 +626,6 @@
     position: relative;
     isolation: isolate;
     overflow: hidden;
-    overflow-anchor: none;
   }
 
   .section-camps.section-screen-center > .section-screen-inner,
@@ -659,12 +633,11 @@
     min-height: 0;
   }
 
-  /* Coached by Olympic experience — bright gyerek.png Ken-Burns + localized scrim */
+  /* Coached by Olympic experience — gyerek Ken-Burns + localized scrim */
   .section-about-olympic {
     position: relative;
     isolation: isolate;
     overflow: hidden;
-    overflow-anchor: none;
   }
 
   .section-about-olympic .about-olympic-photo {
@@ -771,19 +744,19 @@
       -webkit-mask-image: linear-gradient(
         to right,
         transparent 0,
-        rgba(0, 0, 0, 0.2) 24px,
-        rgba(0, 0, 0, 0.55) 52px,
-        rgba(0, 0, 0, 0.85) 80px,
-        black 100px,
+        rgba(0, 0, 0, 0.2) 16px,
+        rgba(0, 0, 0, 0.55) 34px,
+        rgba(0, 0, 0, 0.85) 50px,
+        black 64px,
         black 100%
       );
       mask-image: linear-gradient(
         to right,
         transparent 0,
-        rgba(0, 0, 0, 0.2) 24px,
-        rgba(0, 0, 0, 0.55) 52px,
-        rgba(0, 0, 0, 0.85) 80px,
-        black 100px,
+        rgba(0, 0, 0, 0.2) 16px,
+        rgba(0, 0, 0, 0.55) 34px,
+        rgba(0, 0, 0, 0.85) 50px,
+        black 64px,
         black 100%
       );
     }
@@ -950,26 +923,7 @@ body {
 
 html {
   scroll-padding-top: 4rem;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
-
-  /* Proximity only — assists near boundaries, does not trap; fine pointer desktop */
-  @media (pointer: fine) {
-    html {
-      scroll-snap-type: y proximity;
-    }
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-    scroll-snap-type: none;
-  }
+  scroll-behavior: auto;
 }
 
 /*

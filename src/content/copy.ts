@@ -117,7 +117,7 @@ export const launch = {
   aboutPreview: {
     title: "Coached by Olympic experience",
     body:
-      "Hungarian Olympic sprint kayaker and elite coach Erika Medveczky brings world-class kayak knowledge to athletes in the U.S. and worldwide.",
+      "Hungarian Olympic sprint kayaker and elite coach Erika Medveczky brings world-class kayak knowledge to athletes in the U.S. and worldwide",
     credentialNote:
       "Credentials below are loaded from the database and editable without code changes.",
   },

@@ -7,12 +7,8 @@ import { sitePhotos } from "@/lib/marketing/site-photos";
 
 const photo = sitePhotos.videoAnalysis1Kep;
 
-/** Matches CSS: 1.1s transition + 150ms delay on the right slide. */
-const SLIDE_IN_MS = 1250;
-
 /**
- * Split-screen video analysis — replays slide-in on each viewport entry;
- * hybrid snap (off during animation, on after complete).
+ * Split-screen video analysis — replays slide-in on each viewport entry.
  */
 export function VideoAnalysisSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -26,36 +22,15 @@ export function VideoAnalysisSection() {
       return;
     }
 
-    let snapTimer: number | null = null;
-
-    const clearSnapTimer = () => {
-      if (snapTimer !== null) {
-        window.clearTimeout(snapTimer);
-        snapTimer = null;
-      }
-    };
-
-    const enableSnapAfterAnimation = () => {
-      clearSnapTimer();
-      snapTimer = window.setTimeout(() => {
-        section.classList.remove("video-analysis-snap-off");
-        snapTimer = null;
-      }, SLIDE_IN_MS);
-    };
-
     const resetEntrance = () => {
-      clearSnapTimer();
       section.classList.remove("video-analysis-assembled");
-      section.classList.add("video-analysis-snap-off");
     };
 
     const startEntrance = () => {
-      section.classList.add("video-analysis-snap-off");
       section.classList.remove("video-analysis-assembled");
       void section.offsetHeight;
       requestAnimationFrame(() => {
         section.classList.add("video-analysis-assembled");
-        enableSnapAfterAnimation();
       });
     };
 
@@ -84,14 +59,13 @@ export function VideoAnalysisSection() {
 
     return () => {
       observer.disconnect();
-      clearSnapTimer();
     };
   }, []);
 
   return (
     <section
       ref={sectionRef}
-      className="section-video-analysis section-cream section-atmo-glow-alt section-screen section-screen-center video-analysis-snap-off w-full"
+      className="section-video-analysis section-cream section-atmo-glow-alt section-screen section-screen-center w-full"
       aria-labelledby="video-analysis-heading"
     >
       <div className="split-screen-grid">
@@ -102,7 +76,7 @@ export function VideoAnalysisSection() {
               src={photo.src}
               alt={photo.alt}
               fill
-              sizes="(max-width: 1023px) 100vw, 38vw"
+              sizes="(max-width: 1023px) 100vw, 50vw"
               className="object-cover"
               style={{ objectPosition: photo.objectPosition }}
             />

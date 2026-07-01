@@ -22,7 +22,7 @@ export function HowItWorksSection() {
               src={photo.src}
               alt={photo.alt}
               fill
-              sizes="(max-width: 1023px) 100vw, 38vw"
+              sizes="(max-width: 1023px) 100vw, 50vw"
               className="object-cover"
               style={{ objectPosition: photo.objectPosition }}
             />

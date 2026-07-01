@@ -94,9 +94,9 @@ export default async function HomePage() {
       />
       */}
 
-      <CampsSection />
-
       <AboutOlympicSection credentials={allCredentials} />
+
+      <CampsSection />
 
       {/* Testimonials placeholder */}
       <section className="section-emerald-surface section-screen section-screen-center section-pad w-full">
