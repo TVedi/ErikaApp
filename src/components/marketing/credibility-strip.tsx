@@ -10,7 +10,7 @@ export function CredibilityStrip({
 }) {
   const pillClass =
     variant === "hero"
-      ? "rounded-full border border-white/20 bg-white/5 px-3 py-1 text-xs font-medium text-white/90"
+      ? "rounded-full border border-white/20 bg-white/5 px-3 py-1 text-xs font-medium text-white"
       : "rounded-full border border-border bg-muted/50 px-3 py-1 text-xs font-medium text-foreground";
 
   return (

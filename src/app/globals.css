@@ -91,9 +91,9 @@
   --brand-turquoise: #1abc9c;
   --brand-turquoise-hover: #16a689;
 
-  /* Text on emerald base surfaces */
-  --text-on-base: #f5f2ea;
-  --text-on-base-muted: #c5d4d0;
+  /* Text on emerald base surfaces — crisp pure white (no muted grey) */
+  --text-on-base: #ffffff;
+  --text-on-base-muted: #ffffff;
 
   /* Photo layers — neutral only (never tint photos with brand green) */
   --photo-letterbox: #0a0a0a;
@@ -772,6 +772,128 @@
   @supports not (color: color-mix(in srgb, white, black)) {
     .audience-card-quiet {
       background: rgba(16, 84, 77, 0.72);
+    }
+  }
+
+  /*
+   * Achievement cards — medal-coded (Where Experience Comes From).
+   * Body matches the quiet emerald card; the medal reads from a restrained
+   * accent only: 1px tinted border + gradient medal dot + faint corner tint.
+   */
+  .achievement-card {
+    position: relative;
+    border: 1px solid color-mix(in srgb, var(--medal) 38%, transparent);
+    background:
+      linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--medal) 7%, transparent),
+        transparent 46%
+      ),
+      color-mix(in srgb, var(--emerald-raised) 58%, transparent);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.14);
+  }
+
+  @supports not (color: color-mix(in srgb, white, black)) {
+    .achievement-card {
+      background: rgba(16, 84, 77, 0.72);
+      border-color: rgba(255, 255, 255, 0.14);
+    }
+  }
+
+  .achievement-medal-dot {
+    width: 0.625rem;
+    height: 0.625rem;
+    flex-shrink: 0;
+    border-radius: 9999px;
+    background: radial-gradient(
+      circle at 32% 30%,
+      var(--medal-hi),
+      var(--medal) 62%,
+      var(--medal-lo)
+    );
+    box-shadow: 0 0 6px color-mix(in srgb, var(--medal) 50%, transparent);
+  }
+
+  /* Patina/antique gold — champagne, not garish yellow (uniform on all cards) */
+  .achievement-gold {
+    --medal: #c2a14d;
+    --medal-hi: #ecd9a0;
+    --medal-lo: #8a6d2f;
+  }
+
+  /* Featured pinnacle — richest (still patina) gold: glow + inner highlight */
+  .achievement-olympic {
+    --medal: #cbaa5b;
+    --medal-hi: #f3e3b0;
+    --medal-lo: #93733a;
+    border-color: color-mix(in srgb, var(--medal) 62%, transparent);
+    background:
+      linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--medal) 13%, transparent),
+        transparent 58%
+      ),
+      color-mix(in srgb, var(--emerald-raised) 62%, transparent);
+    box-shadow:
+      0 4px 18px rgba(0, 0, 0, 0.2),
+      0 0 22px color-mix(in srgb, var(--medal) 15%, transparent),
+      0 1px 0 color-mix(in srgb, var(--medal) 32%, transparent) inset;
+  }
+
+  .achievement-olympic .achievement-medal-dot {
+    width: 0.8125rem;
+    height: 0.8125rem;
+    box-shadow: 0 0 10px color-mix(in srgb, var(--medal) 65%, transparent);
+  }
+
+  /* Gold shimmer hover — gentle lift + one faint gold sheen sweep (hover-capable only) */
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .achievement-card {
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+      will-change: transform;
+    }
+
+    .achievement-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      opacity: 0;
+      background: linear-gradient(
+        105deg,
+        transparent 42%,
+        color-mix(in srgb, var(--medal-hi) 14%, transparent) 50%,
+        transparent 58%
+      );
+      background-size: 250% 100%;
+      background-position: 130% 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .achievement-card:hover {
+      transform: translate3d(0, -3px, 0);
+      border-color: color-mix(in srgb, var(--medal) 56%, transparent);
+      box-shadow:
+        0 8px 22px rgba(0, 0, 0, 0.24),
+        0 0 14px color-mix(in srgb, var(--medal) 18%, transparent);
+    }
+
+    .achievement-card:hover::after {
+      opacity: 1;
+      animation: achievement-gold-sheen 1.2s ease-out forwards;
+    }
+
+    @keyframes achievement-gold-sheen {
+      from {
+        background-position: 130% 0;
+      }
+      to {
+        background-position: -50% 0;
+      }
     }
   }
 

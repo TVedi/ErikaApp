@@ -25,14 +25,17 @@ export const hero = {
 
 export const launch = {
   whoItsFor: {
-    title: "Who this is for",
-    audiences: [
-      "Competitive junior kayakers",
-      "Ambitious club athletes",
-      "Masters paddlers",
-      "Parents and coaches seeking expert technical feedback",
-      "Athletes preparing for races or selection events",
-      "Individual and team preparation for international races and the Olympic Games",
+    title: "Where Experience Comes From",
+    featuredAchievement: "Olympic 4th place (Tokyo 2020)",
+    titleAchievements: [
+      "8x World Champion",
+      "6x European Champion",
+      "21x Hungarian Champion",
+    ],
+    experienceAchievements: [
+      "30+ years in elite sport",
+      "20 years on the international stage",
+      "6+ years in sport leadership",
     ],
   },
   howItWorks: {
