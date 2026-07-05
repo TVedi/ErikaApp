@@ -923,7 +923,48 @@ body {
 
 html {
   scroll-padding-top: 4rem;
-  scroll-behavior: auto;
+}
+
+/*
+ * Scroll settle — UNLAYERED (Tailwind v4 strips/buries layered scroll-* rules;
+ * computed scroll-behavior stayed auto until these were emitted unlayered).
+ * Proximity only: assists near section boundaries, never traps long sections.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (pointer: fine) {
+    html {
+      scroll-snap-type: y proximity;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+    scroll-snap-type: none;
+  }
+}
+
+/* Snap alignment — unlayered so it survives the cascade with the html rules */
+.section-screen {
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+}
+
+/*
+ * Coaching-options + Video-analysis — snap firmly into place (user priority).
+ * scroll-snap-stop: always — the scroller cannot fling past these; they land
+ * at the top even under the global proximity type. Fixed-bg reveal and the
+ * slide-in replay still run while travelling through the section.
+ */
+.section-coaching-options.section-screen,
+.section-video-analysis.section-screen {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 /*
