@@ -47,8 +47,12 @@ export function AboutOlympicSection({
             alt=""
             fill
             sizes="100vw"
-            className="about-olympic-photo object-cover"
-            style={{ objectPosition: photo.objectPosition }}
+            className="about-olympic-photo img-pos-mobile object-cover"
+            style={{
+              objectPosition: photo.objectPosition,
+              ["--op-mobile" as string]:
+                photo.objectPositionMobile ?? photo.objectPosition,
+            }}
           />
         </div>
       </div>

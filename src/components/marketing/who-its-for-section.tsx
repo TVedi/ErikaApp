@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
+import { MarketingCtaReveal } from "@/components/motion/marketing-cta-reveal";
+import { StartCoachingButton } from "@/components/marketing/start-coaching-button";
 import { launch } from "@/content/copy";
 import { sitePhotos } from "@/lib/marketing/site-photos";
 
@@ -37,8 +39,12 @@ export function WhoItsForSection() {
               alt={photo.alt}
               fill
               sizes="(max-width: 1023px) 100vw, 50vw"
-              className="object-cover"
-              style={{ objectPosition: photo.objectPosition }}
+              className="img-pos-mobile object-cover"
+              style={{
+                objectPosition: photo.objectPosition,
+                ["--op-mobile" as string]:
+                  photo.objectPositionMobile ?? photo.objectPosition,
+              }}
             />
           </div>
         </div>
@@ -48,9 +54,9 @@ export function WhoItsForSection() {
           <ScrollReveal>
             <h2
               id="who-its-for-heading"
-              className="text-2xl font-bold text-foreground sm:text-3xl"
+              className="heading-aura-gold text-2xl font-bold text-foreground sm:text-3xl"
             >
-              {launch.whoItsFor.title}
+              <span className="heading-sheen-text">{launch.whoItsFor.title}</span>
             </h2>
           </ScrollReveal>
 
@@ -83,6 +89,13 @@ export function WhoItsForSection() {
               ))}
             </div>
           </div>
+
+          <MarketingCtaReveal className="mt-6 flex justify-center sm:mt-8">
+            <StartCoachingButton
+              size="lg"
+              className="btn-cta-primary w-full sm:w-auto"
+            />
+          </MarketingCtaReveal>
         </div>
       </div>
     </section>

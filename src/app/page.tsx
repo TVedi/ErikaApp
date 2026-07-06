@@ -1,6 +1,5 @@
 import { PublicLayout } from "@/components/layout/public-layout";
 import { WaitlistForm } from "@/components/waitlist-form";
-import { LinkButton } from "@/components/ui/link-button";
 // import { PhotoBand } from "@/components/marketing/photo-band";
 import { HomeHero } from "@/components/marketing/home-hero";
 import { AboutOlympicSection } from "@/components/marketing/about-olympic-section";
@@ -8,13 +7,11 @@ import { CampsSection } from "@/components/marketing/camps-section";
 import { HowItWorksSection } from "@/components/marketing/how-it-works-section";
 import { VideoAnalysisSection } from "@/components/marketing/video-analysis-section";
 import { WhoItsForSection } from "@/components/marketing/who-its-for-section";
+import { VideoCourseLoadingSection } from "@/components/marketing/video-course-loading-section";
 import { ProgramCard } from "@/components/marketing/program-card";
-import { StartCoachingButton } from "@/components/marketing/start-coaching-button";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import { createClient } from "@/lib/supabase/server";
-import { sitePhotos } from "@/lib/marketing/site-photos";
 import {
-  cta,
   launch,
   faq,
   waitlist,
@@ -98,37 +95,14 @@ export default async function HomePage() {
 
       <CampsSection />
 
-      {/* Testimonials placeholder */}
+      <VideoCourseLoadingSection />
+
+      {/* Athlete stories — swapped from above final CTA slot */}
       <section className="section-emerald-surface section-screen section-screen-center section-pad w-full">
         <div className="section-screen-inner mx-auto max-w-6xl px-4 sm:px-6">
           <ScrollReveal>
             <h2 className="text-2xl font-bold text-foreground">{launch.testimonials.title}</h2>
             <p className="mt-4 text-muted-foreground">{launch.testimonials.placeholder}</p>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="section-navy-soft section-screen section-screen-center section-pad w-full">
-        <div className="section-screen-inner mx-auto max-w-3xl px-4 text-center sm:px-6">
-          <ScrollReveal>
-            <h2 className="text-2xl font-bold sm:text-3xl text-balance text-foreground">
-              {launch.finalCta.title}
-            </h2>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
-              <StartCoachingButton
-                size="lg"
-                className="btn-cta-primary w-full sm:w-auto"
-              />
-              <LinkButton
-                size="lg"
-                variant="outline"
-                href="/apply"
-                className="border-foreground/30 text-foreground hover:bg-foreground/10 w-full sm:w-auto"
-              >
-                {cta.requestEvaluation}
-              </LinkButton>
-            </div>
           </ScrollReveal>
         </div>
       </section>

@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { useLayoutEffect, useRef } from "react";
+import { StartCoachingButton } from "@/components/marketing/start-coaching-button";
+import { MarketingCtaReveal } from "@/components/motion/marketing-cta-reveal";
 import { launch } from "@/content/copy";
 import { sitePhotos } from "@/lib/marketing/site-photos";
 
@@ -77,8 +79,12 @@ export function VideoAnalysisSection() {
               alt={photo.alt}
               fill
               sizes="(max-width: 1023px) 100vw, 50vw"
-              className="object-cover"
-              style={{ objectPosition: photo.objectPosition }}
+              className="img-pos-mobile object-cover"
+              style={{
+                objectPosition: photo.objectPosition,
+                ["--op-mobile" as string]:
+                  photo.objectPositionMobile ?? photo.objectPosition,
+              }}
             />
           </div>
         </div>
@@ -93,20 +99,31 @@ export function VideoAnalysisSection() {
               >
                 {launch.videoSection.title}
               </h2>
-              <p className="mt-4 text-muted-foreground leading-relaxed">
+              <p className="mt-4 text-foreground leading-relaxed">
                 {launch.videoSection.body}
               </p>
-              <ul className="mt-6 space-y-2">
-                {launch.videoSection.points.map((p) => (
-                  <li
-                    key={p}
-                    className="flex items-center gap-2 text-sm text-muted-foreground"
-                  >
-                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
-                    {p}
-                  </li>
-                ))}
-              </ul>
+              <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-8">
+                <ul className="min-w-0 flex-1 space-y-2">
+                  {launch.videoSection.points.map((p) => (
+                    <li
+                      key={p}
+                      className="flex items-center gap-2.5 text-sm text-foreground"
+                    >
+                      <span
+                        className="achievement-medal-dot achievement-gold shrink-0"
+                        aria-hidden="true"
+                      />
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+                <MarketingCtaReveal className="flex shrink-0 justify-center sm:px-2">
+                  <StartCoachingButton
+                    size="lg"
+                    className="btn-cta-primary w-full sm:w-auto"
+                  />
+                </MarketingCtaReveal>
+              </div>
             </div>
           </div>
         </div>

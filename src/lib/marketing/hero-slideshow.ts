@@ -11,16 +11,18 @@ export const HERO_KEN_BURNS_PAN_X_END = "0%";
 export type HeroSlide = {
   src: string;
   objectPosition: string;
+  /** Phone framing (<1024px) — keeps the paddler in the narrow portrait crop. */
+  objectPositionMobile?: string;
   /** Default cover; contain shows full frame (letterboxed on neutral dark) when cover crops key content. */
   objectFit?: "cover" | "contain";
 };
 
 /** Hero background rotation — order is display order (first = default / reduced-motion). */
 export const HERO_SLIDESHOW_IMAGES: HeroSlide[] = [
-  { src: "/hero.jpg", objectPosition: "right 25%" },
-  { src: "/tokeletes.jpg", objectPosition: "center 15%" },
-  { src: "/Tokio6.jpg", objectPosition: "center 28%" },
-  { src: "/Erika regi.png", objectPosition: "center 30%" },
+  { src: "/hero.jpg", objectPosition: "right 25%", objectPositionMobile: "80% 25%" },
+  { src: "/tokeletes.jpg", objectPosition: "center 15%", objectPositionMobile: "50% 15%" },
+  { src: "/Tokio6.jpg", objectPosition: "center 28%", objectPositionMobile: "45% 28%" },
+  { src: "/Erika regi.png", objectPosition: "center 30%", objectPositionMobile: "50% 30%" },
 ];
 
 /** Per-slide Ken-Burns duration while the slide is active. */

@@ -39,26 +39,15 @@ export const launch = {
     ],
   },
   howItWorks: {
-    title: "How it works",
-    steps: [
-      {
-        title: "Choose coaching or request an evaluation",
-        description:
-          "Start with Starter Guidance via secure checkout, or apply for Technique Review and Elite Coaching.",
-      },
-      {
-        title: "Share your goals",
-        description:
-          "Tell us about your level, events, and training focus. Onboarding is personal at launch.",
-      },
-      {
-        title: "Improve with expert feedback",
-        description:
-          "Receive Erika’s feedback, drills, and training direction — including video review when applicable.",
-      },
+    title: "Who This Is For",
+    audiences: [
+      "Competitive junior kayakers",
+      "Ambitious club athletes",
+      "Masters paddlers",
+      "Parents and coaches seeking expert technical feedback",
+      "Athletes preparing for races or selection events",
+      "Individual and team preparation for international races and the Olympic Games",
     ],
-    manualNote:
-      "At launch, every athlete is onboarded personally by Erika and her team after payment or application review.",
   },
   programs: {
     title: "Coaching options",
@@ -128,6 +117,7 @@ export const launch = {
     title: "Athlete stories",
     placeholder: "Athlete stories coming soon.",
   },
+  videoCourseLoading: "Video Course loading ...",
   finalCta: {
     title: "Ready to improve your paddling with world-class eyes on your technique?",
   },

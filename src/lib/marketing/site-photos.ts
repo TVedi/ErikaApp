@@ -2,6 +2,8 @@ export type SitePhoto = {
   src: string;
   alt: string;
   objectPosition: string;
+  /** Phone framing (<1024px) — keeps the key subject in the narrower crop. */
+  objectPositionMobile?: string;
   width: number;
   height: number;
 };
@@ -32,7 +34,8 @@ export const sitePhotos = {
   videoAnalysis1Kep: {
     src: "/egyenes.jpeg",
     alt: "Erika Medveczky paddling — video technique analysis",
-    objectPosition: "center 30%",
+    objectPosition: "38% 42%",
+    objectPositionMobile: "42% 38%",
     width: 1303,
     height: 869,
   },
@@ -54,6 +57,7 @@ export const sitePhotos = {
     src: "/camp.jpg",
     alt: "Kayak training camp on the water",
     objectPosition: "center 35%",
+    objectPositionMobile: "45% 35%",
     width: 4000,
     height: 2667,
   },
@@ -61,6 +65,7 @@ export const sitePhotos = {
     src: "/gyerek.webp",
     alt: "Young athlete paddling a kayak on the water",
     objectPosition: "38% 65%",
+    objectPositionMobile: "32% 60%",
     width: 1536,
     height: 1024,
   },
@@ -68,6 +73,7 @@ export const sitePhotos = {
     src: "/DSC09954[1].jpg",
     alt: "Erika Medveczky coaching on the water",
     objectPosition: "center 35%",
+    objectPositionMobile: "center 28%",
     width: 2000,
     height: 1333,
   },
@@ -75,6 +81,7 @@ export const sitePhotos = {
     src: "/DSC09908[1].jpg",
     alt: "Erika Medveczky guiding athletes on the water",
     objectPosition: "center 30%",
+    objectPositionMobile: "center 25%",
     width: 2000,
     height: 1333,
   },

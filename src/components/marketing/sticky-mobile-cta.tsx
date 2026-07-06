@@ -4,7 +4,7 @@ import { cta } from "@/content/copy";
 
 export function StickyMobileCta() {
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-border/80 bg-background/95 p-3 backdrop-blur md:hidden">
+    <div className="sticky-mobile-cta fixed bottom-0 left-0 right-0 z-40 border-t border-border/80 bg-background/95 p-3 backdrop-blur md:hidden">
       <div className="mx-auto flex max-w-lg gap-2">
         <StartCoachingButton size="sm" className="flex-1 btn-cta-primary" />
         <Link

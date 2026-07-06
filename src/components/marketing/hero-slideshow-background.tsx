@@ -164,10 +164,15 @@ export function HeroSlideshowBackground() {
                 fill
                 loading="eager"
                 sizes="100vw"
-                className={
+                className={cn(
+                  "img-pos-mobile",
                   slide.objectFit === "contain" ? "object-contain" : "object-cover"
-                }
-                style={{ objectPosition: slide.objectPosition }}
+                )}
+                style={{
+                  objectPosition: slide.objectPosition,
+                  ["--op-mobile" as string]:
+                    slide.objectPositionMobile ?? slide.objectPosition,
+                }}
               />
             </div>
           </div>

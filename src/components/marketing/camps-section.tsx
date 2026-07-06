@@ -38,8 +38,12 @@ export function CampsSection() {
             alt=""
             fill
             sizes="100vw"
-            className="object-cover"
-            style={{ objectPosition: photo.objectPosition }}
+            className="img-pos-mobile object-cover"
+            style={{
+              objectPosition: photo.objectPosition,
+              ["--op-mobile" as string]:
+                photo.objectPositionMobile ?? photo.objectPosition,
+            }}
           />
         </div>
       </div>
