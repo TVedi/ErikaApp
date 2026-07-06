@@ -110,7 +110,7 @@ export function VideoAnalysisSection() {
                       className="flex items-center gap-2.5 text-sm text-foreground"
                     >
                       <span
-                        className="achievement-medal-dot achievement-gold shrink-0"
+                        className="achievement-medal-dot achievement-coral shrink-0"
                         aria-hidden="true"
                       />
                       {p}
