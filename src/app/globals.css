@@ -1449,50 +1449,46 @@ body {
 }
 
 /*
- * ===== EXPERIMENT: glossy black surface (piano-lacquer) =====
- * Replaces the unified emerald canvas. REVERT: delete this whole block.
- * The emerald tokens are re-pointed here so every surface that consumed
- * them (main, nav, section aliases, achievement/audience cards) follows.
+ * ===== SAVED: glossy black surface (RESTORE — say "vissza az előző állásra") =====
+ * To revert: delete the ACTIVE footer-muted block below and uncomment this block.
+ *
+ * :root {
+ *   --emerald-canvas: #08080a;
+ *   --emerald-surface: #0d0d10;
+ *   --emerald-raised: #17171d;
+ * }
+ *
+ * .main-scroll-surface {
+ *   background-color: var(--emerald-canvas);
+ *   background-image:
+ *     radial-gradient(
+ *       ellipse 130% 90% at 18% 4%,
+ *       rgba(255, 255, 255, 0.05) 0%,
+ *       rgba(255, 255, 255, 0.018) 34%,
+ *       transparent 60%
+ *     ),
+ *     radial-gradient(
+ *       ellipse 100% 70% at 84% 92%,
+ *       rgba(255, 255, 255, 0.022) 0%,
+ *       transparent 55%
+ *     ),
+ *     linear-gradient(
+ *       180deg,
+ *       var(--emerald-canvas) 0%,
+ *       color-mix(in srgb, var(--emerald-surface) 88%, var(--emerald-canvas)) 55%,
+ *       var(--emerald-surface) 100%
+ *     );
+ * }
+ *
+ * .site-header-premium {
+ *   --brand-base-deep: #0a0a0c;
+ * }
+ *
+ * .program-card-glass {
+ *   --brand-base-deep: #101014;
+ *   --brand-base-muted: #1a1a20;
+ * }
  */
-:root {
-  --emerald-canvas: #08080a;
-  --emerald-surface: #0d0d10;
-  --emerald-raised: #17171d;
-}
-
-/* Polished-black sheen — two soft off-center highlights over the base ramp */
-.main-scroll-surface {
-  background-color: var(--emerald-canvas);
-  background-image:
-    radial-gradient(
-      ellipse 130% 90% at 18% 4%,
-      rgba(255, 255, 255, 0.05) 0%,
-      rgba(255, 255, 255, 0.018) 34%,
-      transparent 60%
-    ),
-    radial-gradient(
-      ellipse 100% 70% at 84% 92%,
-      rgba(255, 255, 255, 0.022) 0%,
-      transparent 55%
-    ),
-    linear-gradient(
-      180deg,
-      var(--emerald-canvas) 0%,
-      color-mix(in srgb, var(--emerald-surface) 88%, var(--emerald-canvas)) 55%,
-      var(--emerald-surface) 100%
-    );
-}
-
-/* Header cloud puffs + glass cards consumed emerald via --brand-base-deep —
-   re-point it locally to graphite so they read as dark glass on black */
-.site-header-premium {
-  --brand-base-deep: #0a0a0c;
-}
-
-.program-card-glass {
-  --brand-base-deep: #101014;
-  --brand-base-muted: #1a1a20;
-}
 
 /*
  * ===== Video analysis — LUMINOUS WHITE block + coral premium card =====
@@ -1746,4 +1742,37 @@ body {
   .site-header-premium .btn-cta-primary {
     min-height: 2.5rem;
   }
+}
+
+/*
+ * ===== ACTIVE: footer-muted unified canvas (LAST — wins cascade) =====
+ * Exact footer strip tone: bg-muted/30 over emerald canvas (#062f2b base in mix).
+ * Same formula as SiteFooter had: color-mix(--muted 30%, #062f2b).
+ * REVERT to black: say "vissza az előző állásra".
+ */
+:root {
+  --footer-strip-tone: color-mix(in srgb, var(--muted) 30%, #062f2b);
+  --emerald-canvas: var(--footer-strip-tone);
+  --emerald-surface: color-mix(in srgb, var(--muted) 36%, #062f2b);
+  --emerald-raised: #10544d;
+  --background: var(--footer-strip-tone);
+}
+
+body {
+  background-color: var(--footer-strip-tone);
+}
+
+.main-scroll-surface {
+  background-color: var(--footer-strip-tone);
+  background-image: linear-gradient(
+    180deg,
+    var(--footer-strip-tone) 0%,
+    color-mix(in srgb, var(--emerald-surface) 88%, var(--footer-strip-tone)) 55%,
+    var(--emerald-surface) 100%
+  );
+}
+
+.site-header-premium {
+  background-color: var(--emerald-surface);
+  background-image: none;
 }

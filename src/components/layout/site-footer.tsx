@@ -5,7 +5,7 @@ import { StartCoachingButton } from "@/components/marketing/start-coaching-butto
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border/60 bg-muted/30">
+    <footer className="border-t border-border/60 bg-transparent">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         <div className="flex flex-col gap-8 md:flex-row md:justify-between">
           <div>
