@@ -1,102 +1,46 @@
 import { PublicLayout } from "@/components/layout/public-layout";
-import { CredentialsList } from "@/components/credentials-list";
 import { MarketingPhoto } from "@/components/marketing/marketing-photo";
-import { ScrollReveal } from "@/components/motion/scroll-reveal";
-import { Badge } from "@/components/ui/badge";
-import { createClient } from "@/lib/supabase/server";
 import { sitePhotos } from "@/lib/marketing/site-photos";
-import { about } from "@/content/copy";
-import type { CoachCredential } from "@/types/database";
+import { aboutStory } from "@/content/copy";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About Erika",
   description:
-    "Olympic sprint kayaker and elite kayak coach Erika Medveczky — coaching from Gainesville, Georgia.",
+    "Erika Medveczky — coach, entrepreneur, former elite athlete and Olympian. Her personal story from kayaking to coaching in Gainesville, Georgia.",
 };
 
-export default async function AboutPage() {
-  const supabase = await createClient();
-  const { data: credentials } = await supabase
-    .from("coach_credentials")
-    .select("*")
-    .order("sort_order", { ascending: true });
-
+export default function AboutPage() {
   return (
     <PublicLayout>
-      <div className="section-cream mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
-          <ScrollReveal>
-            <div>
-              <h1 className="text-3xl font-bold text-foreground sm:text-4xl">{about.title}</h1>
-              <p className="mt-4 max-w-3xl text-lg text-muted-foreground leading-relaxed">
-                {about.intro}
-              </p>
-            </div>
-          </ScrollReveal>
-          <ScrollReveal delayMs={120}>
-            <MarketingPhoto photo={sitePhotos.aboutPortrait} variant="portrait" />
-          </ScrollReveal>
+      <article className="about-story-page section-cream">
+        <div className="about-story-inner">
+          <header className="about-story-header">
+            <h1 className="about-story-title">{aboutStory.title}</h1>
+            <p className="about-story-lede">{aboutStory.lede}</p>
+          </header>
+
+          <div className="about-story-portrait">
+            <MarketingPhoto
+              photo={sitePhotos.aboutPortrait}
+              variant="portrait"
+              sizes="(max-width: 640px) 85vw, 280px"
+            />
+          </div>
+
+          <div className="about-story-body">
+            {aboutStory.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+
+            <hr className="about-story-divider" aria-hidden="true" />
+
+            <p className="about-story-pullquote-lead">{aboutStory.pullQuoteLead}</p>
+            <blockquote className="about-story-pullquote">{aboutStory.pullQuote}</blockquote>
+            <p className="about-story-pullquote-follow">{aboutStory.pullQuoteFollow}</p>
+          </div>
         </div>
-
-        <ScrollReveal className="mt-12">
-          <section>
-            <h2 className="text-xl font-semibold text-foreground">{about.storyTitle}</h2>
-            <p className="mt-4 max-w-3xl text-muted-foreground leading-relaxed">{about.story}</p>
-          </section>
-        </ScrollReveal>
-
-        <ScrollReveal className="mt-12" delayMs={80}>
-          <section>
-            <h2 className="text-xl font-semibold text-foreground">{about.philosophyTitle}</h2>
-            <p className="mt-4 max-w-3xl text-muted-foreground leading-relaxed">
-              {about.philosophy}
-            </p>
-          </section>
-        </ScrollReveal>
-
-        <ScrollReveal className="mt-12" delayMs={80}>
-          <section>
-            <h2 className="text-xl font-semibold text-foreground">{about.videoTitle}</h2>
-            <p className="mt-4 max-w-3xl text-muted-foreground leading-relaxed">{about.videoBody}</p>
-          </section>
-        </ScrollReveal>
-
-        <ScrollReveal className="mt-12" delayMs={80}>
-          <section>
-            <h2 className="text-xl font-semibold text-foreground">{about.gainesvilleTitle}</h2>
-            <p className="mt-4 max-w-3xl text-muted-foreground leading-relaxed">
-              {about.gainesvilleBody}
-            </p>
-          </section>
-        </ScrollReveal>
-
-        <ScrollReveal className="mt-12">
-          <section>
-            <h2 className="text-xl font-semibold text-foreground">Credentials</h2>
-            <p className="mt-2 text-xs text-muted-foreground">{about.credentialNote}</p>
-            <div className="mt-6">
-              <CredentialsList
-                credentials={(credentials as CoachCredential[]) ?? []}
-                variant="compact"
-              />
-            </div>
-          </section>
-        </ScrollReveal>
-
-        <ScrollReveal className="mt-12" delayMs={80}>
-          <section>
-            <h2 className="text-xl font-semibold text-foreground">{about.focusAreasTitle}</h2>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {about.focusAreas.map((area) => (
-                <Badge key={area} variant="secondary" className="text-sm">
-                  {area}
-                </Badge>
-              ))}
-            </div>
-          </section>
-        </ScrollReveal>
-      </div>
+      </article>
     </PublicLayout>
   );
 }

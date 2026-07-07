@@ -99,10 +99,11 @@ export default async function HomePage() {
 
       {/* Athlete stories — swapped from above final CTA slot */}
       <section className="section-emerald-surface section-screen section-screen-center section-pad w-full">
-        <div className="section-screen-inner mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="section-screen-inner mx-auto flex max-w-6xl flex-col items-center justify-center px-4 text-center sm:px-6">
           <ScrollReveal>
-            <h2 className="text-2xl font-bold text-foreground">{launch.testimonials.title}</h2>
-            <p className="mt-4 text-muted-foreground">{launch.testimonials.placeholder}</p>
+            <h2 className="font-display text-2xl font-medium italic text-accent-coral sm:text-3xl lg:text-4xl">
+              {launch.testimonials.title}
+            </h2>
           </ScrollReveal>
         </div>
       </section>
