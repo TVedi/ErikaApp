@@ -27,6 +27,7 @@ export function HomeHero() {
             <HeroHeadline
               title={hero.title}
               accentWord={hero.titleAccentWord}
+              sweepPhrase={hero.titleSweepPhrase}
             />
           </h1>
           <div
