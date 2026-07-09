@@ -521,6 +521,22 @@ export const nav = {
   programs: "Programs",
   camps: "Camps",
   apply: "Apply",
+  speaking: "Speaking",
   login: "Sign in",
   dashboard: "Dashboard",
+};
+
+export const speaking = {
+  metaTitle: "Corporate Speaking | Erika Medveczky",
+  metaDescription:
+    "Corporate speaking and performance inspiration from Olympic sprint kayaker and World Champion Erika Medveczky. Coming soon.",
+  eyebrow: "For companies, leadership teams, and events",
+  headline: "World-Class Performance Speaking",
+  subheadline:
+    "Corporate inspiration from an Olympian and World Champion — built around resilience, leadership, preparation, and performing under pressure.",
+  comingSoon: "Corporate speaking experiences are coming soon.",
+  supportingCopy:
+    "Erika Medveczky brings nearly three decades of elite sport, Olympic finals experience, world championship success, and sports leadership into powerful talks for teams, leaders, and organizations.",
+  ctaLabel: "Booking details coming soon",
+  imageAlt: "Erika Medveczky in a premium portrait for corporate speaking",
 };

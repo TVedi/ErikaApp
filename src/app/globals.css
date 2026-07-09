@@ -1931,3 +1931,179 @@ html {
 .about-story-pullquote-follow {
   margin-top: 1.5rem;
 }
+
+.about-story-figure {
+  margin: 2.5rem auto;
+  width: 100%;
+}
+
+.about-story-figure--narrow {
+  max-width: min(560px, 100%);
+}
+
+.about-story-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  box-shadow: 0 18px 44px -18px rgba(0, 0, 0, 0.55);
+}
+
+.about-story-figcaption {
+  margin-top: 0.75rem;
+  text-align: center;
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  color: color-mix(in srgb, var(--foreground) 55%, transparent);
+}
+
+/* Patina gold token — matches achievement-card medal gold (used by About divider + Speaking) */
+:root {
+  --brand-gold: #c9a85c;
+}
+
+/* Speaking — corporate coming-soon hero (unlayered) */
+.speaking-hero {
+  display: flex;
+  align-items: center;
+}
+
+.speaking-hero-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  width: 100%;
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .speaking-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    align-items: center;
+    gap: 4rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+.speaking-headline {
+  font-size: clamp(2.25rem, 6vw, 4.25rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--hero-headline);
+}
+
+.speaking-subheadline {
+  max-width: 34rem;
+  font-size: clamp(1.0625rem, 2.2vw, 1.25rem);
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--foreground) 88%, transparent);
+}
+
+.speaking-supporting {
+  max-width: 34rem;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: color-mix(in srgb, var(--foreground) 72%, transparent);
+}
+
+.speaking-coming-soon {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  font-size: 1.125rem;
+  font-style: italic;
+  color: var(--accent-coral);
+}
+
+.speaking-cta-soft {
+  display: inline-block;
+  padding: 0.625rem 1.5rem;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--brand-gold) 45%, transparent);
+  background: color-mix(in srgb, var(--brand-gold) 8%, transparent);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: color-mix(in srgb, var(--foreground) 85%, transparent);
+}
+
+.speaking-hero-photo {
+  display: flex;
+  justify-content: center;
+}
+
+.speaking-portrait-frame {
+  position: relative;
+  width: min(440px, 85vw);
+  border-radius: 1.25rem;
+  padding: 1px;
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--brand-gold) 55%, transparent),
+    transparent 40%,
+    transparent 62%,
+    color-mix(in srgb, var(--accent-coral) 40%, transparent)
+  );
+  box-shadow: 0 26px 60px -24px rgba(0, 0, 0, 0.6);
+}
+
+.speaking-portrait {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: calc(1.25rem - 1px);
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+@media (min-width: 1024px) {
+  .speaking-portrait-frame {
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+  }
+
+  .speaking-portrait {
+    height: 100%;
+  }
+}
+
+/* Gold light sweep — headline only; readable base, slow premium repeat */
+.text-gold-sweep {
+  background-image: linear-gradient(
+    110deg,
+    var(--hero-headline) 0%,
+    var(--hero-headline) 38%,
+    color-mix(in srgb, var(--brand-gold) 85%, var(--hero-headline)) 48%,
+    color-mix(in srgb, var(--accent-coral) 55%, var(--brand-gold)) 52%,
+    color-mix(in srgb, var(--brand-gold) 85%, var(--hero-headline)) 56%,
+    var(--hero-headline) 66%,
+    var(--hero-headline) 100%
+  );
+  background-size: 250% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--hero-headline);
+  animation: gold-sweep 7s linear infinite;
+}
+
+@keyframes gold-sweep {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -150% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text-gold-sweep {
+    animation: none;
+    background-image: none;
+    -webkit-text-fill-color: currentColor;
+    color: var(--hero-headline);
+  }
+}

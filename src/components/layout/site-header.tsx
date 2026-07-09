@@ -25,8 +25,8 @@ export function SiteHeader() {
           <Link href="/camps" className="text-link-coral">
             {nav.camps}
           </Link>
-          <Link href="/apply" className="text-link-coral">
-            {nav.apply}
+          <Link href="/speaking" className="text-link-coral">
+            {nav.speaking}
           </Link>
         </nav>
         <div className="flex items-center gap-2">
