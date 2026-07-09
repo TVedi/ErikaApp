@@ -18,6 +18,7 @@ export const cta = {
 export const hero = {
   title: "Train with the experience of an Olympian and World Champion.",
   titleAccentWord: "experience",
+  titleSweepPhrase: "Olympian and World Champion",
   subtitle:
     "Elite Paddle Coaching helps motivated kayakers improve technique, training structure, and race preparation through Erika Medveczky’s world-class paddling experience.",
   locationLabel: "Gainesville, Georgia",
@@ -329,29 +330,18 @@ export const pricing = {
 };
 
 export const camps = {
-  title: "Training camps",
-  subtitle: "In-person sprint kayak camps in Gainesville, Georgia.",
-  whyTitle: "Why train in person",
-  whyBody:
-    "On-water sessions with direct coach feedback accelerate technique changes that are hard to see from the dock alone.",
-  includesTitle: "What camps include",
-  includes: [
-    "Technical water sessions",
-    "Coach consultation",
-    "Video review",
-    "Race preparation focus",
-    "Limited capacity",
-  ],
-  whoTitle: "Who should apply",
-  whoBody:
-    "Motivated club, junior, masters, and competitive athletes who want intensive technical work with an Olympic-level coach.",
-  locationTitle: "Gainesville, Georgia",
-  locationBody:
-    "Training on the water in Gainesville, Georgia — Erika’s U.S. training base for camps and in-person coaching.",
-  datesPlaceholder: "Upcoming camp dates will be announced.",
-  registerInterest: "Request camp interest",
-  comingSoon: "Camp registration is reviewed manually at launch.",
-  empty: "Upcoming camp dates will be announced.",
+  metaTitle: "Training Camps | Elite Paddle Coaching",
+  metaDescription:
+    "Future small-group kayak training camps in Gainesville, Georgia with Olympic sprint kayaker and World Champion Erika Medveczky. Details coming soon.",
+  eyebrow: "Future in-person training",
+  headline: "Training Camps Are Coming",
+  subheadline:
+    "A future home for small-group kayak camps, technical water sessions, and elite coaching experiences in Gainesville, Georgia.",
+  supportingCopy:
+    "Dates, formats, and registration details will be announced later. For now, this page is a preview of the direction: focused, personal, high-quality training built around Erika’s Olympic and world championship experience.",
+  statusLabel: "Camp registration is not open yet.",
+  ctaLabel: "Details coming soon",
+  imageAlt: "Kayaker paddling into the sunset on calm water",
 };
 
 export const auth = {

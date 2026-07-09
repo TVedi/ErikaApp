@@ -2107,3 +2107,99 @@ html {
     color: var(--hero-headline);
   }
 }
+
+/* Camps — future-facing coming-soon hero (unlayered); brand-family of .speaking-hero */
+.camps-hero {
+  display: flex;
+  align-items: center;
+}
+
+.camps-hero-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  width: 100%;
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .camps-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 4rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+.camps-headline {
+  font-size: clamp(2.25rem, 6vw, 4rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--hero-headline);
+}
+
+.camps-subheadline {
+  max-width: 32rem;
+  font-size: clamp(1.0625rem, 2.2vw, 1.25rem);
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--foreground) 88%, transparent);
+}
+
+.camps-supporting {
+  max-width: 32rem;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: color-mix(in srgb, var(--foreground) 72%, transparent);
+}
+
+.camps-status {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  font-size: 1.125rem;
+  font-style: italic;
+  color: var(--accent-coral);
+}
+
+.camps-cta-soft {
+  display: inline-block;
+  padding: 0.625rem 1.5rem;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--brand-gold) 45%, transparent);
+  background: color-mix(in srgb, var(--brand-gold) 8%, transparent);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: color-mix(in srgb, var(--foreground) 85%, transparent);
+}
+
+.camps-hero-photo {
+  display: flex;
+  justify-content: center;
+}
+
+/* Full image always visible — object-contain inside a dark letterbox frame, no crop */
+.camps-photo-frame {
+  width: min(600px, 92vw);
+  border-radius: 1.25rem;
+  padding: 1px;
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--brand-gold) 55%, transparent),
+    transparent 40%,
+    transparent 62%,
+    color-mix(in srgb, var(--accent-coral) 40%, transparent)
+  );
+  box-shadow: 0 26px 60px -24px rgba(0, 0, 0, 0.6);
+}
+
+.camps-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: calc(1.25rem - 1px);
+  object-fit: contain;
+  background-color: color-mix(in srgb, var(--muted) 20%, #04211e);
+}
