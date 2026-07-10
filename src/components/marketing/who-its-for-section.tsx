@@ -7,22 +7,17 @@ import { sitePhotos } from "@/lib/marketing/site-photos";
 
 const photo = sitePhotos.whoItsFor;
 
-function GoldCard({ text }: { text: string }) {
+function ProofStatRow({ text }: { text: string }) {
   return (
-    <div className="achievement-card achievement-gold h-full rounded-xl p-4">
-      <div className="flex items-center gap-3">
-        <span className="achievement-medal-dot" aria-hidden="true" />
-        <p className="font-display text-base font-medium leading-snug text-foreground sm:text-[1.05rem]">
-          {text}
-        </p>
-      </div>
+    <div className="proof-stat-row">
+      <p className="proof-stat-row-text">{text}</p>
     </div>
   );
 }
 
 /**
- * Split-screen "Where Experience Comes From" — uniform-gold achievement cards:
- * featured Olympic card on top, then titles (left) + experience (right).
+ * Split-screen "Where Experience Comes From" — editorial proof: Olympic statement
+ * + slim stat rows (no card grid).
  */
 export function WhoItsForSection() {
   return (
@@ -31,7 +26,6 @@ export function WhoItsForSection() {
       aria-labelledby="who-its-for-heading"
     >
       <div className="split-screen-grid">
-        {/* Photo — top on mobile, right on desktop */}
         <div className="split-screen-photo-col order-1 lg:order-2">
           <div className="split-photo-mask absolute inset-0">
             <Image
@@ -49,7 +43,6 @@ export function WhoItsForSection() {
           </div>
         </div>
 
-        {/* Content — below photo on mobile, left on desktop */}
         <div className="split-screen-content-col relative order-2 lg:order-1">
           <ScrollReveal>
             <h2
@@ -60,37 +53,30 @@ export function WhoItsForSection() {
             </h2>
           </ScrollReveal>
 
-          {/* Featured pinnacle — full width on top */}
-          <ScrollReveal className="mt-8 lg:mt-10">
-            <div className="achievement-card achievement-olympic rounded-xl p-5 sm:p-6">
-              <div className="flex items-center gap-3">
-                <span className="achievement-medal-dot" aria-hidden="true" />
-                <p className="font-display text-lg font-medium leading-snug text-foreground sm:text-xl">
-                  {launch.whoItsFor.featuredAchievement}
-                </p>
-              </div>
-            </div>
+          <ScrollReveal className="proof-olympic-statement">
+            <p className="proof-olympic-statement-text">
+              {launch.whoItsFor.featuredAchievement}
+            </p>
           </ScrollReveal>
 
-          {/* Two columns — titles left, experience right; stacks on mobile */}
-          <div className="mt-3 grid grid-cols-1 gap-3 sm:mt-4 sm:grid-cols-2 sm:gap-4">
-            <div className="space-y-3 sm:space-y-4">
+          <div className="proof-stat-grid">
+            <div>
               {launch.whoItsFor.titleAchievements.map((text, i) => (
-                <ScrollReveal key={text} delayMs={70 + i * 70}>
-                  <GoldCard text={text} />
+                <ScrollReveal key={text} delayMs={70 + i * 60}>
+                  <ProofStatRow text={text} />
                 </ScrollReveal>
               ))}
             </div>
-            <div className="space-y-3 sm:space-y-4">
+            <div>
               {launch.whoItsFor.experienceAchievements.map((text, i) => (
-                <ScrollReveal key={text} delayMs={140 + i * 70}>
-                  <GoldCard text={text} />
+                <ScrollReveal key={text} delayMs={140 + i * 60}>
+                  <ProofStatRow text={text} />
                 </ScrollReveal>
               ))}
             </div>
           </div>
 
-          <MarketingCtaReveal className="mt-6 flex justify-center sm:mt-8">
+          <MarketingCtaReveal className="mt-8 flex justify-center sm:mt-10">
             <StartCoachingButton
               size="lg"
               className="btn-cta-primary w-full sm:w-auto"

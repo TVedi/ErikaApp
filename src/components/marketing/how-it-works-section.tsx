@@ -7,9 +7,18 @@ import { sitePhotos } from "@/lib/marketing/site-photos";
 
 const photo = sitePhotos.howItWorks;
 
+function AudienceRow({ text }: { text: string }) {
+  return (
+    <div className="audience-editorial-row">
+      <span className="audience-editorial-marker" aria-hidden="true" />
+      <p className="audience-editorial-text">{text}</p>
+    </div>
+  );
+}
+
 /**
- * Split-screen "Who This Is For" — coral achievement-style audience cards on
- * the emerald left column + feathered photo right.
+ * Split-screen "Who This Is For" — editorial audience rows (coral accent, lighter
+ * than the credentials proof section).
  */
 export function HowItWorksSection() {
   return (
@@ -18,7 +27,6 @@ export function HowItWorksSection() {
       aria-labelledby="how-it-works-heading"
     >
       <div className="split-screen-grid">
-        {/* Photo — top on mobile, right on desktop */}
         <div className="split-screen-photo-col order-1 lg:order-2">
           <div className="split-photo-mask absolute inset-0">
             <Image
@@ -36,7 +44,6 @@ export function HowItWorksSection() {
           </div>
         </div>
 
-        {/* Content — below photo on mobile, left on desktop */}
         <div className="split-screen-content-col order-2 lg:order-1 -mt-1 sm:-mt-2 lg:-mt-4">
           <ScrollReveal>
             <h2
@@ -46,22 +53,16 @@ export function HowItWorksSection() {
               <span className="heading-sheen-text">{launch.howItWorks.title}</span>
             </h2>
           </ScrollReveal>
-          <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:mt-7">
+
+          <div className="audience-editorial-list">
             {launch.howItWorks.audiences.map((text, i) => (
-              <ScrollReveal key={text} delayMs={i * 70}>
-                <div className="achievement-card achievement-coral h-full rounded-xl p-4">
-                  <div className="flex items-center gap-3">
-                    <span className="achievement-medal-dot" aria-hidden="true" />
-                    <p className="font-display text-base font-medium leading-snug text-foreground sm:text-[1.05rem]">
-                      {text}
-                    </p>
-                  </div>
-                </div>
+              <ScrollReveal key={text} delayMs={i * 55}>
+                <AudienceRow text={text} />
               </ScrollReveal>
             ))}
           </div>
 
-          <MarketingCtaReveal className="mt-6 flex justify-center sm:mt-7">
+          <MarketingCtaReveal className="mt-7 flex justify-center sm:mt-8">
             <StartCoachingButton
               size="lg"
               className="btn-cta-primary w-full sm:w-auto"
