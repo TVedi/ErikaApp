@@ -91,8 +91,6 @@ export const launch = {
   },
   videoSection: {
     title: "Expert video technique analysis",
-    body:
-      "Athletes can share paddling footage for manual review by Erika. Feedback may address catch, posture, rotation, leg drive, rhythm, boat stability, race preparation, drills, and next training focus. This is not automated AI scoring.",
     points: [
       "Catch and posture",
       "Rotation and leg drive",

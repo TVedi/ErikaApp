@@ -1631,53 +1631,8 @@ body {
 }
 
 /*
- * Video analysis text card — coral veil (matches achievement-coral audience cards).
+ * Video analysis text card — coral veil (removed; section uses editorial rows).
  */
-.section-video-analysis .program-card-glass {
-  --medal: #ff6f61;
-  --medal-hi: #ffa89d;
-  --medal-lo: #c24d42;
-  border: 1px solid color-mix(in srgb, var(--medal) 38%, transparent);
-  background:
-    linear-gradient(
-      135deg,
-      color-mix(in srgb, var(--medal) 16%, transparent) 0%,
-      color-mix(in srgb, var(--medal) 11%, transparent) 40%,
-      color-mix(in srgb, var(--medal) 6%, transparent) 100%
-    ),
-    linear-gradient(
-      135deg,
-      color-mix(in srgb, var(--medal) 12%, transparent),
-      transparent 46%
-    ),
-    color-mix(in srgb, var(--emerald-raised) 58%, transparent);
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.14);
-}
-
-@media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .section-video-analysis .program-card-glass:hover {
-    transform: translate3d(0, -3px, 0);
-    border-color: color-mix(in srgb, var(--medal) 56%, transparent);
-    background:
-      linear-gradient(
-        135deg,
-        color-mix(in srgb, var(--medal) 20%, transparent) 0%,
-        color-mix(in srgb, var(--medal) 14%, transparent) 40%,
-        color-mix(in srgb, var(--medal) 9%, transparent) 100%
-      ),
-      linear-gradient(
-        135deg,
-        color-mix(in srgb, var(--medal) 14%, transparent),
-        transparent 46%
-      ),
-      color-mix(in srgb, var(--emerald-raised) 58%, transparent);
-    box-shadow:
-      0 8px 22px rgba(0, 0, 0, 0.24),
-      0 0 14px color-mix(in srgb, var(--medal) 18%, transparent);
-  }
-}
 
 /*
  * ===== Video Course section — full-viewport split + square image (UNLAYERED) =====
@@ -2146,119 +2101,7 @@ body {
 
 /* Canvas base: see FLAT SITE BASE at file end. */
 
-/* Editorial proof — Where Experience Comes From */
-.proof-olympic-statement {
-  margin-top: 2.5rem;
-  padding-bottom: 1.75rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--brand-gold) 28%, transparent);
-}
-
-.proof-olympic-statement-text {
-  font-family: var(--font-display), ui-serif, Georgia, serif;
-  font-size: clamp(1.625rem, 3.8vw, 2.375rem);
-  font-weight: 500;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  color: color-mix(in srgb, var(--brand-gold) 88%, var(--foreground));
-}
-
-.proof-stat-grid {
-  display: grid;
-  gap: 0;
-  margin-top: 2rem;
-}
-
-@media (min-width: 640px) {
-  .proof-stat-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 0 3rem;
-  }
-}
-
-.proof-stat-row {
-  display: flex;
-  align-items: baseline;
-  padding: 1.125rem 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
-  transition:
-    background-color 0.35s ease,
-    padding-left 0.35s ease;
-}
-
-.proof-stat-row-text {
-  font-size: 0.96875rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: color-mix(in srgb, var(--foreground) 82%, transparent);
-}
-
-@media (pointer: fine) {
-  .proof-stat-row:hover {
-    padding-left: 0.375rem;
-    background-color: color-mix(in srgb, var(--brand-gold) 5%, transparent);
-  }
-
-  .proof-stat-row:hover .proof-stat-row-text {
-    color: color-mix(in srgb, var(--foreground) 92%, transparent);
-  }
-}
-
-/* Editorial audience — Who This Is For (lighter than proof) */
-.audience-editorial-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  margin-top: 1.75rem;
-}
-
-@media (min-width: 640px) {
-  .audience-editorial-list {
-    margin-top: 2rem;
-  }
-}
-
-.audience-editorial-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.875rem;
-  padding: 0.9375rem 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--foreground) 7%, transparent);
-  transition:
-    background-color 0.35s ease,
-    padding-left 0.35s ease;
-}
-
-.audience-editorial-marker {
-  flex-shrink: 0;
-  width: 1.25rem;
-  height: 1px;
-  margin-top: 0.65rem;
-  background: color-mix(in srgb, var(--accent-coral) 55%, transparent);
-}
-
-.audience-editorial-text {
-  font-size: 0.9375rem;
-  font-weight: 400;
-  line-height: 1.55;
-  color: color-mix(in srgb, var(--foreground) 72%, transparent);
-}
-
-@media (pointer: fine) {
-  .audience-editorial-row:hover {
-    padding-left: 0.25rem;
-    background-color: color-mix(in srgb, var(--accent-coral) 4%, transparent);
-  }
-
-  .audience-editorial-row:hover .audience-editorial-text {
-    color: color-mix(in srgb, var(--foreground) 84%, transparent);
-  }
-}
-
-@media (min-width: 640px) {
-  .audience-editorial-text {
-    font-size: 0.96875rem;
-  }
-}
+/* Editorial proof + audience rows — see unlayered block at file end. */
 
 /* FLAT SITE BASE — one solid color, no gradients */
 :root {
@@ -2432,22 +2275,37 @@ footer {
   justify-content: center;
   width: 2.5rem;
   height: 2.5rem;
-  color: color-mix(in srgb, var(--foreground) 70%, transparent);
-  opacity: 0.7;
-  transition: color 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
-}
-
-.footer-social-link:hover {
-  color: var(--brand-coral);
-  opacity: 1;
+  transition: box-shadow 0.2s ease, filter 0.2s ease;
 }
 
 .footer-social-link:focus-visible {
-  color: var(--brand-coral);
-  opacity: 1;
   outline: 2px solid color-mix(in srgb, var(--brand-coral) 75%, white);
   outline-offset: 3px;
   border-radius: 4px;
+}
+
+.footer-social-facebook {
+  color: #0866ff;
+}
+
+.footer-social-linkedin {
+  color: #0a66c2;
+}
+
+.footer-social-instagram .footer-social-icon-path {
+  fill: url(#footer-instagram-gradient);
+}
+
+.footer-social-facebook:hover .footer-social-icon,
+.footer-social-facebook:focus-visible .footer-social-icon,
+.footer-social-instagram:hover .footer-social-icon,
+.footer-social-instagram:focus-visible .footer-social-icon,
+.footer-social-linkedin:hover .footer-social-icon,
+.footer-social-linkedin:focus-visible .footer-social-icon,
+.footer-social-youtube:hover .footer-social-icon,
+.footer-social-youtube:focus-visible .footer-social-icon {
+  transform: scale(1.08);
+  filter: brightness(1.15);
 }
 
 .footer-social-icon {
@@ -2455,6 +2313,11 @@ footer {
   width: 1.375rem;
   height: 1.375rem;
   flex-shrink: 0;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.footer-social-icon-path {
+  transition: filter 0.2s ease;
 }
 
 .footer-social-site-icon {
@@ -2474,4 +2337,286 @@ footer {
 
 .footer-social-site:focus-visible {
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--brand-coral) 75%, white);
+}
+
+/* ===== Editorial proof + audience rows (UNLAYERED) ===== */
+
+/* Where Experience Comes From — Olympic statement */
+.proof-olympic-statement {
+  margin-top: 2.5rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--brand-gold) 28%, transparent);
+}
+
+.proof-olympic-statement-text {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  font-size: clamp(1.625rem, 3.8vw, 2.375rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: color-mix(in srgb, var(--brand-gold) 88%, var(--foreground));
+}
+
+.proof-stat-grid {
+  display: grid;
+  gap: 0;
+  margin-top: 2rem;
+}
+
+@media (min-width: 640px) {
+  .proof-stat-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0 3rem;
+  }
+}
+
+.proof-stat-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 4.25rem 1fr;
+  column-gap: 0.75rem;
+  align-items: baseline;
+  padding: 1.125rem 0;
+  border-bottom: none;
+}
+
+.proof-stat-row::after,
+.audience-editorial-row::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.08) 58%,
+    transparent 100%
+  );
+  pointer-events: none;
+  transition: background 0.2s ease;
+}
+
+.proof-stat-number {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  font-size: clamp(1.75rem, 3.2vw, 2.25rem);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: color-mix(in srgb, var(--brand-gold) 92%, var(--foreground));
+  transition: filter 0.2s ease;
+}
+
+.proof-stat-label {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.45;
+  color: color-mix(in srgb, var(--foreground) 84%, transparent);
+}
+
+@media (min-width: 640px) {
+  .proof-stat-row {
+    grid-template-columns: 4.75rem 1fr;
+    column-gap: 0.875rem;
+  }
+}
+
+@media (pointer: fine) {
+  .proof-stat-row:hover::after {
+    background: linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--brand-gold) 24%, transparent) 0%,
+      color-mix(in srgb, var(--brand-gold) 12%, transparent) 58%,
+      transparent 100%
+    );
+  }
+
+  .proof-stat-row:hover .proof-stat-number {
+    filter: brightness(1.14);
+  }
+}
+
+/* Who This Is For — editorial index rows */
+.audience-editorial-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 1.75rem;
+}
+
+@media (min-width: 640px) {
+  .audience-editorial-list {
+    margin-top: 2rem;
+  }
+}
+
+.audience-editorial-row {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  padding: 0.9375rem 0;
+  border-bottom: none;
+}
+
+.audience-editorial-index {
+  flex-shrink: 0;
+  width: 1.75rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.55;
+  letter-spacing: 0.04em;
+  color: color-mix(in srgb, var(--accent-coral) 68%, transparent);
+  transition: color 0.2s ease;
+}
+
+.audience-editorial-text {
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--foreground) 78%, transparent);
+  transition: transform 0.25s ease, color 0.2s ease;
+}
+
+@media (min-width: 640px) {
+  .audience-editorial-text {
+    font-size: 0.96875rem;
+  }
+}
+
+@media (pointer: fine) {
+  .audience-editorial-row:hover .audience-editorial-index {
+    color: var(--brand-coral);
+  }
+
+  .audience-editorial-row:hover .audience-editorial-text {
+    transform: translateX(5px);
+    color: color-mix(in srgb, var(--foreground) 88%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .audience-editorial-row:hover .audience-editorial-text {
+    transform: none;
+  }
+}
+
+/* ===== Where Experience Comes From — viewport-fit + Olympic text + row hover (UNLAYERED) ===== */
+
+section[aria-labelledby="who-its-for-heading"] .split-screen-content-col {
+  justify-content: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-top: 0;
+}
+
+@media (min-width: 640px) {
+  section[aria-labelledby="who-its-for-heading"] .split-screen-content-col {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  section[aria-labelledby="who-its-for-heading"] .split-screen-content-col {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    margin-top: 0;
+  }
+}
+
+section[aria-labelledby="who-its-for-heading"] .proof-olympic-statement {
+  margin-top: 1rem;
+  padding-bottom: 0.625rem;
+}
+
+section[aria-labelledby="who-its-for-heading"] .proof-stat-grid {
+  margin-top: 0.625rem;
+}
+
+section[aria-labelledby="who-its-for-heading"] .proof-stat-row {
+  padding: 0.4375rem 0;
+}
+
+section[aria-labelledby="who-its-for-heading"] .proof-stat-number {
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+}
+
+section[aria-labelledby="who-its-for-heading"] .who-its-for-cta {
+  margin-top: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  section[aria-labelledby="who-its-for-heading"] .who-its-for-cta {
+    margin-top: 0.875rem;
+  }
+}
+
+.olympic-accent {
+  background-image: linear-gradient(
+    100deg,
+    #b8933f 0%,
+    #c9a85c 35%,
+    #e8d9a8 50%,
+    #c9a85c 65%,
+    #b8933f 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.proof-olympic-statement-text.olympic-accent {
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.proof-stat-number {
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.proof-stat-label {
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+@media (pointer: fine) {
+  .proof-stat-row:hover .proof-stat-number,
+  .proof-stat-row:hover .proof-stat-label {
+    transform: translateX(5px);
+  }
+
+  .proof-stat-row:hover .proof-stat-number {
+    filter: brightness(1.14);
+  }
+
+  .proof-stat-row:hover .proof-stat-label {
+    color: #fff;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .proof-stat-row:hover .proof-stat-number,
+  .proof-stat-row:hover .proof-stat-label {
+    transform: none;
+  }
+}
+
+/* Video analysis — editorial index rows (reuses audience-editorial-* classes) */
+.section-video-analysis .video-analysis-editorial-list {
+  margin-top: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .section-video-analysis .video-analysis-editorial-list {
+    margin-top: 1.5rem;
+  }
 }

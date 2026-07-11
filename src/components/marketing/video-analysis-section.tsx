@@ -9,6 +9,18 @@ import { sitePhotos } from "@/lib/marketing/site-photos";
 
 const photo = sitePhotos.videoAnalysis1Kep;
 
+function VideoAnalysisRow({ text, index }: { text: string; index: number }) {
+  const indexLabel = String(index + 1).padStart(2, "0");
+  return (
+    <div className="audience-editorial-row">
+      <span className="audience-editorial-index" aria-hidden="true">
+        {indexLabel}
+      </span>
+      <p className="audience-editorial-text">{text}</p>
+    </div>
+  );
+}
+
 /**
  * Split-screen video analysis — replays slide-in on each viewport entry.
  */
@@ -92,39 +104,23 @@ export function VideoAnalysisSection() {
         {/* Content — below photo on mobile, left on desktop */}
         <div className="split-screen-content-col order-2 lg:order-1">
           <div className="video-analysis-slide-left w-full max-w-xl">
-            <div className="program-card-glass w-full rounded-xl p-5 sm:p-6 lg:p-7">
-              <h2
-                id="video-analysis-heading"
-                className="text-2xl font-bold text-foreground sm:text-3xl"
-              >
-                {launch.videoSection.title}
-              </h2>
-              <p className="mt-4 text-foreground leading-relaxed">
-                {launch.videoSection.body}
-              </p>
-              <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-8">
-                <ul className="min-w-0 flex-1 space-y-2">
-                  {launch.videoSection.points.map((p) => (
-                    <li
-                      key={p}
-                      className="flex items-center gap-2.5 text-sm text-foreground"
-                    >
-                      <span
-                        className="achievement-medal-dot achievement-coral shrink-0"
-                        aria-hidden="true"
-                      />
-                      {p}
-                    </li>
-                  ))}
-                </ul>
-                <MarketingCtaReveal className="flex shrink-0 justify-center sm:px-2">
-                  <StartCoachingButton
-                    size="lg"
-                    className="btn-cta-primary w-full sm:w-auto"
-                  />
-                </MarketingCtaReveal>
-              </div>
+            <h2
+              id="video-analysis-heading"
+              className="text-2xl font-bold text-foreground sm:text-3xl"
+            >
+              {launch.videoSection.title}
+            </h2>
+            <div className="audience-editorial-list video-analysis-editorial-list">
+              {launch.videoSection.points.map((text, i) => (
+                <VideoAnalysisRow key={text} text={text} index={i} />
+              ))}
             </div>
+            <MarketingCtaReveal className="mt-6 flex justify-center sm:mt-7">
+              <StartCoachingButton
+                size="lg"
+                className="btn-cta-primary w-full sm:w-auto"
+              />
+            </MarketingCtaReveal>
           </div>
         </div>
       </div>

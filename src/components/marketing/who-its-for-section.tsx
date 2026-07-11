@@ -7,10 +7,23 @@ import { sitePhotos } from "@/lib/marketing/site-photos";
 
 const photo = sitePhotos.whoItsFor;
 
+function splitProofStat(text: string): { number: string; label: string } {
+  const match = text.match(/^(\d+x|\d+\+|\d+)\s+(.+)$/);
+  if (!match) {
+    return { number: "", label: text };
+  }
+  return { number: match[1], label: match[2] };
+}
+
 function ProofStatRow({ text }: { text: string }) {
+  const { number, label } = splitProofStat(text);
   return (
     <div className="proof-stat-row">
-      <p className="proof-stat-row-text">{text}</p>
+      <span className="proof-stat-number">{number}</span>
+      <span className="proof-stat-label">
+        {number ? " " : ""}
+        {label}
+      </span>
     </div>
   );
 }
@@ -54,7 +67,7 @@ export function WhoItsForSection() {
           </ScrollReveal>
 
           <ScrollReveal className="proof-olympic-statement">
-            <p className="proof-olympic-statement-text">
+            <p className="proof-olympic-statement-text olympic-accent">
               {launch.whoItsFor.featuredAchievement}
             </p>
           </ScrollReveal>
@@ -76,7 +89,7 @@ export function WhoItsForSection() {
             </div>
           </div>
 
-          <MarketingCtaReveal className="mt-8 flex justify-center sm:mt-10">
+          <MarketingCtaReveal className="who-its-for-cta flex justify-center">
             <StartCoachingButton
               size="lg"
               className="btn-cta-primary w-full sm:w-auto"

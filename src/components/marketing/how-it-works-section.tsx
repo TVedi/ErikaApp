@@ -7,10 +7,13 @@ import { sitePhotos } from "@/lib/marketing/site-photos";
 
 const photo = sitePhotos.howItWorks;
 
-function AudienceRow({ text }: { text: string }) {
+function AudienceRow({ text, index }: { text: string; index: number }) {
+  const indexLabel = String(index + 1).padStart(2, "0");
   return (
     <div className="audience-editorial-row">
-      <span className="audience-editorial-marker" aria-hidden="true" />
+      <span className="audience-editorial-index" aria-hidden="true">
+        {indexLabel}
+      </span>
       <p className="audience-editorial-text">{text}</p>
     </div>
   );
@@ -57,7 +60,7 @@ export function HowItWorksSection() {
           <div className="audience-editorial-list">
             {launch.howItWorks.audiences.map((text, i) => (
               <ScrollReveal key={text} delayMs={i * 55}>
-                <AudienceRow text={text} />
+                <AudienceRow text={text} index={i} />
               </ScrollReveal>
             ))}
           </div>
