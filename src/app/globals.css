@@ -1896,54 +1896,55 @@ body {
 /* Speaking — corporate coming-soon hero (unlayered) */
 .speaking-hero {
   display: flex;
-  align-items: center;
+  align-items: stretch;
+  justify-content: center;
 }
 
 .speaking-hero-grid {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 2rem;
   width: 100%;
-  padding-top: 3rem;
-  padding-bottom: 4rem;
+  padding-top: 2.5rem;
+  padding-bottom: 3rem;
 }
 
 @media (min-width: 1024px) {
   .speaking-hero-grid {
     display: grid;
     grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-    align-items: center;
-    gap: 4rem;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    align-items: start;
+    gap: 2.5rem;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 }
 
 .speaking-headline {
-  font-size: clamp(2.25rem, 6vw, 4.25rem);
+  font-size: clamp(1.5rem, 3.5vw, 2.875rem);
   font-weight: 600;
-  line-height: 1.08;
+  line-height: 1.1;
   letter-spacing: -0.025em;
   color: var(--hero-headline);
 }
 
 .speaking-subheadline {
   max-width: 34rem;
-  font-size: clamp(1.0625rem, 2.2vw, 1.25rem);
-  line-height: 1.6;
+  font-size: clamp(0.9375rem, 1.6vw, 1.0625rem);
+  line-height: 1.55;
   color: color-mix(in srgb, var(--foreground) 88%, transparent);
 }
 
 .speaking-supporting {
   max-width: 34rem;
-  font-size: 1rem;
-  line-height: 1.75;
+  font-size: 0.9375rem;
+  line-height: 1.6;
   color: color-mix(in srgb, var(--foreground) 72%, transparent);
 }
 
 .speaking-coming-soon {
   font-family: var(--font-display), ui-serif, Georgia, serif;
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-style: italic;
   color: var(--accent-coral);
 }
@@ -1967,7 +1968,7 @@ body {
 
 .speaking-portrait-frame {
   position: relative;
-  width: min(440px, 85vw);
+  width: min(300px, 85vw);
   border-radius: 1.25rem;
   padding: 1px;
   background: linear-gradient(
@@ -1991,6 +1992,7 @@ body {
 
 @media (min-width: 1024px) {
   .speaking-portrait-frame {
+    width: min(310px, 85vw);
     aspect-ratio: 3 / 4;
     overflow: hidden;
   }
@@ -2042,54 +2044,55 @@ body {
 /* Camps — future-facing coming-soon hero (unlayered); brand-family of .speaking-hero */
 .camps-hero {
   display: flex;
-  align-items: center;
+  align-items: stretch;
+  justify-content: center;
 }
 
 .camps-hero-grid {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 2rem;
   width: 100%;
-  padding-top: 3rem;
-  padding-bottom: 4rem;
+  padding-top: 2.5rem;
+  padding-bottom: 3rem;
 }
 
 @media (min-width: 1024px) {
   .camps-hero-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    align-items: center;
-    gap: 4rem;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    align-items: start;
+    gap: 2.5rem;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 }
 
 .camps-headline {
-  font-size: clamp(2.25rem, 6vw, 4rem);
+  font-size: clamp(1.5rem, 3.5vw, 2.75rem);
   font-weight: 600;
-  line-height: 1.08;
+  line-height: 1.1;
   letter-spacing: -0.025em;
   color: var(--hero-headline);
 }
 
 .camps-subheadline {
   max-width: 32rem;
-  font-size: clamp(1.0625rem, 2.2vw, 1.25rem);
-  line-height: 1.6;
+  font-size: clamp(0.9375rem, 1.6vw, 1.0625rem);
+  line-height: 1.55;
   color: color-mix(in srgb, var(--foreground) 88%, transparent);
 }
 
 .camps-supporting {
   max-width: 32rem;
-  font-size: 1rem;
-  line-height: 1.75;
+  font-size: 0.9375rem;
+  line-height: 1.6;
   color: color-mix(in srgb, var(--foreground) 72%, transparent);
 }
 
 .camps-status {
   font-family: var(--font-display), ui-serif, Georgia, serif;
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-style: italic;
   color: var(--accent-coral);
 }
@@ -2113,7 +2116,7 @@ body {
 
 /* Full image always visible — object-contain inside a dark letterbox frame, no crop */
 .camps-photo-frame {
-  width: min(600px, 92vw);
+  width: min(340px, 92vw);
   border-radius: 1.25rem;
   padding: 1px;
   background: linear-gradient(
@@ -2133,6 +2136,12 @@ body {
   border-radius: calc(1.25rem - 1px);
   object-fit: contain;
   background-color: color-mix(in srgb, var(--muted) 20%, #04211e);
+}
+
+@media (min-width: 1024px) {
+  .camps-photo-frame {
+    width: min(420px, 92vw);
+  }
 }
 
 /* Canvas base: see FLAT SITE BASE at file end. */
@@ -2278,10 +2287,8 @@ body {
 .site-header-premium {
   background-color: var(--site-base);
   background-image: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    0 10px 28px rgba(0, 0, 0, 0.14);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
 }
 
 footer {
@@ -2313,4 +2320,158 @@ footer {
 .section-video-analysis::after {
   background: none;
   background-image: none;
+}
+
+/* Header haze removal — cloud pseudos + white inset sheen (obsidian base) */
+.site-header-premium::before,
+.site-header-premium::after {
+  content: none;
+  display: none;
+  background: none;
+  background-image: none;
+  filter: none;
+  opacity: 0;
+}
+
+.site-header-premium {
+  background-color: var(--site-base);
+  background-image: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+/*
+ * Camps + Speaking hero rows — single-screen composed layout.
+ * Columns top-align with each other; the row is vertically centered in the viewport.
+ */
+.camps-hero.section-screen,
+.speaking-hero.section-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  min-height: calc(100vh - 4rem);
+  min-height: calc(100dvh - 4rem);
+}
+
+.camps-hero-grid,
+.speaking-hero-grid {
+  align-items: start;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.camps-hero-text,
+.camps-hero-photo,
+.speaking-hero-text,
+.speaking-hero-photo {
+  align-self: start;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.camps-hero-photo,
+.speaking-hero-photo {
+  align-items: flex-start;
+}
+
+@media (min-width: 1024px) {
+  .camps-hero-grid,
+  .speaking-hero-grid {
+    align-items: start;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .camps-hero-text .camps-headline,
+  .speaking-hero-text .speaking-headline {
+    margin-top: 0.625rem;
+  }
+
+  .camps-hero-text .bg-accent-gold,
+  .speaking-hero-text .bg-accent-gold {
+    margin-top: 0.75rem;
+  }
+
+  .camps-hero-text .camps-subheadline,
+  .speaking-hero-text .speaking-subheadline {
+    margin-top: 1rem;
+  }
+
+  .camps-hero-text .camps-supporting,
+  .speaking-hero-text .speaking-supporting {
+    margin-top: 0.75rem;
+  }
+
+  .camps-hero-text .camps-status,
+  .speaking-hero-text .speaking-coming-soon,
+  .camps-hero-text .camps-cta-soft,
+  .speaking-hero-text .speaking-cta-soft {
+    margin-top: 1rem;
+  }
+}
+
+/* Footer social icon row */
+.footer-nav-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-social {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.125rem;
+  margin-top: 1.75rem;
+}
+
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: color-mix(in srgb, var(--foreground) 70%, transparent);
+  opacity: 0.7;
+  transition: color 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.footer-social-link:hover {
+  color: var(--brand-coral);
+  opacity: 1;
+}
+
+.footer-social-link:focus-visible {
+  color: var(--brand-coral);
+  opacity: 1;
+  outline: 2px solid color-mix(in srgb, var(--brand-coral) 75%, white);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.footer-social-icon {
+  display: block;
+  width: 1.375rem;
+  height: 1.375rem;
+  flex-shrink: 0;
+}
+
+.footer-social-site-icon {
+  display: block;
+  width: 1.375rem;
+  height: 1.375rem;
+  border-radius: 0.25rem;
+  opacity: 0.85;
+  transition: opacity 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+}
+
+.footer-social-site:hover .footer-social-site-icon,
+.footer-social-site:focus-visible .footer-social-site-icon {
+  opacity: 1;
+  filter: brightness(1.12);
+}
+
+.footer-social-site:focus-visible {
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--brand-coral) 75%, white);
 }
