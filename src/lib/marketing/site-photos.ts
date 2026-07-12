@@ -11,7 +11,7 @@ export type SitePhoto = {
 /** Curated marketing photos — paths under /public/. */
 export const sitePhotos = {
   hero: {
-    src: "/hero.jpg",
+    src: "/hero.webp",
     alt: "Erika Medveczky paddling",
     objectPosition: "right center",
     width: 2936,
@@ -54,7 +54,7 @@ export const sitePhotos = {
     height: 1241,
   },
   campsBackground: {
-    src: "/camp.jpg",
+    src: "/camp.webp",
     alt: "Kayak training camp on the water",
     objectPosition: "center 35%",
     objectPositionMobile: "45% 35%",

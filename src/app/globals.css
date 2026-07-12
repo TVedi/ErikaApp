@@ -621,7 +621,7 @@
     content: none;
   }
 
-  /* Camps — full-bleed camp.jpg + hero-style Ken-Burns (snap stays on) */
+  /* Camps — full-bleed camp.webp + hero-style Ken-Burns (snap stays on) */
   .section-camps {
     position: relative;
     isolation: isolate;
@@ -2619,4 +2619,272 @@ section[aria-labelledby="who-its-for-heading"] .who-its-for-cta {
   .section-video-analysis .video-analysis-editorial-list {
     margin-top: 1.5rem;
   }
+}
+
+/* ===== Four refinements: brand gold, dimmed headings, Olympic size, unified gaps (UNLAYERED) ===== */
+
+/* TASK 1 — Header brand metallic gold breeze */
+.brand-gold-flow {
+  background-image: linear-gradient(
+    100deg,
+    #b8933f 0%,
+    #c9a85c 35%,
+    #e8d9a8 50%,
+    #c9a85c 65%,
+    #b8933f 100%
+  );
+  background-size: 250% 100%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: brand-gold-flow-breeze 7s ease-in-out infinite;
+}
+
+@keyframes brand-gold-flow-breeze {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-gold-flow {
+    animation: none;
+    background-position: 35% 50%;
+  }
+}
+
+/* TASK 2 — Slightly dim the two section headings (~12% aura + brightness) */
+@keyframes heading-aura-pulse-gold-refined {
+  from {
+    text-shadow:
+      0 0 6px rgba(194, 161, 77, 0.57),
+      0 0 18px rgba(194, 161, 77, 0.37),
+      0 0 36px rgba(194, 161, 77, 0.23),
+      0 0 58px rgba(194, 161, 77, 0.12),
+      0 0 88px rgba(194, 161, 77, 0.06),
+      0 0 120px rgba(194, 161, 77, 0.025);
+  }
+  to {
+    text-shadow:
+      0 0 10px rgba(194, 161, 77, 0.75),
+      0 0 26px rgba(236, 217, 160, 0.49),
+      0 0 48px rgba(194, 161, 77, 0.3),
+      0 0 76px rgba(194, 161, 77, 0.16),
+      0 0 108px rgba(194, 161, 77, 0.08),
+      0 0 140px rgba(194, 161, 77, 0.035);
+  }
+}
+
+@keyframes heading-aura-pulse-coral-refined {
+  from {
+    text-shadow:
+      0 0 8px rgba(255, 111, 97, 0.63),
+      0 0 20px rgba(255, 111, 97, 0.42),
+      0 0 40px rgba(255, 111, 97, 0.26),
+      0 0 64px rgba(255, 111, 97, 0.14),
+      0 0 96px rgba(255, 111, 97, 0.07),
+      0 0 128px rgba(255, 111, 97, 0.025);
+  }
+  to {
+    text-shadow:
+      0 0 12px rgba(255, 111, 97, 0.84),
+      0 0 30px rgba(255, 168, 157, 0.53),
+      0 0 54px rgba(255, 111, 97, 0.32),
+      0 0 84px rgba(255, 111, 97, 0.17),
+      0 0 116px rgba(255, 111, 97, 0.08),
+      0 0 148px rgba(255, 111, 97, 0.035);
+  }
+}
+
+#who-its-for-heading.heading-aura-gold {
+  filter: brightness(0.92);
+}
+
+#how-it-works-heading.heading-aura-coral {
+  filter: brightness(0.92);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #who-its-for-heading.heading-aura-gold {
+    animation: heading-aura-pulse-gold-refined 4s ease-in-out infinite alternate;
+  }
+
+  #how-it-works-heading.heading-aura-coral {
+    animation: heading-aura-pulse-coral-refined 4s ease-in-out infinite alternate;
+  }
+}
+
+/* TASK 3 — Olympic statement font size (~11% smaller) */
+section[aria-labelledby="who-its-for-heading"] .proof-olympic-statement-text {
+  font-size: clamp(1.45rem, 3.38vw, 2.125rem);
+}
+
+/* TASK 4 — Unified heading top-gap (reference: Who This Is For @ 1440x900 ≈ 168px) */
+section[aria-labelledby="who-its-for-heading"] .split-screen-content-col {
+  justify-content: flex-start;
+  padding-top: 10.5rem;
+  padding-bottom: 1rem;
+}
+
+@media (min-width: 640px) {
+  section[aria-labelledby="who-its-for-heading"] .split-screen-content-col {
+    padding-top: 10.5rem;
+    padding-bottom: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  section[aria-labelledby="who-its-for-heading"] .split-screen-content-col {
+    padding-top: 10.5rem;
+    padding-bottom: 1.5rem;
+  }
+}
+
+section[aria-labelledby="video-analysis-heading"] .split-screen-content-col {
+  justify-content: flex-start;
+  padding-top: 10.5rem;
+}
+
+@media (min-width: 640px) {
+  section[aria-labelledby="video-analysis-heading"] .split-screen-content-col {
+    padding-top: 10.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  section[aria-labelledby="video-analysis-heading"] .split-screen-content-col {
+    padding-top: 10.5rem;
+  }
+}
+
+/* ===== Three refinements: brand display font, proof breathing room, gold frame reuse (UNLAYERED) ===== */
+
+/* TASK 2 — Restore internal rhythm in Where Experience Comes From (gap stays 10.5rem) */
+section[aria-labelledby="who-its-for-heading"] .proof-olympic-statement {
+  margin-top: 1.75rem;
+  padding-bottom: 1.125rem;
+}
+
+section[aria-labelledby="who-its-for-heading"] .proof-stat-grid {
+  margin-top: 1.375rem;
+}
+
+section[aria-labelledby="who-its-for-heading"] .proof-stat-row {
+  padding: 0.75rem 0;
+}
+
+section[aria-labelledby="who-its-for-heading"] .who-its-for-cta {
+  margin-top: 1.625rem;
+}
+
+@media (min-width: 640px) {
+  section[aria-labelledby="who-its-for-heading"] .proof-olympic-statement {
+    margin-top: 2rem;
+    padding-bottom: 1.25rem;
+  }
+
+  section[aria-labelledby="who-its-for-heading"] .proof-stat-grid {
+    margin-top: 1.5rem;
+  }
+
+  section[aria-labelledby="who-its-for-heading"] .who-its-for-cta {
+    margin-top: 1.75rem;
+  }
+}
+
+.video-course-portrait-card.speaking-portrait-frame .speaking-portrait {
+  height: 100%;
+  border-radius: calc(1.25rem - 1px);
+}
+
+/* ===== Viewport-adaptive gaps, brand italic, video-analysis photo radius (UNLAYERED) ===== */
+
+/* TASK 1 — Unified vh-adaptive heading gap (all three sections) */
+section[aria-labelledby="who-its-for-heading"] .split-screen-content-col,
+section[aria-labelledby="how-it-works-heading"] .split-screen-content-col,
+section[aria-labelledby="video-analysis-heading"] .split-screen-content-col {
+  justify-content: flex-start;
+  padding-top: clamp(4.5rem, 18vh, 10.5rem);
+  padding-bottom: clamp(0.5rem, 1.5vh, 1.5rem);
+  margin-top: 0;
+}
+
+/* TASK 1 — Where Experience Comes From: vh-aware internal rhythm */
+section[aria-labelledby="who-its-for-heading"] .proof-olympic-statement {
+  margin-top: clamp(0.625rem, 2vh, 1.75rem);
+  padding-bottom: clamp(0.375rem, 1.2vh, 1.125rem);
+}
+
+section[aria-labelledby="who-its-for-heading"] .proof-stat-grid {
+  margin-top: clamp(0.375rem, 1.5vh, 1.375rem);
+}
+
+section[aria-labelledby="who-its-for-heading"] .proof-stat-row {
+  padding: clamp(0.35rem, 0.85vh, 0.75rem) 0;
+}
+
+section[aria-labelledby="who-its-for-heading"] .who-its-for-cta {
+  margin-top: clamp(0.5rem, 2vh, 1.625rem);
+}
+
+/* TASK 3 — Video Course keeps speaking-portrait-frame (unchanged) */
+.video-course-portrait-card.speaking-portrait-frame {
+  width: var(--video-course-square, min(88vw, 420px, calc((100dvh - 4rem) * 0.6)));
+  aspect-ratio: 1 / 1;
+  border: none;
+}
+
+/* TASK 3 — Video Analysis image: preserve rounded corners without gold frame */
+.section-video-analysis .video-analysis-photo {
+  border-radius: calc(1.25rem - 1px);
+}
+
+/* ===== Remove italic + raise Where Experience heading by G (UNLAYERED) ===== */
+
+/* TASK 1 — Brand + Where Experience heading: font-style normal (no collateral on other sheen headings) */
+.brand-gold-flow,
+#who-its-for-heading,
+#who-its-for-heading .heading-sheen-text {
+  font-style: normal;
+}
+
+/* ===== Unified heading-to-first-content gap: 24px (1.5rem) in all three sections (UNLAYERED) ===== */
+section[aria-labelledby="who-its-for-heading"] .proof-olympic-statement {
+  margin-top: 1.5rem;
+}
+
+section[aria-labelledby="how-it-works-heading"] .audience-editorial-list {
+  margin-top: 1.5rem;
+}
+
+section[aria-labelledby="video-analysis-heading"] .video-analysis-editorial-list {
+  margin-top: 1.5rem;
+}
+
+/* ===== Solid coral headings — auras removed (UNLAYERED) ===== */
+#how-it-works-heading.heading-aura-coral,
+#video-analysis-heading.heading-aura-coral,
+#coaching-options-heading {
+  color: var(--accent-coral);
+  filter: none;
+  animation: none;
+  text-shadow: none;
+}
+
+#how-it-works-heading .heading-sheen-text,
+#video-analysis-heading .heading-sheen-text {
+  color: var(--accent-coral);
+  -webkit-text-fill-color: var(--accent-coral);
+  background: none;
+  background-image: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  animation: none;
+  text-shadow: none;
 }

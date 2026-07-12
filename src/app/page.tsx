@@ -48,6 +48,8 @@ export default async function HomePage() {
 
       <HowItWorksSection />
 
+      <VideoAnalysisSection />
+
       {/* Programs — Coaching options (fixed-bg reveal on desktop) */}
       <section
         className="section-coaching-options section-coaching-fixed-bg section-screen section-screen-center w-full"
@@ -78,16 +80,6 @@ export default async function HomePage() {
       <PhotoBand
         photo={sitePhotos.videoTechnique}
         headline={launch.videoSection.title}
-      />
-      */}
-
-      <VideoAnalysisSection />
-
-      {/* Half-height photo bands removed — broke scroll-snap; restore as split-screen later
-      <PhotoBand
-        photo={sitePhotos.campsRacing}
-        headline={launch.campsPreview.title}
-        subheadline={launch.campsPreview.body}
       />
       */}
 

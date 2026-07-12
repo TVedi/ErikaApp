@@ -19,9 +19,9 @@ export type HeroSlide = {
 
 /** Hero background rotation — order is display order (first = default / reduced-motion). */
 export const HERO_SLIDESHOW_IMAGES: HeroSlide[] = [
-  { src: "/hero.jpg", objectPosition: "right 25%", objectPositionMobile: "80% 25%" },
+  { src: "/hero.webp", objectPosition: "right 25%", objectPositionMobile: "80% 25%" },
   { src: "/Tokio6.jpg", objectPosition: "center 28%", objectPositionMobile: "45% 28%" },
-  { src: "/tokeletes.jpg", objectPosition: "center 15%", objectPositionMobile: "50% 15%" },
+  { src: "/tokeletes.png", objectPosition: "center 15%", objectPositionMobile: "50% 15%" },
   { src: "/Erika regi.png", objectPosition: "center 30%", objectPositionMobile: "50% 30%" },
 ];
 

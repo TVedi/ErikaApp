@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { brand, cta, nav } from "@/content/copy";
+import { cta, nav } from "@/content/copy";
 import { LinkButton } from "@/components/ui/link-button";
 import { StartCoachingButton } from "@/components/marketing/start-coaching-button";
 
@@ -8,8 +8,8 @@ export function SiteHeader() {
     <header className="site-header-premium sticky top-0 z-50">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
         <Link href="/" className="shrink-0">
-          <span className="text-base font-semibold tracking-tight text-foreground sm:text-lg">
-            {brand.name}
+          <span className="brand-gold-flow font-display text-base font-semibold tracking-tight sm:text-lg">
+            Erika Medveczky OLY
           </span>
         </Link>
         <nav className="hidden items-center gap-6 text-sm font-medium text-muted-foreground lg:flex">

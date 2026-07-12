@@ -21,14 +21,14 @@ export function VideoCourseLoadingSection() {
         </div>
 
         <div className="video-course-image-wrap">
-          <div className="video-course-portrait-card relative overflow-hidden rounded-xl">
+          <div className="video-course-portrait-card speaking-portrait-frame relative overflow-hidden">
             <Image
               src={photo.src}
               alt={photo.alt}
               width={photo.width}
               height={photo.height}
               sizes="(max-width: 1023px) min(88vw, 420px), min(620px, 75vh)"
-              className="h-full w-full object-cover"
+              className="speaking-portrait h-full w-full object-cover"
               style={{ objectPosition: "center 15%" }}
             />
           </div>

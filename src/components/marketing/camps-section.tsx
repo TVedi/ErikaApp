@@ -11,7 +11,7 @@ const photo = sitePhotos.campsBackground;
 const kenBurnsDurationMs = getHeroKenBurnsDurationMs();
 
 /**
- * Camps — full-bleed camp.jpg with hero-style Ken-Burns + glass card content.
+ * Camps — full-bleed camp.webp with hero-style Ken-Burns + glass card content.
  */
 export function CampsSection() {
   return (

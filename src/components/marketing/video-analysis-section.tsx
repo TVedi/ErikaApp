@@ -91,7 +91,7 @@ export function VideoAnalysisSection() {
               alt={photo.alt}
               fill
               sizes="(max-width: 1023px) 100vw, 50vw"
-              className="img-pos-mobile object-cover"
+              className="video-analysis-photo img-pos-mobile object-cover"
               style={{
                 objectPosition: photo.objectPosition,
                 ["--op-mobile" as string]:
@@ -106,9 +106,9 @@ export function VideoAnalysisSection() {
           <div className="video-analysis-slide-left w-full max-w-xl">
             <h2
               id="video-analysis-heading"
-              className="text-2xl font-bold text-foreground sm:text-3xl"
+              className="heading-aura-coral text-2xl font-bold text-foreground sm:text-3xl"
             >
-              {launch.videoSection.title}
+              <span className="heading-sheen-text">{launch.videoSection.title}</span>
             </h2>
             <div className="audience-editorial-list video-analysis-editorial-list">
               {launch.videoSection.points.map((text, i) => (
