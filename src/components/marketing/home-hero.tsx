@@ -17,8 +17,8 @@ export function HomeHero() {
 
       <div className="absolute inset-0 hero-text-overlay" aria-hidden="true" />
 
-      <div className="section-screen relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="pt-[11vh] pb-12 sm:pt-[12vh] sm:pb-14 lg:absolute lg:left-4 lg:top-0 lg:pt-[13vh] lg:pb-0 lg:max-w-[min(44%,36rem)] xl:left-6">
+      <div className="hero-text-shell section-screen relative z-10 w-full">
+        <div className="hero-text-column pt-[11vh] pb-12 sm:pt-[12vh] sm:pb-14 lg:pt-[13vh] lg:pb-0 lg:max-w-[min(44%,36rem)]">
           <p className="eyebrow-label">{brand.tagline}</p>
           <h1
             className="mt-3 font-display text-[2rem] font-semibold leading-[1.08] tracking-[-0.025em] text-balance sm:mt-4 sm:text-4xl sm:leading-[1.07] lg:text-6xl lg:leading-[1.05] xl:text-7xl xl:leading-[1.04]"

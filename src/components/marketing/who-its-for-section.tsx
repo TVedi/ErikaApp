@@ -1,36 +1,57 @@
 import Image from "next/image";
+import {
+  Crown,
+  Globe,
+  Medal,
+  Mountain,
+  Star,
+  Trophy,
+  type LucideIcon,
+} from "lucide-react";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import { MarketingCtaReveal } from "@/components/motion/marketing-cta-reveal";
+import { PremiumSectionDivider } from "@/components/marketing/premium-section-divider";
 import { StartCoachingButton } from "@/components/marketing/start-coaching-button";
 import { launch } from "@/content/copy";
 import { sitePhotos } from "@/lib/marketing/site-photos";
 
 const photo = sitePhotos.whoItsFor;
 
-function splitProofStat(text: string): { number: string; label: string } {
+const TITLE_ICONS: LucideIcon[] = [Trophy, Medal, Crown];
+const EXPERIENCE_ICONS: LucideIcon[] = [Star, Globe, Mountain];
+
+function ProofAchievementText({ text }: { text: string }) {
   const match = text.match(/^(\d+x|\d+\+|\d+)\s+(.+)$/);
   if (!match) {
-    return { number: "", label: text };
+    return <span className="proof-achievement-text">{text}</span>;
   }
-  return { number: match[1], label: match[2] };
+  return (
+    <span className="proof-achievement-text">
+      <span className="proof-achievement-qty">{match[1]}</span> {match[2]}
+    </span>
+  );
 }
 
-function ProofStatRow({ text }: { text: string }) {
-  const { number, label } = splitProofStat(text);
+function ProofAchievementRow({
+  text,
+  icon: Icon,
+}: {
+  text: string;
+  icon: LucideIcon;
+}) {
   return (
-    <div className="proof-stat-row">
-      <span className="proof-stat-number">{number}</span>
-      <span className="proof-stat-label">
-        {number ? " " : ""}
-        {label}
+    <div className="proof-achievement-row">
+      <span className="proof-achievement-icon" aria-hidden="true">
+        <Icon strokeWidth={1.25} />
       </span>
+      <ProofAchievementText text={text} />
     </div>
   );
 }
 
 /**
  * Split-screen "Where Experience Comes From" — editorial proof: Olympic statement
- * + slim stat rows (no card grid).
+ * + icon achievement rows (no card grid).
  */
 export function WhoItsForSection() {
   return (
@@ -58,32 +79,37 @@ export function WhoItsForSection() {
 
         <div className="split-screen-content-col relative order-2 lg:order-1">
           <ScrollReveal>
+            <p className="proof-eyebrow">PROVEN EXCELLENCE</p>
+          </ScrollReveal>
+
+          <ScrollReveal>
             <h2
               id="who-its-for-heading"
-              className="heading-aura-gold text-2xl font-bold text-foreground sm:text-3xl"
+              className="proof-editorial-heading font-display font-bold"
             >
-              <span className="heading-sheen-text">{launch.whoItsFor.title}</span>
+              <span className="proof-heading-line1">Where Experience</span>
+              <span className="proof-heading-line2"> Comes From</span>
             </h2>
           </ScrollReveal>
 
           <ScrollReveal className="proof-olympic-statement">
-            <p className="proof-olympic-statement-text olympic-accent">
+            <p className="proof-statement-text">
               {launch.whoItsFor.featuredAchievement}
             </p>
           </ScrollReveal>
 
-          <div className="proof-stat-grid">
-            <div>
+          <div className="proof-achievement-grid">
+            <div className="proof-achievement-col">
               {launch.whoItsFor.titleAchievements.map((text, i) => (
                 <ScrollReveal key={text} delayMs={70 + i * 60}>
-                  <ProofStatRow text={text} />
+                  <ProofAchievementRow text={text} icon={TITLE_ICONS[i]} />
                 </ScrollReveal>
               ))}
             </div>
-            <div>
+            <div className="proof-achievement-col">
               {launch.whoItsFor.experienceAchievements.map((text, i) => (
                 <ScrollReveal key={text} delayMs={140 + i * 60}>
-                  <ProofStatRow text={text} />
+                  <ProofAchievementRow text={text} icon={EXPERIENCE_ICONS[i]} />
                 </ScrollReveal>
               ))}
             </div>
@@ -97,6 +123,7 @@ export function WhoItsForSection() {
           </MarketingCtaReveal>
         </div>
       </div>
+      <PremiumSectionDivider />
     </section>
   );
 }

@@ -2,12 +2,14 @@ import Link from "next/link";
 import { cta, nav } from "@/content/copy";
 import { LinkButton } from "@/components/ui/link-button";
 import { StartCoachingButton } from "@/components/marketing/start-coaching-button";
+import { BrandMark } from "@/components/layout/brand-mark";
 
 export function SiteHeader() {
   return (
     <header className="site-header-premium sticky top-0 z-50">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
-        <Link href="/" className="shrink-0">
+        <Link href="/" className="site-brand-lockup shrink-0">
+          <BrandMark className="site-brand-mark" aria-hidden="true" />
           <span className="brand-gold-flow font-display text-base font-semibold tracking-tight sm:text-lg">
             Erika Medveczky OLY
           </span>

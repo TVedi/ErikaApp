@@ -3,6 +3,7 @@ import Image from "next/image";
 import { brand, footer } from "@/content/copy";
 import { Separator } from "@/components/ui/separator";
 import { StartCoachingButton } from "@/components/marketing/start-coaching-button";
+import { BrandMark } from "@/components/layout/brand-mark";
 
 const SOCIAL_ICON_SIZE = 22;
 
@@ -142,20 +143,6 @@ export function SiteFooter() {
             </div>
           </div>
           <div className="footer-nav-col">
-            <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
-              <Link href="/medical-disclaimer" className="text-link-coral text-muted-foreground">
-                {footer.medical}
-              </Link>
-              <Link href="/privacy" className="text-link-coral text-muted-foreground">
-                {footer.privacy}
-              </Link>
-              <Link href="/terms" className="text-link-coral text-muted-foreground">
-                {footer.terms}
-              </Link>
-              <Link href="/refund-policy" className="text-link-coral text-muted-foreground">
-                {footer.refund}
-              </Link>
-            </div>
             <nav className="footer-social" aria-label="Social media">
               {footerSocialLinks.map((item) => (
                 <a
@@ -174,6 +161,23 @@ export function SiteFooter() {
                 </a>
               ))}
             </nav>
+          </div>
+        </div>
+        <div className="footer-legal-signature">
+          <BrandMark className="footer-signature-mark" aria-hidden="true" />
+          <div className="footer-legal-links flex flex-wrap gap-x-6 gap-y-2 text-sm">
+            <Link href="/medical-disclaimer" className="text-link-coral text-muted-foreground">
+              {footer.medical}
+            </Link>
+            <Link href="/privacy" className="text-link-coral text-muted-foreground">
+              {footer.privacy}
+            </Link>
+            <Link href="/terms" className="text-link-coral text-muted-foreground">
+              {footer.terms}
+            </Link>
+            <Link href="/refund-policy" className="text-link-coral text-muted-foreground">
+              {footer.refund}
+            </Link>
           </div>
         </div>
         <Separator className="my-8" />
