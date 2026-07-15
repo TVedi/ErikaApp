@@ -40,7 +40,10 @@ export const launch = {
     ],
   },
   howItWorks: {
+    eyebrow: "WHO IT SERVES",
     title: "Who This Is For",
+    intro:
+      "Built for athletes, parents, coaches, and teams who want serious technical direction.",
     audiences: [
       "Competitive junior kayakers",
       "Ambitious club athletes",
