@@ -3642,3 +3642,59 @@ section[aria-labelledby="who-its-for-heading"] .proof-statement-text {
 .footer-legal-links {
   min-width: 0;
 }
+
+/* ===== Proof achievement row refinement (UNLAYERED) ===== */
+
+section[aria-labelledby="who-its-for-heading"] .proof-achievement-text {
+  font-weight: 350;
+}
+
+section[aria-labelledby="who-its-for-heading"] .proof-achievement-qty {
+  font-weight: 435;
+}
+
+section[aria-labelledby="who-its-for-heading"] .proof-achievement-icon {
+  position: relative;
+  border: 1px solid rgba(216, 185, 106, 0.38);
+  background:
+    radial-gradient(
+      circle at 50% 42%,
+      rgba(216, 185, 106, 0.1) 0%,
+      transparent 70%
+    ),
+    var(--proof-icon-bg);
+  transition: border-color 0.25s ease;
+}
+
+section[aria-labelledby="who-its-for-heading"] .proof-achievement-icon::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  border: 1px solid rgba(216, 185, 106, 0.18);
+  pointer-events: none;
+  transition: border-color 0.25s ease;
+}
+
+section[aria-labelledby="who-its-for-heading"] .proof-achievement-icon svg {
+  width: 47%;
+  height: 47%;
+  min-width: 0.75rem;
+  min-height: 0.75rem;
+  stroke: var(--proof-muted-gold);
+  transition: stroke 0.25s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  section[aria-labelledby="who-its-for-heading"] .proof-achievement-row:hover .proof-achievement-icon {
+    border-color: rgba(216, 185, 106, 0.52);
+  }
+
+  section[aria-labelledby="who-its-for-heading"] .proof-achievement-row:hover .proof-achievement-icon::after {
+    border-color: rgba(216, 185, 106, 0.28);
+  }
+
+  section[aria-labelledby="who-its-for-heading"] .proof-achievement-row:hover .proof-achievement-icon svg {
+    stroke: var(--proof-champagne);
+  }
+}

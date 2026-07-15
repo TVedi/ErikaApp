@@ -1,8 +1,8 @@
 import Image from "next/image";
 import {
+  Award,
   Crown,
   Globe,
-  Medal,
   Mountain,
   Star,
   Trophy,
@@ -17,7 +17,7 @@ import { sitePhotos } from "@/lib/marketing/site-photos";
 
 const photo = sitePhotos.whoItsFor;
 
-const TITLE_ICONS: LucideIcon[] = [Trophy, Medal, Crown];
+const TITLE_ICONS: LucideIcon[] = [Trophy, Award, Crown];
 const EXPERIENCE_ICONS: LucideIcon[] = [Star, Globe, Mountain];
 
 function ProofAchievementText({ text }: { text: string }) {
