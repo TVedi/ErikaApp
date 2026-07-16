@@ -2,8 +2,8 @@ import Image from "next/image";
 import {
   Award,
   Crown,
+  Flag,
   Globe,
-  Mountain,
   Star,
   Trophy,
   type LucideIcon,
@@ -17,8 +17,9 @@ import { sitePhotos } from "@/lib/marketing/site-photos";
 
 const photo = sitePhotos.whoItsFor;
 
+/* Glyph decisions: Trophy/Award/Crown/Star/Globe keep; Mountain→Flag (more heraldic for leadership) */
 const TITLE_ICONS: LucideIcon[] = [Trophy, Award, Crown];
-const EXPERIENCE_ICONS: LucideIcon[] = [Star, Globe, Mountain];
+const EXPERIENCE_ICONS: LucideIcon[] = [Star, Globe, Flag];
 
 function ProofAchievementText({ text }: { text: string }) {
   const match = text.match(/^(\d+x|\d+\+|\d+)\s+(.+)$/);
@@ -42,7 +43,7 @@ function ProofAchievementRow({
   return (
     <div className="proof-achievement-row">
       <span className="proof-achievement-icon" aria-hidden="true">
-        <Icon strokeWidth={1.25} />
+        <Icon strokeWidth={1} />
       </span>
       <ProofAchievementText text={text} />
     </div>

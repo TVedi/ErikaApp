@@ -2,27 +2,29 @@
 
 import Image from "next/image";
 import { useLayoutEffect, useRef } from "react";
+import { Check } from "lucide-react";
 import { StartCoachingButton } from "@/components/marketing/start-coaching-button";
 import { MarketingCtaReveal } from "@/components/motion/marketing-cta-reveal";
+import { PremiumSectionDivider } from "@/components/marketing/premium-section-divider";
 import { launch } from "@/content/copy";
 import { sitePhotos } from "@/lib/marketing/site-photos";
 
 const photo = sitePhotos.videoAnalysis1Kep;
 
-function VideoAnalysisRow({ text, index }: { text: string; index: number }) {
-  const indexLabel = String(index + 1).padStart(2, "0");
+function VideoAnalysisCheckRow({ text }: { text: string }) {
   return (
-    <div className="audience-editorial-row">
-      <span className="audience-editorial-index" aria-hidden="true">
-        {indexLabel}
+    <div className="video-analysis-check-row">
+      <span className="video-analysis-check-icon" aria-hidden="true">
+        <Check strokeWidth={1.25} />
       </span>
-      <p className="audience-editorial-text">{text}</p>
+      <p className="video-analysis-check-text">{text}</p>
     </div>
   );
 }
 
 /**
  * Split-screen video analysis — replays slide-in on each viewport entry.
+ * scroll-snap-stop: always + IntersectionObserver replay are intentionally preserved.
  */
 export function VideoAnalysisSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -102,28 +104,35 @@ export function VideoAnalysisSection() {
         </div>
 
         {/* Content — below photo on mobile, left on desktop */}
-        <div className="split-screen-content-col order-2 lg:order-1">
-          <div className="video-analysis-slide-left w-full max-w-xl">
+        <div className="split-screen-content-col relative order-2 lg:order-1">
+          <div className="video-analysis-slide-left w-full">
+            <p className="video-analysis-eyebrow">{launch.videoSection.eyebrow}</p>
+
             <h2
               id="video-analysis-heading"
-              className="heading-aura-coral text-2xl font-bold text-foreground sm:text-3xl"
+              className="video-analysis-premium-heading font-display"
             >
-              <span className="heading-sheen-text">{launch.videoSection.title}</span>
+              {launch.videoSection.title}
             </h2>
-            <div className="audience-editorial-list video-analysis-editorial-list">
-              {launch.videoSection.points.map((text, i) => (
-                <VideoAnalysisRow key={text} text={text} index={i} />
+
+            <p className="video-analysis-body">{launch.videoSection.body}</p>
+
+            <div className="video-analysis-check-list">
+              {launch.videoSection.points.map((text) => (
+                <VideoAnalysisCheckRow key={text} text={text} />
               ))}
             </div>
-            <MarketingCtaReveal className="mt-6 flex justify-center sm:mt-7">
+
+            <MarketingCtaReveal className="video-analysis-cta flex justify-start">
               <StartCoachingButton
                 size="lg"
-                className="btn-cta-primary w-full sm:w-auto"
+                className="btn-cta-gold-outline w-full sm:w-auto"
               />
             </MarketingCtaReveal>
           </div>
         </div>
       </div>
+      <PremiumSectionDivider />
     </section>
   );
 }

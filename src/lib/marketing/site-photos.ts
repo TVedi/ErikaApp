@@ -34,8 +34,8 @@ export const sitePhotos = {
   videoAnalysis1Kep: {
     src: "/egyenes.jpeg",
     alt: "Erika Medveczky paddling — video technique analysis",
-    objectPosition: "38% 42%",
-    objectPositionMobile: "42% 38%",
+    objectPosition: "40% 52%",
+    objectPositionMobile: "42% 40%",
     width: 1303,
     height: 869,
   },
