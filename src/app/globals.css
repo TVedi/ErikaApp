@@ -60,13 +60,13 @@
 }
 
 :root {
-  /* Brand palette — single source of truth */
+  /* Brand palette -- single source of truth */
   --brand-base: #187870;
   --brand-base-light: #1f9188;
   --brand-base-muted: #156860;
   --brand-base-deep: #0c4843;
   /*
-   * Restrained emerald tonal system — canvas/surface/raised; #187870 highlight only.
+   * Restrained emerald tonal system -- canvas/surface/raised; #187870 highlight only.
    * One continuous main canvas; section aliases stay transparent over it.
    */
   --emerald-canvas: #062f2b;
@@ -82,7 +82,7 @@
       var(--emerald-surface) 100%
     );
   --brand-emerald-unified-radiance: none;
-  /* Legacy aliases — all resolve to nav-matched unified emerald */
+  /* Legacy aliases -- all resolve to nav-matched unified emerald */
   --brand-emerald-radiant: var(--brand-emerald-unified);
   --brand-emerald-radiant-light: var(--brand-emerald-unified-glow);
   --brand-emerald-radiant-depth: var(--brand-emerald-unified-blend);
@@ -91,16 +91,16 @@
   --brand-turquoise: #1abc9c;
   --brand-turquoise-hover: #16a689;
 
-  /* Text on emerald base surfaces — crisp pure white (no muted grey) */
+  /* Text on emerald base surfaces -- crisp pure white (no muted grey) */
   --text-on-base: #ffffff;
   --text-on-base-muted: #ffffff;
 
-  /* Photo layers — neutral only (never tint photos with brand green) */
+  /* Photo layers -- neutral only (never tint photos with brand green) */
   --photo-letterbox: #0a0a0a;
   --photo-scrim-strong: rgba(0, 0, 0, 0.75);
   --photo-scrim-soft: rgba(0, 0, 0, 0.35);
   --photo-vibrance-filter: brightness(1.14) saturate(1.1) contrast(1.02);
-  /* White lift over magyarock — brightness that works with background-attachment: fixed */
+  /* White lift over magyarock -- brightness that works with background-attachment: fixed */
   --magyarock-brighten-lift: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.14) 0%,
@@ -206,10 +206,10 @@
   }
 
   /*
-   * Document scroll root — html is the scrolling element (body/main do not overflow-scroll).
-   * Scroll settle (smooth + proximity snap) lives in unlayered rules at file end — Tailwind v4
+   * Document scroll root -- html is the scrolling element (body/main do not overflow-scroll).
+   * Scroll settle (smooth + proximity snap) lives in unlayered rules at file end -- Tailwind v4
    * layers strip/bury @layer base scroll-* (computed scroll-behavior was auto without unlayered).
-   * overflow-x: clip — page-level guard; clips slide-in transforms + header cloud pseudo overflow.
+   * overflow-x: clip -- page-level guard; clips slide-in transforms + header cloud pseudo overflow.
    */
   html {
     @apply font-sans;
@@ -222,7 +222,7 @@
     }
   }
 
-  /* Split-screen layout — left column vertically centered */
+  /* Split-screen layout -- left column vertically centered */
   .split-screen-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -304,7 +304,7 @@
     color: var(--accent-coral);
   }
 
-  /* Primary CTA — rich coral gradient, white label (≥3:1); accents keep --brand-coral */
+  /* Primary CTA -- rich coral gradient, white label (Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€žĂ„ÄľĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬Ă‚Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă„ÄľÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬Ă„â€¦Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â°Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă„ÄľÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„ÄľÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬Ă„â€¦Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬Ă‚Â¦Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„Äľ3:1); accents keep --brand-coral */
   .btn-cta-primary {
     color: var(--cta-primary-foreground);
     background-color: var(--cta-primary);
@@ -341,7 +341,7 @@
       0 2px 6px rgba(0, 0, 0, 0.26);
   }
 
-  /* Sticky nav — cloud fade pseudo-elements; surface bg applied unlayered at file end */
+  /* Sticky nav -- cloud fade pseudo-elements; surface bg applied unlayered at file end */
   .site-header-premium {
     isolation: isolate;
     overflow-x: clip;
@@ -352,7 +352,7 @@
     z-index: 3;
   }
 
-  /* Overlapping cloud puffs — blur the nav/hero seam (inset within header bounds) */
+  /* Overlapping cloud puffs -- blur the nav/hero seam (inset within header bounds) */
   .site-header-premium::before {
     content: "";
     position: absolute;
@@ -444,7 +444,7 @@
   }
 
   /*
-   * Homepage hero — localized text scrim + brighter slideshow (right/subject stays vivid).
+   * Homepage hero -- localized text scrim + brighter slideshow (right/subject stays vivid).
    * Camps and other photo bands keep the default full .hero-text-overlay above.
    */
   .home-hero > .absolute.inset-0.overflow-hidden img {
@@ -484,7 +484,7 @@
     );
   }
 
-  /* Full viewport below sticky header (h-16 = 4rem) — shared by hero + main sections */
+  /* Full viewport below sticky header (h-16 = 4rem) -- shared by hero + main sections */
   .section-screen,
   .hero-viewport-min {
     min-height: calc(100vh - 4rem);
@@ -500,7 +500,7 @@
   .section-screen-center > .split-screen-grid {
     flex: 1 1 auto;
     width: 100%;
-    /* Match section-screen — % min-height fails when parent only has min-height */
+    /* Match section-screen -- % min-height fails when parent only has min-height */
     min-height: calc(100vh - 4rem);
     min-height: calc(100dvh - 4rem);
   }
@@ -516,12 +516,12 @@
     min-height: calc(100dvh - 4rem);
   }
 
-  /* Coaching options — inner fits section so justify-center balances heading + cards */
+  /* Coaching options -- inner fits section so justify-center balances heading + cards */
   .section-coaching-options.section-screen-center > .section-screen-inner {
     min-height: 0;
   }
 
-  /* Video analysis — slide-in replay; overflow clipped for transforms */
+  /* Video analysis -- slide-in replay; overflow clipped for transforms */
   .section-video-analysis {
     overflow-x: clip;
   }
@@ -602,14 +602,14 @@
     isolation: isolate;
   }
 
-  /* Section grain/radiance removed — continuous main canvas (see unlayered rules) */
+  /* Section grain/radiance removed -- continuous main canvas (see unlayered rules) */
   .section-cream::before,
   .section-navy-soft::before,
   .section-emerald-surface::before {
     content: none;
   }
 
-  /* Section ::after radiance — unified unlayered at file end (layered rules removed) */
+  /* Section ::after radiance -- unified unlayered at file end (layered rules removed) */
   .section-cream::after,
   .section-navy-soft::after,
   .section-emerald-surface::after,
@@ -621,7 +621,7 @@
     content: none;
   }
 
-  /* Camps — full-bleed camp.webp + hero-style Ken-Burns (snap stays on) */
+  /* Camps -- full-bleed camp.webp + hero-style Ken-Burns (snap stays on) */
   .section-camps {
     position: relative;
     isolation: isolate;
@@ -633,7 +633,7 @@
     min-height: 0;
   }
 
-  /* Coached by Olympic experience — gyerek Ken-Burns + localized scrim */
+  /* Coached by Olympic experience -- gyerek Ken-Burns + localized scrim */
   .section-about-olympic {
     position: relative;
     isolation: isolate;
@@ -668,7 +668,7 @@
     }
   }
 
-  /* About Erika CTA — over open water, right of the child (tune top/left/right) */
+  /* About Erika CTA -- over open water, right of the child (tune top/left/right) */
   .section-about-olympic .about-olympic-cta {
     position: absolute;
     z-index: 20;
@@ -713,7 +713,7 @@
     z-index: 1;
   }
 
-  /* Split-screen photo mask — wide alpha feather (25–35% of photo width / height) */
+  /* Split-screen photo mask -- wide alpha feather (25Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€žĂ„ÄľĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬Ă‚Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă„ÄľÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬Ă„â€¦Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬Ă‚Â¦Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬Ă„â€¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚â€ąĂ˘â‚¬Ë‡Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă„ÄľÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬Ă„â€¦Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă„ÄľÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚â€šĂ‚Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹź35% of photo width / height) */
   .split-photo-mask {
     -webkit-mask-size: 100% 100%;
     mask-size: 100% 100%;
@@ -762,7 +762,7 @@
     }
   }
 
-  /* Audience cards — quiet raised surface (Who this is for) */
+  /* Audience cards -- quiet raised surface (Who this is for) */
   .audience-card-quiet {
     border: 1px solid rgba(255, 255, 255, 0.1);
     background: color-mix(in srgb, var(--emerald-raised) 58%, transparent);
@@ -776,7 +776,7 @@
   }
 
   /*
-   * Achievement cards — medal-coded (Where Experience Comes From).
+   * Achievement cards -- medal-coded (Where Experience Comes From).
    * Body matches the quiet emerald card; the medal reads from a restrained
    * accent only: 1px tinted border + gradient medal dot + faint corner tint.
    */
@@ -819,21 +819,21 @@
     box-shadow: 0 0 6px color-mix(in srgb, var(--medal) 50%, transparent);
   }
 
-  /* Patina/antique gold — champagne, not garish yellow (uniform on all cards) */
+  /* Patina/antique gold -- champagne, not garish yellow (uniform on all cards) */
   .achievement-gold {
     --medal: #c2a14d;
     --medal-hi: #ecd9a0;
     --medal-lo: #8a6d2f;
   }
 
-  /* Premium coral — audience cards (Who This Is For); same construction as gold */
+  /* Premium coral -- audience cards (Who This Is For); same construction as gold */
   .achievement-coral {
     --medal: #ff6f61;
     --medal-hi: #ffa89d;
     --medal-lo: #c24d42;
   }
 
-  /* Featured pinnacle — richest (still patina) gold: glow + inner highlight */
+  /* Featured pinnacle -- richest (still patina) gold: glow + inner highlight */
   .achievement-olympic {
     --medal: #cbaa5b;
     --medal-hi: #f3e3b0;
@@ -863,7 +863,7 @@
     box-shadow: 0 0 10px color-mix(in srgb, var(--medal) 65%, transparent);
   }
 
-  /* Gold shimmer hover — gentle lift + one faint gold sheen sweep (hover-capable only) */
+  /* Gold shimmer hover -- gentle lift + one faint gold sheen sweep (hover-capable only) */
   @media (hover: hover) and (prefers-reduced-motion: no-preference) {
     .achievement-card {
       transition:
@@ -984,7 +984,7 @@
     }
   }
 
-  /* Sheen sweep — same 1.2s ease-out pass as cards; 3s cycle with ~1.8s pause */
+  /* Sheen sweep -- same 1.2s ease-out pass as cards; 3s cycle with ~1.8s pause */
   @keyframes heading-sheen-auto-gold {
     0%,
     60% {
@@ -1011,7 +1011,7 @@
     }
   }
 
-  /* Organic radiating aura (text-shadow only — no box clip) + glyph sheen on inner span */
+  /* Organic radiating aura (text-shadow only -- no box clip) + glyph sheen on inner span */
   .heading-aura-gold {
     text-shadow:
       0 0 6px rgba(194, 161, 77, 0.65),
@@ -1097,7 +1097,7 @@
     }
   }
 
-  /* Coaching options — frosted glass cards over fixed MAGYAROCK background */
+  /* Coaching options -- frosted glass cards over fixed MAGYAROCK background */
   .program-card-glass {
     border: 1px solid rgba(255, 255, 255, 0.2);
     background: color-mix(in srgb, var(--brand-base-deep) 36%, transparent);
@@ -1140,7 +1140,7 @@
     }
   }
 
-  /* Navigating text links — coral hover/focus (not buttons) */
+  /* Navigating text links -- coral hover/focus (not buttons) */
   .text-link-coral {
     transition: color 0.2s ease;
   }
@@ -1198,7 +1198,7 @@
       opacity: 1;
     }
 
-    /* Section CTAs — 2s pause, then soft floating assemble (split-screen safe) */
+    /* Section CTAs -- 2s pause, then soft floating assemble (split-screen safe) */
     .marketing-cta-reveal-inner {
       position: relative;
       overflow: hidden;
@@ -1272,7 +1272,7 @@
       }
     }
 
-    /* Video course loading — hero “experience” accent + slow continuous pulse */
+    /* Video course loading -- hero Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€žĂ„ÄľĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬Ă‚Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă„ÄľÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬Ă„â€¦Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬Ă‚Â¦Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬Ă„â€¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚â€ąĂ˘â‚¬Ë‡Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€žĂ„ÄľĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă„ÄľÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¦Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬Ă„â€¦Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬Ă‚Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşexperienceÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€žĂ„ÄľĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬Ă‚Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă„ÄľÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬Ă„â€¦Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬Ă‚Â¦Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬Ă„â€¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚â€ąĂ˘â‚¬Ë‡Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€žĂ„ÄľĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă„ÄľÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¦Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€žĂ„ÄľĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„Äľ accent + slow continuous pulse */
     .video-course-loading-pulse {
       text-wrap: balance;
     }
@@ -1302,7 +1302,7 @@
       will-change: transform;
     }
 
-    /* Camps: continuous gentle zoom — overrides hero single-iteration + forwards */
+    /* Camps: continuous gentle zoom -- overrides hero single-iteration + forwards */
     .camps-ken-burns.hero-slideshow-ken-burns {
       animation-iteration-count: infinite;
       animation-direction: alternate;
@@ -1331,7 +1331,7 @@
 }
 
 /*
- * Document scroll + overflow — unlayered so Tailwind v4 emits on html (layers bury @layer base).
+ * Document scroll + overflow -- unlayered so Tailwind v4 emits on html (layers bury @layer base).
  * html is the vertical + horizontal scroll owner (main scrollWidth matches clientWidth).
  */
 html,
@@ -1344,7 +1344,7 @@ html {
 }
 
 /*
- * Scroll settle — UNLAYERED (Tailwind v4 strips/buries layered scroll-* rules;
+ * Scroll settle -- UNLAYERED (Tailwind v4 strips/buries layered scroll-* rules;
  * computed scroll-behavior stayed auto until these were emitted unlayered).
  * Proximity only: assists near section boundaries, never traps long sections.
  */
@@ -1367,15 +1367,15 @@ html {
   }
 }
 
-/* Snap alignment — unlayered so it survives the cascade with the html rules */
+/* Snap alignment -- unlayered so it survives the cascade with the html rules */
 .section-screen {
   scroll-snap-align: start;
   scroll-snap-stop: normal;
 }
 
 /*
- * Coaching-options + Video-analysis — snap firmly into place (user priority).
- * scroll-snap-stop: always — the scroller cannot fling past these; they land
+ * Coaching-options + Video-analysis -- snap firmly into place (user priority).
+ * scroll-snap-stop: always -- the scroller cannot fling past these; they land
  * at the top even under the global proximity type. Fixed-bg reveal and the
  * slide-in replay still run while travelling through the section.
  */
@@ -1422,22 +1422,16 @@ body {
 }
 
 /*
- * MAGYAROCK fixed bg — UNLAYERED (Tailwind layers + fixed/filter quirks).
+ * MAGYAROCK fixed bg -- UNLAYERED (Tailwind layers + fixed/filter quirks).
  * ::before = image-only layer: white lift gradient + saturate/contrast (fixed-safe).
  * ::after  = lighter scrim so brightening is visible; glass cards stay readable.
  */
+/* Photo layer + dissolve -- overridden with full geometry in end-block */
 .section-coaching-fixed-bg::before {
   content: "";
   position: absolute;
-  inset: 0;
   pointer-events: none;
   z-index: 0;
-  background-image: var(--magyarock-brighten-lift), url("/steg.png");
-  background-size: cover;
-  background-position: center 28%;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  filter: saturate(1.1) contrast(1.02);
 }
 
 .section-coaching-fixed-bg::after {
@@ -1446,17 +1440,13 @@ body {
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.36) 0%,
-    rgba(0, 0, 0, 0.24) 42%,
-    rgba(0, 0, 0, 0.38) 100%
-  );
+  background: none;
 }
 
+/* Coaching photo uses scroll attachment (end-block); do not re-enable fixed here */
 @media (min-width: 1024px) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   .section-coaching-fixed-bg::before {
-    background-attachment: fixed;
+    background-attachment: scroll;
   }
 }
 
@@ -1467,7 +1457,7 @@ body {
 }
 
 /*
- * ===== SAVED: glossy black surface (RESTORE — say "vissza az előző állásra") =====
+ * ===== SAVED: glossy black surface (RESTORE -- say "vissza az elĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă„ÄľÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„ÄľÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€žĂ„ÄľĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă„ÄľÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬Ă„â€¦Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂzĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă„ÄľÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„ÄľÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€žĂ„ÄľĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă„ÄľÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬Ă„â€¦Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă„ÄľÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„ÄľÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬Ă„â€¦Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬Ă‚Â¦Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬Ă„â€¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă„ÄľÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚â€šĂ‚Â¦Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬Ă„â€¦Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇllĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă„ÄľÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„ÄľÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬Ă„â€¦Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬Ă‚Â¦Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬Ă„â€¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă„ÄľÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚â€šĂ‚Â¦Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬Ă„â€¦Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇsra") =====
  * To revert: delete the ACTIVE footer-muted block below and uncomment this block.
  *
  * :root {
@@ -1509,7 +1499,7 @@ body {
  */
 
 /*
- * ===== Video analysis — dark emerald unified (transparent section alias) =====
+ * ===== Video analysis -- dark emerald unified (transparent section alias) =====
  * UNLAYERED. Blends into footer-canvas main surface; default split-photo mask + dark glass card.
  */
 .section-video-analysis {
@@ -1530,7 +1520,7 @@ body {
 }
 
 /*
- * Mobile-only polish (<1024px) — UNLAYERED. Desktop (>=1024px) untouched.
+ * Mobile-only polish (<1024px) -- UNLAYERED. Desktop (>=1024px) untouched.
  * Key-subject framing: !important beats the inline desktop object-position;
  * each image carries its phone position in --op-mobile.
  */
@@ -1539,9 +1529,10 @@ body {
     object-position: var(--op-mobile) !important;
   }
 
-  /* steg fixed-bg fallback framing on phones */
+  /* steg fixed-bg -- keep athlete framed right on phones */
   .section-coaching-fixed-bg::before {
-    background-position: 45% 28%;
+    width: 72%;
+    background-position: 40% 22%;
   }
 
   /* Comfortable tap targets (~44px) for primary CTAs */
@@ -1551,7 +1542,7 @@ body {
     min-height: 2.75rem;
   }
 
-  /* Header CTA — slightly shorter so it sits well in the 4rem bar */
+  /* Header CTA -- slightly shorter so it sits well in the 4rem bar */
   .site-header-premium .btn-cta-primary {
     min-height: 2.5rem;
   }
@@ -1560,9 +1551,9 @@ body {
 /* Canvas base: see SITE-WIDE EMERALD OBSIDIAN BASE at file end. */
 
 /*
- * ===== Achievement card surface veils — UNLAYERED (LAST) =====
+ * ===== Achievement card surface veils -- UNLAYERED (LAST) =====
  * Tailwind v4 strips @layer utilities backgrounds; emit here so veils survive cascade.
- * Gradient veil: stronger top-left (16%), fading to 6% — gold/coral via --medal.
+ * Gradient veil: stronger top-left (16%), fading to 6% -- gold/coral via --medal.
  */
 .achievement-card {
   background:
@@ -1631,11 +1622,11 @@ body {
 }
 
 /*
- * Video analysis text card — coral veil (removed; section uses editorial rows).
+ * Video analysis text card -- coral veil (removed; section uses editorial rows).
  */
 
 /*
- * ===== Video Course section — full-viewport split + square image (UNLAYERED) =====
+ * ===== Video Course section -- full-viewport split + square image (UNLAYERED) =====
  * Desktop: text bottom aligned with image bottom (left); image centered in right half.
  */
 .section-screen.section-screen-center:has(> .video-course-layout) {
@@ -1732,7 +1723,7 @@ body {
   }
 }
 
-/* About story — editorial long-form (unlayered) */
+/* About story -- editorial long-form (unlayered) */
 .about-story-page {
   padding: 3rem 1.25rem 5rem;
 }
@@ -1843,12 +1834,12 @@ body {
   color: color-mix(in srgb, var(--foreground) 55%, transparent);
 }
 
-/* Patina gold token — matches achievement-card medal gold (used by About divider + Speaking) */
+/* Patina gold token -- matches achievement-card medal gold (used by About divider + Speaking) */
 :root {
   --brand-gold: #c9a85c;
 }
 
-/* Speaking — corporate coming-soon hero (unlayered) */
+/* Speaking -- corporate coming-soon hero (unlayered) */
 .speaking-hero {
   display: flex;
   align-items: stretch;
@@ -1957,7 +1948,7 @@ body {
   }
 }
 
-/* Gold light sweep — headline only; readable base, slow premium repeat */
+/* Gold light sweep -- headline only; readable base, slow premium repeat */
 .text-gold-sweep {
   background-image: linear-gradient(
     110deg,
@@ -1996,7 +1987,7 @@ body {
   }
 }
 
-/* Camps — future-facing coming-soon hero (unlayered); brand-family of .speaking-hero */
+/* Camps -- future-facing coming-soon hero (unlayered); brand-family of .speaking-hero */
 .camps-hero {
   display: flex;
   align-items: stretch;
@@ -2069,7 +2060,7 @@ body {
   justify-content: center;
 }
 
-/* Full image always visible — object-contain inside a dark letterbox frame, no crop */
+/* Full image always visible -- object-contain inside a dark letterbox frame, no crop */
 .camps-photo-frame {
   width: min(340px, 92vw);
   border-radius: 1.25rem;
@@ -2101,9 +2092,9 @@ body {
 
 /* Canvas base: see FLAT SITE BASE at file end. */
 
-/* Editorial proof + audience rows — see unlayered block at file end. */
+/* Editorial proof + audience rows -- see unlayered block at file end. */
 
-/* FLAT SITE BASE — one solid color, no gradients */
+/* FLAT SITE BASE -- one solid color, no gradients */
 :root {
   --site-base: #031714;
   --background: var(--site-base);
@@ -2165,7 +2156,7 @@ footer {
   background-image: none;
 }
 
-/* Header haze removal — cloud pseudos + white inset sheen (obsidian base) */
+/* Header haze removal -- cloud pseudos + white inset sheen (obsidian base) */
 .site-header-premium::before,
 .site-header-premium::after {
   content: none;
@@ -2184,7 +2175,7 @@ footer {
 }
 
 /*
- * Camps + Speaking hero rows — single-screen composed layout.
+ * Camps + Speaking hero rows -- single-screen composed layout.
  * Columns top-align with each other; the row is vertically centered in the viewport.
  */
 .camps-hero.section-screen,
@@ -2341,7 +2332,7 @@ footer {
 
 /* ===== Editorial proof + audience rows (UNLAYERED) ===== */
 
-/* Where Experience Comes From — Olympic statement */
+/* Where Experience Comes From -- Olympic statement */
 .proof-olympic-statement {
   margin-top: 2.5rem;
   padding-bottom: 1.75rem;
@@ -2438,7 +2429,7 @@ footer {
   }
 }
 
-/* Who This Is For — editorial index rows */
+/* Who This Is For -- editorial index rows */
 .audience-editorial-list {
   display: flex;
   flex-direction: column;
@@ -2508,7 +2499,7 @@ footer {
   }
 }
 
-/* ===== Where Experience Comes From — viewport-fit + Olympic text + row hover (UNLAYERED) ===== */
+/* ===== Where Experience Comes From -- viewport-fit + Olympic text + row hover (UNLAYERED) ===== */
 
 section[aria-labelledby="who-its-for-heading"] .split-screen-content-col {
   justify-content: center;
@@ -2610,7 +2601,7 @@ section[aria-labelledby="who-its-for-heading"] .who-its-for-cta {
   }
 }
 
-/* Video analysis — editorial index rows (reuses audience-editorial-* classes) */
+/* Video analysis -- editorial index rows (reuses audience-editorial-* classes) */
 .section-video-analysis .video-analysis-editorial-list {
   margin-top: 1.25rem;
 }
@@ -2623,7 +2614,7 @@ section[aria-labelledby="who-its-for-heading"] .who-its-for-cta {
 
 /* ===== Four refinements: brand gold, dimmed headings, Olympic size, unified gaps (UNLAYERED) ===== */
 
-/* TASK 1 — Header brand metallic gold breeze */
+/* TASK 1 -- Header brand metallic gold breeze */
 .brand-gold-flow {
   background-image: linear-gradient(
     100deg,
@@ -2659,7 +2650,7 @@ section[aria-labelledby="who-its-for-heading"] .who-its-for-cta {
   }
 }
 
-/* TASK 2 — Slightly dim the two section headings (~12% aura + brightness) */
+/* TASK 2 -- Slightly dim the two section headings (~12% aura + brightness) */
 @keyframes heading-aura-pulse-gold-refined {
   from {
     text-shadow:
@@ -2720,12 +2711,12 @@ section[aria-labelledby="who-its-for-heading"] .who-its-for-cta {
   }
 }
 
-/* TASK 3 — Olympic statement font size (~11% smaller) */
+/* TASK 3 -- Olympic statement font size (~11% smaller) */
 section[aria-labelledby="who-its-for-heading"] .proof-olympic-statement-text {
   font-size: clamp(1.45rem, 3.38vw, 2.125rem);
 }
 
-/* TASK 4 — Unified heading top-gap (reference: Who This Is For @ 1440x900 ≈ 168px) */
+/* TASK 4 -- Unified heading top-gap (reference: Who This Is For @ 1440x900 Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€žĂ„ÄľĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬Ă‚Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă„ÄľÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬Ă„â€¦Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â°Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă„ÄľÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â 168px) */
 section[aria-labelledby="who-its-for-heading"] .split-screen-content-col {
   justify-content: flex-start;
   padding-top: 10.5rem;
@@ -2765,7 +2756,7 @@ section[aria-labelledby="video-analysis-heading"] .split-screen-content-col {
 
 /* ===== Three refinements: brand display font, proof breathing room, gold frame reuse (UNLAYERED) ===== */
 
-/* TASK 2 — Restore internal rhythm in Where Experience Comes From (gap stays 10.5rem) */
+/* TASK 2 -- Restore internal rhythm in Where Experience Comes From (gap stays 10.5rem) */
 section[aria-labelledby="who-its-for-heading"] .proof-olympic-statement {
   margin-top: 1.75rem;
   padding-bottom: 1.125rem;
@@ -2805,7 +2796,7 @@ section[aria-labelledby="who-its-for-heading"] .who-its-for-cta {
 
 /* ===== Viewport-adaptive gaps, brand italic, video-analysis photo radius (UNLAYERED) ===== */
 
-/* TASK 1 — Unified vh-adaptive heading gap (all three sections) */
+/* TASK 1 -- Unified vh-adaptive heading gap (all three sections) */
 section[aria-labelledby="who-its-for-heading"] .split-screen-content-col,
 section[aria-labelledby="how-it-works-heading"] .split-screen-content-col,
 section[aria-labelledby="video-analysis-heading"] .split-screen-content-col {
@@ -2815,7 +2806,7 @@ section[aria-labelledby="video-analysis-heading"] .split-screen-content-col {
   margin-top: 0;
 }
 
-/* TASK 1 — Where Experience Comes From: vh-aware internal rhythm */
+/* TASK 1 -- Where Experience Comes From: vh-aware internal rhythm */
 section[aria-labelledby="who-its-for-heading"] .proof-olympic-statement {
   margin-top: clamp(0.625rem, 2vh, 1.75rem);
   padding-bottom: clamp(0.375rem, 1.2vh, 1.125rem);
@@ -2833,21 +2824,21 @@ section[aria-labelledby="who-its-for-heading"] .who-its-for-cta {
   margin-top: clamp(0.5rem, 2vh, 1.625rem);
 }
 
-/* TASK 3 — Video Course keeps speaking-portrait-frame (unchanged) */
+/* TASK 3 -- Video Course keeps speaking-portrait-frame (unchanged) */
 .video-course-portrait-card.speaking-portrait-frame {
   width: var(--video-course-square, min(88vw, 420px, calc((100dvh - 4rem) * 0.6)));
   aspect-ratio: 1 / 1;
   border: none;
 }
 
-/* TASK 3 — Video Analysis image: preserve rounded corners without gold frame */
+/* TASK 3 -- Video Analysis image: preserve rounded corners without gold frame */
 .section-video-analysis .video-analysis-photo {
   border-radius: calc(1.25rem - 1px);
 }
 
 /* ===== Remove italic + raise Where Experience heading by G (UNLAYERED) ===== */
 
-/* TASK 1 — Brand + Where Experience heading: font-style normal (no collateral on other sheen headings) */
+/* TASK 1 -- Brand + Where Experience heading: font-style normal (no collateral on other sheen headings) */
 .brand-gold-flow,
 #who-its-for-heading,
 #who-its-for-heading .heading-sheen-text {
@@ -2867,7 +2858,7 @@ section[aria-labelledby="video-analysis-heading"] .video-analysis-editorial-list
   margin-top: 1.5rem;
 }
 
-/* ===== Solid coral headings — auras removed (UNLAYERED) ===== */
+/* ===== Solid coral headings -- auras removed (UNLAYERED) ===== */
 #how-it-works-heading.heading-aura-coral,
 #video-analysis-heading.heading-aura-coral,
 #coaching-options-heading {
@@ -2889,7 +2880,7 @@ section[aria-labelledby="video-analysis-heading"] .video-analysis-editorial-list
   text-shadow: none;
 }
 
-/* ===== Where Experience Comes From — premium editorial proof trial (UNLAYERED) ===== */
+/* ===== Where Experience Comes From -- premium editorial proof trial (UNLAYERED) ===== */
 
 section[aria-labelledby="who-its-for-heading"] {
   --proof-cream: #F7F1E6;
@@ -3354,8 +3345,8 @@ section[aria-labelledby="who-its-for-heading"] .who-its-for-cta .btn-cta-primary
   }
 }
 
-/* ===== Where Experience short-viewport rebalance — wide screens (UNLAYERED) ===== */
-/* At ≥1280px wide + short height: keep editorial type scale (vw), compress spacing only. */
+/* ===== Where Experience short-viewport rebalance -- wide screens (UNLAYERED) ===== */
+/* At Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€žĂ„ÄľĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬Ă‚Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă„ÄľÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬Ă„â€¦Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â°Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă„ÄľÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„ÄľÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬Ă„â€¦Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬Ă‚Â¦Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„Äľ1280px wide + short height: keep editorial type scale (vw), compress spacing only. */
 
 @media (min-width: 1280px) and (max-height: 740px) {
   section[aria-labelledby="who-its-for-heading"] .split-screen-content-col {
@@ -3684,7 +3675,7 @@ section[aria-labelledby="who-its-for-heading"] .proof-achievement-icon svg {
   --premium-icon-bg: rgba(216, 185, 106, 0.06);
 }
 
-/* ===== Who This Is For — premium editorial restyle (UNLAYERED) ===== */
+/* ===== Who This Is For -- premium editorial restyle (UNLAYERED) ===== */
 
 section[aria-labelledby="how-it-works-heading"] .audience-premium-eyebrow {
   margin: 0;
@@ -3931,7 +3922,7 @@ section[aria-labelledby="who-its-for-heading"] .split-photo-mask {
   mask-repeat: no-repeat;
 }
 
-/* Grade wash kept — hue-match the photo to emerald canvas */
+/* Grade wash kept -- hue-match the photo to emerald canvas */
 section[aria-labelledby="how-it-works-heading"] .split-photo-mask::before,
 section[aria-labelledby="who-its-for-heading"] .split-photo-mask::before {
   content: "";
@@ -3942,10 +3933,10 @@ section[aria-labelledby="who-its-for-heading"] .split-photo-mask::before {
   background: rgba(5, 42, 36, 0.12);
 }
 
-/* ::after melt removed — dissolve mask reveals the canvas underneath */
+/* ::after melt removed -- dissolve mask reveals the canvas underneath */
 
 @media (max-width: 1023px) {
-  /* Photo stacks above content — dissolve at bottom edge into canvas */
+  /* Photo stacks above content -- dissolve at bottom edge into canvas */
   section[aria-labelledby="how-it-works-heading"] .split-photo-mask,
   section[aria-labelledby="who-its-for-heading"] .split-photo-mask {
     -webkit-mask-image: linear-gradient(
@@ -3973,7 +3964,7 @@ section[aria-labelledby="who-its-for-heading"] .split-photo-mask::before {
   }
 }
 
-/* ===== Task A — Where Experience heading harmony + rhythm (UNLAYERED) ===== */
+/* ===== Task A -- Where Experience heading harmony + rhythm (UNLAYERED) ===== */
 
 section[aria-labelledby="who-its-for-heading"] #who-its-for-heading,
 section[aria-labelledby="who-its-for-heading"] .proof-editorial-heading,
@@ -4012,7 +4003,7 @@ section[aria-labelledby="who-its-for-heading"] .proof-olympic-statement {
   }
 }
 
-/* ===== Task B — Expert video technique analysis premium restyle (UNLAYERED) ===== */
+/* ===== Task B -- Expert video technique analysis premium restyle (UNLAYERED) ===== */
 
 section[aria-labelledby="video-analysis-heading"] {
   --premium-cream: #f7f1e6;
@@ -4024,29 +4015,59 @@ section[aria-labelledby="video-analysis-heading"] {
   --premium-icon-bg: rgba(216, 185, 106, 0.06);
 }
 
-/* Same split layout as finished sections — long dissolve + grade wash.
-   Ramp compressed vs Who/Where so the paddler (left-of-center focal) sits in ≥0.97. */
+/* Same split layout as finished sections -- long dissolve + grade wash.
+   Desktop mask densified below (active end-block); keep reach so paddler sits in >=0.97. */
 section[aria-labelledby="video-analysis-heading"] .split-photo-mask {
   -webkit-mask-image: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(0, 0, 0, 0.1) 6%,
-    rgba(0, 0, 0, 0.35) 14%,
-    rgba(0, 0, 0, 0.65) 24%,
-    rgba(0, 0, 0, 0.88) 34%,
-    rgba(0, 0, 0, 0.97) 42%,
-    black 50%,
+    rgba(0, 0, 0, 0.03) 5%,
+    rgba(0, 0, 0, 0.06) 10%,
+    rgba(0, 0, 0, 0.1) 12%,
+    rgba(0, 0, 0, 0.14) 15%,
+    rgba(0, 0, 0, 0.18) 17%,
+    rgba(0, 0, 0, 0.22) 20%,
+    rgba(0, 0, 0, 0.3) 24%,
+    rgba(0, 0, 0, 0.38) 28%,
+    rgba(0, 0, 0, 0.48) 32%,
+    rgba(0, 0, 0, 0.56) 35%,
+    rgba(0, 0, 0, 0.64) 39%,
+    rgba(0, 0, 0, 0.72) 42%,
+    rgba(0, 0, 0, 0.78) 44%,
+    rgba(0, 0, 0, 0.84) 47%,
+    rgba(0, 0, 0, 0.9) 51%,
+    rgba(0, 0, 0, 0.94) 54%,
+    rgba(0, 0, 0, 0.96) 57%,
+    rgba(0, 0, 0, 0.975) 60%,
+    rgba(0, 0, 0, 0.985) 62%,
+    rgba(0, 0, 0, 0.993) 66%,
+    black 70%,
     black 100%
   );
   mask-image: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(0, 0, 0, 0.1) 6%,
-    rgba(0, 0, 0, 0.35) 14%,
-    rgba(0, 0, 0, 0.65) 24%,
-    rgba(0, 0, 0, 0.88) 34%,
-    rgba(0, 0, 0, 0.97) 42%,
-    black 50%,
+    rgba(0, 0, 0, 0.03) 5%,
+    rgba(0, 0, 0, 0.06) 10%,
+    rgba(0, 0, 0, 0.1) 12%,
+    rgba(0, 0, 0, 0.14) 15%,
+    rgba(0, 0, 0, 0.18) 17%,
+    rgba(0, 0, 0, 0.22) 20%,
+    rgba(0, 0, 0, 0.3) 24%,
+    rgba(0, 0, 0, 0.38) 28%,
+    rgba(0, 0, 0, 0.48) 32%,
+    rgba(0, 0, 0, 0.56) 35%,
+    rgba(0, 0, 0, 0.64) 39%,
+    rgba(0, 0, 0, 0.72) 42%,
+    rgba(0, 0, 0, 0.78) 44%,
+    rgba(0, 0, 0, 0.84) 47%,
+    rgba(0, 0, 0, 0.9) 51%,
+    rgba(0, 0, 0, 0.94) 54%,
+    rgba(0, 0, 0, 0.96) 57%,
+    rgba(0, 0, 0, 0.975) 60%,
+    rgba(0, 0, 0, 0.985) 62%,
+    rgba(0, 0, 0, 0.993) 66%,
+    black 70%,
     black 100%
   );
   -webkit-mask-size: 100% 100%;
@@ -4061,7 +4082,7 @@ section[aria-labelledby="video-analysis-heading"] .split-photo-mask::before {
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: rgba(5, 42, 36, 0.12);
+  background: rgba(5, 42, 36, 0.14);
 }
 
 @media (max-width: 1023px) {
@@ -4070,22 +4091,34 @@ section[aria-labelledby="video-analysis-heading"] .split-photo-mask::before {
       to bottom,
       black 0%,
       black 40%,
+      rgba(0, 0, 0, 0.985) 45%,
       rgba(0, 0, 0, 0.97) 50%,
+      rgba(0, 0, 0, 0.925) 56%,
       rgba(0, 0, 0, 0.88) 62%,
+      rgba(0, 0, 0, 0.765) 68%,
       rgba(0, 0, 0, 0.65) 74%,
+      rgba(0, 0, 0, 0.5) 80%,
       rgba(0, 0, 0, 0.35) 86%,
+      rgba(0, 0, 0, 0.225) 90%,
       rgba(0, 0, 0, 0.1) 94%,
+      rgba(0, 0, 0, 0.05) 97%,
       transparent 100%
     );
     mask-image: linear-gradient(
       to bottom,
       black 0%,
       black 40%,
+      rgba(0, 0, 0, 0.985) 45%,
       rgba(0, 0, 0, 0.97) 50%,
+      rgba(0, 0, 0, 0.925) 56%,
       rgba(0, 0, 0, 0.88) 62%,
+      rgba(0, 0, 0, 0.765) 68%,
       rgba(0, 0, 0, 0.65) 74%,
+      rgba(0, 0, 0, 0.5) 80%,
       rgba(0, 0, 0, 0.35) 86%,
+      rgba(0, 0, 0, 0.225) 90%,
       rgba(0, 0, 0, 0.1) 94%,
+      rgba(0, 0, 0, 0.05) 97%,
       transparent 100%
     );
   }
@@ -4225,10 +4258,15 @@ section[aria-labelledby="video-analysis-heading"] .video-analysis-cta {
 }
 
 .btn-cta-gold-outline::after {
-  content: "→";
-  font-size: 1em;
-  line-height: 1;
-  margin-left: 0.15rem;
+  content: none;
+  display: none;
+}
+
+.btn-cta-arrow {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  margin-left: 0.1rem;
 }
 
 .btn-cta-gold-outline:hover {
@@ -4339,9 +4377,9 @@ section[aria-labelledby="video-analysis-heading"] .split-screen-content-col {
   }
 }
 
-/* ===== Round 3A — Where Experience full text unification with Who (UNLAYERED) ===== */
+/* ===== Round 3A -- Where Experience full text unification with Who (UNLAYERED) ===== */
 
-/* Eyebrow — exact Who match */
+/* Eyebrow -- exact Who match */
 section[aria-labelledby="who-its-for-heading"] .proof-eyebrow {
   font-size: 0.72rem;
   font-weight: 500;
@@ -4357,7 +4395,7 @@ section[aria-labelledby="who-its-for-heading"] .proof-eyebrow::after {
   background: var(--premium-line-gold);
 }
 
-/* Heading — color/family only; size restored in unified 2c5fb4c block at file end */
+/* Heading -- color/family only; size restored in unified 2c5fb4c block at file end */
 section[aria-labelledby="who-its-for-heading"] #who-its-for-heading,
 section[aria-labelledby="who-its-for-heading"] .proof-editorial-heading,
 section[aria-labelledby="who-its-for-heading"] #who-its-for-heading .proof-heading-line1,
@@ -4371,7 +4409,7 @@ section[aria-labelledby="who-its-for-heading"] .proof-editorial-heading {
   margin: clamp(1rem, 2.8vh, 1.75rem) 0 0;
 }
 
-/* Olympic statement → Who intro metrics; champagne type restored; thin gold rule kept */
+/* Olympic statement Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€žĂ„ÄľĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬Ă‚Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă„ÄľÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬Ă„â€¦Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă„ÄľÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬Ă„â€¦Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬Ă„â€¦Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„ÄľĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â Who intro metrics; champagne type restored; thin gold rule kept */
 section[aria-labelledby="who-its-for-heading"] .proof-olympic-statement {
   margin-top: clamp(1.125rem, 2.5vh, 1.75rem);
   padding-bottom: clamp(0.875rem, 1.4vh, 1.125rem);
@@ -4392,7 +4430,7 @@ section[aria-labelledby="who-its-for-heading"] .proof-statement-text {
   background-image: none;
 }
 
-/* Achievement rows → Who editorial row text */
+/* Achievement rows Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€žĂ„ÄľĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬Ă‚Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă„ÄľÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬Ă„â€¦Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă„ÄľÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬Ă„â€¦Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬Ă„â€¦Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„ÄľĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â Who editorial row text */
 section[aria-labelledby="who-its-for-heading"] .proof-achievement-grid {
   margin-top: clamp(1.25rem, 3vh, 2rem);
 }
@@ -4415,7 +4453,7 @@ section[aria-labelledby="who-its-for-heading"] .proof-achievement-qty {
   color: var(--premium-soft-cream);
 }
 
-/* Icon circles — engraved medal, 48px; glyph ~48% via calc (SVG % is unreliable) */
+/* Icon circles -- engraved medal, 48px; glyph ~48% via calc (SVG % is unreliable) */
 section[aria-labelledby="who-its-for-heading"] .proof-achievement-icon {
   width: 3rem;
   height: 3rem;
@@ -4477,9 +4515,9 @@ section[aria-labelledby="who-its-for-heading"] .who-its-for-cta {
   }
 }
 
-/* ===== Round 3B — Video analysis photo full-bleed (no card) (UNLAYERED) ===== */
+/* ===== Round 3B -- Video analysis photo full-bleed (no card) (UNLAYERED) ===== */
 
-/* Ensure slide settles flush — no residual translate on assembled state */
+/* Ensure slide settles flush -- no residual translate on assembled state */
 @media (prefers-reduced-motion: no-preference) {
   section[aria-labelledby="video-analysis-heading"].video-analysis-assembled
     .video-analysis-slide-right,
@@ -4524,8 +4562,159 @@ section[aria-labelledby="video-analysis-heading"] .video-analysis-photo {
   }
 }
 
-/* Long dissolve — same family as split sections; softer lead-in for water photo seam */
+/* Long dissolve -- densified stops (same curve/reach; midpoints kill banding) */
 section[aria-labelledby="video-analysis-heading"] .split-photo-mask {
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.03) 5%,
+    rgba(0, 0, 0, 0.06) 10%,
+    rgba(0, 0, 0, 0.1) 12%,
+    rgba(0, 0, 0, 0.14) 15%,
+    rgba(0, 0, 0, 0.18) 17%,
+    rgba(0, 0, 0, 0.22) 20%,
+    rgba(0, 0, 0, 0.3) 24%,
+    rgba(0, 0, 0, 0.38) 28%,
+    rgba(0, 0, 0, 0.48) 32%,
+    rgba(0, 0, 0, 0.56) 35%,
+    rgba(0, 0, 0, 0.64) 39%,
+    rgba(0, 0, 0, 0.72) 42%,
+    rgba(0, 0, 0, 0.78) 44%,
+    rgba(0, 0, 0, 0.84) 47%,
+    rgba(0, 0, 0, 0.9) 51%,
+    rgba(0, 0, 0, 0.94) 54%,
+    rgba(0, 0, 0, 0.96) 57%,
+    rgba(0, 0, 0, 0.975) 60%,
+    rgba(0, 0, 0, 0.985) 62%,
+    rgba(0, 0, 0, 0.993) 66%,
+    black 70%,
+    black 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.03) 5%,
+    rgba(0, 0, 0, 0.06) 10%,
+    rgba(0, 0, 0, 0.1) 12%,
+    rgba(0, 0, 0, 0.14) 15%,
+    rgba(0, 0, 0, 0.18) 17%,
+    rgba(0, 0, 0, 0.22) 20%,
+    rgba(0, 0, 0, 0.3) 24%,
+    rgba(0, 0, 0, 0.38) 28%,
+    rgba(0, 0, 0, 0.48) 32%,
+    rgba(0, 0, 0, 0.56) 35%,
+    rgba(0, 0, 0, 0.64) 39%,
+    rgba(0, 0, 0, 0.72) 42%,
+    rgba(0, 0, 0, 0.78) 44%,
+    rgba(0, 0, 0, 0.84) 47%,
+    rgba(0, 0, 0, 0.9) 51%,
+    rgba(0, 0, 0, 0.94) 54%,
+    rgba(0, 0, 0, 0.96) 57%,
+    rgba(0, 0, 0, 0.975) 60%,
+    rgba(0, 0, 0, 0.985) 62%,
+    rgba(0, 0, 0, 0.993) 66%,
+    black 70%,
+    black 100%
+  );
+}
+
+section[aria-labelledby="video-analysis-heading"] .split-photo-mask::before {
+  background: rgba(5, 42, 36, 0.14);
+}
+
+/* ===== Premium headings restored from 2c5fb4c (UNLAYERED END) ===== */
+/* Source (Who @ 2c5fb4c): clamp(2.5rem, 4.6vw, 5.25rem), weight 300, lh 1.06, tracking -0.03em */
+/* Short-viewport @ 2c5fb4c was clamp(1.75rem, 3.8vh, 2.75rem); approved floor wins: >=56px */
+section[aria-labelledby="how-it-works-heading"] #how-it-works-heading,
+section[aria-labelledby="how-it-works-heading"] .audience-premium-heading,
+section[aria-labelledby="who-its-for-heading"] #who-its-for-heading,
+section[aria-labelledby="who-its-for-heading"] .proof-editorial-heading,
+section[aria-labelledby="who-its-for-heading"] #who-its-for-heading .proof-heading-line1,
+section[aria-labelledby="who-its-for-heading"] #who-its-for-heading .proof-heading-line2,
+section[aria-labelledby="video-analysis-heading"] #video-analysis-heading,
+section[aria-labelledby="video-analysis-heading"] .video-analysis-premium-heading,
+section[aria-labelledby="coaching-options-heading"] #coaching-options-heading,
+section[aria-labelledby="coaching-options-heading"] .coaching-options-heading {
+  font-size: clamp(2.5rem, 4.6vw, 5.25rem);
+  font-weight: 300;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+}
+
+@media (min-width: 1280px) and (max-height: 740px) {
+  section[aria-labelledby="how-it-works-heading"] #how-it-works-heading,
+  section[aria-labelledby="how-it-works-heading"] .audience-premium-heading,
+  section[aria-labelledby="who-its-for-heading"] #who-its-for-heading,
+  section[aria-labelledby="who-its-for-heading"] .proof-editorial-heading,
+  section[aria-labelledby="who-its-for-heading"] #who-its-for-heading .proof-heading-line1,
+  section[aria-labelledby="who-its-for-heading"] #who-its-for-heading .proof-heading-line2,
+  section[aria-labelledby="video-analysis-heading"] #video-analysis-heading,
+  section[aria-labelledby="video-analysis-heading"] .video-analysis-premium-heading,
+  section[aria-labelledby="coaching-options-heading"] #coaching-options-heading,
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-heading {
+    font-size: clamp(3.5rem, 4.6vw, 5.25rem);
+  }
+}
+
+@media (max-width: 389px) {
+  section[aria-labelledby="how-it-works-heading"] #how-it-works-heading,
+  section[aria-labelledby="how-it-works-heading"] .audience-premium-heading,
+  section[aria-labelledby="who-its-for-heading"] #who-its-for-heading,
+  section[aria-labelledby="who-its-for-heading"] .proof-editorial-heading,
+  section[aria-labelledby="video-analysis-heading"] #video-analysis-heading,
+  section[aria-labelledby="video-analysis-heading"] .video-analysis-premium-heading,
+  section[aria-labelledby="coaching-options-heading"] #coaching-options-heading,
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-heading {
+    font-size: clamp(2rem, 9vw, 2.5rem);
+  }
+}
+
+/* ===== Coaching Options -- premium rollout Round 3 (UNLAYERED END) ===== */
+/* cache-bust-coaching-mockup-20260716 */
+
+section[aria-labelledby="coaching-options-heading"] {
+  --premium-cream: #f7f1e6;
+  --premium-soft-cream: rgba(247, 241, 230, 0.82);
+  --premium-champagne: #d8b96a;
+  --premium-line-gold: rgba(216, 185, 106, 0.32);
+  --premium-icon-border: rgba(216, 185, 106, 0.38);
+  --premium-icon-bg: rgba(216, 185, 106, 0.06);
+  --premium-muted-gold: #bfa15a;
+  --premium-accent-teal: #7eb8a8;
+  /* Night-emerald canvas -- matches premium split sections; photo dissolves over it */
+  background-color: #031714;
+  /* Clip photo-layer vertical overhang used for face framing */
+  overflow: hidden;
+}
+
+/*
+ * Photo layer (right ~48%): long dissolve on LEFT edge (proven stops).
+ * Aspect-safe cover only -- no independent W/H zoom.
+ * Thin grade wash (~0.10) so Erika stays bright; left darkness is ::after's job.
+ */
+section[aria-labelledby="coaching-options-heading"].section-coaching-fixed-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: auto;
+  width: 52%;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(3, 23, 20, 0.12) 0%,
+      rgba(3, 23, 20, 0.08) 45%,
+      rgba(3, 23, 20, 0.1) 100%
+    ),
+    url("/steg.png");
+  background-size: 100% 100%, cover;
+  /* Face + torso natural in right zone; head fully in frame */
+  background-position: center, 48% 6%;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
   -webkit-mask-image: linear-gradient(
     90deg,
     transparent 0%,
@@ -4550,49 +4739,402 @@ section[aria-labelledby="video-analysis-heading"] .split-photo-mask {
     black 70%,
     black 100%
   );
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
 }
 
-section[aria-labelledby="video-analysis-heading"] .split-photo-mask::before {
-  background: rgba(5, 42, 36, 0.14);
+section[aria-labelledby="coaching-options-heading"].section-coaching-fixed-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image: linear-gradient(
+    90deg,
+    rgba(3, 23, 20, 0.94) 0%,
+    rgba(3, 23, 20, 0.88) 16%,
+    rgba(3, 23, 20, 0.5) 32%,
+    rgba(3, 23, 20, 0.12) 42%,
+    transparent 52%
+  );
 }
 
-/* ===== Premium headings restored from 2c5fb4c (UNLAYERED END) ===== */
-/* Source (Who @ 2c5fb4c): clamp(2.5rem, 4.6vw, 5.25rem), weight 300, lh 1.06, tracking -0.03em */
-/* Short-viewport @ 2c5fb4c was clamp(1.75rem, 3.8vh, 2.75rem); approved floor wins: >=56px */
-section[aria-labelledby="how-it-works-heading"] #how-it-works-heading,
-section[aria-labelledby="how-it-works-heading"] .audience-premium-heading,
-section[aria-labelledby="who-its-for-heading"] #who-its-for-heading,
-section[aria-labelledby="who-its-for-heading"] .proof-editorial-heading,
-section[aria-labelledby="who-its-for-heading"] #who-its-for-heading .proof-heading-line1,
-section[aria-labelledby="who-its-for-heading"] #who-its-for-heading .proof-heading-line2,
-section[aria-labelledby="video-analysis-heading"] #video-analysis-heading,
-section[aria-labelledby="video-analysis-heading"] .video-analysis-premium-heading {
-  font-size: clamp(2.5rem, 4.6vw, 5.25rem);
-  font-weight: 300;
-  line-height: 1.06;
-  letter-spacing: -0.03em;
-}
-
-@media (min-width: 1280px) and (max-height: 740px) {
-  section[aria-labelledby="how-it-works-heading"] #how-it-works-heading,
-  section[aria-labelledby="how-it-works-heading"] .audience-premium-heading,
-  section[aria-labelledby="who-its-for-heading"] #who-its-for-heading,
-  section[aria-labelledby="who-its-for-heading"] .proof-editorial-heading,
-  section[aria-labelledby="who-its-for-heading"] #who-its-for-heading .proof-heading-line1,
-  section[aria-labelledby="who-its-for-heading"] #who-its-for-heading .proof-heading-line2,
-  section[aria-labelledby="video-analysis-heading"] #video-analysis-heading,
-  section[aria-labelledby="video-analysis-heading"] .video-analysis-premium-heading {
-    font-size: clamp(3.5rem, 4.6vw, 5.25rem);
+@media (min-width: 1024px) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  section[aria-labelledby="coaching-options-heading"].section-coaching-fixed-bg::before {
+    background-attachment: scroll, scroll;
   }
 }
 
-@media (max-width: 389px) {
-  section[aria-labelledby="how-it-works-heading"] #how-it-works-heading,
-  section[aria-labelledby="how-it-works-heading"] .audience-premium-heading,
-  section[aria-labelledby="who-its-for-heading"] #who-its-for-heading,
-  section[aria-labelledby="who-its-for-heading"] .proof-editorial-heading,
-  section[aria-labelledby="video-analysis-heading"] #video-analysis-heading,
-  section[aria-labelledby="video-analysis-heading"] .video-analysis-premium-heading {
-    font-size: clamp(2rem, 9vw, 2.5rem);
+@media (prefers-reduced-motion: reduce) {
+  section[aria-labelledby="coaching-options-heading"].section-coaching-fixed-bg::before {
+    background-attachment: scroll, scroll;
+  }
+}
+
+@media (max-width: 1023px) {
+  section[aria-labelledby="coaching-options-heading"].section-coaching-fixed-bg::before {
+    width: 100%;
+    background-size: 100% 100%, cover;
+    background-position: center, 40% 12%;
+    background-attachment: scroll, scroll;
+  }
+}
+
+section[aria-labelledby="coaching-options-heading"] .coaching-options-inner {
+  position: relative;
+  z-index: 2;
+  padding-top: clamp(1.25rem, 3.8vh, 2.75rem);
+  padding-bottom: clamp(0.85rem, 2.8vh, 1.75rem);
+}
+
+section[aria-labelledby="coaching-options-heading"] .coaching-options-eyebrow {
+  margin: 0;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--premium-champagne);
+  line-height: 1.2;
+}
+
+section[aria-labelledby="coaching-options-heading"] .coaching-options-eyebrow::after {
+  content: "";
+  display: block;
+  width: 2.75rem;
+  height: 2px;
+  margin-top: 0.625rem;
+  background: var(--premium-line-gold);
+}
+
+section[aria-labelledby="coaching-options-heading"] #coaching-options-heading,
+section[aria-labelledby="coaching-options-heading"] .coaching-options-heading {
+  margin: clamp(0.65rem, 1.6vh, 1.15rem) 0 0;
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  font-style: normal;
+  color: var(--premium-cream);
+  -webkit-text-fill-color: var(--premium-cream);
+  filter: none;
+  animation: none;
+  text-shadow: none;
+  background: none;
+  background-image: none;
+}
+
+section[aria-labelledby="coaching-options-heading"] .coaching-options-intro {
+  margin: clamp(0.5rem, 1.3vh, 0.9rem) 0 0;
+  max-width: 38rem;
+  font-size: clamp(0.9375rem, 1.05vw, 1.0625rem);
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--premium-soft-cream);
+}
+
+section[aria-labelledby="coaching-options-heading"] .coaching-options-grid {
+  display: grid;
+  gap: clamp(0.65rem, 1.2vw, 0.95rem);
+  margin-top: clamp(0.85rem, 2.2vh, 1.5rem);
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-grid {
+    /* Left ~60-65% of content; cards land ~17-19rem each */
+    max-width: min(66%, 60rem);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    justify-content: start;
+  }
+}
+
+/* Dark glass/lacquer card surface -- mockup-approved exception */
+.premium-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: clamp(1rem, 2.2vh, 1.5rem);
+  border-radius: 1rem;
+  background: linear-gradient(
+    180deg,
+    rgba(5, 42, 36, 0.88),
+    rgba(3, 23, 20, 0.84)
+  );
+  border: 1px solid rgba(216, 185, 106, 0.22);
+  box-shadow:
+    0 18px 48px rgba(0, 0, 0, 0.32),
+    inset 0 1px 0 rgba(255, 248, 234, 0.06);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.premium-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.65rem;
+}
+
+.premium-card-number {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  font-size: clamp(1.35rem, 1.7vw, 1.65rem);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--premium-champagne, #d8b96a);
+}
+
+.premium-card-glyph {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.625rem;
+  height: 2.625rem;
+  border-radius: 50%;
+  border: 1px solid rgba(216, 185, 106, 0.55);
+  color: var(--premium-champagne, #d8b96a);
+  background: rgba(216, 185, 106, 0.06);
+}
+
+.premium-card-glyph svg {
+  width: 1.05rem;
+  height: 1.05rem;
+  stroke: var(--premium-champagne, #d8b96a);
+}
+
+.premium-card-title {
+  margin: clamp(0.55rem, 1.3vh, 0.9rem) 0 0;
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  font-size: clamp(1.25rem, 1.35vw, 1.35rem);
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  color: var(--premium-cream, #f7f1e6);
+}
+
+.premium-card-desc {
+  margin: 0.45rem 0 0;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--premium-soft-cream, rgba(247, 241, 230, 0.82));
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+.premium-card-rule {
+  height: 1px;
+  margin: clamp(0.55rem, 1.2vh, 0.85rem) 0;
+  background: rgba(216, 185, 106, 0.28);
+}
+
+.premium-card-checks {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0;
+}
+
+.premium-card-check-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: clamp(0.28rem, 0.7vh, 0.42rem) 0;
+}
+
+.premium-card-check-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.375rem;
+  height: 1.375rem;
+  border-radius: 50%;
+  border: 1px solid var(--premium-icon-border, rgba(216, 185, 106, 0.38));
+  background: var(--premium-icon-bg, rgba(216, 185, 106, 0.06));
+}
+
+.premium-card-check-icon svg {
+  width: 0.65rem;
+  height: 0.65rem;
+  stroke: var(--premium-muted-gold, #bfa15a);
+}
+
+.premium-card-check-text {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--premium-cream, #f7f1e6);
+}
+
+.premium-card-check-row-accent .premium-card-check-text {
+  color: var(--premium-accent-teal, #7eb8a8);
+}
+
+.premium-card-check-row-accent .premium-card-check-icon {
+  border-color: rgba(126, 184, 168, 0.55);
+  background: rgba(126, 184, 168, 0.08);
+}
+
+.premium-card-check-row-accent .premium-card-check-icon svg {
+  stroke: var(--premium-accent-teal, #7eb8a8);
+}
+
+.premium-card-cta {
+  margin-top: clamp(0.65rem, 1.5vh, 1rem);
+}
+
+.premium-card-cta .btn-cta-primary,
+.premium-card-cta .btn-cta-gold-outline {
+  width: 100%;
+  min-height: 2.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+section[aria-labelledby="coaching-options-heading"] .coaching-options-proof {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.85rem;
+  margin-top: clamp(0.75rem, 2vh, 1.25rem);
+  padding-top: 0;
+}
+
+section[aria-labelledby="coaching-options-heading"] .coaching-options-proof-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  border: 1px solid rgba(216, 185, 106, 0.45);
+  background: rgba(216, 185, 106, 0.06);
+}
+
+section[aria-labelledby="coaching-options-heading"] .coaching-options-proof-icon svg {
+  width: 0.8rem;
+  height: 0.8rem;
+  stroke: var(--premium-champagne);
+}
+
+section[aria-labelledby="coaching-options-heading"] .coaching-options-proof-lead {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--premium-champagne);
+  white-space: nowrap;
+}
+
+section[aria-labelledby="coaching-options-heading"] .coaching-options-proof-sep {
+  display: none;
+  width: 1px;
+  height: 0.9rem;
+  background: rgba(216, 185, 106, 0.35);
+}
+
+@media (min-width: 1024px) {
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-proof {
+    flex-wrap: nowrap;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-proof-sep {
+    display: block;
+  }
+}
+
+section[aria-labelledby="coaching-options-heading"] .coaching-options-proof-items {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+section[aria-labelledby="coaching-options-heading"] .coaching-options-proof-items li {
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--premium-soft-cream);
+}
+
+section[aria-labelledby="coaching-options-heading"] .coaching-options-proof-items li:not(:last-child)::after {
+  content: "|";
+  margin-left: 0.85rem;
+  color: rgba(216, 185, 106, 0.4);
+}
+
+@media (min-width: 1024px) and (max-height: 740px) {
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-inner {
+    padding-top: clamp(0.85rem, 2.5vh, 1.35rem);
+    padding-bottom: clamp(0.55rem, 1.6vh, 0.95rem);
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-eyebrow::after {
+    margin-top: 0.4rem;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] #coaching-options-heading,
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-heading {
+    margin-top: clamp(0.45rem, 1.1vh, 0.75rem);
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-intro {
+    margin-top: clamp(0.35rem, 0.9vh, 0.6rem);
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-grid {
+    margin-top: clamp(0.55rem, 1.4vh, 0.9rem);
+    gap: 0.65rem;
+  }
+
+  .premium-card {
+    padding: clamp(0.75rem, 1.6vh, 1rem) clamp(0.85rem, 1.2vw, 1.15rem);
+  }
+
+  .premium-card-glyph {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .premium-card-title {
+    margin-top: 0.4rem;
+    font-size: 1.25rem;
+  }
+
+  .premium-card-desc {
+    margin-top: 0.3rem;
+    font-size: 0.8125rem;
+    line-height: 1.35;
+  }
+
+  .premium-card-rule {
+    margin: 0.4rem 0;
+  }
+
+  .premium-card-check-row {
+    padding: 0.22rem 0;
+  }
+
+  .premium-card-cta {
+    margin-top: 0.5rem;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-proof {
+    margin-top: clamp(0.5rem, 1.3vh, 0.85rem);
   }
 }

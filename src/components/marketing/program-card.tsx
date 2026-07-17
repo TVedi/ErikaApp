@@ -7,11 +7,11 @@ import { cta, launch, pricing } from "@/content/copy";
 
 type ProgramKey = "starter" | "technique" | "elite";
 
-const programMap: Record<ProgramKey, typeof launch.programs.starter> = {
+const programMap = {
   starter: launch.programs.starter,
   technique: launch.programs.technique,
   elite: launch.programs.elite,
-};
+} as const;
 
 export function ProgramCard({
   tier,

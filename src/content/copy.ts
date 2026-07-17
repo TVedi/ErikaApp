@@ -54,19 +54,34 @@ export const launch = {
     ],
   },
   programs: {
-    title: "Coaching options",
+    eyebrow: "COACHED BY OLYMPIC EXPERIENCE",
+    title: "Coaching Options",
+    intro:
+      "World-class coaching for every stage of your journey. Choose the support that fits your goals.",
+    proofStrip: {
+      lead: "Proven excellence. Trusted by athletes worldwide.",
+      items: [
+        "8x World Champion",
+        "6x European Champion",
+        "21x Hungarian Champion",
+        "30+ Years in Elite Sport",
+      ],
+    },
     starter: {
+      number: "01",
       name: "Starter Guidance",
       description:
-        "Training direction and basic structure — a strong first step for motivated athletes.",
+        "The essential foundation to get you moving in the right direction.",
       features: [
         "General training direction",
         "Structured starting point for online coaching",
-        "Manual personal onboarding after payment",
+        "Manual personal onboarding",
       ],
-      cta: "start",
+      accentFeature: "Secure checkout link coming soon",
+      cta: "start" as const,
     },
     technique: {
+      number: "02",
       name: "Technique Review",
       description:
         "Video-based technique feedback with technical priorities and drill recommendations.",
@@ -74,21 +89,23 @@ export const launch = {
         "Manual video technique review",
         "Technical priorities and corrections",
         "Drill recommendations and next focus",
+        "Pricing and availability confirmed",
       ],
-      cta: "apply",
+      cta: "apply" as const,
       priceNote: "Pricing and availability confirmed after application review.",
     },
     elite: {
+      number: "03",
       name: "Elite Coaching",
       description:
-        "Deeper personal guidance, training plan direction, progress review, and camp priority consideration.",
+        "Deeper personal guidance with a custom plan built around your goals.",
       features: [
         "Individualized coaching direction",
         "Training plan guidance",
         "Progress review",
         "Limited availability",
       ],
-      cta: "apply",
+      cta: "apply" as const,
       priceNote: "Pricing and availability confirmed after application review.",
     },
   },

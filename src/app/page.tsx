@@ -8,7 +8,7 @@ import { HowItWorksSection } from "@/components/marketing/how-it-works-section";
 import { VideoAnalysisSection } from "@/components/marketing/video-analysis-section";
 import { WhoItsForSection } from "@/components/marketing/who-its-for-section";
 import { VideoCourseLoadingSection } from "@/components/marketing/video-course-loading-section";
-import { ProgramCard } from "@/components/marketing/program-card";
+import { CoachingOptionsSection } from "@/components/marketing/coaching-options-section";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import { createClient } from "@/lib/supabase/server";
 import {
@@ -50,31 +50,7 @@ export default async function HomePage() {
 
       <VideoAnalysisSection />
 
-      {/* Programs — Coaching options (fixed-bg reveal on desktop) */}
-      <section
-        className="section-coaching-options section-coaching-fixed-bg section-screen section-screen-center w-full"
-        aria-labelledby="coaching-options-heading"
-      >
-        <div className="section-screen-inner mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="my-auto w-full">
-            <ScrollReveal>
-              <h2
-                id="coaching-options-heading"
-                className="text-2xl font-bold text-foreground sm:text-3xl"
-              >
-                {launch.programs.title}
-              </h2>
-            </ScrollReveal>
-            <div className="mt-8 grid gap-6 lg:grid-cols-3">
-              {(["starter", "technique", "elite"] as const).map((tier, i) => (
-                <ScrollReveal key={tier} delayMs={i * 110}>
-                  <ProgramCard tier={tier} variant="glass" />
-                </ScrollReveal>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <CoachingOptionsSection />
 
       {/* Half-height photo bands removed — broke scroll-snap; restore as split-screen later
       <PhotoBand
