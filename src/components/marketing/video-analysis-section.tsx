@@ -92,7 +92,7 @@ export function VideoAnalysisSection() {
               src={photo.src}
               alt={photo.alt}
               fill
-              sizes="(max-width: 1023px) 100vw, 50vw"
+              sizes="(max-width: 1023px) 100vw, 66vw"
               className="video-analysis-photo img-pos-mobile object-cover"
               style={{
                 objectPosition: photo.objectPosition,
@@ -101,6 +101,8 @@ export function VideoAnalysisSection() {
               }}
             />
           </div>
+          {/* Layer B — canvas-tone grade above photo, below content */}
+          <div className="video-analysis-emerge-grade" aria-hidden="true" />
         </div>
 
         {/* Content — below photo on mobile, left on desktop */}

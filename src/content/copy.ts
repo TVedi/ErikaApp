@@ -122,15 +122,35 @@ export const launch = {
     ],
   },
   campsPreview: {
-    title: "Gainesville training camps",
+    eyebrow: "FUTURE CAMPS",
+    title: "Gainesville Training Camps",
+    comingSoon: "Coming Soon",
     body:
-      "Future small-group kayak training camps in Gainesville, Georgia — technical water sessions, coach consultation, video review, race preparation, and limited capacity.",
-    cta: "Request an Evaluation",
+      "Immersive training experiences in a world-class setting. On-water sessions, expert coaching, and a community built for champions.",
+    features: [
+      {
+        label: "ON-WATER TRAINING",
+        text: "High-performance sessions in a championship setting.",
+      },
+      {
+        label: "FUTURE EXPERIENCES",
+        text: "New camps, advanced training, and unforgettable moments.",
+      },
+    ],
   },
   aboutPreview: {
-    title: "Coached by Olympic experience",
+    eyebrow: "COACHED BY OLYMPIC EXPERIENCE",
+    title: "Coached by Olympic Experience",
     body:
-      "Hungarian Olympic sprint kayaker and elite coach Erika Medveczky brings world-class kayak knowledge to athletes in the U.S. and worldwide",
+      "Hungarian Olympic sprint kayaker and elite coach Erika Medveczky brings world-class kayak knowledge to athletes in the U.S. and worldwide.",
+    proofChips: [
+      { line1: "Olympic 4th Place", line2: "Tokyo 2020" },
+      { line1: "8x World", line2: "Champion" },
+      { line1: "21x Hungarian", line2: "Champion" },
+      { line1: "20+ Years", line2: "International Experience" },
+    ],
+    cta: "Learn More About Erika",
+    bioLink: "View Full Bio →",
     credentialNote:
       "Credentials below are loaded from the database and editable without code changes.",
   },

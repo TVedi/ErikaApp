@@ -10,13 +10,11 @@ import { WhoItsForSection } from "@/components/marketing/who-its-for-section";
 import { VideoCourseLoadingSection } from "@/components/marketing/video-course-loading-section";
 import { CoachingOptionsSection } from "@/components/marketing/coaching-options-section";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
-import { createClient } from "@/lib/supabase/server";
 import {
   launch,
   faq,
   waitlist,
 } from "@/content/copy";
-import type { CoachCredential } from "@/types/database";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -31,15 +29,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function HomePage() {
-  const supabase = await createClient();
-  const { data: credentials } = await supabase
-    .from("coach_credentials")
-    .select("*")
-    .order("sort_order", { ascending: true });
-
-  const allCredentials = (credentials as CoachCredential[]) ?? [];
-
+export default function HomePage() {
   return (
     <PublicLayout>
       <HomeHero />
@@ -59,7 +49,7 @@ export default async function HomePage() {
       />
       */}
 
-      <AboutOlympicSection credentials={allCredentials} />
+      <AboutOlympicSection />
 
       <CampsSection />
 

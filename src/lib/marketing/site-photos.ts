@@ -34,8 +34,9 @@ export const sitePhotos = {
   videoAnalysis1Kep: {
     src: "/egyenes.jpeg",
     alt: "Erika Medveczky paddling — video technique analysis",
-    objectPosition: "40% 52%",
-    objectPositionMobile: "42% 40%",
+    /* Desktop: pan so paddle blade tip kisses right viewport edge (~95–98%) */
+    objectPosition: "8% 46%",
+    objectPositionMobile: "40% 40%",
     width: 1303,
     height: 869,
   },
@@ -56,16 +57,16 @@ export const sitePhotos = {
   campsBackground: {
     src: "/camp.webp",
     alt: "Kayak training camp on the water",
-    objectPosition: "center 35%",
-    objectPositionMobile: "45% 35%",
+    objectPosition: "62% 40%",
+    objectPositionMobile: "55% 38%",
     width: 4000,
     height: 2667,
   },
   coachedByOlympicBackground: {
     src: "/gyerek.webp",
     alt: "Young athlete paddling a kayak on the water",
-    objectPosition: "38% 65%",
-    objectPositionMobile: "32% 60%",
+    objectPosition: "68% 55%",
+    objectPositionMobile: "58% 52%",
     width: 1536,
     height: 1024,
   },
