@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { PremiumSectionDivider } from "@/components/marketing/premium-section-divider";
 import { launch } from "@/content/copy";
 import { sitePhotos } from "@/lib/marketing/site-photos";
 
@@ -10,7 +11,7 @@ const photo = sitePhotos.aboutPortrait;
 export function VideoCourseLoadingSection() {
   return (
     <section
-      className="section-navy-soft section-screen section-screen-center w-full"
+      className="section-navy-soft section-screen section-screen-center relative w-full"
       aria-label={launch.videoCourseLoading}
     >
       <div className="video-course-layout">
@@ -34,6 +35,7 @@ export function VideoCourseLoadingSection() {
           </div>
         </div>
       </div>
+      <PremiumSectionDivider />
     </section>
   );
 }

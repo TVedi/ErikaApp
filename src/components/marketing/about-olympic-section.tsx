@@ -10,6 +10,7 @@ import {
 import { LinkButton } from "@/components/ui/link-button";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import { MarketingCtaReveal } from "@/components/motion/marketing-cta-reveal";
+import { CountUpQty } from "@/components/motion/count-up-qty";
 import { PremiumSectionDivider } from "@/components/marketing/premium-section-divider";
 import { launch } from "@/content/copy";
 import { sitePhotos } from "@/lib/marketing/site-photos";
@@ -17,6 +18,19 @@ import { sitePhotos } from "@/lib/marketing/site-photos";
 const photo = sitePhotos.coachedByOlympicBackground;
 
 const CHIP_ICONS: LucideIcon[] = [Trophy, Award, Crown, Globe];
+
+function ProofChipLine1({ line1 }: { line1: string }) {
+  /* Animate clear counts only (8x / 21x / 20+). "Olympic 4th Place" stays static. */
+  const match = line1.match(/^(\d+x|\d+\+)\s+(.+)$/);
+  if (!match) {
+    return <span className="about-olympic-chip-line1">{line1}</span>;
+  }
+  return (
+    <span className="about-olympic-chip-line1">
+      <CountUpQty finalText={match[1]} /> {match[2]}
+    </span>
+  );
+}
 
 function ProofChip({
   line1,
@@ -33,7 +47,7 @@ function ProofChip({
         <Icon strokeWidth={1} />
       </span>
       <span className="about-olympic-chip-label">
-        <span className="about-olympic-chip-line1">{line1}</span>
+        <ProofChipLine1 line1={line1} />
         <span className="about-olympic-chip-line2">{line2}</span>
       </span>
     </div>

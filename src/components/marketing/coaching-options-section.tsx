@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { LinkButton } from "@/components/ui/link-button";
 import { StartCoachingButton } from "@/components/marketing/start-coaching-button";
+import { PremiumSectionDivider } from "@/components/marketing/premium-section-divider";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import { MarketingCtaReveal } from "@/components/motion/marketing-cta-reveal";
 import { cta, launch } from "@/content/copy";
@@ -176,6 +177,7 @@ export function CoachingOptionsSection() {
           </ScrollReveal>
         </div>
       </div>
+      <PremiumSectionDivider />
     </section>
   );
 }

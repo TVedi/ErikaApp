@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import { MarketingCtaReveal } from "@/components/motion/marketing-cta-reveal";
+import { CountUpQty } from "@/components/motion/count-up-qty";
 import { PremiumSectionDivider } from "@/components/marketing/premium-section-divider";
 import { StartCoachingButton } from "@/components/marketing/start-coaching-button";
 import { launch } from "@/content/copy";
@@ -28,7 +29,8 @@ function ProofAchievementText({ text }: { text: string }) {
   }
   return (
     <span className="proof-achievement-text">
-      <span className="proof-achievement-qty">{match[1]}</span> {match[2]}
+      <CountUpQty finalText={match[1]} className="proof-achievement-qty" />{" "}
+      {match[2]}
     </span>
   );
 }

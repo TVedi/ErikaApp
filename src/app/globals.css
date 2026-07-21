@@ -1507,18 +1507,6 @@ body {
   background-image: none;
 }
 
-.section-video-analysis .split-photo-mask img {
-  transform: scale(0.9);
-  transform-origin: 42% 42%;
-}
-
-@media (max-width: 1023px) {
-  .section-video-analysis .split-photo-mask img {
-    transform: scale(0.92);
-    transform-origin: 42% 38%;
-  }
-}
-
 /*
  * Mobile-only polish (<1024px) -- UNLAYERED. Desktop (>=1024px) untouched.
  * Key-subject framing: !important beats the inline desktop object-position;
@@ -4510,19 +4498,28 @@ section[aria-labelledby="video-analysis-heading"] .video-analysis-photo {
      * 0.5α @ ~39% photo ≈ 65% section; black @ 48% photo ≈ 70% section.
      * Dense silk (Δ≤0.08 dark / ≤0.04 mid). Photo geometry untouched.
      */
+    /*
+     * Band polish: flatten photo ~7–32% (section ~42–58% = text-end → athlete back).
+     * Same α span 0.06→0.38, stretched + Δ≤0.03 midpoints. Endpoints 0 / black@48 unchanged.
+     */
     -webkit-mask-image: linear-gradient(
       90deg,
       transparent 0%,
       rgba(0, 0, 0, 0.03) 4%,
-      rgba(0, 0, 0, 0.06) 8%,
-      rgba(0, 0, 0, 0.1) 12%,
-      rgba(0, 0, 0, 0.14) 15%,
-      rgba(0, 0, 0, 0.18) 18%,
-      rgba(0, 0, 0, 0.22) 21%,
-      rgba(0, 0, 0, 0.28) 24%,
-      rgba(0, 0, 0, 0.34) 27%,
-      rgba(0, 0, 0, 0.38) 30%,
-      rgba(0, 0, 0, 0.42) 33%,
+      rgba(0, 0, 0, 0.06) 7%,
+      rgba(0, 0, 0, 0.09) 9.5%,
+      rgba(0, 0, 0, 0.12) 12%,
+      rgba(0, 0, 0, 0.15) 14.5%,
+      rgba(0, 0, 0, 0.18) 17%,
+      rgba(0, 0, 0, 0.21) 19.5%,
+      rgba(0, 0, 0, 0.24) 22%,
+      rgba(0, 0, 0, 0.27) 24.5%,
+      rgba(0, 0, 0, 0.3) 27%,
+      rgba(0, 0, 0, 0.33) 29.5%,
+      rgba(0, 0, 0, 0.36) 31%,
+      rgba(0, 0, 0, 0.38) 32%,
+      rgba(0, 0, 0, 0.4) 33%,
+      rgba(0, 0, 0, 0.42) 34%,
       rgba(0, 0, 0, 0.46) 36%,
       rgba(0, 0, 0, 0.5) 39%,
       rgba(0, 0, 0, 0.54) 39.7%,
@@ -4544,15 +4541,20 @@ section[aria-labelledby="video-analysis-heading"] .video-analysis-photo {
       90deg,
       transparent 0%,
       rgba(0, 0, 0, 0.03) 4%,
-      rgba(0, 0, 0, 0.06) 8%,
-      rgba(0, 0, 0, 0.1) 12%,
-      rgba(0, 0, 0, 0.14) 15%,
-      rgba(0, 0, 0, 0.18) 18%,
-      rgba(0, 0, 0, 0.22) 21%,
-      rgba(0, 0, 0, 0.28) 24%,
-      rgba(0, 0, 0, 0.34) 27%,
-      rgba(0, 0, 0, 0.38) 30%,
-      rgba(0, 0, 0, 0.42) 33%,
+      rgba(0, 0, 0, 0.06) 7%,
+      rgba(0, 0, 0, 0.09) 9.5%,
+      rgba(0, 0, 0, 0.12) 12%,
+      rgba(0, 0, 0, 0.15) 14.5%,
+      rgba(0, 0, 0, 0.18) 17%,
+      rgba(0, 0, 0, 0.21) 19.5%,
+      rgba(0, 0, 0, 0.24) 22%,
+      rgba(0, 0, 0, 0.27) 24.5%,
+      rgba(0, 0, 0, 0.3) 27%,
+      rgba(0, 0, 0, 0.33) 29.5%,
+      rgba(0, 0, 0, 0.36) 31%,
+      rgba(0, 0, 0, 0.38) 32%,
+      rgba(0, 0, 0, 0.4) 33%,
+      rgba(0, 0, 0, 0.42) 34%,
       rgba(0, 0, 0, 0.46) 36%,
       rgba(0, 0, 0, 0.5) 39%,
       rgba(0, 0, 0, 0.54) 39.7%,
@@ -5534,23 +5536,52 @@ section[aria-labelledby="camps-heading"] .camps-feature-text {
   color: var(--premium-soft-cream);
 }
 
-/* --- Shared dense-silk photo treatment (Video Analysis family) --- */
+/* --- Photo treatment: Coaching-length silk + photo-side grade + Ken-Burns --- */
+/* cache-bust-about-camps-seam-kb-20260718b */
+
+@keyframes premium-kenburns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+
 section[aria-labelledby="about-olympic-heading"] .split-photo-mask,
 section[aria-labelledby="camps-heading"] .split-photo-mask {
   border-radius: 0;
   overflow: hidden;
 }
 
+/*
+ * IMG-only Ken-Burns. Mask + wash + grade stay on the static container so
+ * the dissolve edge remains pixel-fixed while the photo breathes.
+ */
 section[aria-labelledby="about-olympic-heading"] .about-olympic-photo {
   border-radius: 0 !important;
   object-fit: cover;
   filter: brightness(1.06) saturate(1.08) contrast(1.02);
+  transform-origin: 74% 58%;
+  will-change: transform;
+  animation: premium-kenburns 22s ease-in-out infinite alternate;
 }
 
 section[aria-labelledby="camps-heading"] .camps-photo {
   border-radius: 0 !important;
   object-fit: cover;
   filter: saturate(0.96) contrast(1.04) brightness(0.97);
+  transform-origin: 68% 40%;
+  will-change: transform;
+  animation: premium-kenburns 22s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  section[aria-labelledby="about-olympic-heading"] .about-olympic-photo,
+  section[aria-labelledby="camps-heading"] .camps-photo {
+    animation: none;
+    will-change: auto;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -5571,6 +5602,45 @@ section[aria-labelledby="camps-heading"] .camps-photo {
     z-index: 1;
   }
 
+  /*
+   * Coaching Options ::after veil — adapted to the photo column.
+   * Sits ABOVE the masked photo (static), so bright water/sky never hard-edge
+   * the dissolve. Transparent by ~48–52% of PHOTO COL (≈ Coaching's 52% section).
+   */
+  section[aria-labelledby="about-olympic-heading"] .about-olympic-photo-col::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      rgba(3, 23, 20, 0.72) 0%,
+      rgba(3, 23, 20, 0.48) 14%,
+      rgba(3, 23, 20, 0.22) 28%,
+      rgba(3, 23, 20, 0.08) 40%,
+      transparent 52%
+    );
+  }
+
+  section[aria-labelledby="camps-heading"] .camps-photo-col::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    /* Bright sky/water — slightly deeper veil than About, same length as Coaching */
+    background: linear-gradient(
+      90deg,
+      rgba(3, 23, 20, 0.78) 0%,
+      rgba(3, 23, 20, 0.52) 14%,
+      rgba(3, 23, 20, 0.26) 28%,
+      rgba(3, 23, 20, 0.1) 40%,
+      rgba(3, 23, 20, 0.03) 48%,
+      transparent 56%
+    );
+  }
+
   section[aria-labelledby="about-olympic-heading"] .split-screen-content-col,
   section[aria-labelledby="camps-heading"] .split-screen-content-col {
     position: relative;
@@ -5581,70 +5651,72 @@ section[aria-labelledby="camps-heading"] .camps-photo {
     padding-right: clamp(1.25rem, 2vw, 2rem);
   }
 
+  /*
+   * Coaching Options–length dissolve, densified (Δ≤0.04 mid / ≤0.08 dark).
+   * Long sub-0.05 runway + black by ~70% of PHOTO (not 48%) so bright water/sky
+   * never meet the veil at a hard edge. Reference: Coaching mask black@70% +
+   * section veil transparent@52%.
+   */
   section[aria-labelledby="about-olympic-heading"] .split-photo-mask,
   section[aria-labelledby="camps-heading"] .split-photo-mask {
-    /*
-     * Dense silk (Δ≤0.08 dark / ≤0.04 mid) — Video Analysis proven stops.
-     * Subjects/landscape clear on the right; left opens to emerald canvas.
-     */
     -webkit-mask-image: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(0, 0, 0, 0.03) 4%,
-      rgba(0, 0, 0, 0.06) 8%,
-      rgba(0, 0, 0, 0.1) 12%,
-      rgba(0, 0, 0, 0.14) 15%,
-      rgba(0, 0, 0, 0.18) 18%,
-      rgba(0, 0, 0, 0.22) 21%,
-      rgba(0, 0, 0, 0.28) 24%,
-      rgba(0, 0, 0, 0.34) 27%,
-      rgba(0, 0, 0, 0.38) 30%,
-      rgba(0, 0, 0, 0.42) 33%,
-      rgba(0, 0, 0, 0.46) 36%,
-      rgba(0, 0, 0, 0.5) 39%,
-      rgba(0, 0, 0, 0.54) 39.7%,
-      rgba(0, 0, 0, 0.58) 40.4%,
-      rgba(0, 0, 0, 0.62) 41.1%,
-      rgba(0, 0, 0, 0.66) 41.8%,
-      rgba(0, 0, 0, 0.7) 42.5%,
-      rgba(0, 0, 0, 0.74) 43.2%,
-      rgba(0, 0, 0, 0.78) 43.9%,
-      rgba(0, 0, 0, 0.82) 44.6%,
-      rgba(0, 0, 0, 0.86) 45.3%,
-      rgba(0, 0, 0, 0.9) 46%,
-      rgba(0, 0, 0, 0.94) 46.7%,
-      rgba(0, 0, 0, 0.98) 47.4%,
-      black 48%,
+      rgba(0, 0, 0, 0.02) 4%,
+      rgba(0, 0, 0, 0.04) 8%,
+      rgba(0, 0, 0, 0.06) 12%,
+      rgba(0, 0, 0, 0.08) 16%,
+      rgba(0, 0, 0, 0.1) 20%,
+      rgba(0, 0, 0, 0.14) 24%,
+      rgba(0, 0, 0, 0.18) 28%,
+      rgba(0, 0, 0, 0.22) 32%,
+      rgba(0, 0, 0, 0.26) 35%,
+      rgba(0, 0, 0, 0.3) 38%,
+      rgba(0, 0, 0, 0.34) 41%,
+      rgba(0, 0, 0, 0.38) 44%,
+      rgba(0, 0, 0, 0.42) 47%,
+      rgba(0, 0, 0, 0.48) 50%,
+      rgba(0, 0, 0, 0.54) 53%,
+      rgba(0, 0, 0, 0.6) 56%,
+      rgba(0, 0, 0, 0.66) 58.5%,
+      rgba(0, 0, 0, 0.72) 61%,
+      rgba(0, 0, 0, 0.78) 63.5%,
+      rgba(0, 0, 0, 0.84) 65.5%,
+      rgba(0, 0, 0, 0.88) 66%,
+      rgba(0, 0, 0, 0.92) 68%,
+      rgba(0, 0, 0, 0.955) 70%,
+      rgba(0, 0, 0, 0.98) 71.5%,
+      black 73%,
       black 100%
     );
     mask-image: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(0, 0, 0, 0.03) 4%,
-      rgba(0, 0, 0, 0.06) 8%,
-      rgba(0, 0, 0, 0.1) 12%,
-      rgba(0, 0, 0, 0.14) 15%,
-      rgba(0, 0, 0, 0.18) 18%,
-      rgba(0, 0, 0, 0.22) 21%,
-      rgba(0, 0, 0, 0.28) 24%,
-      rgba(0, 0, 0, 0.34) 27%,
-      rgba(0, 0, 0, 0.38) 30%,
-      rgba(0, 0, 0, 0.42) 33%,
-      rgba(0, 0, 0, 0.46) 36%,
-      rgba(0, 0, 0, 0.5) 39%,
-      rgba(0, 0, 0, 0.54) 39.7%,
-      rgba(0, 0, 0, 0.58) 40.4%,
-      rgba(0, 0, 0, 0.62) 41.1%,
-      rgba(0, 0, 0, 0.66) 41.8%,
-      rgba(0, 0, 0, 0.7) 42.5%,
-      rgba(0, 0, 0, 0.74) 43.2%,
-      rgba(0, 0, 0, 0.78) 43.9%,
-      rgba(0, 0, 0, 0.82) 44.6%,
-      rgba(0, 0, 0, 0.86) 45.3%,
-      rgba(0, 0, 0, 0.9) 46%,
-      rgba(0, 0, 0, 0.94) 46.7%,
-      rgba(0, 0, 0, 0.98) 47.4%,
-      black 48%,
+      rgba(0, 0, 0, 0.02) 4%,
+      rgba(0, 0, 0, 0.04) 8%,
+      rgba(0, 0, 0, 0.06) 12%,
+      rgba(0, 0, 0, 0.08) 16%,
+      rgba(0, 0, 0, 0.1) 20%,
+      rgba(0, 0, 0, 0.14) 24%,
+      rgba(0, 0, 0, 0.18) 28%,
+      rgba(0, 0, 0, 0.22) 32%,
+      rgba(0, 0, 0, 0.26) 35%,
+      rgba(0, 0, 0, 0.3) 38%,
+      rgba(0, 0, 0, 0.34) 41%,
+      rgba(0, 0, 0, 0.38) 44%,
+      rgba(0, 0, 0, 0.42) 47%,
+      rgba(0, 0, 0, 0.48) 50%,
+      rgba(0, 0, 0, 0.54) 53%,
+      rgba(0, 0, 0, 0.6) 56%,
+      rgba(0, 0, 0, 0.66) 58.5%,
+      rgba(0, 0, 0, 0.72) 61%,
+      rgba(0, 0, 0, 0.78) 63.5%,
+      rgba(0, 0, 0, 0.84) 65.5%,
+      rgba(0, 0, 0, 0.88) 66%,
+      rgba(0, 0, 0, 0.92) 68%,
+      rgba(0, 0, 0, 0.955) 70%,
+      rgba(0, 0, 0, 0.98) 71.5%,
+      black 73%,
       black 100%
     );
     -webkit-mask-size: 100% 100%;
@@ -5653,6 +5725,7 @@ section[aria-labelledby="camps-heading"] .camps-photo {
     mask-repeat: no-repeat;
   }
 
+  /* Thin hue wash (Coaching ~0.10) — on container, not img */
   section[aria-labelledby="about-olympic-heading"] .split-photo-mask::before,
   section[aria-labelledby="camps-heading"] .split-photo-mask::before {
     content: "";
@@ -5660,7 +5733,46 @@ section[aria-labelledby="camps-heading"] .camps-photo {
     inset: 0;
     z-index: 1;
     pointer-events: none;
-    background: rgba(5, 42, 36, 0.11);
+    background: rgba(5, 42, 36, 0.1);
+  }
+
+  /*
+   * Photo-side grade UNDER the dissolve edge fight: left-zone darkening so
+   * glittering water / bright sky don't hard-edge the veil. Max α ~0.25 over
+   * left ~40% of PHOTO; right stays vivid. Stacked above wash, clipped by mask.
+   */
+  section[aria-labelledby="about-olympic-heading"] .split-photo-mask::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      rgba(3, 23, 20, 0.25) 0%,
+      rgba(3, 23, 20, 0.2) 10%,
+      rgba(3, 23, 20, 0.14) 20%,
+      rgba(3, 23, 20, 0.08) 30%,
+      rgba(3, 23, 20, 0.03) 38%,
+      transparent 44%
+    );
+  }
+
+  section[aria-labelledby="camps-heading"] .split-photo-mask::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      rgba(3, 23, 20, 0.22) 0%,
+      rgba(3, 23, 20, 0.16) 12%,
+      rgba(3, 23, 20, 0.1) 22%,
+      rgba(3, 23, 20, 0.05) 32%,
+      rgba(3, 23, 20, 0.02) 38%,
+      transparent 44%
+    );
   }
 }
 
@@ -5736,7 +5848,24 @@ section[aria-labelledby="camps-heading"] .camps-photo {
     inset: 0;
     z-index: 1;
     pointer-events: none;
-    background: rgba(5, 42, 36, 0.11);
+    background: rgba(5, 42, 36, 0.1);
+  }
+
+  section[aria-labelledby="about-olympic-heading"] .split-photo-mask::after,
+  section[aria-labelledby="camps-heading"] .split-photo-mask::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      transparent 48%,
+      rgba(3, 23, 20, 0.08) 62%,
+      rgba(3, 23, 20, 0.16) 78%,
+      rgba(3, 23, 20, 0.22) 100%
+    );
   }
 
   /* Chip row: 2×2 on narrow; hide vertical dividers between wrapped pairs */
@@ -5838,4 +5967,18 @@ section[aria-labelledby="camps-heading"] .camps-photo {
     width: 100%;
   }
 }
+
+/* ===== Film grain overlay (removable block) ===== */
+/* FILM_GRAIN_START — delete this block + /public/noise.png to remove */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("/noise.png");
+  mix-blend-mode: soft-light;
+  z-index: 999;
+}
+/* FILM_GRAIN_END */
 

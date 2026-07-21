@@ -1,6 +1,7 @@
 import { HeroSlideshowBackground } from "@/components/marketing/hero-slideshow-background";
 import { LinkButton } from "@/components/ui/link-button";
 import { HeroHeadline } from "@/components/marketing/hero-headline";
+import { PremiumSectionDivider } from "@/components/marketing/premium-section-divider";
 import { StartCoachingButton } from "@/components/marketing/start-coaching-button";
 import { brand, cta, hero } from "@/content/copy";
 
@@ -50,6 +51,7 @@ export function HomeHero() {
           </div>
         </div>
       </div>
+      <PremiumSectionDivider />
     </section>
   );
 }

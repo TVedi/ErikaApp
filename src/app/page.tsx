@@ -9,6 +9,7 @@ import { VideoAnalysisSection } from "@/components/marketing/video-analysis-sect
 import { WhoItsForSection } from "@/components/marketing/who-its-for-section";
 import { VideoCourseLoadingSection } from "@/components/marketing/video-course-loading-section";
 import { CoachingOptionsSection } from "@/components/marketing/coaching-options-section";
+import { PremiumSectionDivider } from "@/components/marketing/premium-section-divider";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import {
   launch,
@@ -56,7 +57,7 @@ export default function HomePage() {
       <VideoCourseLoadingSection />
 
       {/* Athlete stories — swapped from above final CTA slot */}
-      <section className="section-emerald-surface section-screen section-screen-center section-pad w-full">
+      <section className="section-emerald-surface section-screen section-screen-center section-pad relative w-full">
         <div className="section-screen-inner mx-auto flex max-w-6xl flex-col items-center justify-center px-4 text-center sm:px-6">
           <ScrollReveal>
             <h2 className="font-display text-2xl font-medium italic text-accent-coral sm:text-3xl lg:text-4xl">
@@ -64,6 +65,7 @@ export default function HomePage() {
             </h2>
           </ScrollReveal>
         </div>
+        <PremiumSectionDivider />
       </section>
 
       {/* FAQ */}
