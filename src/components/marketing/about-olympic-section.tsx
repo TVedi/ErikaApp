@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import {
   Award,
   Crown,
@@ -120,13 +119,10 @@ export function AboutOlympicSection() {
               <LinkButton
                 href="/about"
                 size="lg"
-                className="btn-cta-primary about-olympic-cta"
+                className="btn-cta-primary w-full sm:w-auto"
               >
                 {launch.aboutPreview.cta}
               </LinkButton>
-              <Link href="/about" className="about-olympic-bio-link">
-                {launch.aboutPreview.bioLink}
-              </Link>
             </MarketingCtaReveal>
           </div>
         </div>

@@ -6,12 +6,13 @@
 export const brand = {
   name: "Elite Paddle Coaching",
   tagline: "Olympic and World Champion kayak coaching",
-  positioning:
-    "Olympic and World Champion kayak coaching through personalized training guidance, expert video technique analysis, and elite training camps in Gainesville, Georgia.",
 };
 
 export const cta = {
-  startCoaching: "Start Coaching",
+  /** Primary coral CTA (header, hero, section CTAs). */
+  startCoaching: "Apply Now",
+  /** Starter Guidance card (Coaching Options + /pricing ProgramCard). */
+  bookTechniqueReview: "Book a Technique Review",
   requestEvaluation: "Request an Evaluation",
 };
 
@@ -150,7 +151,6 @@ export const launch = {
       { line1: "20+ Years", line2: "International Experience" },
     ],
     cta: "Learn More About Erika",
-    bioLink: "View Full Bio →",
     credentialNote:
       "Credentials below are loaded from the database and editable without code changes.",
   },
@@ -291,8 +291,6 @@ export const waitlist = {
 };
 
 export const aboutStory = {
-  title: "I am Erika Medveczky",
-  lede: "— a coach, entrepreneur, former elite athlete and Olympian.",
   paragraphs: [
     "Today, I no longer define myself as a kayak racer, but as Erika Medveczky, someone who wants to use her own path, struggles and victories for the benefit of others. I believe I will never fully take off the competitive mentality, and I do not want to either, because it made me who I am today.",
     "When I was an eight-year-old little girl and saw a kayaking flyer on the school noticeboard, I could not have known that those few moments would define my entire life and lead me all the way to the Olympic Games. But that is exactly what happened. Today, 29 years later, I can say that I owe everything to those years: successes, failures, a lot of learning, travels, countless experiences, friends, mentors and important relationships.",
@@ -536,9 +534,6 @@ export const welcome = {
 };
 
 export const footer = {
-  startCoaching: "Start Coaching",
-  apply: "Apply / Request Evaluation",
-  camps: "Camps",
   terms: "Terms",
   privacy: "Privacy",
   refund: "Refund Policy",

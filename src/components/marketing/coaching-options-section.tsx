@@ -104,6 +104,7 @@ function PremiumProgramCard({
           <StartCoachingButton
             size="sm"
             className="btn-cta-primary w-full"
+            label={cta.bookTechniqueReview}
           />
         ) : (
           <LinkButton

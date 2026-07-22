@@ -1,7 +1,7 @@
 import { PublicLayout } from "@/components/layout/public-layout";
 import { ProgramCard } from "@/components/marketing/program-card";
+import { PremiumSectionDivider } from "@/components/marketing/premium-section-divider";
 import { LinkButton } from "@/components/ui/link-button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { pricing } from "@/content/copy";
 import type { Metadata } from "next";
 
@@ -14,45 +14,54 @@ export const metadata: Metadata = {
 export default function PricingPage() {
   return (
     <PublicLayout>
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
-        <h1 className="text-3xl font-bold text-foreground sm:text-4xl">{pricing.title}</h1>
-        <p className="mt-2 max-w-2xl text-muted-foreground">{pricing.subtitle}</p>
+      <section
+        className="programs-page-section w-full"
+        aria-labelledby="programs-heading"
+      >
+        <div className="programs-page-inner">
+          {/* No pricing.eyebrow in copy.ts — champagne eyebrow omitted (no new copy). */}
+          <h1
+            id="programs-heading"
+            className="programs-page-heading font-display"
+          >
+            {pricing.title}
+          </h1>
+          <p className="programs-page-intro">{pricing.subtitle}</p>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-3">
-          <ProgramCard tier="starter" />
-          <ProgramCard tier="technique" />
-          <ProgramCard tier="elite" />
+          <div className="programs-page-grid">
+            <ProgramCard tier="starter" />
+            <ProgramCard tier="technique" />
+            <ProgramCard tier="elite" />
+          </div>
         </div>
+        <PremiumSectionDivider />
+      </section>
 
-        <Card className="mt-10 border-border/60 bg-muted/30">
-          <CardHeader>
-            <CardTitle className="text-foreground text-lg">Launch payment note</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4 text-sm text-muted-foreground">
-            <p>{pricing.stripeNote}</p>
-            <p>{pricing.manualReviewNote}</p>
-          </CardContent>
-        </Card>
+      <section
+        className="programs-notes-section w-full"
+        aria-label="Program notes"
+      >
+        <div className="programs-page-inner programs-notes-inner">
+          <div className="programs-note-block">
+            <h2 className="programs-note-title">Launch payment note</h2>
+            <p className="programs-note-body">{pricing.stripeNote}</p>
+            <p className="programs-note-body">{pricing.manualReviewNote}</p>
+          </div>
 
-        <Card className="mt-6 border-border/60">
-          <CardHeader>
-            <CardTitle className="text-foreground">{pricing.campsNote.title}</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ul className="space-y-2">
+          <div className="programs-note-block">
+            <h2 className="programs-note-title">{pricing.campsNote.title}</h2>
+            <ul className="programs-note-list">
               {pricing.campsNote.items.map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
-                  {item}
-                </li>
+                <li key={item}>{item}</li>
               ))}
             </ul>
             <LinkButton href="/camps" className="mt-6 btn-cta-primary">
               View camps
             </LinkButton>
-          </CardContent>
-        </Card>
-      </div>
+          </div>
+        </div>
+        <PremiumSectionDivider />
+      </section>
     </PublicLayout>
   );
 }

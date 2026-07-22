@@ -1,9 +1,8 @@
 import { HeroSlideshowBackground } from "@/components/marketing/hero-slideshow-background";
-import { LinkButton } from "@/components/ui/link-button";
 import { HeroHeadline } from "@/components/marketing/hero-headline";
 import { PremiumSectionDivider } from "@/components/marketing/premium-section-divider";
 import { StartCoachingButton } from "@/components/marketing/start-coaching-button";
-import { brand, cta, hero } from "@/content/copy";
+import { brand, hero } from "@/content/copy";
 
 /**
  * Full-bleed homepage hero — single left-aligned column within the left ~55% of the photo.
@@ -40,14 +39,6 @@ export function HomeHero() {
               size="lg"
               className="btn-cta-primary w-full sm:w-auto"
             />
-            <LinkButton
-              size="lg"
-              variant="outline"
-              href="/apply"
-              className="w-full border-2 border-[color-mix(in_srgb,var(--accent-turquoise)_70%,var(--hero-headline))] bg-[rgba(255,255,255,0.1)] text-[var(--hero-headline)] shadow-sm hover:bg-[color-mix(in_srgb,var(--accent-turquoise)_18%,transparent)] sm:w-auto"
-            >
-              {cta.requestEvaluation}
-            </LinkButton>
           </div>
         </div>
       </div>

@@ -51,7 +51,8 @@ export function CountUpQty({ finalText, className }: CountUpQtyProps) {
         obs.disconnect();
 
         const start = performance.now();
-        const duration = 1000;
+        // ~2s ease-out so final values settle visibly (one-shot; reduced-motion skips).
+        const duration = 2000;
         const easeOut = (t: number) => 1 - (1 - t) ** 3;
 
         const tick = (now: number) => {

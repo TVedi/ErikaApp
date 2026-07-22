@@ -127,8 +127,8 @@ export function VideoAnalysisSection() {
 
             <MarketingCtaReveal className="video-analysis-cta flex justify-start">
               <StartCoachingButton
-                size="lg"
-                className="btn-cta-gold-outline w-full sm:w-auto"
+                size="sm"
+                className="btn-cta-primary w-full sm:w-auto"
               />
             </MarketingCtaReveal>
           </div>

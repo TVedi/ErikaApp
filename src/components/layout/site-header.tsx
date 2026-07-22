@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { cta, nav } from "@/content/copy";
-import { LinkButton } from "@/components/ui/link-button";
+import { nav } from "@/content/copy";
 import { StartCoachingButton } from "@/components/marketing/start-coaching-button";
 import { BrandMark } from "@/components/layout/brand-mark";
 
@@ -31,15 +30,7 @@ export function SiteHeader() {
             {nav.speaking}
           </Link>
         </nav>
-        <div className="flex items-center gap-2">
-          <LinkButton
-            variant="ghost"
-            size="sm"
-            href="/apply"
-            className="hidden text-foreground sm:inline-flex"
-          >
-            {cta.requestEvaluation}
-          </LinkButton>
+        <div className="flex shrink-0 items-center">
           <StartCoachingButton size="sm" />
         </div>
       </div>

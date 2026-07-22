@@ -1,8 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { brand, footer } from "@/content/copy";
-import { Separator } from "@/components/ui/separator";
-import { StartCoachingButton } from "@/components/marketing/start-coaching-button";
+import { brand, footer, nav } from "@/content/copy";
 import { BrandMark } from "@/components/layout/brand-mark";
 
 const SOCIAL_ICON_SIZE = 22;
@@ -122,27 +120,42 @@ const footerSocialLinks = [
   },
 ] as const;
 
+const siteNavLinks = [
+  { href: "/", label: nav.home },
+  { href: "/about", label: nav.about },
+  { href: "/pricing", label: nav.programs },
+  { href: "/camps", label: nav.camps },
+  { href: "/speaking", label: nav.speaking },
+] as const;
+
+const legalLinks = [
+  { href: "/medical-disclaimer", label: footer.medical },
+  { href: "/privacy", label: footer.privacy },
+  { href: "/terms", label: footer.terms },
+  { href: "/refund-policy", label: footer.refund },
+] as const;
+
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border/60 bg-transparent">
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-        <div className="flex flex-col gap-8 md:flex-row md:justify-between">
-          <div>
-            <p className="text-lg font-semibold text-foreground">{brand.name}</p>
-            <p className="mt-2 max-w-sm text-sm text-muted-foreground">
-              {brand.positioning}
-            </p>
-            <div className="mt-4 flex flex-wrap gap-3">
-              <StartCoachingButton size="sm" />
-              <Link
-                href="/apply"
-                className="inline-flex h-8 items-center rounded-lg border border-foreground/25 px-3 text-sm font-medium text-foreground hover:bg-foreground/10"
-              >
-                {footer.apply}
-              </Link>
-            </div>
+    <footer className="site-footer-premium border-t border-border/60 bg-transparent">
+      <div className="site-footer-inner">
+        <div className="footer-main-grid">
+          <div className="footer-col-brand">
+            <Link href="/" className="footer-brand-lockup">
+              <BrandMark className="footer-brand-mark" aria-hidden="true" />
+              <span className="footer-brand-wordmark">Erika Medveczky OLY</span>
+            </Link>
+            <p className="footer-tagline">{brand.tagline}</p>
           </div>
-          <div className="footer-nav-col">
+
+          <div className="footer-col-nav">
+            <nav className="footer-site-nav" aria-label="Site">
+              {siteNavLinks.map((item) => (
+                <Link key={item.href} href={item.href} className="footer-site-nav-link">
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
             <nav className="footer-social" aria-label="Social media">
               {footerSocialLinks.map((item) => (
                 <a
@@ -163,27 +176,26 @@ export function SiteFooter() {
             </nav>
           </div>
         </div>
-        <div className="footer-legal-signature">
-          <BrandMark className="footer-signature-mark" aria-hidden="true" />
-          <div className="footer-legal-links flex flex-wrap gap-x-6 gap-y-2 text-sm">
-            <Link href="/medical-disclaimer" className="text-link-coral text-muted-foreground">
-              {footer.medical}
-            </Link>
-            <Link href="/privacy" className="text-link-coral text-muted-foreground">
-              {footer.privacy}
-            </Link>
-            <Link href="/terms" className="text-link-coral text-muted-foreground">
-              {footer.terms}
-            </Link>
-            <Link href="/refund-policy" className="text-link-coral text-muted-foreground">
-              {footer.refund}
-            </Link>
-          </div>
+
+        <div className="footer-bottom-bar">
+          <nav className="footer-legal-links" aria-label="Legal">
+            {legalLinks.map((item, i) => (
+              <span key={item.href} className="footer-legal-item">
+                {i > 0 ? (
+                  <span className="footer-legal-sep" aria-hidden="true">
+                    ·
+                  </span>
+                ) : null}
+                <Link href={item.href} className="footer-legal-link">
+                  {item.label}
+                </Link>
+              </span>
+            ))}
+          </nav>
+          <p className="footer-copyright">
+            © {new Date().getFullYear()} {brand.name}. All rights reserved.
+          </p>
         </div>
-        <Separator className="my-8" />
-        <p className="text-xs text-muted-foreground">
-          © {new Date().getFullYear()} {brand.name}. All rights reserved.
-        </p>
       </div>
     </footer>
   );

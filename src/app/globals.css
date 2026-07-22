@@ -668,33 +668,9 @@
     }
   }
 
-  /* About Erika CTA -- over open water, right of the child (tune top/left/right) */
-  .section-about-olympic .about-olympic-cta {
-    position: absolute;
-    z-index: 20;
-    top: 34%;
-    left: 58%;
-    min-height: 2.875rem;
-    padding: 0.625rem 1.625rem;
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: 0.01em;
-    white-space: nowrap;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
-  }
+  /* About Erika CTA size: uses btn-cta-primary + size="lg" (same as hero Apply Now). */
 
   @media (max-width: 767px) {
-    .section-about-olympic .about-olympic-cta {
-      top: auto;
-      left: 50%;
-      right: auto;
-      bottom: 18%;
-      transform: translateX(-50%);
-      min-height: 3rem;
-      padding: 0.75rem 1.75rem;
-      font-size: 1.0625rem;
-    }
-
     .section-about-olympic .about-olympic-text-scrim {
       background: linear-gradient(
         to bottom,
@@ -1690,7 +1666,7 @@ body {
       0
       2rem
       calc((100dvh - 4rem - var(--video-course-square)) / 2)
-      max(1.5rem, calc((100vw - 72rem) / 2 + 1.5rem));
+      var(--page-left-inset);
   }
 
   .video-course-text-wrap .video-course-loading-pulse {
@@ -3101,14 +3077,18 @@ section[aria-labelledby="who-its-for-heading"] .who-its-for-cta {
 
 section[aria-labelledby="who-its-for-heading"] .split-screen-content-col,
 section[aria-labelledby="how-it-works-heading"] .split-screen-content-col,
-section[aria-labelledby="video-analysis-heading"] .split-screen-content-col {
+section[aria-labelledby="video-analysis-heading"] .split-screen-content-col,
+section[aria-labelledby="about-olympic-heading"] .split-screen-content-col,
+section[aria-labelledby="camps-heading"] .split-screen-content-col {
   padding-left: var(--page-left-inset);
 }
 
 @media (min-width: 1024px) {
   section[aria-labelledby="who-its-for-heading"] .split-screen-content-col,
   section[aria-labelledby="how-it-works-heading"] .split-screen-content-col,
-  section[aria-labelledby="video-analysis-heading"] .split-screen-content-col {
+  section[aria-labelledby="video-analysis-heading"] .split-screen-content-col,
+  section[aria-labelledby="about-olympic-heading"] .split-screen-content-col,
+  section[aria-labelledby="camps-heading"] .split-screen-content-col {
     padding-left: var(--page-left-inset);
     padding-right: clamp(1rem, 2vw, 2rem);
   }
@@ -3120,6 +3100,264 @@ section[aria-labelledby="video-analysis-heading"] .split-screen-content-col {
   margin-right: 0;
   padding-left: var(--page-left-inset);
   padding-right: var(--page-left-inset);
+}
+
+/* FAQ (and other max-w-6xl screen inners that should share the page left line) */
+section.section-cream.section-atmo-glow-none > .section-screen-inner.max-w-6xl {
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: var(--page-left-inset);
+  padding-right: var(--page-left-inset);
+}
+
+/* Video Course loading — left-align pulse text to page inset (desktop).
+   Layout stays padding 0; text-wrap alone owns --page-left-inset (avoid double inset). */
+@media (min-width: 1024px) {
+  .section-screen.section-screen-center > .video-course-layout {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .video-course-text-wrap {
+    padding-left: var(--page-left-inset);
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+}
+
+/* Camps + Speaking page heroes — same left inset as Home premium sections */
+.camps-hero-grid,
+.speaking-hero-grid {
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+  padding-left: var(--page-left-inset);
+  padding-right: var(--page-left-inset);
+}
+
+/* /programs (pricing) page — shared page left inset */
+.programs-page-inner {
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: var(--page-left-inset);
+  padding-right: var(--page-left-inset);
+}
+
+/* ===== Waitlist → footer gap: drop full-viewport min-height (UNLAYERED) ===== */
+
+#waitlist.section-screen,
+#waitlist.section-screen-center,
+#waitlist.section-screen-center > .section-screen-inner {
+  min-height: 0;
+}
+
+#waitlist {
+  padding-top: clamp(3rem, 8vh, 6rem);
+  padding-bottom: clamp(3rem, 8vh, 6rem);
+}
+
+/* ===== Footer two-column premium layout (UNLAYERED) ===== */
+
+.site-footer-premium {
+  --premium-muted-cream: rgba(247, 241, 230, 0.66);
+}
+
+.site-footer-inner {
+  width: 100%;
+  box-sizing: border-box;
+  padding: clamp(2.5rem, 5vh, 3.5rem) var(--page-left-inset) 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.footer-main-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  width: 100%;
+}
+
+@media (min-width: 900px) {
+  .footer-main-grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
+  }
+}
+
+.footer-col-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.footer-brand-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  text-decoration: none;
+}
+
+.footer-brand-mark {
+  display: block;
+  flex-shrink: 0;
+  height: 1.375rem;
+  width: auto;
+  color: var(--brand-gold);
+}
+
+.footer-brand-wordmark {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--brand-gold, #d8b96a);
+  line-height: 1.2;
+}
+
+.footer-tagline {
+  margin: 0;
+  max-width: 22rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--premium-muted-cream);
+}
+
+.site-footer-premium .footer-social {
+  margin-top: 0;
+  gap: 0.875rem;
+}
+
+.footer-col-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.375rem;
+  min-width: 0;
+}
+
+@media (min-width: 900px) {
+  .footer-col-nav {
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .footer-col-nav .footer-social {
+    justify-content: flex-end;
+    width: auto;
+    margin-left: auto;
+  }
+}
+
+.footer-site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+
+@media (min-width: 900px) {
+  .footer-site-nav {
+    justify-content: flex-end;
+  }
+}
+
+.footer-site-nav-link {
+  color: var(--premium-muted-cream);
+  text-decoration: none;
+  padding: 0.35rem 0.15rem;
+  transition: color 0.2s ease;
+}
+
+.footer-site-nav-link:not(:last-child)::after {
+  content: "·";
+  margin: 0 0.55rem;
+  color: color-mix(in srgb, var(--brand-gold) 70%, transparent);
+  pointer-events: none;
+}
+
+.footer-site-nav-link:hover {
+  color: var(--brand-gold, #d8b96a);
+}
+
+.footer-bottom-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  width: 100%;
+  margin-top: clamp(1.75rem, 4vh, 2.5rem);
+  padding-top: 1.125rem;
+  border-top: 1px solid color-mix(in srgb, var(--brand-gold) 28%, transparent);
+  box-sizing: border-box;
+}
+
+@media (min-width: 900px) {
+  .footer-bottom-bar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+}
+
+.footer-legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0;
+  min-width: 0;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+
+.footer-legal-item {
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-legal-sep {
+  margin: 0 0.55rem;
+  color: color-mix(in srgb, var(--brand-gold) 70%, transparent);
+  font-weight: 400;
+  user-select: none;
+}
+
+.footer-legal-link {
+  color: var(--premium-muted-cream);
+  text-decoration: none;
+  padding: 0.25rem 0;
+  transition: color 0.2s ease;
+}
+
+.footer-legal-link:hover {
+  color: var(--premium-muted-cream);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.footer-copyright {
+  margin: 0;
+  padding: 0;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--premium-muted-cream);
+  opacity: 0.85;
+}
+
+/* Retire prior single-column signature geometry */
+.site-footer-premium .footer-legal-signature {
+  display: none;
 }
 
 section[aria-labelledby="who-its-for-heading"] .proof-eyebrow {
@@ -4451,7 +4689,7 @@ section[aria-labelledby="video-analysis-heading"] .video-analysis-photo {
     }
   }
 
-  /* Short height (e.g. 1536×690): height-locked cover needs stronger translate */
+  /* Short height (e.g. 1536x690): height-locked cover needs stronger translate */
   @media (max-height: 700px) {
     section[aria-labelledby="video-analysis-heading"] .split-photo-mask img,
     section[aria-labelledby="video-analysis-heading"] .video-analysis-photo {
@@ -4721,6 +4959,8 @@ section[aria-labelledby="video-analysis-heading"] #video-analysis-heading,
 section[aria-labelledby="video-analysis-heading"] .video-analysis-premium-heading,
 section[aria-labelledby="coaching-options-heading"] #coaching-options-heading,
 section[aria-labelledby="coaching-options-heading"] .coaching-options-heading,
+section[aria-labelledby="programs-heading"] #programs-heading,
+section[aria-labelledby="programs-heading"] .programs-page-heading,
 section[aria-labelledby="about-olympic-heading"] #about-olympic-heading,
 section[aria-labelledby="about-olympic-heading"] .about-olympic-premium-heading,
 section[aria-labelledby="about-olympic-heading"] #about-olympic-heading .about-olympic-heading-line1,
@@ -4746,6 +4986,8 @@ section[aria-labelledby="camps-heading"] #camps-heading .camps-heading-line2 {
   section[aria-labelledby="video-analysis-heading"] .video-analysis-premium-heading,
   section[aria-labelledby="coaching-options-heading"] #coaching-options-heading,
   section[aria-labelledby="coaching-options-heading"] .coaching-options-heading,
+  section[aria-labelledby="programs-heading"] #programs-heading,
+  section[aria-labelledby="programs-heading"] .programs-page-heading,
   section[aria-labelledby="about-olympic-heading"] #about-olympic-heading,
   section[aria-labelledby="about-olympic-heading"] .about-olympic-premium-heading,
   section[aria-labelledby="about-olympic-heading"] #about-olympic-heading .about-olympic-heading-line1,
@@ -4767,6 +5009,8 @@ section[aria-labelledby="camps-heading"] #camps-heading .camps-heading-line2 {
   section[aria-labelledby="video-analysis-heading"] .video-analysis-premium-heading,
   section[aria-labelledby="coaching-options-heading"] #coaching-options-heading,
   section[aria-labelledby="coaching-options-heading"] .coaching-options-heading,
+  section[aria-labelledby="programs-heading"] #programs-heading,
+  section[aria-labelledby="programs-heading"] .programs-page-heading,
   section[aria-labelledby="about-olympic-heading"] #about-olympic-heading,
   section[aria-labelledby="about-olympic-heading"] .about-olympic-premium-heading,
   section[aria-labelledby="camps-heading"] #camps-heading,
@@ -5262,18 +5506,7 @@ section[aria-labelledby="camps-heading"] {
   background-image: none;
 }
 
-/* Kill legacy full-bleed Ken-Burns / absolute CTA geometry */
-section[aria-labelledby="about-olympic-heading"] .about-olympic-cta {
-  position: static;
-  top: auto;
-  left: auto;
-  right: auto;
-  bottom: auto;
-  transform: none;
-  z-index: auto;
-  white-space: normal;
-  text-shadow: none;
-}
+/* Legacy absolute About CTA geometry no longer used (button uses btn-cta-primary only). */
 
 section[aria-labelledby="about-olympic-heading"] .about-olympic-eyebrow,
 section[aria-labelledby="camps-heading"] .camps-eyebrow {
@@ -5421,23 +5654,6 @@ section[aria-labelledby="about-olympic-heading"] .about-olympic-cta-row {
   gap: clamp(0.875rem, 1.5vw, 1.5rem);
   margin-top: clamp(0.95rem, 2.4vh, 1.65rem);
   justify-content: flex-start;
-}
-
-section[aria-labelledby="about-olympic-heading"] .about-olympic-bio-link {
-  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
-  font-size: clamp(0.9375rem, 1vw, 1.0625rem);
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  color: var(--premium-champagne);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(216, 185, 106, 0.55);
-  padding-bottom: 0.1rem;
-  transition: color 0.2s ease, border-color 0.2s ease;
-}
-
-section[aria-labelledby="about-olympic-heading"] .about-olympic-bio-link:hover {
-  color: var(--premium-cream);
-  border-bottom-color: var(--premium-champagne);
 }
 
 /* --- Section B: Coming Soon + features --- */
@@ -5868,7 +6084,7 @@ section[aria-labelledby="camps-heading"] .camps-photo {
     );
   }
 
-  /* Chip row: 2×2 on narrow; hide vertical dividers between wrapped pairs */
+  /* Chip row: 2x2 on narrow; hide vertical dividers between wrapped pairs */
   section[aria-labelledby="about-olympic-heading"] .about-olympic-chip {
     flex: 1 1 calc(50% - 0.5rem);
     min-width: 8.5rem;
@@ -5962,14 +6178,401 @@ section[aria-labelledby="camps-heading"] .camps-photo {
     flex-direction: column;
     align-items: flex-start;
   }
+}
 
-  section[aria-labelledby="about-olympic-heading"] .about-olympic-cta {
-    width: 100%;
+
+/* ===== /programs page - Coaching Options language, no photo (UNLAYERED END) ===== */
+
+section[aria-labelledby="programs-heading"] {
+  --premium-cream: #f7f1e6;
+  --premium-soft-cream: rgba(247, 241, 230, 0.82);
+  --premium-champagne: #d8b96a;
+  --premium-line-gold: rgba(216, 185, 106, 0.55);
+  position: relative;
+  background: transparent;
+}
+
+section[aria-labelledby="programs-heading"] .programs-page-inner {
+  padding-top: clamp(2.5rem, 6vh, 4rem);
+  padding-bottom: clamp(1.5rem, 4vh, 2.5rem);
+}
+
+section[aria-labelledby="programs-heading"] #programs-heading,
+section[aria-labelledby="programs-heading"] .programs-page-heading {
+  margin: 0;
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  font-style: normal;
+  color: var(--premium-cream);
+  -webkit-text-fill-color: var(--premium-cream);
+  filter: none;
+  animation: none;
+  text-shadow: none;
+  background: none;
+}
+
+section[aria-labelledby="programs-heading"] .programs-page-intro {
+  margin: clamp(0.5rem, 1.3vh, 0.9rem) 0 0;
+  max-width: 38rem;
+  font-size: clamp(0.9375rem, 1.05vw, 1.0625rem);
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--premium-soft-cream);
+}
+
+section[aria-labelledby="programs-heading"] .programs-page-grid {
+  display: grid;
+  gap: clamp(0.65rem, 1.2vw, 0.95rem);
+  margin-top: clamp(1.25rem, 3vh, 2rem);
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  section[aria-labelledby="programs-heading"] .programs-page-grid {
+    max-width: min(66%, 60rem);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    justify-content: start;
   }
 }
 
+/* Price line kept from prior /programs ProgramCard (Coaching Options has no price) */
+.premium-card-price {
+  margin: 0.35rem 0 0;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--premium-champagne, #d8b96a);
+}
+
+.programs-notes-section {
+  position: relative;
+  background: transparent;
+}
+
+.programs-notes-inner {
+  padding-top: clamp(1.25rem, 3vh, 2rem);
+  padding-bottom: clamp(2rem, 5vh, 3rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vh, 2.25rem);
+}
+
+.programs-note-block {
+  max-width: 40rem;
+}
+
+.programs-note-title {
+  margin: 0;
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  font-size: clamp(1.125rem, 1.2vw, 1.25rem);
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--premium-cream, #f7f1e6);
+}
+
+.programs-note-body {
+  margin: 0.65rem 0 0;
+  font-size: clamp(0.9375rem, 1.05vw, 1.0625rem);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--premium-soft-cream, rgba(247, 241, 230, 0.82));
+}
+
+.programs-note-list {
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.programs-note-list li {
+  position: relative;
+  padding-left: 1rem;
+  font-size: clamp(0.9375rem, 1.05vw, 1.0625rem);
+  line-height: 1.55;
+  color: var(--premium-soft-cream, rgba(247, 241, 230, 0.82));
+}
+
+.programs-note-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
+  background: var(--premium-champagne, #d8b96a);
+}
+
+/* ===== About opening: brand lockup + medal stack + scroll cue (UNLAYERED END) ===== */
+
+.about-story-page {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.about-story-inner {
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+  padding-left: var(--page-left-inset);
+  padding-right: var(--page-left-inset);
+  box-sizing: border-box;
+}
+
+.about-story-opening {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(1.25rem, 3vh, 2rem);
+  margin-bottom: clamp(2rem, 5vh, 3rem);
+}
+
+.about-brand-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(0.75rem, 1.5vw, 1.125rem);
+  margin: 0;
+  font-size: clamp(1.75rem, 3.2vw, 2.625rem);
+  line-height: 1;
+}
+
+.about-brand-mark {
+  display: block;
+  flex-shrink: 0;
+  height: 1.25em;
+  width: auto;
+  max-height: 3.25rem;
+  color: var(--brand-gold);
+}
+
+.about-brand-wordmark {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.about-opening-visuals {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.25rem, 3vw, 2rem);
+  width: 100%;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .about-opening-visuals {
+    grid-template-columns: minmax(0, 280px) minmax(0, 1fr);
+    gap: clamp(1.5rem, 4vw, 3rem);
+  }
+}
+
+.about-story-portrait {
+  margin: 0;
+  max-width: min(280px, 100%);
+  justify-self: start;
+}
+
+/* --- Scattered medal stack --- */
+
+.about-medal-stack {
+  position: relative;
+  width: 100%;
+  max-width: 28rem;
+  height: clamp(15rem, 42vw, 20rem);
+  margin: 0 auto;
+  touch-action: manipulation;
+}
+
+@media (min-width: 900px) {
+  .about-medal-stack {
+    margin: 0;
+    max-width: 32rem;
+    height: clamp(17rem, 28vw, 22rem);
+  }
+}
+
+.about-medal-card {
+  position: absolute;
+  display: block;
+  padding: 0;
+  margin: 0;
+  border: 1px solid rgba(216, 185, 106, 0.28);
+  border-radius: 8px;
+  background: transparent;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.28),
+    0 2px 6px rgba(0, 0, 0, 0.18);
+  transition:
+    transform 0.35s ease-out,
+    box-shadow 0.35s ease-out,
+    border-color 0.35s ease-out;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.about-medal-card-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* Fixed pile poses (look random, stay stable) */
+.about-medal-card--1 {
+  width: min(42%, 11.5rem);
+  aspect-ratio: 4 / 3;
+  left: 6%;
+  top: 18%;
+  z-index: 2;
+  transform: rotate(-7deg) translate(0, 0);
+}
+
+.about-medal-card--2 {
+  width: min(34%, 9.5rem);
+  aspect-ratio: 3 / 5;
+  left: 38%;
+  top: 4%;
+  z-index: 3;
+  transform: rotate(6deg) translate(0, 0);
+}
+
+.about-medal-card--3 {
+  width: min(40%, 11rem);
+  aspect-ratio: 3 / 2;
+  left: 52%;
+  top: 28%;
+  z-index: 4;
+  transform: rotate(-3deg) translate(0, 0);
+}
+
+.about-medal-card--4 {
+  width: min(38%, 10.5rem);
+  aspect-ratio: 3 / 2;
+  left: 18%;
+  top: 48%;
+  z-index: 5;
+  transform: rotate(9deg) translate(0, 0);
+}
+
+.about-medal-card--5 {
+  width: min(44%, 12rem);
+  aspect-ratio: 1 / 1;
+  left: 44%;
+  top: 46%;
+  z-index: 1;
+  transform: rotate(-8deg) translate(0, 0);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .about-medal-card:hover,
+  .about-medal-card.is-lifted {
+    z-index: 20;
+    transform: rotate(0deg) translateY(-10px) scale(1.06);
+    box-shadow:
+      0 22px 48px rgba(0, 0, 0, 0.4),
+      0 4px 12px rgba(0, 0, 0, 0.22);
+    border-color: rgba(216, 185, 106, 0.55);
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .about-medal-card.is-lifted {
+    z-index: 20;
+    transform: rotate(0deg) translateY(-10px) scale(1.06);
+    box-shadow:
+      0 22px 48px rgba(0, 0, 0, 0.4),
+      0 4px 12px rgba(0, 0, 0, 0.22);
+    border-color: rgba(216, 185, 106, 0.55);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-medal-card {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .about-medal-card:hover,
+  .about-medal-card.is-lifted {
+    transform: none;
+    border-color: rgba(216, 185, 106, 0.7);
+    box-shadow:
+      0 14px 32px rgba(0, 0, 0, 0.32),
+      0 0 0 1px rgba(216, 185, 106, 0.35);
+    z-index: 20;
+  }
+}
+
+/* --- Coral scroll cue --- */
+
+.about-scroll-cue {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-top: 0.25rem;
+  color: var(--accent-coral, #ff7568);
+  text-decoration: none;
+  opacity: 0;
+  animation:
+    about-scroll-cue-in 0.65s ease 2.75s forwards,
+    about-scroll-cue-bob 2s ease-in-out 3.4s infinite;
+}
+
+.about-scroll-cue.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  animation: none;
+}
+
+.about-scroll-cue-icon {
+  display: block;
+}
+
+@keyframes about-scroll-cue-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes about-scroll-cue-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-scroll-cue {
+    opacity: 1;
+    animation: none;
+  }
+
+  .about-scroll-cue.is-hidden {
+    opacity: 0;
+  }
+}
+
+.about-story-body {
+  scroll-margin-top: 5rem;
+}
+
 /* ===== Film grain overlay (removable block) ===== */
-/* FILM_GRAIN_START — delete this block + /public/noise.png to remove */
+/* FILM_GRAIN_START - delete this block + /public/noise.png to remove */
 body::after {
   content: "";
   position: fixed;
