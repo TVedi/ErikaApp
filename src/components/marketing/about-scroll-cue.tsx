@@ -1,22 +1,44 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
- * Coral scroll cue — CSS fade-in + bob; JS only toggles hide on scroll
- * (no scrollTo / scrollIntoView — navigation is the anchor href).
+ * Coral scroll cue — CSS fade-in + bob; JS only toggles hide-on-scroll class.
+ * Navigation is the anchor href + CSS smooth scrolling (no imperative scroll APIs).
  */
 export function AboutScrollCue({ href }: { href: string }) {
   const [hidden, setHidden] = useState(false);
+  const armedRef = useRef(false);
 
   useEffect(() => {
+    const cue = document.querySelector(".about-scroll-cue");
+
+    const arm = () => {
+      armedRef.current = true;
+    };
+
+    // Arm hide only after the fade-in animation finishes (not a fixed timer
+    // that can race ahead of the CSS delay).
+    const onAnimEnd = (e: Event) => {
+      const ae = e as AnimationEvent;
+      if (ae.animationName.includes("about-scroll-cue-in")) arm();
+    };
+
+    cue?.addEventListener("animationend", onAnimEnd);
+    // Fallback if animationend is missed (reduced-motion / interrupted).
+    const fallback = window.setTimeout(arm, 2500);
+
     const onScroll = () => {
-      // Cleaner: hide on first meaningful scroll away from top
+      if (!armedRef.current) return;
       setHidden(window.scrollY > 32);
     };
-    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+
+    return () => {
+      cue?.removeEventListener("animationend", onAnimEnd);
+      window.clearTimeout(fallback);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   return (
@@ -27,8 +49,8 @@ export function AboutScrollCue({ href }: { href: string }) {
     >
       <svg
         className="about-scroll-cue-icon"
-        width="28"
-        height="28"
+        width="40"
+        height="40"
         viewBox="0 0 28 28"
         fill="none"
         aria-hidden="true"

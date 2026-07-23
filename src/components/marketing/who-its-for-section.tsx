@@ -1,26 +1,32 @@
 import Image from "next/image";
-import {
-  Award,
-  Crown,
-  Flag,
-  Globe,
-  Star,
-  Trophy,
-  type LucideIcon,
-} from "lucide-react";
+import type { ComponentType, SVGProps } from "react";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import { MarketingCtaReveal } from "@/components/motion/marketing-cta-reveal";
 import { CountUpQty } from "@/components/motion/count-up-qty";
 import { PremiumSectionDivider } from "@/components/marketing/premium-section-divider";
+import {
+  PremiumCrown,
+  PremiumFlag,
+  PremiumGlobe,
+  PremiumMedal,
+  PremiumStar,
+  PremiumTrophy,
+} from "@/components/marketing/premium-icons";
 import { StartCoachingButton } from "@/components/marketing/start-coaching-button";
 import { launch } from "@/content/copy";
 import { sitePhotos } from "@/lib/marketing/site-photos";
 
 const photo = sitePhotos.whoItsFor;
 
-/* Glyph decisions: Trophy/Award/Crown/Star/Globe keep; Mountain→Flag (more heraldic for leadership) */
-const TITLE_ICONS: LucideIcon[] = [Trophy, Award, Crown];
-const EXPERIENCE_ICONS: LucideIcon[] = [Star, Globe, Flag];
+type PremiumIcon = ComponentType<SVGProps<SVGSVGElement>>;
+
+/* Trophy / Medal / Crown titles; Star / Globe / Flag experience */
+const TITLE_ICONS: PremiumIcon[] = [PremiumTrophy, PremiumMedal, PremiumCrown];
+const EXPERIENCE_ICONS: PremiumIcon[] = [
+  PremiumStar,
+  PremiumGlobe,
+  PremiumFlag,
+];
 
 function ProofAchievementText({ text }: { text: string }) {
   const match = text.match(/^(\d+x|\d+\+|\d+)\s+(.+)$/);
@@ -40,12 +46,12 @@ function ProofAchievementRow({
   icon: Icon,
 }: {
   text: string;
-  icon: LucideIcon;
+  icon: PremiumIcon;
 }) {
   return (
     <div className="proof-achievement-row">
       <span className="proof-achievement-icon" aria-hidden="true">
-        <Icon strokeWidth={1} />
+        <Icon />
       </span>
       <ProofAchievementText text={text} />
     </div>

@@ -26,18 +26,20 @@ export default function AboutPage() {
               </span>
             </h1>
 
-            <div className="about-opening-visuals">
-              <div className="about-story-portrait">
-                <MarketingPhoto
-                  photo={sitePhotos.aboutPortrait}
-                  variant="portrait"
-                  sizes="(max-width: 640px) 85vw, 280px"
-                />
+            <div className="about-opening-stage">
+              <div className="about-opening-visuals">
+                <div className="about-story-portrait">
+                  <MarketingPhoto
+                    photo={sitePhotos.aboutPortrait}
+                    variant="portrait"
+                    sizes="(max-width: 640px) 85vw, 280px"
+                  />
+                </div>
+                <AboutMedalStack />
               </div>
-              <AboutMedalStack />
-            </div>
 
-            <AboutScrollCue href="#about-story-body" />
+              <AboutScrollCue href="#about-story-body" />
+            </div>
           </header>
 
           <div className="about-story-body" id="about-story-body">

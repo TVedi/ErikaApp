@@ -1689,12 +1689,13 @@ body {
 
 /* About story -- editorial long-form (unlayered) */
 .about-story-page {
-  padding: 3rem 1.25rem 5rem;
+  /* Top pad owned by the fullscreen opening (below sticky header) */
+  padding: 0 1.25rem 5rem;
 }
 
 @media (min-width: 640px) {
   .about-story-page {
-    padding: 4rem 1.5rem 6rem;
+    padding: 0 1.5rem 6rem;
   }
 }
 
@@ -6307,6 +6308,7 @@ section[aria-labelledby="programs-heading"] .programs-page-grid {
 }
 
 /* ===== About opening: brand lockup + medal stack + scroll cue (UNLAYERED END) ===== */
+/* cache-bust-about-opening-20260723b */
 
 .about-story-page {
   padding-left: 0;
@@ -6324,12 +6326,22 @@ section[aria-labelledby="programs-heading"] .programs-page-grid {
 }
 
 .about-story-opening {
+  /*
+   * First screen below the sticky header (h-16): lockup + cluster + cue.
+   * Story starts only after scrolling — no peek above the fold.
+   */
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: clamp(1.25rem, 3vh, 2rem);
-  margin-bottom: clamp(2rem, 5vh, 3rem);
+  box-sizing: border-box;
+  min-height: calc(100dvh - 4rem);
+  min-height: calc(100svh - 4rem);
+  gap: clamp(0.85rem, 1.6vh, 1.25rem);
+  margin-bottom: 0.75rem;
+  padding-top: clamp(1rem, 2.2vh, 1.5rem);
+  padding-bottom: clamp(1.25rem, 2.5vh, 1.75rem);
+  overflow: visible;
 }
 
 .about-brand-lockup {
@@ -6339,6 +6351,7 @@ section[aria-labelledby="programs-heading"] .programs-page-grid {
   margin: 0;
   font-size: clamp(1.75rem, 3.2vw, 2.625rem);
   line-height: 1;
+  flex-shrink: 0;
 }
 
 .about-brand-mark {
@@ -6356,43 +6369,138 @@ section[aria-labelledby="programs-heading"] .programs-page-grid {
   letter-spacing: -0.01em;
 }
 
-.about-opening-visuals {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: clamp(1.25rem, 3vw, 2rem);
+.about-opening-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Extra first-screen air sits under the lockup; cue stays near the fold */
+  justify-content: flex-end;
+  flex: 1 1 auto;
+  gap: 0;
   width: 100%;
-  align-items: center;
+  min-height: 0;
+  overflow: visible;
 }
 
-@media (min-width: 900px) {
-  .about-opening-visuals {
-    grid-template-columns: minmax(0, 280px) minmax(0, 1fr);
-    gap: clamp(1.5rem, 4vw, 3rem);
-  }
+.about-opening-visuals {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: clamp(1.25rem, 3vw, 2rem);
+  width: 100%;
+  flex: 0 0 auto;
+  overflow: visible;
 }
 
 .about-story-portrait {
   margin: 0;
   max-width: min(280px, 100%);
-  justify-self: start;
+  align-self: flex-start;
 }
 
-/* --- Scattered medal stack --- */
+/* --- Scattered medal stack — one cohesive centered cluster --- */
 
-.about-medal-stack {
+/*
+ * Wrap reserves overflow past the stack layout box (~75px at 1440)
+ * plus air so the cue sits ~80–100px below the cluster — no dead band.
+ */
+.about-medal-stack-wrap {
+  --medal-scale: 1;
+  --medal-overflow-pad: 5.75rem; /* ~92px: ~75 overflow + ~17 air above cue */
   position: relative;
   width: 100%;
-  max-width: 28rem;
-  height: clamp(15rem, 42vw, 20rem);
+  display: flex;
+  justify-content: center;
+  overflow: visible;
+  padding-top: 1.25rem; /* hover-lift clearance above */
+  padding-bottom: var(--medal-overflow-pad);
+  margin: 0;
+}
+
+.about-medal-stack {
+  --stack-h: clamp(16rem, 48vw, 20rem);
+  position: relative;
+  width: min(92%, 22rem);
+  height: var(--stack-h);
   margin: 0 auto;
+  /* Pull following content up by the unused layout after uniform scale */
+  margin-bottom: calc(var(--stack-h) * (var(--medal-scale) - 1));
   touch-action: manipulation;
+  overflow: visible;
+  transform: scale(var(--medal-scale));
+  transform-origin: center top;
 }
 
 @media (min-width: 900px) {
+  .about-medal-stack-wrap {
+    padding-top: 1.5rem;
+    /* ~75px card overflow + ~36px air above cue */
+    --medal-overflow-pad: 7rem;
+  }
+
   .about-medal-stack {
-    margin: 0;
-    max-width: 32rem;
-    height: clamp(17rem, 28vw, 22rem);
+    /* Cluster AABB targets ~60–75% of content width */
+    --stack-h: clamp(20rem, 30vw, 26rem);
+    width: 88%;
+    max-width: none;
+    height: var(--stack-h);
+    /* nudge so card AABB center matches content center (±10px) */
+    left: -7px;
+  }
+}
+
+/* Short desktop: mildest uniform scale that keeps cue in-viewport */
+@media (min-width: 900px) and (max-height: 760px) {
+  .about-medal-stack-wrap {
+    --medal-scale: 0.92;
+    --medal-overflow-pad: calc(7rem * 0.92);
+  }
+
+  .about-opening-visuals {
+    gap: 0.75rem;
+  }
+
+  .about-story-opening {
+    gap: 0.7rem;
+    padding-top: 0.85rem;
+    padding-bottom: 0.9rem;
+  }
+}
+
+@media (min-width: 900px) and (max-height: 720px) {
+  .about-medal-stack-wrap {
+    --medal-scale: 0.85;
+    --medal-overflow-pad: calc(7rem * 0.85);
+    padding-top: 1rem;
+  }
+}
+
+@media (min-width: 900px) and (max-height: 640px) {
+  .about-medal-stack-wrap {
+    --medal-scale: 0.78;
+    --medal-overflow-pad: calc(7rem * 0.78);
+    padding-top: 0.65rem;
+  }
+
+  .about-story-opening {
+    gap: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.65rem;
+  }
+}
+
+@media (max-width: 899px) {
+  .about-medal-stack-wrap {
+    /* Cards sit inside the stack box — air above the cue */
+    --medal-overflow-pad: 1.25rem;
+  }
+
+  .about-medal-stack {
+    /*
+     * Card % tops leave ~52px empty at the stack floor on mobile.
+     * Pull the cue up without changing photo size/position.
+     */
+    margin-bottom: calc(var(--stack-h) * (var(--medal-scale) - 1) - 2.5rem);
   }
 }
 
@@ -6424,72 +6532,113 @@ section[aria-labelledby="programs-heading"] .programs-page-grid {
   pointer-events: none;
 }
 
-/* Fixed pile poses (look random, stay stable) */
+/*
+ * Dense deck-on-a-table cluster — every card overlaps a neighbour.
+ * Erika bajnok (--3) is topmost at rest (z:10).
+ */
 .about-medal-card--1 {
-  width: min(42%, 11.5rem);
+  width: 26%;
   aspect-ratio: 4 / 3;
-  left: 6%;
-  top: 18%;
+  left: 25%;
+  top: 22%;
   z-index: 2;
   transform: rotate(-7deg) translate(0, 0);
 }
 
 .about-medal-card--2 {
-  width: min(34%, 9.5rem);
+  width: 17%;
   aspect-ratio: 3 / 5;
-  left: 38%;
-  top: 4%;
+  left: 41%;
+  top: 2%;
   z-index: 3;
   transform: rotate(6deg) translate(0, 0);
 }
 
 .about-medal-card--3 {
-  width: min(40%, 11rem);
+  width: 24%;
   aspect-ratio: 3 / 2;
-  left: 52%;
+  left: 45%;
   top: 28%;
-  z-index: 4;
+  z-index: 10; /* Erika bajnok — topmost */
   transform: rotate(-3deg) translate(0, 0);
 }
 
 .about-medal-card--4 {
-  width: min(38%, 10.5rem);
+  width: 22%;
   aspect-ratio: 3 / 2;
-  left: 18%;
-  top: 48%;
+  left: 31%;
+  top: 52%;
   z-index: 5;
   transform: rotate(9deg) translate(0, 0);
 }
 
 .about-medal-card--5 {
-  width: min(44%, 12rem);
+  width: 24%;
   aspect-ratio: 1 / 1;
-  left: 44%;
-  top: 46%;
+  left: 51%;
+  top: 48%;
   z-index: 1;
   transform: rotate(-8deg) translate(0, 0);
 }
 
+.about-medal-card--6 {
+  width: 22%;
+  aspect-ratio: 4 / 3;
+  left: 61%;
+  top: 10%;
+  z-index: 4;
+  transform: rotate(8deg) translate(0, 0);
+}
+
+.about-medal-card--7 {
+  width: 14%;
+  aspect-ratio: 3 / 5;
+  left: 73%;
+  top: 32%;
+  z-index: 6;
+  transform: rotate(-9deg) translate(0, 0);
+}
+
+.about-medal-card--8 {
+  width: 23%;
+  aspect-ratio: 3 / 2;
+  left: 57%;
+  top: 54%;
+  z-index: 3;
+  transform: rotate(5deg) translate(0, 0);
+}
+
+/* Erika regi — tucked under 3erem toward Duisburg; upper body stays exposed */
+.about-medal-card--9 {
+  width: 20%;
+  aspect-ratio: 3 / 2;
+  left: 29%;
+  top: 4%;
+  z-index: 1; /* below 3erem (2); above Összes (1) via later DOM paint */
+  transform: rotate(-5deg) translate(0, 0);
+}
+
+/* Bigger readable pop — above all siblings including bajnok */
 @media (hover: hover) and (pointer: fine) {
   .about-medal-card:hover,
   .about-medal-card.is-lifted {
-    z-index: 20;
-    transform: rotate(0deg) translateY(-10px) scale(1.06);
+    z-index: 30;
+    transform: rotate(0deg) translateY(-16px) scale(1.26);
     box-shadow:
-      0 22px 48px rgba(0, 0, 0, 0.4),
-      0 4px 12px rgba(0, 0, 0, 0.22);
-    border-color: rgba(216, 185, 106, 0.55);
+      0 32px 64px rgba(0, 0, 0, 0.5),
+      0 10px 24px rgba(0, 0, 0, 0.3);
+    border-color: rgba(216, 185, 106, 0.65);
   }
 }
 
 @media (hover: none), (pointer: coarse) {
   .about-medal-card.is-lifted {
-    z-index: 20;
-    transform: rotate(0deg) translateY(-10px) scale(1.06);
+    z-index: 30;
+    transform: rotate(0deg) translateY(-16px) scale(1.26);
     box-shadow:
-      0 22px 48px rgba(0, 0, 0, 0.4),
-      0 4px 12px rgba(0, 0, 0, 0.22);
-    border-color: rgba(216, 185, 106, 0.55);
+      0 32px 64px rgba(0, 0, 0, 0.5),
+      0 10px 24px rgba(0, 0, 0, 0.3);
+    border-color: rgba(216, 185, 106, 0.65);
   }
 }
 
@@ -6505,7 +6654,7 @@ section[aria-labelledby="programs-heading"] .programs-page-grid {
     box-shadow:
       0 14px 32px rgba(0, 0, 0, 0.32),
       0 0 0 1px rgba(216, 185, 106, 0.35);
-    z-index: 20;
+    z-index: 30;
   }
 }
 
@@ -6516,15 +6665,20 @@ section[aria-labelledby="programs-heading"] .programs-page-grid {
   align-items: center;
   justify-content: center;
   align-self: center;
-  width: 2.75rem;
-  height: 2.75rem;
-  margin-top: 0.25rem;
+  position: relative;
+  z-index: 8;
+  /* ~1.4× prior 2.75rem hit target — clearer scroll invitation */
+  width: 3.85rem;
+  height: 3.85rem;
+  margin-top: 0;
+  margin-bottom: 0.35rem;
+  flex-shrink: 0;
   color: var(--accent-coral, #ff7568);
   text-decoration: none;
   opacity: 0;
   animation:
-    about-scroll-cue-in 0.65s ease 2.75s forwards,
-    about-scroll-cue-bob 2s ease-in-out 3.4s infinite;
+    about-scroll-cue-in 0.55s ease 1.75s forwards,
+    about-scroll-cue-bob 2s ease-in-out 2.35s infinite;
 }
 
 .about-scroll-cue.is-hidden {
@@ -6535,6 +6689,8 @@ section[aria-labelledby="programs-heading"] .programs-page-grid {
 
 .about-scroll-cue-icon {
   display: block;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 @keyframes about-scroll-cue-in {
@@ -6568,7 +6724,16 @@ section[aria-labelledby="programs-heading"] .programs-page-grid {
 }
 
 .about-story-body {
-  scroll-margin-top: 5rem;
+  /*
+   * html already has scroll-padding-top: 4rem (sticky header).
+   * Only add ~16px air here — padding + margin stack, so 4rem+16 on both
+   * would land ~144px below the viewport top.
+   */
+  scroll-margin-top: 16px;
+}
+
+#about-story-body {
+  scroll-margin-top: 16px;
 }
 
 /* ===== Film grain overlay (removable block) ===== */

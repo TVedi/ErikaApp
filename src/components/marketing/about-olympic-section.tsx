@@ -1,22 +1,30 @@
 import Image from "next/image";
-import {
-  Award,
-  Crown,
-  Globe,
-  Trophy,
-  type LucideIcon,
-} from "lucide-react";
+import type { ComponentType, SVGProps } from "react";
 import { LinkButton } from "@/components/ui/link-button";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import { MarketingCtaReveal } from "@/components/motion/marketing-cta-reveal";
 import { CountUpQty } from "@/components/motion/count-up-qty";
 import { PremiumSectionDivider } from "@/components/marketing/premium-section-divider";
+import {
+  PremiumCrown,
+  PremiumGlobe,
+  PremiumMedal,
+  PremiumTrophy,
+} from "@/components/marketing/premium-icons";
 import { launch } from "@/content/copy";
 import { sitePhotos } from "@/lib/marketing/site-photos";
 
 const photo = sitePhotos.coachedByOlympicBackground;
 
-const CHIP_ICONS: LucideIcon[] = [Trophy, Award, Crown, Globe];
+type PremiumIcon = ComponentType<SVGProps<SVGSVGElement>>;
+
+/* Trophy / Medal / Crown / Globe — engraved chip glyphs */
+const CHIP_ICONS: PremiumIcon[] = [
+  PremiumTrophy,
+  PremiumMedal,
+  PremiumCrown,
+  PremiumGlobe,
+];
 
 function ProofChipLine1({ line1 }: { line1: string }) {
   /* Animate clear counts only (8x / 21x / 20+). "Olympic 4th Place" stays static. */
@@ -38,12 +46,12 @@ function ProofChip({
 }: {
   line1: string;
   line2: string;
-  icon: LucideIcon;
+  icon: PremiumIcon;
 }) {
   return (
     <div className="about-olympic-chip">
       <span className="about-olympic-chip-icon" aria-hidden="true">
-        <Icon strokeWidth={1} />
+        <Icon />
       </span>
       <span className="about-olympic-chip-label">
         <ProofChipLine1 line1={line1} />
