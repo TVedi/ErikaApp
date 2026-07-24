@@ -1,8 +1,9 @@
 import Image from "next/image";
 import { Mountain, Waves, type LucideIcon } from "lucide-react";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
+import { ComingSoonButton } from "@/components/marketing/coming-soon-button";
 import { PremiumSectionDivider } from "@/components/marketing/premium-section-divider";
-import { launch } from "@/content/copy";
+import { camps, launch } from "@/content/copy";
 import { sitePhotos } from "@/lib/marketing/site-photos";
 
 const photo = sitePhotos.campsBackground;
@@ -32,7 +33,7 @@ function CampFeature({
 }
 
 /**
- * Gainesville Training Camps — premium split: camp.webp dissolve, no booking CTA.
+ * Gainesville Training Camps — premium split: camp.webp dissolve + coming-soon CTA.
  */
 export function CampsSection() {
   return (
@@ -97,6 +98,10 @@ export function CampsSection() {
                   icon={FEATURE_ICONS[i]}
                 />
               ))}
+            </ScrollReveal>
+
+            <ScrollReveal className="camps-home-cta">
+              <ComingSoonButton label={camps.ctaLabel} />
             </ScrollReveal>
           </div>
         </div>

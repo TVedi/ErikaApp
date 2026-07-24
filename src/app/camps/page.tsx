@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { PublicLayout } from "@/components/layout/public-layout";
+import { ComingSoonButton } from "@/components/marketing/coming-soon-button";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import { camps } from "@/content/copy";
 import type { Metadata } from "next";
@@ -29,9 +30,7 @@ export default function CampsPage() {
             <p className="camps-subheadline mt-5 sm:mt-6">{camps.subheadline}</p>
             <p className="camps-supporting mt-4">{camps.supportingCopy}</p>
             <p className="camps-status mt-6">{camps.statusLabel}</p>
-            <p className="camps-cta-soft mt-6" role="status">
-              {camps.ctaLabel}
-            </p>
+            <ComingSoonButton label={camps.ctaLabel} className="mt-6" />
           </ScrollReveal>
 
           <ScrollReveal className="camps-hero-photo" delayMs={120}>

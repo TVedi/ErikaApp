@@ -1606,7 +1606,8 @@ body {
   gap: 2.5rem;
   width: 100%;
   min-height: calc(100dvh - 4rem);
-  padding: 3.5rem 1rem;
+  /* Horizontal inset owned by text/image wraps via --page-left-inset */
+  padding: 3.5rem 0;
   box-sizing: border-box;
 }
 
@@ -1617,6 +1618,8 @@ body {
   justify-content: center;
   width: 100%;
   box-sizing: border-box;
+  padding-left: var(--page-left-inset);
+  padding-right: var(--page-left-inset);
 }
 
 .video-course-portrait-card {
@@ -1638,7 +1641,7 @@ body {
 
 @media (min-width: 640px) {
   .section-screen.section-screen-center > .video-course-layout {
-    padding: 4rem 1.5rem;
+    padding: 4rem 0;
   }
 }
 
@@ -1658,20 +1661,15 @@ body {
     height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    /* Match Who This Is For / split premium sections — top inset, not bottom-pinned */
+    justify-content: flex-start;
     align-items: flex-start;
     align-self: stretch;
     min-height: calc(100dvh - 4rem);
-    padding:
-      0
-      2rem
-      calc((100dvh - 4rem - var(--video-course-square)) / 2)
-      var(--page-left-inset);
-  }
-
-  .video-course-text-wrap .video-course-loading-pulse {
-    margin: 0;
-    line-height: 1.15;
+    padding-top: clamp(4.5rem, 18vh, 10.5rem);
+    padding-right: clamp(1rem, 2vw, 2rem);
+    padding-bottom: clamp(0.5rem, 1.5vh, 1.5rem);
+    padding-left: var(--page-left-inset);
   }
 
   .video-course-image-wrap {
@@ -1860,7 +1858,10 @@ body {
   color: var(--accent-coral);
 }
 
-.speaking-cta-soft {
+/* Soft gold coming-soon status chip — shared component + legacy aliases */
+.coming-soon-cta-soft,
+.speaking-cta-soft,
+.camps-cta-soft {
   display: inline-block;
   padding: 0.625rem 1.5rem;
   border-radius: 9999px;
@@ -1870,6 +1871,8 @@ body {
   font-weight: 500;
   letter-spacing: 0.03em;
   color: color-mix(in srgb, var(--foreground) 85%, transparent);
+  cursor: default;
+  text-decoration: none;
 }
 
 .speaking-hero-photo {
@@ -2008,24 +2011,15 @@ body {
   color: var(--accent-coral);
 }
 
-.camps-cta-soft {
-  display: inline-block;
-  padding: 0.625rem 1.5rem;
-  border-radius: 9999px;
-  border: 1px solid color-mix(in srgb, var(--brand-gold) 45%, transparent);
-  background: color-mix(in srgb, var(--brand-gold) 8%, transparent);
-  font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0.03em;
-  color: color-mix(in srgb, var(--foreground) 85%, transparent);
-}
+/* .camps-cta-soft styles live with .coming-soon-cta-soft (shared chip) */
 
 .camps-hero-photo {
   display: flex;
   justify-content: center;
 }
 
-/* Full image always visible -- object-contain inside a dark letterbox frame, no crop */
+/* Full image always visible -- object-contain inside a dark letterbox frame, no crop.
+ * Scoped to the /camps page frame so home split `.camps-photo` Ken-Burns is untouched. */
 .camps-photo-frame {
   width: min(340px, 92vw);
   border-radius: 1.25rem;
@@ -2040,7 +2034,7 @@ body {
   box-shadow: 0 26px 60px -24px rgba(0, 0, 0, 0.6);
 }
 
-.camps-photo {
+.camps-photo-frame .camps-photo {
   display: block;
   width: 100%;
   height: auto;
@@ -2205,7 +2199,9 @@ footer {
   .camps-hero-text .camps-status,
   .speaking-hero-text .speaking-coming-soon,
   .camps-hero-text .camps-cta-soft,
-  .speaking-hero-text .speaking-cta-soft {
+  .camps-hero-text .coming-soon-cta-soft,
+  .speaking-hero-text .speaking-cta-soft,
+  .speaking-hero-text .coming-soon-cta-soft {
     margin-top: 1rem;
   }
 }
@@ -2789,11 +2785,22 @@ section[aria-labelledby="who-its-for-heading"] .who-its-for-cta {
   margin-top: clamp(0.5rem, 2vh, 1.625rem);
 }
 
-/* TASK 3 -- Video Course keeps speaking-portrait-frame (unchanged) */
+/* TASK 3 -- Video Course keeps speaking-portrait-frame (gold/coral gradient) */
 .video-course-portrait-card.speaking-portrait-frame {
   width: var(--video-course-square, min(88vw, 420px, calc((100dvh - 4rem) * 0.6)));
   aspect-ratio: 1 / 1;
   border: none;
+  /* Same values as .speaking-portrait-frame on /speaking */
+  border-radius: 1.25rem;
+  padding: 1px;
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--brand-gold) 55%, transparent),
+    transparent 40%,
+    transparent 62%,
+    color-mix(in srgb, var(--accent-coral) 40%, transparent)
+  );
+  box-shadow: 0 26px 60px -24px rgba(0, 0, 0, 0.6);
 }
 
 /* TASK 3 -- Video Analysis image: preserve rounded corners without gold frame */
@@ -3112,18 +3119,11 @@ section.section-cream.section-atmo-glow-none > .section-screen-inner.max-w-6xl {
   padding-right: var(--page-left-inset);
 }
 
-/* Video Course loading — left-align pulse text to page inset (desktop).
-   Layout stays padding 0; text-wrap alone owns --page-left-inset (avoid double inset). */
+/* Video Course — layout padding owned by .video-course-text-wrap (no double inset). */
 @media (min-width: 1024px) {
   .section-screen.section-screen-center > .video-course-layout {
     padding-left: 0;
     padding-right: 0;
-  }
-
-  .video-course-text-wrap {
-    padding-left: var(--page-left-inset);
-    justify-content: flex-start;
-    align-items: flex-start;
   }
 }
 
@@ -4969,7 +4969,11 @@ section[aria-labelledby="about-olympic-heading"] #about-olympic-heading .about-o
 section[aria-labelledby="camps-heading"] #camps-heading,
 section[aria-labelledby="camps-heading"] .camps-premium-heading,
 section[aria-labelledby="camps-heading"] #camps-heading .camps-heading-line1,
-section[aria-labelledby="camps-heading"] #camps-heading .camps-heading-line2 {
+section[aria-labelledby="camps-heading"] #camps-heading .camps-heading-line2,
+section[aria-labelledby="video-course-heading"] #video-course-heading,
+section[aria-labelledby="video-course-heading"] .video-course-premium-heading,
+section[aria-labelledby="video-course-heading"] #video-course-heading .video-course-heading-line1,
+section[aria-labelledby="video-course-heading"] #video-course-heading .video-course-heading-line2 {
   font-size: clamp(2.5rem, 4.6vw, 5.25rem);
   font-weight: 300;
   line-height: 1.06;
@@ -4996,7 +5000,11 @@ section[aria-labelledby="camps-heading"] #camps-heading .camps-heading-line2 {
   section[aria-labelledby="camps-heading"] #camps-heading,
   section[aria-labelledby="camps-heading"] .camps-premium-heading,
   section[aria-labelledby="camps-heading"] #camps-heading .camps-heading-line1,
-  section[aria-labelledby="camps-heading"] #camps-heading .camps-heading-line2 {
+  section[aria-labelledby="camps-heading"] #camps-heading .camps-heading-line2,
+  section[aria-labelledby="video-course-heading"] #video-course-heading,
+  section[aria-labelledby="video-course-heading"] .video-course-premium-heading,
+  section[aria-labelledby="video-course-heading"] #video-course-heading .video-course-heading-line1,
+  section[aria-labelledby="video-course-heading"] #video-course-heading .video-course-heading-line2 {
     font-size: clamp(3.5rem, 4.6vw, 5.25rem);
   }
 }
@@ -5015,7 +5023,9 @@ section[aria-labelledby="camps-heading"] #camps-heading .camps-heading-line2 {
   section[aria-labelledby="about-olympic-heading"] #about-olympic-heading,
   section[aria-labelledby="about-olympic-heading"] .about-olympic-premium-heading,
   section[aria-labelledby="camps-heading"] #camps-heading,
-  section[aria-labelledby="camps-heading"] .camps-premium-heading {
+  section[aria-labelledby="camps-heading"] .camps-premium-heading,
+  section[aria-labelledby="video-course-heading"] #video-course-heading,
+  section[aria-labelledby="video-course-heading"] .video-course-premium-heading {
     font-size: clamp(2rem, 9vw, 2.5rem);
   }
 }
@@ -5761,7 +5771,7 @@ section[aria-labelledby="camps-heading"] .camps-feature-text {
     transform: scale(1);
   }
   to {
-    transform: scale(1.06);
+    transform: scale(1.12);
   }
 }
 
@@ -5781,7 +5791,7 @@ section[aria-labelledby="about-olympic-heading"] .about-olympic-photo {
   filter: brightness(1.06) saturate(1.08) contrast(1.02);
   transform-origin: 74% 58%;
   will-change: transform;
-  animation: premium-kenburns 22s ease-in-out infinite alternate;
+  animation: premium-kenburns 16s ease-in-out infinite alternate;
 }
 
 section[aria-labelledby="camps-heading"] .camps-photo {
@@ -5790,7 +5800,7 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   filter: saturate(0.96) contrast(1.04) brightness(0.97);
   transform-origin: 68% 40%;
   will-change: transform;
-  animation: premium-kenburns 22s ease-in-out infinite alternate;
+  animation: premium-kenburns 16s ease-in-out infinite alternate;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -6749,4 +6759,192 @@ body::after {
   z-index: 999;
 }
 /* FILM_GRAIN_END */
+
+/* ===== Video Course section -- mockup editorial (UNLAYERED END) ===== */
+/* cache-bust-video-course-place-shimmer-20260723e */
+
+section[aria-labelledby="video-course-heading"] {
+  --premium-cream: #f7f1e6;
+  --premium-soft-cream: rgba(247, 241, 230, 0.82);
+  --premium-champagne: #d8b96a;
+  --premium-line-gold: rgba(216, 185, 106, 0.55);
+}
+
+section[aria-labelledby="video-course-heading"] .video-course-text-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+
+section[aria-labelledby="video-course-heading"] .video-course-eyebrow {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--premium-champagne);
+  line-height: 1.2;
+}
+
+section[aria-labelledby="video-course-heading"] .video-course-eyebrow::after {
+  content: "";
+  display: block;
+  width: clamp(4.375rem, 6vw, 6.875rem);
+  height: 2px;
+  margin-top: 0.625rem;
+  background: var(--premium-line-gold);
+}
+
+section[aria-labelledby="video-course-heading"] #video-course-heading,
+section[aria-labelledby="video-course-heading"] .video-course-premium-heading {
+  display: block;
+  margin: clamp(0.75rem, 2vh, 1.35rem) 0 0;
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  font-style: normal;
+  font-weight: 300;
+  color: var(--premium-cream);
+  -webkit-text-fill-color: var(--premium-cream);
+  filter: none;
+  animation: none;
+  text-shadow: none;
+  background: none;
+  background-image: none;
+}
+
+section[aria-labelledby="video-course-heading"] #video-course-heading .video-course-heading-line1,
+section[aria-labelledby="video-course-heading"] #video-course-heading .video-course-heading-line2 {
+  display: block;
+  white-space: nowrap;
+  color: var(--premium-cream);
+  -webkit-text-fill-color: var(--premium-cream);
+}
+
+section[aria-labelledby="video-course-heading"] .video-course-body {
+  margin: clamp(0.85rem, 2vh, 1.35rem) 0 0;
+  max-width: 34rem;
+  font-size: clamp(1rem, 1.05vw, 1.18rem);
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--premium-soft-cream);
+}
+
+section[aria-labelledby="video-course-heading"] .video-course-secondary {
+  margin: clamp(0.85rem, 1.8vh, 1.25rem) 0 0;
+  max-width: 34rem;
+  font-size: clamp(1rem, 1.05vw, 1.18rem);
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--premium-soft-cream);
+}
+
+/* Reused coming-soon chip — same rhythm slot as the former pill */
+section[aria-labelledby="video-course-heading"] .video-course-coming-soon {
+  margin: clamp(1.15rem, 2.4vh, 1.65rem) 0 0;
+}
+
+section[aria-labelledby="camps-heading"] .camps-home-cta {
+  margin-top: clamp(1.25rem, 3vh, 2rem);
+}
+
+@media (max-width: 1023px) {
+  section[aria-labelledby="video-course-heading"] .video-course-text-wrap {
+    align-items: flex-start;
+    text-align: left;
+    padding-top: clamp(3rem, 10vh, 5rem);
+  }
+
+  section[aria-labelledby="video-course-heading"] .video-course-body,
+  section[aria-labelledby="video-course-heading"] .video-course-secondary {
+    text-align: left;
+  }
+}
+
+/*
+ * Video Course frame shimmer ONLY — scoped extra class so /speaking
+ * `.speaking-portrait-frame` stays static.
+ */
+.video-course-portrait-card.speaking-portrait-frame.video-course-frame-shimmer {
+  background-image: linear-gradient(
+    115deg,
+    color-mix(in srgb, var(--brand-gold) 28%, transparent) 0%,
+    color-mix(in srgb, var(--brand-gold) 55%, transparent) 18%,
+    color-mix(in srgb, #e8d9a8 70%, transparent) 32%,
+    color-mix(in srgb, var(--brand-gold) 45%, transparent) 48%,
+    transparent 58%,
+    transparent 68%,
+    color-mix(in srgb, var(--accent-coral) 35%, transparent) 82%,
+    color-mix(in srgb, var(--brand-gold) 40%, transparent) 100%
+  );
+  background-size: 260% 260%;
+  background-position: 0% 50%;
+  animation: video-course-frame-shimmer 8s ease-in-out infinite;
+}
+
+@keyframes video-course-frame-shimmer {
+  0%,
+  100% {
+    background-position: 0% 40%;
+  }
+  50% {
+    background-position: 100% 60%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .video-course-portrait-card.speaking-portrait-frame.video-course-frame-shimmer {
+    animation: none;
+    background-position: 35% 50%;
+  }
+}
+
+/*
+ * ===== About + Camps Ken-Burns — re-asserted at file END (UNLAYERED) =====
+ * Cause addressed: unscoped `.camps-photo { height:auto; object-fit:contain }`
+ * from the /camps page frame could fight home split fill images. Page styles
+ * are now scoped under `.camps-photo-frame`. Mask/wash stay on the container;
+ * zoom stays on the IMG only.
+ */
+@keyframes premium-kenburns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.12);
+  }
+}
+
+section[aria-labelledby="about-olympic-heading"] .about-olympic-photo,
+section[aria-labelledby="camps-heading"] .camps-photo {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  border-radius: 0 !important;
+  will-change: transform;
+  animation: premium-kenburns 16s ease-in-out infinite alternate;
+}
+
+section[aria-labelledby="about-olympic-heading"] .about-olympic-photo {
+  filter: brightness(1.06) saturate(1.08) contrast(1.02);
+  transform-origin: 74% 58%;
+}
+
+section[aria-labelledby="camps-heading"] .camps-photo {
+  filter: saturate(0.96) contrast(1.04) brightness(0.97);
+  transform-origin: 68% 40%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  section[aria-labelledby="about-olympic-heading"] .about-olympic-photo,
+  section[aria-labelledby="camps-heading"] .camps-photo {
+    animation: none;
+    will-change: auto;
+    transform: none;
+  }
+}
+
+
 

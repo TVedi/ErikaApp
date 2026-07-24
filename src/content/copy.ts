@@ -158,6 +158,15 @@ export const launch = {
     title: "Athlete stories",
   },
   videoCourseLoading: "Video Course loading ...",
+  videoCourse: {
+    eyebrow: "VIDEO COURSE",
+    headingLine1: "Video Course",
+    headingLine2: "Coming Soon",
+    body:
+      "A focused video library is being prepared for athletes who want Erika's technical fundamentals, training perspective, and race-proven coaching insight in a structured format.",
+    secondary: "Details will be announced later.",
+    pill: "COMING SOON",
+  },
   finalCta: {
     title: "Ready to improve your paddling with world-class eyes on your technique?",
   },

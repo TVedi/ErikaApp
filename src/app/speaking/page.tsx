@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { PublicLayout } from "@/components/layout/public-layout";
+import { ComingSoonButton } from "@/components/marketing/coming-soon-button";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import { speaking } from "@/content/copy";
 import type { Metadata } from "next";
@@ -29,9 +30,7 @@ export default function SpeakingPage() {
             <p className="speaking-subheadline mt-5 sm:mt-6">{speaking.subheadline}</p>
             <p className="speaking-supporting mt-4">{speaking.supportingCopy}</p>
             <p className="speaking-coming-soon mt-6">{speaking.comingSoon}</p>
-            <p className="speaking-cta-soft mt-6" role="status">
-              {speaking.ctaLabel}
-            </p>
+            <ComingSoonButton label={speaking.ctaLabel} className="mt-6" />
           </ScrollReveal>
 
           <ScrollReveal className="speaking-hero-photo" delayMs={120}>

@@ -1,28 +1,49 @@
 import Image from "next/image";
+import { ComingSoonButton } from "@/components/marketing/coming-soon-button";
 import { PremiumSectionDivider } from "@/components/marketing/premium-section-divider";
-import { launch } from "@/content/copy";
+import { camps, launch } from "@/content/copy";
 import { sitePhotos } from "@/lib/marketing/site-photos";
 
 const photo = sitePhotos.aboutPortrait;
 
 /**
- * Video course teaser — pulsing accent text (hero “experience” kin) + portrait card.
+ * Video Course teaser — editorial copy + gold-framed portrait (speaking frame).
  */
 export function VideoCourseLoadingSection() {
+  const copy = launch.videoCourse;
+
   return (
     <section
       className="section-navy-soft section-screen section-screen-center relative w-full"
-      aria-label={launch.videoCourseLoading}
+      aria-labelledby="video-course-heading"
     >
       <div className="video-course-layout">
         <div className="video-course-text-wrap">
-          <p className="video-course-loading-pulse text-center font-display text-2xl font-medium italic text-accent-coral sm:text-3xl lg:text-left lg:text-4xl">
-            {launch.videoCourseLoading}
-          </p>
+          <p className="video-course-eyebrow">{copy.eyebrow}</p>
+
+          <h2
+            id="video-course-heading"
+            className="video-course-premium-heading font-display"
+          >
+            <span className="video-course-heading-line1">
+              {copy.headingLine1}
+            </span>
+            <span className="video-course-heading-line2">
+              {copy.headingLine2}
+            </span>
+          </h2>
+
+          <p className="video-course-body">{copy.body}</p>
+          <p className="video-course-secondary">{copy.secondary}</p>
+
+          <ComingSoonButton
+            label={camps.ctaLabel}
+            className="video-course-coming-soon"
+          />
         </div>
 
         <div className="video-course-image-wrap">
-          <div className="video-course-portrait-card speaking-portrait-frame relative overflow-hidden">
+          <div className="video-course-portrait-card speaking-portrait-frame video-course-frame-shimmer relative overflow-hidden">
             <Image
               src={photo.src}
               alt={photo.alt}

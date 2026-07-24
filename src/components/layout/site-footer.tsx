@@ -8,8 +8,8 @@ const SOCIAL_ICON_SIZE = 22;
 const footerSocialLinks = [
   {
     id: "facebook",
-    href: "#",
-    label: "Erika Medveczky on Facebook",
+    href: "https://www.facebook.com/medveczkyerika",
+    label: "Facebook",
     type: "svg" as const,
     icon: (
       <svg
@@ -28,8 +28,8 @@ const footerSocialLinks = [
   },
   {
     id: "instagram",
-    href: "#",
-    label: "Erika Medveczky on Instagram",
+    href: "https://www.instagram.com/erika_medveczky/",
+    label: "Instagram",
     type: "svg" as const,
     icon: (
       <svg
@@ -64,8 +64,8 @@ const footerSocialLinks = [
   },
   {
     id: "linkedin",
-    href: "#",
-    label: "Erika Medveczky on LinkedIn",
+    href: "https://www.linkedin.com/in/erika-medveczky-oly-23b389225/",
+    label: "LinkedIn",
     type: "svg" as const,
     icon: (
       <svg
@@ -84,8 +84,8 @@ const footerSocialLinks = [
   },
   {
     id: "youtube",
-    href: "#",
-    label: "Erika Medveczky on YouTube",
+    href: "https://www.youtube.com/watch?v=toKN7hp1QGw",
+    label: "YouTube",
     type: "svg" as const,
     icon: (
       <svg
@@ -105,8 +105,8 @@ const footerSocialLinks = [
   },
   {
     id: "athlete-site",
-    href: "#",
-    label: "Official athlete website",
+    href: "https://www.medveczkyerika.hu",
+    label: "Website",
     type: "image" as const,
     icon: (
       <Image
