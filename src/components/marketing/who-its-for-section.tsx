@@ -13,6 +13,7 @@ import {
   PremiumTrophy,
 } from "@/components/marketing/premium-icons";
 import { StartCoachingButton } from "@/components/marketing/start-coaching-button";
+import { OlympicDiplomaBadge } from "@/components/marketing/diploma-lightbox";
 import { launch } from "@/content/copy";
 import { sitePhotos } from "@/lib/marketing/site-photos";
 
@@ -104,6 +105,7 @@ export function WhoItsForSection() {
           <ScrollReveal className="proof-olympic-statement">
             <p className="proof-statement-text">
               {launch.whoItsFor.featuredAchievement}
+              <OlympicDiplomaBadge />
             </p>
           </ScrollReveal>
 

@@ -6946,5 +6946,338 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* ===== Olympic diploma badge + lightbox (Where Experience) ===== */
 
+.oly-diploma-badge-btn {
+  display: inline-flex;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
+  margin-inline-start: 0.4em;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  height: 1.5em;
+  width: auto;
+  line-height: 0;
+  border-radius: 0.25em;
+  animation: oly-badge-pulse 2.5s ease-in-out infinite;
+}
+
+.oly-diploma-badge-img {
+  display: block;
+  height: 1.5em;
+  width: auto;
+  max-width: none;
+}
+
+.oly-diploma-badge-btn:focus-visible {
+  outline: 2px solid var(--brand-gold);
+  outline-offset: 3px;
+}
+
+@keyframes oly-badge-pulse {
+  0%,
+  100% {
+    opacity: 0.75;
+    filter: drop-shadow(0 0 0 transparent);
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(
+      0 0 0.35em color-mix(in srgb, var(--brand-gold) 55%, transparent)
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .oly-diploma-badge-btn {
+    animation: none;
+    opacity: 1;
+    filter: none;
+  }
+}
+
+.diploma-lightbox-root {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background: color-mix(in srgb, var(--site-base) 60%, transparent);
+  -webkit-backdrop-filter: blur(9px);
+  backdrop-filter: blur(9px);
+  animation: diploma-lightbox-fade 200ms ease-out;
+}
+
+@keyframes diploma-lightbox-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .diploma-lightbox-root {
+    animation: none;
+  }
+}
+
+.diploma-lightbox-dialog {
+  position: relative;
+  max-width: min(90vw, 1536px);
+  max-height: 85vh;
+  margin: 0;
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--brand-gold) 70%, transparent);
+  border-radius: 8px;
+  box-shadow:
+    0 18px 48px rgba(0, 0, 0, 0.45),
+    0 0 0 1px color-mix(in srgb, var(--brand-gold) 18%, transparent);
+  background: color-mix(in srgb, var(--site-base) 35%, transparent);
+  outline: none;
+}
+
+.diploma-lightbox-image {
+  display: block;
+  max-width: min(90vw, 1536px);
+  max-height: 85vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.diploma-lightbox-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0 8px 0 8px;
+  background: color-mix(in srgb, var(--site-base) 55%, transparent);
+  color: var(--brand-gold);
+  font-size: 1.75rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.diploma-lightbox-close:hover {
+  background: color-mix(in srgb, var(--site-base) 75%, transparent);
+}
+
+.diploma-lightbox-close:focus-visible {
+  outline: 2px solid var(--brand-gold);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ===== Mobile homepage opening splash (egyeni portrait) =====
+   All splash rules are scoped to max-width: 1023px so desktop layout
+   cannot inherit photo/overlay/motto/arrow/mark styles. */
+@media (max-width: 1023px) {
+  .mobile-home-splash {
+    --premium-champagne: #d8b96a;
+    --premium-cream: #f7f1e6;
+    position: relative;
+    width: 100%;
+    min-height: 100svh;
+    height: 100svh;
+    min-height: 100dvh;
+    height: 100dvh;
+    overflow: hidden;
+    background: var(--site-base);
+  }
+
+  .mobile-home-splash-photo {
+    object-fit: cover;
+    /* Centre subject; face in upper third with headroom under cover crop */
+    object-position: 58% 20%;
+  }
+
+  /*
+   * Emerald melt veil — dense vertical dissolve from transparent → solid site-base.
+   * No grey/white/black stops; no blend modes. Adjacent α Δ ≤ 0.04 mid, ≤ 0.08 dark.
+   * Ramp kept in the lower field so cream clothing isn't washed mid-frame.
+   */
+  .mobile-home-splash-veil {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    mix-blend-mode: normal;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      transparent 52%,
+      color-mix(in srgb, var(--site-base) 2%, transparent) 56%,
+      color-mix(in srgb, var(--site-base) 5%, transparent) 60%,
+      color-mix(in srgb, var(--site-base) 9%, transparent) 63%,
+      color-mix(in srgb, var(--site-base) 13%, transparent) 66%,
+      color-mix(in srgb, var(--site-base) 17%, transparent) 69%,
+      color-mix(in srgb, var(--site-base) 22%, transparent) 72%,
+      color-mix(in srgb, var(--site-base) 28%, transparent) 75%,
+      color-mix(in srgb, var(--site-base) 36%, transparent) 78%,
+      color-mix(in srgb, var(--site-base) 44%, transparent) 81%,
+      color-mix(in srgb, var(--site-base) 52%, transparent) 84%,
+      color-mix(in srgb, var(--site-base) 62%, transparent) 87%,
+      color-mix(in srgb, var(--site-base) 72%, transparent) 90%,
+      color-mix(in srgb, var(--site-base) 82%, transparent) 94%,
+      color-mix(in srgb, var(--site-base) 92%, transparent) 97%,
+      var(--site-base) 100%
+    );
+  }
+
+  .mobile-home-splash-logo {
+    position: absolute;
+    top: max(1rem, env(safe-area-inset-top));
+    left: 1rem;
+    z-index: 3;
+    display: flex;
+    color: var(--premium-champagne);
+  }
+
+  .mobile-home-splash-mark {
+    width: 3.25rem;
+    height: auto;
+    display: block;
+    color: var(--premium-champagne);
+  }
+
+  .mobile-home-splash-mark path {
+    fill: currentColor;
+  }
+
+  .mobile-home-splash-bottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: max(1.75rem, env(safe-area-inset-bottom));
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0 1.5rem 0.25rem;
+    text-align: center;
+  }
+
+  .mobile-home-splash-rule {
+    display: block;
+    width: 48px;
+    height: 1px;
+    margin-bottom: 0.15rem;
+    background: color-mix(in srgb, var(--premium-champagne) 45%, transparent);
+  }
+
+  .mobile-home-splash-slogan {
+    margin: 0;
+    font-family: var(--font-display), ui-serif, Georgia, serif;
+    font-size: clamp(1.05rem, 4.6vw, 1.35rem);
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0.01em;
+    line-height: 1.4;
+    color: var(--premium-cream);
+    -webkit-text-fill-color: var(--premium-cream);
+  }
+
+  .mobile-home-splash-scroll {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 48px;
+    min-height: 48px;
+    margin-top: 0.15rem;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--accent-coral);
+    text-decoration: none;
+    opacity: 0;
+    animation:
+      mobile-splash-scroll-in 0.45s ease-out 1.25s forwards,
+      mobile-splash-scroll-bob 2.2s ease-in-out 1.7s infinite;
+  }
+
+  .mobile-home-splash-chevron {
+    display: block;
+    width: 3.4rem;
+    height: auto;
+  }
+
+  .mobile-home-splash-scroll:focus-visible {
+    outline: 2px solid var(--accent-coral);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @keyframes mobile-splash-scroll-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes mobile-splash-scroll-bob {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(6px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-home-splash-scroll {
+      opacity: 1;
+      animation: none;
+      transform: none;
+    }
+  }
+
+  /* Hide chrome + site film-grain soft-light over the mobile opening screen
+     (soft-light + noise reads as a pale olive band on cream clothing). */
+  body:has([data-mobile-home-splash]) .site-header-premium {
+    display: none;
+  }
+
+  body:has([data-mobile-home-splash]) .sticky-mobile-cta {
+    display: none;
+  }
+
+  body:has([data-mobile-home-splash]) .main-scroll-surface {
+    padding-bottom: 0;
+  }
+
+  body:has([data-mobile-home-splash])::after {
+    opacity: 0;
+  }
+}
 

@@ -23,7 +23,24 @@ export const hero = {
   subtitle:
     "Elite Paddle Coaching helps motivated kayakers improve technique, training structure, and race preparation through Erika Medveczky’s world-class paddling experience.",
   locationLabel: "Gainesville, Georgia",
+  /** Mobile opening screen slogan. */
+  mobileOpeningSlogan: "Your choice, your chance.",
+  mobileOpeningImageAlt: "Erika Medveczky",
+  mobileOpeningScrollLabel: "Scroll to explore",
 };
+
+/**
+ * Olympic diploma lightbox assets — swap `imageSrc` when the real diploma arrives.
+ * badgeSrc: transparent OLY medallion (derived from public/OLY ikon.png).
+ */
+export const olympicDiploma = {
+  badgeSrc: "/OLY-badge.png",
+  /** Temporary placeholder; replace with the official diploma path later. */
+  imageSrc: "/Medveczky100.webp",
+  imageAlt: "Olympic diploma",
+  openLabel: "View Olympic diploma",
+  closeLabel: "Close diploma",
+} as const;
 
 export const launch = {
   whoItsFor: {
