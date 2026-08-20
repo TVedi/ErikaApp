@@ -7099,56 +7099,216 @@ section[aria-labelledby="camps-heading"] .camps-photo {
    All splash rules are scoped to max-width: 1023px so desktop layout
    cannot inherit photo/overlay/motto/arrow/mark styles. */
 @media (max-width: 1023px) {
+  /*
+   * Clip 270vw photo — ancestors must not grow document scrollWidth.
+   * Chain: html → body → main-scroll-surface → splash → photo-slot.
+   */
+  html:has([data-mobile-home-splash]),
+  body:has([data-mobile-home-splash]) {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
   .mobile-home-splash {
     --premium-champagne: #d8b96a;
     --premium-cream: #f7f1e6;
+    --mobile-splash-lift: 76px;
     position: relative;
+    z-index: 5;
     width: 100%;
+    max-width: 100%;
     min-height: 100svh;
     height: 100svh;
     min-height: 100dvh;
     height: 100dvh;
     overflow: hidden;
     background: var(--site-base);
+    /* Tuck real next section (divider + WhoItsFor) under splash for reveal */
+    margin-bottom: calc(-1 * var(--mobile-splash-lift));
+    transform: translateY(0);
+    animation: mobile-splash-lift 600ms cubic-bezier(0.22, 1, 0.36, 1) 1s
+      forwards;
   }
 
-  .mobile-home-splash-photo {
-    object-fit: cover;
-    /* Centre subject; face in upper third with headroom under cover crop */
-    object-position: 58% 20%;
+  @keyframes mobile-splash-lift {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(calc(-1 * var(--mobile-splash-lift)));
+    }
   }
 
   /*
-   * Emerald melt veil — dense vertical dissolve from transparent → solid site-base.
-   * No grey/white/black stops; no blend modes. Adjacent α Δ ≤ 0.04 mid, ≤ 0.08 dark.
-   * Ramp kept in the lower field so cream clothing isn't washed mid-frame.
+   * Photo slot: landscape source (1466×978) on tall phones.
+   * Width-fit zooms OUT vs height-based cover. overflow:hidden clips 270vw.
+   */
+  .mobile-home-splash-photo-slot {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    max-width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 1.5%;
+  }
+
+  .mobile-home-splash-photo {
+    position: relative !important;
+    /*
+     * Landscape 1466×978. 270vw left a ~136px site-base shelf under the
+     * photo at 390×844 (height only ~702). 340vw ≈ aspect×100dvh so the
+     * image reaches the splash floor; slot overflow:hidden clips sides.
+     */
+    width: 340vw !important;
+    min-width: 340vw !important;
+    max-width: none !important;
+    height: auto !important;
+    object-fit: cover;
+    object-position: 48% 28%;
+    transform: none;
+    flex-shrink: 0;
+  }
+
+  /*
+   * Emerald melt — veil is TALLER than the splash (145%) so the same 0→100 α
+   * change is spread over more pixels inside the viewport (shallower slope).
+   * No blur. Dither kept. Motto sits near ~69% α over already-dark photo base.
    */
   .mobile-home-splash-veil {
     position: absolute;
-    inset: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 145%;
     z-index: 1;
     pointer-events: none;
     mix-blend-mode: normal;
+    filter: none;
     background: linear-gradient(
       180deg,
       transparent 0%,
-      transparent 52%,
-      color-mix(in srgb, var(--site-base) 2%, transparent) 56%,
-      color-mix(in srgb, var(--site-base) 5%, transparent) 60%,
-      color-mix(in srgb, var(--site-base) 9%, transparent) 63%,
-      color-mix(in srgb, var(--site-base) 13%, transparent) 66%,
-      color-mix(in srgb, var(--site-base) 17%, transparent) 69%,
-      color-mix(in srgb, var(--site-base) 22%, transparent) 72%,
-      color-mix(in srgb, var(--site-base) 28%, transparent) 75%,
-      color-mix(in srgb, var(--site-base) 36%, transparent) 78%,
-      color-mix(in srgb, var(--site-base) 44%, transparent) 81%,
-      color-mix(in srgb, var(--site-base) 52%, transparent) 84%,
-      color-mix(in srgb, var(--site-base) 62%, transparent) 87%,
-      color-mix(in srgb, var(--site-base) 72%, transparent) 90%,
-      color-mix(in srgb, var(--site-base) 82%, transparent) 94%,
-      color-mix(in srgb, var(--site-base) 92%, transparent) 97%,
+      color-mix(in srgb, var(--site-base) 1%, transparent) 1%,
+      color-mix(in srgb, var(--site-base) 2%, transparent) 2%,
+      color-mix(in srgb, var(--site-base) 3%, transparent) 3%,
+      color-mix(in srgb, var(--site-base) 4%, transparent) 4%,
+      color-mix(in srgb, var(--site-base) 5%, transparent) 5%,
+      color-mix(in srgb, var(--site-base) 6%, transparent) 6%,
+      color-mix(in srgb, var(--site-base) 7%, transparent) 7%,
+      color-mix(in srgb, var(--site-base) 8%, transparent) 8%,
+      color-mix(in srgb, var(--site-base) 9%, transparent) 9%,
+      color-mix(in srgb, var(--site-base) 10%, transparent) 10%,
+      color-mix(in srgb, var(--site-base) 11%, transparent) 11%,
+      color-mix(in srgb, var(--site-base) 12%, transparent) 12%,
+      color-mix(in srgb, var(--site-base) 13%, transparent) 13%,
+      color-mix(in srgb, var(--site-base) 14%, transparent) 14%,
+      color-mix(in srgb, var(--site-base) 15%, transparent) 15%,
+      color-mix(in srgb, var(--site-base) 16%, transparent) 16%,
+      color-mix(in srgb, var(--site-base) 17%, transparent) 17%,
+      color-mix(in srgb, var(--site-base) 18%, transparent) 18%,
+      color-mix(in srgb, var(--site-base) 19%, transparent) 19%,
+      color-mix(in srgb, var(--site-base) 20%, transparent) 20%,
+      color-mix(in srgb, var(--site-base) 21%, transparent) 21%,
+      color-mix(in srgb, var(--site-base) 22%, transparent) 22%,
+      color-mix(in srgb, var(--site-base) 23%, transparent) 23%,
+      color-mix(in srgb, var(--site-base) 24%, transparent) 24%,
+      color-mix(in srgb, var(--site-base) 25%, transparent) 25%,
+      color-mix(in srgb, var(--site-base) 26%, transparent) 26%,
+      color-mix(in srgb, var(--site-base) 27%, transparent) 27%,
+      color-mix(in srgb, var(--site-base) 28%, transparent) 28%,
+      color-mix(in srgb, var(--site-base) 29%, transparent) 29%,
+      color-mix(in srgb, var(--site-base) 30%, transparent) 30%,
+      color-mix(in srgb, var(--site-base) 31%, transparent) 31%,
+      color-mix(in srgb, var(--site-base) 32%, transparent) 32%,
+      color-mix(in srgb, var(--site-base) 33%, transparent) 33%,
+      color-mix(in srgb, var(--site-base) 34%, transparent) 34%,
+      color-mix(in srgb, var(--site-base) 35%, transparent) 35%,
+      color-mix(in srgb, var(--site-base) 36%, transparent) 36%,
+      color-mix(in srgb, var(--site-base) 37%, transparent) 37%,
+      color-mix(in srgb, var(--site-base) 38%, transparent) 38%,
+      color-mix(in srgb, var(--site-base) 39%, transparent) 39%,
+      color-mix(in srgb, var(--site-base) 40%, transparent) 40%,
+      color-mix(in srgb, var(--site-base) 41%, transparent) 41%,
+      color-mix(in srgb, var(--site-base) 42%, transparent) 42%,
+      color-mix(in srgb, var(--site-base) 43%, transparent) 43%,
+      color-mix(in srgb, var(--site-base) 44%, transparent) 44%,
+      color-mix(in srgb, var(--site-base) 45%, transparent) 45%,
+      color-mix(in srgb, var(--site-base) 46%, transparent) 46%,
+      color-mix(in srgb, var(--site-base) 47%, transparent) 47%,
+      color-mix(in srgb, var(--site-base) 48%, transparent) 48%,
+      color-mix(in srgb, var(--site-base) 49%, transparent) 49%,
+      color-mix(in srgb, var(--site-base) 50%, transparent) 50%,
+      color-mix(in srgb, var(--site-base) 51%, transparent) 51%,
+      color-mix(in srgb, var(--site-base) 52%, transparent) 52%,
+      color-mix(in srgb, var(--site-base) 53%, transparent) 53%,
+      color-mix(in srgb, var(--site-base) 54%, transparent) 54%,
+      color-mix(in srgb, var(--site-base) 55%, transparent) 55%,
+      color-mix(in srgb, var(--site-base) 56%, transparent) 56%,
+      color-mix(in srgb, var(--site-base) 57%, transparent) 57%,
+      color-mix(in srgb, var(--site-base) 58%, transparent) 58%,
+      color-mix(in srgb, var(--site-base) 59%, transparent) 59%,
+      color-mix(in srgb, var(--site-base) 60%, transparent) 60%,
+      color-mix(in srgb, var(--site-base) 61%, transparent) 61%,
+      color-mix(in srgb, var(--site-base) 62%, transparent) 62%,
+      color-mix(in srgb, var(--site-base) 63%, transparent) 63%,
+      color-mix(in srgb, var(--site-base) 64%, transparent) 64%,
+      color-mix(in srgb, var(--site-base) 65%, transparent) 65%,
+      color-mix(in srgb, var(--site-base) 66%, transparent) 66%,
+      color-mix(in srgb, var(--site-base) 67%, transparent) 67%,
+      color-mix(in srgb, var(--site-base) 68%, transparent) 68%,
+      color-mix(in srgb, var(--site-base) 69%, transparent) 69%,
+      color-mix(in srgb, var(--site-base) 70%, transparent) 70%,
+      color-mix(in srgb, var(--site-base) 71%, transparent) 71%,
+      color-mix(in srgb, var(--site-base) 72%, transparent) 72%,
+      color-mix(in srgb, var(--site-base) 73%, transparent) 73%,
+      color-mix(in srgb, var(--site-base) 74%, transparent) 74%,
+      color-mix(in srgb, var(--site-base) 75%, transparent) 75%,
+      color-mix(in srgb, var(--site-base) 76%, transparent) 76%,
+      color-mix(in srgb, var(--site-base) 77%, transparent) 77%,
+      color-mix(in srgb, var(--site-base) 78%, transparent) 78%,
+      color-mix(in srgb, var(--site-base) 79%, transparent) 79%,
+      color-mix(in srgb, var(--site-base) 80%, transparent) 80%,
+      color-mix(in srgb, var(--site-base) 81%, transparent) 81%,
+      color-mix(in srgb, var(--site-base) 82%, transparent) 82%,
+      color-mix(in srgb, var(--site-base) 83%, transparent) 83%,
+      color-mix(in srgb, var(--site-base) 84%, transparent) 84%,
+      color-mix(in srgb, var(--site-base) 85%, transparent) 85%,
+      color-mix(in srgb, var(--site-base) 86%, transparent) 86%,
+      color-mix(in srgb, var(--site-base) 87%, transparent) 87%,
+      color-mix(in srgb, var(--site-base) 88%, transparent) 88%,
+      color-mix(in srgb, var(--site-base) 89%, transparent) 89%,
+      color-mix(in srgb, var(--site-base) 90%, transparent) 90%,
+      color-mix(in srgb, var(--site-base) 91%, transparent) 91%,
+      color-mix(in srgb, var(--site-base) 92%, transparent) 92%,
+      color-mix(in srgb, var(--site-base) 93%, transparent) 93%,
+      color-mix(in srgb, var(--site-base) 94%, transparent) 94%,
+      color-mix(in srgb, var(--site-base) 95%, transparent) 95%,
+      color-mix(in srgb, var(--site-base) 96%, transparent) 96%,
+      color-mix(in srgb, var(--site-base) 97%, transparent) 97%,
+      color-mix(in srgb, var(--site-base) 98%, transparent) 98%,
+      color-mix(in srgb, var(--site-base) 99%, transparent) 99%,
       var(--site-base) 100%
     );
+  }
+
+  /*
+   * Plain fractal-noise dither over the melt zone.
+   * mix-blend-mode: normal — NOT the site soft-light film grain.
+   */
+  .mobile-home-splash-dither {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 78%;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.035;
+    mix-blend-mode: normal;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 140px 140px;
   }
 
   .mobile-home-splash-logo {
@@ -7183,6 +7343,7 @@ section[aria-labelledby="camps-heading"] .camps-photo {
     gap: 0.75rem;
     padding: 0 1.5rem 0.25rem;
     text-align: center;
+    opacity: 1;
   }
 
   .mobile-home-splash-rule {
@@ -7190,7 +7351,9 @@ section[aria-labelledby="camps-heading"] .camps-photo {
     width: 48px;
     height: 1px;
     margin-bottom: 0.15rem;
-    background: color-mix(in srgb, var(--premium-champagne) 45%, transparent);
+    /* Champagne — clearly visible on dark emerald melt */
+    background: var(--premium-champagne);
+    opacity: 0.85;
   }
 
   .mobile-home-splash-slogan {
@@ -7201,8 +7364,9 @@ section[aria-labelledby="camps-heading"] .camps-photo {
     font-style: normal;
     letter-spacing: 0.01em;
     line-height: 1.4;
-    color: var(--premium-cream);
-    -webkit-text-fill-color: var(--premium-cream);
+    color: #f7f1e6; /* --premium-cream, explicit */
+    -webkit-text-fill-color: #f7f1e6;
+    opacity: 1;
   }
 
   .mobile-home-splash-scroll {
@@ -7218,15 +7382,16 @@ section[aria-labelledby="camps-heading"] .camps-photo {
     color: var(--accent-coral);
     text-decoration: none;
     opacity: 0;
+    /* Fade in with splash lift (same 1s delay) */
     animation:
-      mobile-splash-scroll-in 0.45s ease-out 1.25s forwards,
-      mobile-splash-scroll-bob 2.2s ease-in-out 1.7s infinite;
+      mobile-splash-scroll-in 600ms ease-out 1s forwards,
+      mobile-splash-scroll-bob 2.2s ease-in-out 1.6s infinite;
   }
 
   .mobile-home-splash-chevron {
     display: block;
-    width: 3.4rem;
-    height: auto;
+    width: 48px;
+    height: 12px;
   }
 
   .mobile-home-splash-scroll:focus-visible {
@@ -7254,7 +7419,56 @@ section[aria-labelledby="camps-heading"] .camps-photo {
     }
   }
 
+  /*
+   * Real next-section peek host — PremiumSectionDivider is position:absolute
+   * (bottom of relative parent). Give the host height so the gold rule/glow
+   * occupies the top of the reveal strip. Not a content duplicate.
+   */
+  .mobile-splash-reveal-divider {
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    max-width: 100%;
+    height: 1.375rem;
+    overflow: visible;
+    background: transparent;
+  }
+
+  .mobile-splash-reveal-divider .premium-section-divider {
+    bottom: 50%;
+  }
+
+  /*
+   * WhoItsFor is section-screen-center + content-col justify-center + 4rem pad.
+   * Without top-align, the 76px peek is empty cream. Align content to the top
+   * so the strip shows divider → PROVEN EXCELLENCE → gold rule → heading cut-off.
+   */
+  section[aria-labelledby="who-its-for-heading"].section-screen-center
+    > .split-screen-grid {
+    min-height: 0;
+    justify-content: flex-start;
+  }
+
+  section[aria-labelledby="who-its-for-heading"] .split-screen-content-col {
+    justify-content: flex-start;
+    padding-top: 0.35rem;
+    padding-bottom: 2.5rem;
+  }
+
+  section[aria-labelledby="who-its-for-heading"] .proof-eyebrow::after {
+    margin-top: 0.45rem;
+  }
+
+  section[aria-labelledby="who-its-for-heading"] .proof-editorial-heading {
+    margin-top: 0.45rem;
+  }
+
   @media (prefers-reduced-motion: reduce) {
+    .mobile-home-splash {
+      animation: none;
+      transform: translateY(calc(-1 * var(--mobile-splash-lift)));
+    }
+
     .mobile-home-splash-scroll {
       opacity: 1;
       animation: none;
@@ -7273,6 +7487,8 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 
   body:has([data-mobile-home-splash]) .main-scroll-surface {
+    overflow-x: clip;
+    max-width: 100%;
     padding-bottom: 0;
   }
 

@@ -13,6 +13,15 @@ export function HomeHero() {
     <>
       <MobileHomeSplash />
 
+      {/*
+        Mobile only: real PremiumSectionDivider sits in normal flow under the
+        splash (tucked via splash margin-bottom). Splash lift reveals this —
+        not a duplicated preview strip. Desktop hero keeps its own divider.
+      */}
+      <div className="mobile-splash-reveal-divider lg:hidden" aria-hidden="true">
+        <PremiumSectionDivider />
+      </div>
+
       <section
         className="home-hero section-screen relative hidden w-full lg:block"
         aria-label="Hero"

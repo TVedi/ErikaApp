@@ -70,7 +70,11 @@ export function WhoItsForSection() {
       aria-labelledby="who-its-for-heading"
     >
       <div className="split-screen-grid">
-        <div className="split-screen-photo-col order-1 lg:order-2">
+        {/*
+          Mobile: content first so splash lift reveals PROVEN EXCELLENCE +
+          heading (not the photo). Desktop grid order unchanged (content left).
+        */}
+        <div className="split-screen-photo-col order-2 lg:order-2">
           <div className="split-photo-mask absolute inset-0">
             <Image
               src={photo.src}
@@ -87,7 +91,7 @@ export function WhoItsForSection() {
           </div>
         </div>
 
-        <div className="split-screen-content-col relative order-2 lg:order-1">
+        <div className="split-screen-content-col relative order-1 lg:order-1">
           <ScrollReveal>
             <p className="proof-eyebrow">PROVEN EXCELLENCE</p>
           </ScrollReveal>

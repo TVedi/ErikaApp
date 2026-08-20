@@ -10,15 +10,24 @@ import { hero } from "@/content/copy";
 export function MobileHomeSplash() {
   return (
     <div className="mobile-home-splash lg:hidden" data-mobile-home-splash="">
-      <Image
-        src="/egyeni.jpg"
-        alt={hero.mobileOpeningImageAlt}
-        fill
-        priority
-        sizes="100vw"
-        className="mobile-home-splash-photo"
-      />
+      {/*
+        Source is landscape (1466×978). Height-based object-fit:cover over-zooms
+        the face on tall phones — size by width instead (see CSS).
+      */}
+      <div className="mobile-home-splash-photo-slot" aria-hidden="false">
+        <Image
+          src="/egyeni.jpg"
+          alt={hero.mobileOpeningImageAlt}
+          width={1466}
+          height={978}
+          priority
+          sizes="200vw"
+          className="mobile-home-splash-photo"
+        />
+      </div>
       <div className="mobile-home-splash-veil" aria-hidden="true" />
+      {/* Low-opacity noise over melt only — breaks 8-bit banding (normal blend). */}
+      <div className="mobile-home-splash-dither" aria-hidden="true" />
 
       <Link
         href="/"
@@ -36,19 +45,20 @@ export function MobileHomeSplash() {
           className="mobile-home-splash-scroll"
           aria-label={hero.mobileOpeningScrollLabel}
         >
+          {/* Wide shallow open chevron (~150°), 48×12, stroke 2, coral */}
           <svg
             className="mobile-home-splash-chevron"
-            viewBox="0 0 56 16"
+            viewBox="0 0 48 12"
             width="48"
-            height="14"
+            height="12"
             aria-hidden="true"
             focusable="false"
           >
             <path
-              d="M2 5 L28 11 L54 5"
+              d="M2 3 L24 9 L46 3"
               fill="none"
               stroke="currentColor"
-              strokeWidth="1.85"
+              strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
