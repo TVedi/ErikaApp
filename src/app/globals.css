@@ -7112,7 +7112,8 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   .mobile-home-splash {
     --premium-champagne: #d8b96a;
     --premium-cream: #f7f1e6;
-    --mobile-splash-lift: 76px;
+    /* 206.5px measured block (divider→olympic rule) at 390×844 + ~23px air */
+    --mobile-splash-lift: 230px;
     position: relative;
     z-index: 5;
     width: 100%;
@@ -7140,8 +7141,10 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 
   /*
-   * Photo slot: landscape source (1466×978) on tall phones.
-   * Width-fit zooms OUT vs height-based cover. overflow:hidden clips 270vw.
+   * Photo slot: landscape source on tall phones.
+   * Width-fit (340vw) fills splash height without a base shelf.
+   * Horizontal shift centres Erika (subject sits right of the source).
+   * Vertical shift keeps her head in the post-lift visible band.
    */
   .mobile-home-splash-photo-slot {
     position: absolute;
@@ -7150,25 +7153,23 @@ section[aria-labelledby="camps-heading"] .camps-photo {
     overflow: hidden;
     max-width: 100%;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    padding-top: 1.5%;
   }
 
   .mobile-home-splash-photo {
     position: relative !important;
-    /*
-     * Landscape 1466×978. 270vw left a ~136px site-base shelf under the
-     * photo at 390×844 (height only ~702). 340vw ≈ aspect×100dvh so the
-     * image reaches the splash floor; slot overflow:hidden clips sides.
-     */
     width: 340vw !important;
     min-width: 340vw !important;
     max-width: none !important;
     height: auto !important;
     object-fit: cover;
-    object-position: 48% 28%;
-    transform: none;
+    object-position: 50% 20%;
+    /*
+     * -56vw: pan to Erika. translateY(lift): keep full head in the remaining
+     * (100dvh − lift) frame after the slide-up.
+     */
+    transform: translateX(-56vw) translateY(var(--mobile-splash-lift));
     flex-shrink: 0;
   }
 
@@ -7440,7 +7441,7 @@ section[aria-labelledby="camps-heading"] .camps-photo {
 
   /*
    * WhoItsFor is section-screen-center + content-col justify-center + 4rem pad.
-   * Without top-align, the 76px peek is empty cream. Align content to the top
+   * Without top-align, the peek is empty cream. Align content to the top
    * so the strip shows divider → PROVEN EXCELLENCE → gold rule → heading cut-off.
    */
   section[aria-labelledby="who-its-for-heading"].section-screen-center
