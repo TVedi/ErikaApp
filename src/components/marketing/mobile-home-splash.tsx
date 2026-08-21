@@ -10,18 +10,13 @@ import { hero } from "@/content/copy";
 export function MobileHomeSplash() {
   return (
     <div className="mobile-home-splash lg:hidden" data-mobile-home-splash="">
-      {/*
-        Source is landscape (1466×978). Height-based object-fit:cover over-zooms
-        the face on tall phones — size by width instead (see CSS).
-      */}
       <div className="mobile-home-splash-photo-slot" aria-hidden="false">
         <Image
           src="/egyeni.jpg"
           alt={hero.mobileOpeningImageAlt}
-          width={1466}
-          height={978}
+          fill
           priority
-          sizes="200vw"
+          sizes="100vw"
           className="mobile-home-splash-photo"
         />
       </div>

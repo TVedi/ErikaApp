@@ -7099,10 +7099,6 @@ section[aria-labelledby="camps-heading"] .camps-photo {
    All splash rules are scoped to max-width: 1023px so desktop layout
    cannot inherit photo/overlay/motto/arrow/mark styles. */
 @media (max-width: 1023px) {
-  /*
-   * Clip 270vw photo — ancestors must not grow document scrollWidth.
-   * Chain: html → body → main-scroll-surface → splash → photo-slot.
-   */
   html:has([data-mobile-home-splash]),
   body:has([data-mobile-home-splash]) {
     overflow-x: hidden;
@@ -7112,19 +7108,19 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   .mobile-home-splash {
     --premium-champagne: #d8b96a;
     --premium-cream: #f7f1e6;
-    /* 206.5px measured block (divider→olympic rule) at 390×844 + ~23px air */
-    --mobile-splash-lift: 230px;
+    /* 390px heading block (CSS): divider 22 + col pad 5.6 + eyebrow 13.8 +
+       gold rule 9.2 + heading gap 7.2 + 2-line heading 84.8 + olympic gap 21.1
+       + olympic line 28 + pad 14 + thin rule 1 ≈ 207px. Prior live 206.5px. */
+    --mobile-splash-lift: 207px;
     position: relative;
     z-index: 5;
     width: 100%;
     max-width: 100%;
-    min-height: 100svh;
-    height: 100svh;
-    min-height: 100dvh;
     height: 100dvh;
+    min-height: 100dvh;
     overflow: hidden;
     background: var(--site-base);
-    /* Tuck real next section (divider + WhoItsFor) under splash for reveal */
+    /* Tuck real next section under splash; splash still paints 100dvh at load */
     margin-bottom: calc(-1 * var(--mobile-splash-lift));
     transform: translateY(0);
     animation: mobile-splash-lift 600ms cubic-bezier(0.22, 1, 0.36, 1) 1s
@@ -7140,37 +7136,27 @@ section[aria-labelledby="camps-heading"] .camps-photo {
     }
   }
 
-  /*
-   * Photo slot: landscape source on tall phones.
-   * Width-fit (340vw) fills splash height without a base shelf.
-   * Horizontal shift centres Erika (subject sits right of the source).
-   * Vertical shift keeps her head in the post-lift visible band.
-   */
   .mobile-home-splash-photo-slot {
     position: absolute;
     inset: 0;
     z-index: 0;
     overflow: hidden;
-    max-width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 
+  /*
+   * Smallest cover that fills 100dvh. Next/Image fill supplies inset 0;
+   * we only set fit/position. No vw width, no extra scale.
+   * object-position 79% 20%: face sits ~70% across the 1466×978 source.
+   * 79% (>50%) shifts the crop toward the RIGHT of the source, which
+   * pulls her LEFT into the centre of a 390px portrait viewport.
+   * 20% prefers the top (head + air) when height is not the limiting axis.
+   */
   .mobile-home-splash-photo {
-    position: relative !important;
-    width: 340vw !important;
-    min-width: 340vw !important;
-    max-width: none !important;
-    height: auto !important;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    object-position: 50% 20%;
-    /*
-     * -56vw: pan to Erika. translateY(lift): keep full head in the remaining
-     * (100dvh − lift) frame after the slide-up.
-     */
-    transform: translateX(-56vw) translateY(var(--mobile-splash-lift));
-    flex-shrink: 0;
+    object-position: 79% 20%;
+    transform: none;
   }
 
   /*
