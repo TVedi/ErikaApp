@@ -14,9 +14,10 @@ export function HomeHero() {
       <MobileHomeSplash />
 
       {/*
-        Mobile only: real PremiumSectionDivider sits in normal flow under the
-        splash (tucked via splash margin-bottom). Splash lift reveals this —
-        not a duplicated preview strip. Desktop hero keeps its own divider.
+        Mobile only: real PremiumSectionDivider in normal flow after the splash.
+        Splash margin-bottom animates to tuck this up over the photo (drawer) —
+        photo does not move; this is not a duplicated preview. Desktop hero
+        keeps its own divider.
       */}
       <div className="mobile-splash-reveal-divider lg:hidden" aria-hidden="true">
         <PremiumSectionDivider />
