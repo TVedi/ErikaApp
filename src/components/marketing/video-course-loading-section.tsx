@@ -2,9 +2,13 @@ import Image from "next/image";
 import { ComingSoonButton } from "@/components/marketing/coming-soon-button";
 import { PremiumSectionDivider } from "@/components/marketing/premium-section-divider";
 import { camps, launch } from "@/content/copy";
-import { sitePhotos } from "@/lib/marketing/site-photos";
 
-const photo = sitePhotos.aboutPortrait;
+const photo = {
+  src: "/DSC09930-videocourse.webp",
+  alt: "Erika Medveczky with kayak paddle",
+  width: 933,
+  height: 1400,
+};
 
 /**
  * Video Course teaser — editorial copy + gold-framed portrait (speaking frame).
@@ -51,7 +55,6 @@ export function VideoCourseLoadingSection() {
               height={photo.height}
               sizes="(max-width: 1023px) min(88vw, 420px), min(620px, 75vh)"
               className="speaking-portrait h-full w-full object-cover"
-              style={{ objectPosition: "center 15%" }}
             />
           </div>
         </div>

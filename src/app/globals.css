@@ -1636,7 +1636,15 @@ body {
 .video-course-portrait-card img {
   filter: saturate(1.28) contrast(1.12) brightness(1.04);
   object-fit: cover;
-  object-position: center 15%;
+  /* Square gold frame: she is centred; paddle sits left — 54% pulls her into centre.
+     22% Y keeps full head with less empty studio ceiling than 15–18%. */
+  object-position: 54% 22%;
+}
+
+@media (max-width: 1023px) {
+  .video-course-portrait-card img {
+    object-position: 54% 20%;
+  }
 }
 
 @media (min-width: 640px) {
