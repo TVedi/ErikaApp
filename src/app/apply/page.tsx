@@ -1,7 +1,11 @@
+import Image from "next/image";
 import { PublicLayout } from "@/components/layout/public-layout";
 import { ApplyForm } from "@/components/apply/apply-form";
-import { apply } from "@/content/copy";
+import { apply, nav } from "@/content/copy";
+import { sitePhotos } from "@/lib/marketing/site-photos";
 import type { Metadata } from "next";
+
+const photo = sitePhotos.aboutPortrait;
 
 export const metadata: Metadata = {
   title: "Apply",
@@ -13,13 +17,33 @@ export default function ApplyPage() {
 
   return (
     <PublicLayout>
-      <div className="mx-auto max-w-2xl px-4 py-12 sm:px-6 sm:py-16">
-        <h1 className="text-3xl font-bold text-foreground sm:text-4xl">{apply.title}</h1>
-        <p className="mt-3 text-muted-foreground">{apply.subtitle}</p>
-        <div className="mt-10 rounded-2xl border border-border/60 bg-card p-6 shadow-sm sm:p-8">
-          <ApplyForm turnstileSiteKey={turnstileSiteKey || undefined} />
+      <section className="apply-page" aria-labelledby="apply-heading">
+        <div className="apply-split">
+          <div className="apply-content">
+            <p className="apply-eyebrow">{nav.apply}</p>
+            <h1 id="apply-heading" className="apply-heading">
+              {apply.title}
+            </h1>
+            <p className="apply-intro">{apply.subtitle}</p>
+            <div className="premium-card apply-form-card">
+              <ApplyForm turnstileSiteKey={turnstileSiteKey || undefined} />
+            </div>
+          </div>
+
+          <div className="apply-photo-col">
+            <div className="split-photo-mask apply-photo-mask">
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                fill
+                sizes="50vw"
+                className="object-cover apply-photo"
+                style={{ objectPosition: photo.objectPosition }}
+              />
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
     </PublicLayout>
   );
 }
