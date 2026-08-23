@@ -5135,11 +5135,216 @@ section[aria-labelledby="coaching-options-heading"].section-coaching-fixed-bg::a
 }
 
 @media (max-width: 1023px) {
-  section[aria-labelledby="coaching-options-heading"].section-coaching-fixed-bg::before {
+  /* Desktop side-photo stays; mobile uses the top band instead. */
+  section[aria-labelledby="coaching-options-heading"].section-coaching-fixed-bg::before,
+  section[aria-labelledby="coaching-options-heading"].section-coaching-fixed-bg::after {
+    content: none;
+  }
+
+  section[aria-labelledby="coaching-options-heading"].section-screen,
+  section[aria-labelledby="coaching-options-heading"].section-screen-center
+    > .section-screen-inner {
+    min-height: 0;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] {
+    min-height: 100dvh;
+    overflow-x: hidden;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-mobile-photo {
+    display: block;
+    position: relative;
     width: 100%;
-    background-size: 100% 100%, cover;
-    background-position: center, 40% 12%;
-    background-attachment: scroll, scroll;
+    height: 30vh;
+    overflow: hidden;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-mobile-photo-mask {
+    position: absolute;
+    inset: 0;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 38%,
+      rgba(0, 0, 0, 0.96) 48%,
+      rgba(0, 0, 0, 0.86) 58%,
+      rgba(0, 0, 0, 0.68) 68%,
+      rgba(0, 0, 0, 0.42) 78%,
+      rgba(0, 0, 0, 0.18) 88%,
+      rgba(0, 0, 0, 0.06) 94%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 38%,
+      rgba(0, 0, 0, 0.96) 48%,
+      rgba(0, 0, 0, 0.86) 58%,
+      rgba(0, 0, 0, 0.68) 68%,
+      rgba(0, 0, 0, 0.42) 78%,
+      rgba(0, 0, 0, 0.18) 88%,
+      rgba(0, 0, 0, 0.06) 94%,
+      transparent 100%
+    );
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-mobile-photo-mask::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: rgba(3, 23, 20, 0.18);
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-mobile-photo-img {
+    object-position: 40% 18%;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-inner {
+    padding-top: 0.35rem;
+    padding-bottom: 0.85rem;
+    margin-top: -1.75rem;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-eyebrow {
+    font-size: 0.625rem;
+    letter-spacing: 0.32em;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-eyebrow::after {
+    margin-top: 0.4rem;
+    width: 2.25rem;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] #coaching-options-heading,
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-heading {
+    margin-top: 0.4rem;
+    font-size: clamp(1.75rem, 7vw, 2.15rem);
+    line-height: 1.08;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-intro {
+    margin-top: 0.35rem;
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-grid {
+    margin-top: 0.7rem;
+    gap: 0.5rem;
+    grid-template-columns: 1fr;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card {
+    position: relative;
+    height: auto;
+    padding: 0.65rem 0.8rem 0.7rem;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-badge {
+    display: inline-block;
+    position: absolute;
+    top: 0.45rem;
+    right: 0.7rem;
+    margin: 0;
+    padding: 0.18rem 0.4rem;
+    border: 1px solid rgba(216, 185, 106, 0.38);
+    border-radius: 999px;
+    background: rgba(216, 185, 106, 0.1);
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.5625rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--premium-champagne);
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-top {
+    gap: 0.4rem;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-number {
+    font-size: 1.15rem;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-glyph {
+    width: 1.85rem;
+    height: 1.85rem;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-glyph svg {
+    width: 0.85rem;
+    height: 0.85rem;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-title-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.65rem;
+    margin-top: 0.35rem;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-title {
+    margin-top: 0;
+    font-size: 1.05rem;
+    line-height: 1.15;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-price-slot {
+    display: block;
+    flex: 0 1 42%;
+    margin: 0;
+    text-align: right;
+    font-size: 0.625rem;
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--premium-muted-cream, rgba(247, 241, 230, 0.66));
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-desc {
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    line-height: 1.3;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-rule {
+    margin: 0.35rem 0;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-check-row {
+    padding: 0.12rem 0;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-check-row:nth-child(n + 4) {
+    display: none;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-check-text {
+    font-size: 0.75rem;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-cta {
+    margin-top: 0.4rem;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-cta .btn-cta-primary,
+  section[aria-labelledby="coaching-options-heading"] .premium-card-cta .btn-cta-gold-outline {
+    min-height: 2.5rem;
+    font-size: 0.65rem;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-proof {
+    display: none;
   }
 }
 
@@ -7498,9 +7703,64 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 
   body:has([data-mobile-home-splash]) .main-scroll-surface {
+    display: flex;
+    flex-direction: column;
     overflow-x: clip;
     max-width: 100%;
     padding-bottom: 0;
+  }
+
+  /* Visual section order — desktop (no order) stays DOM order. */
+  .mobile-home-splash {
+    order: 1;
+  }
+
+  .mobile-splash-reveal-divider {
+    order: 2;
+  }
+
+  .home-hero {
+    order: 3;
+  }
+
+  section[aria-labelledby="who-its-for-heading"] {
+    order: 4;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] {
+    order: 5;
+  }
+
+  section[aria-labelledby="video-analysis-heading"] {
+    order: 6;
+  }
+
+  section[aria-labelledby="how-it-works-heading"] {
+    order: 7;
+  }
+
+  section[aria-labelledby="about-olympic-heading"] {
+    order: 8;
+  }
+
+  section[aria-labelledby="camps-heading"] {
+    order: 9;
+  }
+
+  section[aria-labelledby="video-course-heading"] {
+    order: 10;
+  }
+
+  [data-home-section="stories"] {
+    order: 11;
+  }
+
+  [data-home-section="faq"] {
+    order: 12;
+  }
+
+  #waitlist {
+    order: 13;
   }
 
   body:has([data-mobile-home-splash])::after {

@@ -57,7 +57,10 @@ export default function HomePage() {
       <VideoCourseLoadingSection />
 
       {/* Athlete stories — swapped from above final CTA slot */}
-      <section className="section-emerald-surface section-screen section-screen-center section-pad relative w-full">
+      <section
+        data-home-section="stories"
+        className="section-emerald-surface section-screen section-screen-center section-pad relative w-full"
+      >
         <div className="section-screen-inner mx-auto flex max-w-6xl flex-col items-center justify-center px-4 text-center sm:px-6">
           <ScrollReveal>
             <h2 className="font-display text-2xl font-medium italic text-accent-coral sm:text-3xl lg:text-4xl">
@@ -69,7 +72,10 @@ export default function HomePage() {
       </section>
 
       {/* FAQ */}
-      <section className="section-cream section-atmo-glow-none section-screen section-screen-center section-pad w-full">
+      <section
+        data-home-section="faq"
+        className="section-cream section-atmo-glow-none section-screen section-screen-center section-pad w-full"
+      >
         <div className="section-screen-inner mx-auto max-w-6xl px-4 sm:px-6">
           <ScrollReveal>
             <h2 className="text-2xl font-bold text-foreground sm:text-3xl">{faq.title}</h2>

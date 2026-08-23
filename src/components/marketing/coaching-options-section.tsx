@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   BarChart3,
   Check,
@@ -75,9 +76,14 @@ function PremiumProgramCard({
   const Icon = CARD_ICONS[index];
   const accentFeature =
     "accentFeature" in program ? program.accentFeature : undefined;
+  const priceNote = "priceNote" in program ? program.priceNote : undefined;
+  const badge = "badge" in program ? program.badge : undefined;
 
   return (
     <article className="premium-card">
+      {badge ? (
+        <span className="premium-card-badge hidden">{badge}</span>
+      ) : null}
       <div className="premium-card-top">
         <span className="premium-card-number">{program.number}</span>
         <span className="premium-card-glyph" aria-hidden="true">
@@ -85,7 +91,12 @@ function PremiumProgramCard({
         </span>
       </div>
 
-      <h3 className="premium-card-title">{program.name}</h3>
+      <div className="premium-card-title-row contents">
+        <h3 className="premium-card-title">{program.name}</h3>
+        {priceNote ? (
+          <p className="premium-card-price-slot hidden">{priceNote}</p>
+        ) : null}
+      </div>
       <p className="premium-card-desc">{program.description}</p>
 
       <div className="premium-card-rule" aria-hidden="true" />
@@ -133,6 +144,17 @@ export function CoachingOptionsSection() {
       className="section-coaching-options section-coaching-fixed-bg section-screen section-screen-center w-full"
       aria-labelledby="coaching-options-heading"
     >
+      <div className="coaching-options-mobile-photo hidden" aria-hidden="true">
+        <div className="coaching-options-mobile-photo-mask">
+          <Image
+            src="/steg-coaching.webp"
+            alt=""
+            fill
+            sizes="100vw"
+            className="coaching-options-mobile-photo-img object-cover"
+          />
+        </div>
+      </div>
       <div className="section-screen-inner coaching-options-inner mx-auto max-w-6xl px-4 sm:px-6">
         <div className="my-auto w-full">
           <ScrollReveal>

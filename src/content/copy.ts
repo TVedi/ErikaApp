@@ -97,6 +97,7 @@ export const launch = {
       ],
       accentFeature: "Secure checkout link coming soon",
       cta: "start" as const,
+      priceNote: "Pricing and availability confirmed after application review.",
     },
     technique: {
       number: "02",
@@ -111,6 +112,7 @@ export const launch = {
       ],
       cta: "apply" as const,
       priceNote: "Pricing and availability confirmed after application review.",
+      badge: "MOST POPULAR",
     },
     elite: {
       number: "03",
