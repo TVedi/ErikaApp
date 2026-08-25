@@ -8105,4 +8105,21 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* Mobile full-height sections: static lvh (no URL-bar relayout) and no header
+   subtraction (mobile header does not occupy layout space). Fixes mid-scroll
+   jank + the ~64px next-section bleed at the bottom edge. */
+@media (max-width: 1023px) {
+  .section-screen {
+    min-height: 100vh;
+    min-height: 100lvh;
+  }
+
+  .section-screen-center > .section-screen-inner,
+  .section-screen-center > .split-screen-grid,
+  .section-screen > .split-screen-grid {
+    min-height: 100vh;
+    min-height: 100lvh;
+  }
+}
+
 
