@@ -8122,4 +8122,56 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* Coaching Options mobile: photo becomes a background layer; heading block rides
+   on top of it so the photo visually reaches the first card. Photo height and
+   object-position are unchanged, so the rendered image scale is identical and
+   the paddle stays in frame. */
+@media (max-width: 1023px) {
+  section[aria-labelledby="coaching-options-heading"] {
+    position: relative;
+  }
+
+  section[aria-labelledby="coaching-options-heading"]
+    .coaching-options-mobile-photo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-inner {
+    position: relative;
+    z-index: 1;
+    margin-top: 0;
+    padding-top: 17vh;
+  }
+
+  /* Readability veil under the type, over the photo. Monotonic ramp — no valley,
+     no hump, or it reads as a band. */
+  section[aria-labelledby="coaching-options-heading"]
+    .coaching-options-inner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 26vh;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      rgba(3, 23, 20, 0) 0%,
+      rgba(3, 23, 20, 0.10) 18%,
+      rgba(3, 23, 20, 0.26) 36%,
+      rgba(3, 23, 20, 0.44) 54%,
+      rgba(3, 23, 20, 0.60) 72%,
+      rgba(3, 23, 20, 0.72) 88%,
+      rgba(3, 23, 20, 0.78) 100%
+    );
+  }
+}
+
 
