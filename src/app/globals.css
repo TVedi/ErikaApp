@@ -8180,4 +8180,38 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* Where Experience (mobile): text-only. The photo column is hidden so the image
+   is never fetched on phones, and the vertical slack is absorbed evenly between
+   the achievement rows. The section top is deliberately untouched — the splash
+   reveal depends on the eyebrow and heading staying exactly where they are. */
+@media (max-width: 1023px) {
+  section[aria-labelledby="who-its-for-heading"] .split-screen-photo-col {
+    display: none;
+  }
+
+  section[aria-labelledby="who-its-for-heading"].section-screen-center
+    > .split-screen-grid {
+    min-height: 100vh;
+    min-height: 100lvh;
+    grid-template-rows: 1fr;
+  }
+
+  section[aria-labelledby="who-its-for-heading"] .split-screen-content-col {
+    min-height: 100vh;
+    min-height: 100lvh;
+    padding-bottom: 2rem;
+  }
+
+  section[aria-labelledby="who-its-for-heading"] .proof-achievement-grid {
+    flex: 1 1 auto;
+    align-content: stretch;
+  }
+
+  section[aria-labelledby="who-its-for-heading"] .proof-achievement-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+}
+
 
