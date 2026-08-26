@@ -8523,4 +8523,18 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* Apply page (mobile): the eyebrow was clipped by the top edge. Content drops by
+   1.75rem; the photo's top offset and height grow by the same amount so the photo
+   itself stays flush with the top of the screen. */
+@media (max-width: 1023px) {
+  .apply-split {
+    padding-top: 1.75rem;
+  }
+
+  .apply-content::after {
+    top: -5rem;
+    height: 33vh;
+  }
+}
+
 
