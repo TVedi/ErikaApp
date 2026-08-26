@@ -8226,4 +8226,30 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* Mobile anchor landing: no reserved header gap. There is no sticky header taking
+   layout space on mobile, so the 4rem reservation only exposed a sliver of the
+   previous section above the target. */
+@media (max-width: 1023px) {
+  html {
+    scroll-padding-top: 0;
+  }
+}
+
+/* Where Experience (mobile): flatten the two three-row containers into the grid so
+   all six achievement rows share the height equally. Previously each container
+   distributed its own three rows, which doubled the gap at the seam between them. */
+@media (max-width: 1023px) {
+  section[aria-labelledby="who-its-for-heading"] .proof-achievement-col {
+    display: contents;
+  }
+
+  section[aria-labelledby="who-its-for-heading"] .proof-achievement-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
+    align-content: stretch;
+    flex: 1 1 auto;
+  }
+}
+
 
