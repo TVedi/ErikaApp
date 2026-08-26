@@ -8214,4 +8214,16 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* Mobile splash: static lvh instead of dynamic dvh. dvh recalculates as Chrome's
+   URL bar moves, which rescales the cover photo and relayouts the page mid-scroll.
+   lvh is fixed, so the splash box never changes size and the photo never jumps. */
+@media (max-width: 1023px) {
+  .mobile-home-splash {
+    height: 100vh;
+    height: 100lvh;
+    min-height: 100vh;
+    min-height: 100lvh;
+  }
+}
+
 
