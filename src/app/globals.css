@@ -8313,4 +8313,72 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* Apply page (mobile): a soft photo vignette in the empty canvas to the right of
+   the heading. Radial mask falls off monotonically in every direction, so the
+   photo has no edge — it emerges from the canvas rather than sitting in a box. */
+@media (max-width: 1023px) {
+  .apply-content {
+    position: relative;
+  }
+
+  .apply-content > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .apply-content::after {
+    content: "";
+    position: absolute;
+    top: -1rem;
+    right: -1.25rem;
+    width: 66%;
+    height: 27vh;
+    z-index: 0;
+    pointer-events: none;
+    background-image: url("/hero.webp");
+    background-size: cover;
+    background-position: 58% 20%;
+    background-repeat: no-repeat;
+    -webkit-mask-image: radial-gradient(
+      115% 95% at 80% 24%,
+      black 0%,
+      black 28%,
+      rgba(0, 0, 0, 0.92) 40%,
+      rgba(0, 0, 0, 0.8) 50%,
+      rgba(0, 0, 0, 0.64) 59%,
+      rgba(0, 0, 0, 0.46) 68%,
+      rgba(0, 0, 0, 0.3) 77%,
+      rgba(0, 0, 0, 0.17) 85%,
+      rgba(0, 0, 0, 0.07) 93%,
+      transparent 100%
+    );
+    mask-image: radial-gradient(
+      115% 95% at 80% 24%,
+      black 0%,
+      black 28%,
+      rgba(0, 0, 0, 0.92) 40%,
+      rgba(0, 0, 0, 0.8) 50%,
+      rgba(0, 0, 0, 0.64) 59%,
+      rgba(0, 0, 0, 0.46) 68%,
+      rgba(0, 0, 0, 0.3) 77%,
+      rgba(0, 0, 0, 0.17) 85%,
+      rgba(0, 0, 0, 0.07) 93%,
+      transparent 100%
+    );
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+}
+
+/* Apply page (mobile): hide the whole sticky CTA bar. Both of its buttons link to
+   /apply, which is the page the user is already on. Scoped to this page only —
+   the bar stays on every other page. */
+@media (max-width: 1023px) {
+  body:has(.apply-page) .sticky-mobile-cta {
+    display: none;
+  }
+}
+
 
