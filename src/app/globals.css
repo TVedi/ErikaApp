@@ -8550,4 +8550,11 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* More headroom above the subject in the Who This Is For photo. */
+@media (max-width: 1023px) {
+  section[aria-labelledby="how-it-works-heading"] .split-photo-mask img {
+    object-position: 50% 24%;
+  }
+}
+
 
