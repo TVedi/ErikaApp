@@ -8505,4 +8505,22 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* Apply page (mobile): a focused form page — the sticky header is hidden here so
+   nothing overlaps the heading, and the photo runs to the top edge of the screen.
+   Scoped to this page only; the header is untouched everywhere else. */
+@media (max-width: 1023px) {
+  body:has(.apply-page) .site-header-premium {
+    display: none;
+  }
+
+  .apply-split {
+    padding-top: 0;
+  }
+
+  .apply-content::after {
+    top: -3.25rem;
+    height: 31vh;
+  }
+}
+
 
