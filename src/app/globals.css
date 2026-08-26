@@ -8446,4 +8446,63 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* Apply page (mobile): replace the failed radial mask with canvas-colour gradient
+   dissolves painted over the photo. Same technique as the Coaching Options veil,
+   which works reliably on device. */
+@media (max-width: 1023px) {
+  .apply-content::after {
+    -webkit-mask-image: none;
+    mask-image: none;
+    background-image:
+      linear-gradient(
+        to right,
+        rgb(3, 23, 20) 0%,
+        rgba(3, 23, 20, 0.94) 9%,
+        rgba(3, 23, 20, 0.82) 18%,
+        rgba(3, 23, 20, 0.66) 27%,
+        rgba(3, 23, 20, 0.48) 37%,
+        rgba(3, 23, 20, 0.32) 47%,
+        rgba(3, 23, 20, 0.18) 57%,
+        rgba(3, 23, 20, 0.08) 68%,
+        rgba(3, 23, 20, 0.02) 80%,
+        transparent 90%
+      ),
+      linear-gradient(
+        to bottom,
+        rgb(3, 23, 20) 0%,
+        rgba(3, 23, 20, 0.7) 6%,
+        rgba(3, 23, 20, 0.38) 12%,
+        rgba(3, 23, 20, 0.16) 19%,
+        rgba(3, 23, 20, 0.04) 26%,
+        transparent 34%,
+        transparent 52%,
+        rgba(3, 23, 20, 0.06) 60%,
+        rgba(3, 23, 20, 0.2) 69%,
+        rgba(3, 23, 20, 0.42) 78%,
+        rgba(3, 23, 20, 0.66) 87%,
+        rgba(3, 23, 20, 0.88) 95%,
+        rgb(3, 23, 20) 100%
+      ),
+      url("/hero.webp");
+    background-size: 100% 100%, 100% 100%, cover;
+    background-position: 0 0, 0 0, 58% 20%;
+    background-repeat: no-repeat, no-repeat, no-repeat;
+  }
+
+  /* Clearance so the eyebrow does not sit under the sticky header. */
+  .apply-split {
+    padding-top: 2.5rem;
+  }
+}
+
+/* Where Experience (mobile): distribute the content over the SMALL viewport height
+   so the final CTA is always above the fold, even while Chrome's URL bar is shown.
+   The section itself stays 100lvh so the next section cannot bleed in. */
+@media (max-width: 1023px) {
+  section[aria-labelledby="who-its-for-heading"] .split-screen-content-col {
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+}
+
 
