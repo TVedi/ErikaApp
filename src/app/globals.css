@@ -8724,4 +8724,57 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* About (mobile): the previous veil began at 50% opacity, and its top edge landed
+   mid-photo as a hard line. It now starts fully transparent and finishes at the
+   canvas colour, so it has no visible boundary at either end. The base photo mask
+   is restored and the misplaced ::after overlay is disabled. */
+@media (max-width: 1023px) {
+  section[aria-labelledby="about-olympic-heading"] .split-photo-mask {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 58%,
+      rgba(0, 0, 0, 0.82) 68%,
+      rgba(0, 0, 0, 0.52) 78%,
+      rgba(0, 0, 0, 0.22) 88%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 58%,
+      rgba(0, 0, 0, 0.82) 68%,
+      rgba(0, 0, 0, 0.52) 78%,
+      rgba(0, 0, 0, 0.22) 88%,
+      transparent 100%
+    );
+  }
+
+  section[aria-labelledby="about-olympic-heading"] .split-screen-photo-col::after {
+    display: none;
+  }
+
+  section[aria-labelledby="about-olympic-heading"]
+    .split-screen-content-col::before {
+    top: -16vh;
+    height: 34vh;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(3, 23, 20, 0.05) 9%,
+      rgba(3, 23, 20, 0.12) 18%,
+      rgba(3, 23, 20, 0.21) 27%,
+      rgba(3, 23, 20, 0.32) 36%,
+      rgba(3, 23, 20, 0.44) 45%,
+      rgba(3, 23, 20, 0.56) 54%,
+      rgba(3, 23, 20, 0.67) 63%,
+      rgba(3, 23, 20, 0.77) 72%,
+      rgba(3, 23, 20, 0.86) 81%,
+      rgba(3, 23, 20, 0.93) 89%,
+      rgba(3, 23, 20, 0.98) 96%,
+      rgb(3, 23, 20) 100%
+    );
+  }
+}
+
 
