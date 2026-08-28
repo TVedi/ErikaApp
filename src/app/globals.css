@@ -8557,4 +8557,13 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* Who This Is For (mobile): the subject's head touched the top edge. The component
+   sets object-position as an INLINE style, which outranks any normal stylesheet
+   rule — !important is required here to override it. */
+@media (max-width: 1023px) {
+  section[aria-labelledby="how-it-works-heading"] .split-photo-mask img {
+    object-position: 50% 24% !important;
+  }
+}
+
 
