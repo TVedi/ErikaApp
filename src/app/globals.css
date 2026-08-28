@@ -8566,4 +8566,14 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* Who This Is For (mobile): show the top of the source image so the studio
+   backdrop above the subject's head is visible. The component sets
+   object-position inline (default 25%), so !important is required to override it.
+   A smaller percentage reveals more of the image's top. */
+@media (max-width: 1023px) {
+  section[aria-labelledby="how-it-works-heading"] .split-photo-mask img {
+    object-position: 50% 4% !important;
+  }
+}
+
 
