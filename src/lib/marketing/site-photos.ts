@@ -63,12 +63,12 @@ export const sitePhotos = {
     height: 2667,
   },
   coachedByOlympicBackground: {
-    src: "/gyerek.webp",
-    alt: "Young athlete paddling a kayak on the water",
-    objectPosition: "68% 55%",
-    objectPositionMobile: "58% 52%",
-    width: 1536,
-    height: 1024,
+      src: "/Duisburg-stack.webp",
+      alt: "Erika Medveczky holding up her 2013 World Championship gold medal in Hungarian Canoe Team colours",
+      objectPosition: "50% 20%",
+      objectPositionMobile: "50% 15%",
+      width: 540,
+      height: 900,
   },
   whoItsFor: {
     src: "/DSC09954[1].jpg",
