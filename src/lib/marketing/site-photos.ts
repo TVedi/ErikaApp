@@ -83,8 +83,8 @@ export const sitePhotos = {
     alt: "Erika Medveczky guiding athletes on the water",
     objectPosition: "center 30%",
     objectPositionMobile: "center 25%",
-    width: 2000,
-    height: 1333,
+    width: 983,
+    height: 1455,
   },
 } as const satisfies Record<string, SitePhoto>;
 

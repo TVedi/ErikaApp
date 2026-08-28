@@ -8576,4 +8576,13 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* Who This Is For (mobile): trim the backdrop above the subject — 4% left too
+   much empty studio wall. The component sets object-position inline, so
+   !important is required to override it. */
+@media (max-width: 1023px) {
+  section[aria-labelledby="how-it-works-heading"] .split-photo-mask img {
+    object-position: 50% 18% !important;
+  }
+}
+
 
