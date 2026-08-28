@@ -8566,44 +8566,4 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
-/* Who This Is For (mobile): the photo band itself drops so there is canvas above
-   the subject's head. object-position could not do this — the image barely
-   overflows its box, so there was nothing to pan. The photo's new top edge is
-   dissolved into the canvas so it emerges rather than starting on a hard line. */
-@media (max-width: 1023px) {
-  section[aria-labelledby="how-it-works-heading"] .split-photo-mask {
-    top: 2.25rem;
-    -webkit-mask-image: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgba(0, 0, 0, 0.08) 4%,
-      rgba(0, 0, 0, 0.22) 8%,
-      rgba(0, 0, 0, 0.4) 12%,
-      rgba(0, 0, 0, 0.58) 16%,
-      rgba(0, 0, 0, 0.74) 20%,
-      rgba(0, 0, 0, 0.87) 25%,
-      rgba(0, 0, 0, 0.95) 30%,
-      black 36%,
-      black 100%
-    );
-    mask-image: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgba(0, 0, 0, 0.08) 4%,
-      rgba(0, 0, 0, 0.22) 8%,
-      rgba(0, 0, 0, 0.4) 12%,
-      rgba(0, 0, 0, 0.58) 16%,
-      rgba(0, 0, 0, 0.74) 20%,
-      rgba(0, 0, 0, 0.87) 25%,
-      rgba(0, 0, 0, 0.95) 30%,
-      black 36%,
-      black 100%
-    );
-    -webkit-mask-size: 100% 100%;
-    mask-size: 100% 100%;
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-  }
-}
-
 
