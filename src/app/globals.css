@@ -8686,4 +8686,42 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* About (mobile): the mask approach does not composite here, so the photo's lower
+   edge is dissolved by painting the canvas colour over it instead. Ends at exactly
+   rgb(3, 23, 20), which is the page background, so no edge remains. */
+@media (max-width: 1023px) {
+  section[aria-labelledby="about-olympic-heading"] .split-photo-mask {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  section[aria-labelledby="about-olympic-heading"] .split-screen-photo-col::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 62%;
+    z-index: 3;
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(3, 23, 20, 0.04) 8%,
+      rgba(3, 23, 20, 0.1) 16%,
+      rgba(3, 23, 20, 0.19) 24%,
+      rgba(3, 23, 20, 0.3) 32%,
+      rgba(3, 23, 20, 0.42) 40%,
+      rgba(3, 23, 20, 0.54) 48%,
+      rgba(3, 23, 20, 0.66) 56%,
+      rgba(3, 23, 20, 0.76) 64%,
+      rgba(3, 23, 20, 0.85) 72%,
+      rgba(3, 23, 20, 0.92) 80%,
+      rgba(3, 23, 20, 0.96) 88%,
+      rgba(3, 23, 20, 0.99) 94%,
+      rgb(3, 23, 20) 100%
+    );
+  }
+}
+
 
