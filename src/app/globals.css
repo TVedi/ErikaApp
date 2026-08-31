@@ -8825,4 +8825,70 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* About (mobile): longer, denser dissolve. The fade now spans the lower 40% of the
+   photo in small steps instead of ending in a short steep ramp. */
+@media (max-width: 1023px) {
+  section[aria-labelledby="about-olympic-heading"] .split-photo-mask {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 60%,
+      rgba(0, 0, 0, 0.96) 64%,
+      rgba(0, 0, 0, 0.91) 68%,
+      rgba(0, 0, 0, 0.86) 71%,
+      rgba(0, 0, 0, 0.8) 74%,
+      rgba(0, 0, 0, 0.73) 77%,
+      rgba(0, 0, 0, 0.65) 80%,
+      rgba(0, 0, 0, 0.56) 83%,
+      rgba(0, 0, 0, 0.46) 86%,
+      rgba(0, 0, 0, 0.36) 89%,
+      rgba(0, 0, 0, 0.26) 92%,
+      rgba(0, 0, 0, 0.17) 95%,
+      rgba(0, 0, 0, 0.08) 98%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 60%,
+      rgba(0, 0, 0, 0.96) 64%,
+      rgba(0, 0, 0, 0.91) 68%,
+      rgba(0, 0, 0, 0.86) 71%,
+      rgba(0, 0, 0, 0.8) 74%,
+      rgba(0, 0, 0, 0.73) 77%,
+      rgba(0, 0, 0, 0.65) 80%,
+      rgba(0, 0, 0, 0.56) 83%,
+      rgba(0, 0, 0, 0.46) 86%,
+      rgba(0, 0, 0, 0.36) 89%,
+      rgba(0, 0, 0, 0.26) 92%,
+      rgba(0, 0, 0, 0.17) 95%,
+      rgba(0, 0, 0, 0.08) 98%,
+      transparent 100%
+    );
+  }
+
+  section[aria-labelledby="about-olympic-heading"]
+    .split-screen-content-col::before {
+    top: -20vh;
+    height: 62vh;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(3, 23, 20, 0.02) 8%,
+      rgba(3, 23, 20, 0.05) 16%,
+      rgba(3, 23, 20, 0.1) 24%,
+      rgba(3, 23, 20, 0.16) 32%,
+      rgba(3, 23, 20, 0.24) 40%,
+      rgba(3, 23, 20, 0.33) 48%,
+      rgba(3, 23, 20, 0.43) 56%,
+      rgba(3, 23, 20, 0.54) 64%,
+      rgba(3, 23, 20, 0.65) 72%,
+      rgba(3, 23, 20, 0.76) 80%,
+      rgba(3, 23, 20, 0.86) 87%,
+      rgba(3, 23, 20, 0.94) 94%,
+      rgb(3, 23, 20) 100%
+    );
+  }
+}
+
 
