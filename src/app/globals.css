@@ -9027,4 +9027,20 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* About: the medal photograph is a MOBILE-ONLY treatment. site-photos.ts is not
+   breakpoint-aware, so desktop keeps /gyerek.webp from the <Image> and mobile
+   covers it with /Duisburg-stack.webp painted on the mask container. */
+@media (max-width: 1023px) {
+  section[aria-labelledby="about-olympic-heading"] .split-photo-mask {
+    background-image: url("/Duisburg-stack.webp");
+    background-size: cover;
+    background-position: 50% 5%;
+    background-repeat: no-repeat;
+  }
+
+  section[aria-labelledby="about-olympic-heading"] .split-photo-mask img {
+    opacity: 0;
+  }
+}
+
 
