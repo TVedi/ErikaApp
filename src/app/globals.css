@@ -9096,4 +9096,56 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* Mobile homepage: the header returns as a transparent carrier for the brand mark
+   (left) and the menu button (right). Its surface, wordmark and CTA stay hidden so
+   the splash artwork is unchanged. */
+@media (max-width: 1023px) {
+  body:has([data-mobile-home-splash]) .site-header-premium {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 70;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    pointer-events: none;
+  }
+
+  body:has([data-mobile-home-splash]) .site-header-premium::before,
+  body:has([data-mobile-home-splash]) .site-header-premium::after {
+    content: none;
+  }
+
+  /* Wordmark and CTA hidden; the monogram stays. */
+  body:has([data-mobile-home-splash]) .site-header-premium .site-brand-lockup span {
+    display: none;
+  }
+
+  body:has([data-mobile-home-splash]) .site-header-premium .btn-cta-primary {
+    display: none;
+  }
+
+  body:has([data-mobile-home-splash]) .site-header-premium .site-brand-lockup {
+    pointer-events: auto;
+  }
+
+  body:has([data-mobile-home-splash]) .site-header-premium .site-brand-mark {
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.55));
+  }
+
+  body:has([data-mobile-home-splash]) .mobile-menu-toggle {
+    pointer-events: auto;
+  }
+
+  body:has([data-mobile-home-splash]) .mobile-menu-panel {
+    pointer-events: auto;
+  }
+
+  body:has([data-mobile-home-splash]) .mobile-menu-bar {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+  }
+}
+
 
