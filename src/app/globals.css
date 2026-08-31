@@ -8777,4 +8777,52 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* About (mobile): lengthen the dissolve so the photo stays bright through the neck
+   and medal hand, and only becomes solid canvas at the stat icons. */
+@media (max-width: 1023px) {
+  section[aria-labelledby="about-olympic-heading"] .split-photo-mask {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 74%,
+      rgba(0, 0, 0, 0.88) 81%,
+      rgba(0, 0, 0, 0.68) 87%,
+      rgba(0, 0, 0, 0.44) 92%,
+      rgba(0, 0, 0, 0.2) 96%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 74%,
+      rgba(0, 0, 0, 0.88) 81%,
+      rgba(0, 0, 0, 0.68) 87%,
+      rgba(0, 0, 0, 0.44) 92%,
+      rgba(0, 0, 0, 0.2) 96%,
+      transparent 100%
+    );
+  }
+
+  section[aria-labelledby="about-olympic-heading"]
+    .split-screen-content-col::before {
+    top: -16vh;
+    height: 50vh;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(3, 23, 20, 0.03) 10%,
+      rgba(3, 23, 20, 0.08) 20%,
+      rgba(3, 23, 20, 0.15) 30%,
+      rgba(3, 23, 20, 0.24) 40%,
+      rgba(3, 23, 20, 0.35) 50%,
+      rgba(3, 23, 20, 0.47) 60%,
+      rgba(3, 23, 20, 0.6) 70%,
+      rgba(3, 23, 20, 0.73) 79%,
+      rgba(3, 23, 20, 0.85) 87%,
+      rgba(3, 23, 20, 0.94) 94%,
+      rgb(3, 23, 20) 100%
+    );
+  }
+}
+
 
