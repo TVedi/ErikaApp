@@ -8891,4 +8891,69 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* About (mobile): lighter veil so the photograph reads through behind the type,
+   and an earlier, flatter photo fade for a longer transition. */
+@media (max-width: 1023px) {
+  section[aria-labelledby="about-olympic-heading"] .split-photo-mask {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 44%,
+      rgba(0, 0, 0, 0.97) 49%,
+      rgba(0, 0, 0, 0.93) 54%,
+      rgba(0, 0, 0, 0.88) 59%,
+      rgba(0, 0, 0, 0.82) 64%,
+      rgba(0, 0, 0, 0.75) 68%,
+      rgba(0, 0, 0, 0.67) 72%,
+      rgba(0, 0, 0, 0.58) 76%,
+      rgba(0, 0, 0, 0.48) 80%,
+      rgba(0, 0, 0, 0.38) 84%,
+      rgba(0, 0, 0, 0.28) 88%,
+      rgba(0, 0, 0, 0.18) 92%,
+      rgba(0, 0, 0, 0.09) 96%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 44%,
+      rgba(0, 0, 0, 0.97) 49%,
+      rgba(0, 0, 0, 0.93) 54%,
+      rgba(0, 0, 0, 0.88) 59%,
+      rgba(0, 0, 0, 0.82) 64%,
+      rgba(0, 0, 0, 0.75) 68%,
+      rgba(0, 0, 0, 0.67) 72%,
+      rgba(0, 0, 0, 0.58) 76%,
+      rgba(0, 0, 0, 0.48) 80%,
+      rgba(0, 0, 0, 0.38) 84%,
+      rgba(0, 0, 0, 0.28) 88%,
+      rgba(0, 0, 0, 0.18) 92%,
+      rgba(0, 0, 0, 0.09) 96%,
+      transparent 100%
+    );
+  }
+
+  section[aria-labelledby="about-olympic-heading"]
+    .split-screen-content-col::before {
+    top: -20vh;
+    height: 62vh;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(3, 23, 20, 0.01) 10%,
+      rgba(3, 23, 20, 0.03) 20%,
+      rgba(3, 23, 20, 0.06) 30%,
+      rgba(3, 23, 20, 0.1) 40%,
+      rgba(3, 23, 20, 0.15) 50%,
+      rgba(3, 23, 20, 0.22) 58%,
+      rgba(3, 23, 20, 0.31) 66%,
+      rgba(3, 23, 20, 0.43) 74%,
+      rgba(3, 23, 20, 0.58) 82%,
+      rgba(3, 23, 20, 0.75) 89%,
+      rgba(3, 23, 20, 0.9) 95%,
+      rgb(3, 23, 20) 100%
+    );
+  }
+}
+
 
