@@ -2,6 +2,7 @@ import Link from "next/link";
 import { nav } from "@/content/copy";
 import { StartCoachingButton } from "@/components/marketing/start-coaching-button";
 import { BrandMark } from "@/components/layout/brand-mark";
+import { MobileMenu } from "@/components/layout/mobile-menu";
 
 export function SiteHeader() {
   return (
@@ -30,8 +31,9 @@ export function SiteHeader() {
             {nav.speaking}
           </Link>
         </nav>
-        <div className="flex shrink-0 items-center">
+        <div className="flex shrink-0 items-center gap-2">
           <StartCoachingButton size="sm" />
+          <MobileMenu />
         </div>
       </div>
     </header>

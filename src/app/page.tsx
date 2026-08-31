@@ -73,6 +73,7 @@ export default function HomePage() {
 
       {/* FAQ */}
       <section
+        id="faq"
         data-home-section="faq"
         className="section-cream section-atmo-glow-none section-screen section-screen-center section-pad w-full"
       >
