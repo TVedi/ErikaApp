@@ -8956,4 +8956,75 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* About (mobile): the photo column is extended so the photograph continues behind
+   the heading and body copy. It stays in normal flow — only min-height changes —
+   and the text is pulled up by the same amount so it does not move. */
+@media (max-width: 1023px) {
+  section[aria-labelledby="about-olympic-heading"] .split-screen-photo-col {
+    min-height: 64vh;
+  }
+
+  section[aria-labelledby="about-olympic-heading"] .split-screen-content-col {
+    margin-top: -34vh;
+  }
+
+  section[aria-labelledby="about-olympic-heading"] .split-photo-mask {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 30%,
+      rgba(0, 0, 0, 0.97) 36%,
+      rgba(0, 0, 0, 0.93) 42%,
+      rgba(0, 0, 0, 0.88) 48%,
+      rgba(0, 0, 0, 0.82) 54%,
+      rgba(0, 0, 0, 0.74) 60%,
+      rgba(0, 0, 0, 0.65) 66%,
+      rgba(0, 0, 0, 0.55) 72%,
+      rgba(0, 0, 0, 0.44) 78%,
+      rgba(0, 0, 0, 0.33) 84%,
+      rgba(0, 0, 0, 0.22) 90%,
+      rgba(0, 0, 0, 0.11) 96%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 30%,
+      rgba(0, 0, 0, 0.97) 36%,
+      rgba(0, 0, 0, 0.93) 42%,
+      rgba(0, 0, 0, 0.88) 48%,
+      rgba(0, 0, 0, 0.82) 54%,
+      rgba(0, 0, 0, 0.74) 60%,
+      rgba(0, 0, 0, 0.65) 66%,
+      rgba(0, 0, 0, 0.55) 72%,
+      rgba(0, 0, 0, 0.44) 78%,
+      rgba(0, 0, 0, 0.33) 84%,
+      rgba(0, 0, 0, 0.22) 90%,
+      rgba(0, 0, 0, 0.11) 96%,
+      transparent 100%
+    );
+  }
+
+  section[aria-labelledby="about-olympic-heading"]
+    .split-screen-content-col::before {
+    top: -8vh;
+    height: 56vh;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(3, 23, 20, 0.02) 12%,
+      rgba(3, 23, 20, 0.05) 24%,
+      rgba(3, 23, 20, 0.09) 36%,
+      rgba(3, 23, 20, 0.15) 48%,
+      rgba(3, 23, 20, 0.23) 58%,
+      rgba(3, 23, 20, 0.34) 68%,
+      rgba(3, 23, 20, 0.48) 77%,
+      rgba(3, 23, 20, 0.65) 85%,
+      rgba(3, 23, 20, 0.82) 92%,
+      rgba(3, 23, 20, 0.93) 97%,
+      rgb(3, 23, 20) 100%
+    );
+  }
+}
+
 
