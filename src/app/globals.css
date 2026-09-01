@@ -9236,4 +9236,21 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* Mobile splash: motto in coral, chevron in literal brand gold. The gold token
+   currently aliases coral project-wide, so the hex is used directly here rather
+   than changing a global variable. */
+@media (max-width: 1023px) {
+  .mobile-home-splash-slogan {
+    color: var(--brand-coral) !important;
+  }
+
+  .mobile-home-splash-chevron {
+    color: #d8b96a !important;
+  }
+
+  .mobile-home-splash-chevron path {
+    stroke: #d8b96a !important;
+  }
+}
+
 
