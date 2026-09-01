@@ -9236,4 +9236,21 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* About page (mobile): the medal collage fills the width. The real layout size is
+   raised rather than leaning on transform: scale, so the photographs stay sharp. */
+@media (max-width: 1023px) {
+  .about-story-page .about-medal-stack {
+    --stack-h: clamp(19rem, 62vw, 26rem);
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .about-story-page .about-medal-stack-wrap {
+    --medal-scale: 1.08;
+    --medal-overflow-pad: 1.5rem;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
 
