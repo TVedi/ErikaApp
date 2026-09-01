@@ -9204,4 +9204,36 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* Mobile splash: motto in coral, chevron in brand gold. */
+@media (max-width: 1023px) {
+  .mobile-home-splash-bottom p,
+  .mobile-home-splash-bottom .mobile-splash-motto {
+    color: var(--accent-coral);
+  }
+
+  .mobile-home-splash-chevron {
+    color: var(--accent-gold, #d8b96a);
+    fill: var(--accent-gold, #d8b96a);
+    stroke: var(--accent-gold, #d8b96a);
+  }
+}
+
+/* About page (mobile): the portrait returns to its natural size and the medal
+   collage becomes the dominant opening element. */
+@media (max-width: 1023px) {
+  .about-story-page .about-story-portrait {
+    width: auto;
+    max-width: 62vw;
+    margin-inline: auto;
+  }
+
+  .about-story-page .about-medal-stack-wrap {
+    width: min(100vw, 560px);
+    max-width: 100vw;
+    margin-inline: auto;
+    transform: scale(1.18);
+    transform-origin: center top;
+  }
+}
+
 
