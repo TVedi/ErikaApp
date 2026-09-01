@@ -9162,4 +9162,46 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* Mobile homepage: put the menu button back on the right. Hiding the brand lockup
+   left the space-between row with a single child, which floated left. */
+@media (max-width: 1023px) {
+  body:has([data-mobile-home-splash]) .site-header-premium > div {
+    justify-content: flex-end;
+  }
+}
+
+/* About page (mobile): the header already shows the brand, the opening visual
+   fills the first screen, and the sticky button bar is removed. */
+@media (max-width: 1023px) {
+  .about-story-page .about-brand-lockup {
+    display: none;
+  }
+
+  .about-story-page .about-opening-stage {
+    min-height: 100vh;
+    min-height: 100lvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .about-story-page .about-opening-visuals {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .about-story-page .about-story-portrait {
+    width: min(92vw, 460px);
+    max-width: 92vw;
+  }
+
+  body:has(.about-story-page) .sticky-mobile-cta {
+    display: none;
+  }
+}
+
 
