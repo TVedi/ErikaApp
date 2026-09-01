@@ -9148,4 +9148,18 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* Mobile homepage: the menu button no longer tracks the scroll, and the duplicate
+   brand mark is removed — the splash already carries its own monogram. Dropping
+   position: fixed also removes a per-frame composite that was costing scroll
+   smoothness. */
+@media (max-width: 1023px) {
+  body:has([data-mobile-home-splash]) .site-header-premium {
+    position: absolute;
+  }
+
+  body:has([data-mobile-home-splash]) .site-header-premium .site-brand-lockup {
+    display: none;
+  }
+}
+
 
