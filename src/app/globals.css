@@ -9253,4 +9253,29 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* Mobile splash motto: -webkit-text-fill-color must be set alongside color, or the
+   glyph fill from line 7580 wins and the text stays cream. */
+@media (max-width: 1023px) {
+  .mobile-home-splash-slogan {
+    color: var(--brand-coral) !important;
+    -webkit-text-fill-color: var(--brand-coral) !important;
+  }
+}
+
+/* About page (mobile): the scroll cue takes the same shape and gold as the
+   homepage splash chevron. */
+@media (max-width: 1023px) {
+  .about-scroll-cue-icon {
+    width: 48px;
+    height: 12px;
+    color: #d8b96a;
+    stroke: #d8b96a;
+  }
+
+  .about-scroll-cue-icon path,
+  .about-scroll-cue-icon polyline {
+    stroke: #d8b96a;
+  }
+}
+
 
