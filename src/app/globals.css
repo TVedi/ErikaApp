@@ -9280,4 +9280,13 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* Mobile homepage: Camps and Video Course live on their own pages, reachable from
+   the mobile menu, so their homepage sections are hidden here. Desktop keeps both. */
+@media (max-width: 1023px) {
+  section[aria-labelledby="camps-heading"],
+  section[aria-labelledby="video-course-heading"] {
+    display: none;
+  }
+}
+
 
