@@ -9302,4 +9302,28 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* About page (mobile): centre the collage, rebalance the vertical space, and
+   replace the square coral arrow with the homepage's wide gold chevron. */
+@media (max-width: 1023px) {
+  .about-story-page .about-medal-stack-wrap {
+    margin-left: calc(-50vw - 20px);
+    margin-top: -40px;
+  }
+
+  .about-story-page .about-scroll-cue-icon {
+    width: 48px;
+    height: 12px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 12'%3E%3Cpath d='M3 3 L24 9 L45 3' fill='none' stroke='%23d8b96a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 48px 12px;
+  }
+
+  .about-story-page .about-scroll-cue-icon svg,
+  .about-story-page .about-scroll-cue-icon path,
+  .about-story-page .about-scroll-cue-icon polyline {
+    display: none;
+  }
+}
+
 
