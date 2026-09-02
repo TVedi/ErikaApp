@@ -9359,4 +9359,76 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* About page (mobile): the nine collage cards are repositioned symmetrically
+   between 17% and 83% of the stack, in three loose bands, so the cluster is truly
+   centred, fills down toward the cue, and overlaps evenly. */
+@media (max-width: 1023px) {
+  .about-story-page .about-medal-stack-wrap {
+    margin-left: -50vw;
+  }
+
+  .about-story-page .about-medal-card--9 {
+    width: 20%;
+    left: 17%;
+    top: 2%;
+    transform: rotate(-6deg);
+  }
+
+  .about-story-page .about-medal-card--2 {
+    width: 17%;
+    left: 40%;
+    top: 0%;
+    transform: rotate(5deg);
+  }
+
+  .about-story-page .about-medal-card--6 {
+    width: 22%;
+    left: 61%;
+    top: 4%;
+    transform: rotate(8deg);
+  }
+
+  .about-story-page .about-medal-card--1 {
+    width: 24%;
+    left: 17%;
+    top: 26%;
+    transform: rotate(-8deg);
+  }
+
+  .about-story-page .about-medal-card--3 {
+    width: 26%;
+    left: 37%;
+    top: 24%;
+    transform: rotate(-3deg);
+  }
+
+  .about-story-page .about-medal-card--7 {
+    width: 14%;
+    left: 69%;
+    top: 30%;
+    transform: rotate(-9deg);
+  }
+
+  .about-story-page .about-medal-card--4 {
+    width: 22%;
+    left: 18%;
+    top: 52%;
+    transform: rotate(7deg);
+  }
+
+  .about-story-page .about-medal-card--5 {
+    width: 24%;
+    left: 38%;
+    top: 54%;
+    transform: rotate(-7deg);
+  }
+
+  .about-story-page .about-medal-card--8 {
+    width: 23%;
+    left: 60%;
+    top: 50%;
+    transform: rotate(4deg);
+  }
+}
+
 
