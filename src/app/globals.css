@@ -9289,4 +9289,17 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* About page (mobile): the cards fill only the middle two thirds of the stack box,
+   so --medal-scale is what actually enlarges the cluster. The opening section is
+   also centred so the collage is not stranded below a large empty band. */
+@media (max-width: 1023px) {
+  .about-story-page .about-medal-stack-wrap {
+    --medal-scale: 1.45;
+  }
+
+  .about-story-page .about-story-opening {
+    justify-content: center;
+  }
+}
+
 
