@@ -75,10 +75,18 @@ export async function submitCoachingInquiry(
     });
 
     if (error) {
-      console.error("coaching_inquiry insert failed");
+      console.error("coaching_inquiry insert failed", {
+        code: error.code,
+        message: error.message,
+        details: error.details,
+        hint: error.hint,
+      });
       return { error: GENERIC_ERROR };
     }
-  } catch {
+  } catch (err) {
+    console.error("coaching_inquiry threw", {
+      message: err instanceof Error ? err.message : String(err),
+    });
     return { error: GENERIC_ERROR };
   }
 
