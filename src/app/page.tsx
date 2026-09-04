@@ -5,6 +5,7 @@ import { HomeHero } from "@/components/marketing/home-hero";
 import { AboutOlympicSection } from "@/components/marketing/about-olympic-section";
 import { CampsSection } from "@/components/marketing/camps-section";
 import { HowItWorksSection } from "@/components/marketing/how-it-works-section";
+import { WhyWorkWithErikaSection } from "@/components/marketing/why-work-with-erika-section";
 import { VideoAnalysisSection } from "@/components/marketing/video-analysis-section";
 import { WhoItsForSection } from "@/components/marketing/who-its-for-section";
 import { VideoCourseLoadingSection } from "@/components/marketing/video-course-loading-section";
@@ -38,6 +39,8 @@ export default function HomePage() {
       <WhoItsForSection />
 
       <HowItWorksSection />
+
+      <WhyWorkWithErikaSection />
 
       <VideoAnalysisSection />
 

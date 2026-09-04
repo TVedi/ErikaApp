@@ -9431,4 +9431,228 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* Why Work With Erika — mobile-only section, hidden from 1024px up so desktop is
+   unchanged. */
+.why-erika-section {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  /* Revised visual order. Values must stay inside the same
+     body:has([data-mobile-home-splash]) scope as the originals at ~7721. */
+  body:has([data-mobile-home-splash])
+    section[aria-labelledby="how-it-works-heading"] {
+    order: 5;
+  }
+
+  body:has([data-mobile-home-splash]) .why-erika-section {
+    order: 6;
+  }
+
+  body:has([data-mobile-home-splash])
+    section[aria-labelledby="video-analysis-heading"] {
+    order: 7;
+  }
+
+  body:has([data-mobile-home-splash])
+    section[aria-labelledby="coaching-options-heading"] {
+    order: 8;
+  }
+
+  body:has([data-mobile-home-splash])
+    section[aria-labelledby="about-olympic-heading"] {
+    order: 9;
+  }
+
+  body:has([data-mobile-home-splash])
+    section[aria-labelledby="camps-heading"] {
+    order: 10;
+  }
+
+  body:has([data-mobile-home-splash])
+    section[aria-labelledby="video-course-heading"] {
+    order: 11;
+  }
+
+  body:has([data-mobile-home-splash]) [data-home-section="stories"] {
+    order: 12;
+  }
+
+  body:has([data-mobile-home-splash]) [data-home-section="faq"] {
+    order: 13;
+  }
+
+  body:has([data-mobile-home-splash]) #waitlist {
+    order: 14;
+  }
+
+  .why-erika-section {
+    display: block;
+    position: relative;
+    width: 100%;
+    overflow-x: clip;
+    padding-bottom: 3rem;
+  }
+
+  .why-erika-photo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 34vh;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .why-erika-photo-img {
+    object-fit: cover;
+    object-position: 50% 12%;
+  }
+
+  .why-erika-inner {
+    position: relative;
+    z-index: 1;
+    padding: 20vh 1.5rem 0;
+  }
+
+  .why-erika-inner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 34vh;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      rgba(3, 23, 20, 0) 0%,
+      rgba(3, 23, 20, 0.05) 10%,
+      rgba(3, 23, 20, 0.12) 20%,
+      rgba(3, 23, 20, 0.2) 30%,
+      rgba(3, 23, 20, 0.29) 40%,
+      rgba(3, 23, 20, 0.38) 50%,
+      rgba(3, 23, 20, 0.47) 58%,
+      rgba(3, 23, 20, 0.56) 66%,
+      rgba(3, 23, 20, 0.66) 74%,
+      rgba(3, 23, 20, 0.76) 82%,
+      rgba(3, 23, 20, 0.86) 90%,
+      rgba(3, 23, 20, 0.94) 96%,
+      rgb(3, 23, 20) 100%
+    );
+  }
+
+  .why-erika-eyebrow {
+    margin: 0;
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #d8b96a;
+  }
+
+  .why-erika-rule {
+    width: 3rem;
+    height: 2px;
+    margin-top: 0.65rem;
+    background: #d8b96a;
+    opacity: 0.75;
+  }
+
+  .why-erika-heading {
+    margin: 1rem 0 0;
+    font-family: var(--font-display), ui-serif, Georgia, serif;
+    font-size: clamp(2rem, 9vw, 2.75rem);
+    font-weight: 400;
+    line-height: 1.12;
+    color: #f7f1e6;
+  }
+
+  .why-erika-intro {
+    margin: 1rem 0 0;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(247, 241, 230, 0.86);
+  }
+
+  .why-erika-list {
+    list-style: none;
+    margin: 2.25rem 0 0;
+    padding: 0;
+  }
+
+  .why-erika-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid rgba(216, 185, 106, 0.18);
+  }
+
+  .why-erika-item:last-child {
+    border-bottom: 0;
+  }
+
+  .why-erika-num {
+    flex: 0 0 auto;
+    font-size: 1.15rem;
+    letter-spacing: 0.04em;
+    color: #d8b96a;
+  }
+
+  .why-erika-item-title {
+    margin: 0;
+    font-size: 1.12rem;
+    font-weight: 500;
+    line-height: 1.3;
+    color: #f7f1e6;
+  }
+
+  .why-erika-item-body {
+    margin: 0.4rem 0 0;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: rgba(247, 241, 230, 0.78);
+  }
+
+  .why-erika-quote {
+    margin: 2rem 0 0;
+    padding: 1.5rem 1.25rem;
+    border: 1px solid rgba(216, 185, 106, 0.35);
+    border-radius: 0.5rem;
+    font-family: var(--font-display), ui-serif, Georgia, serif;
+    font-size: clamp(1.15rem, 5vw, 1.5rem);
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: center;
+    color: #f7f1e6;
+  }
+
+  .why-erika-actions {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .why-erika-cta {
+    display: block;
+    width: 100%;
+    padding: 0.95rem 1rem;
+    border-radius: 0.6rem;
+    background: var(--brand-coral);
+    color: #ffffff;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .why-erika-next {
+    color: #d8b96a;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+  }
+}
+
 
