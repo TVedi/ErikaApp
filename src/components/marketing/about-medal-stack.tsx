@@ -66,6 +66,36 @@ const MEDAL_PHOTOS: MedalPhoto[] = [
     height: 600,
     alt: "Erika Medveczky with an early championship medal",
   },
+  {
+    src: "/Medveczky100.webp",
+    width: 1536,
+    height: 1024,
+    alt: "Erika Medveczky racing",
+  },
+  {
+    src: "/Tokio5.jpg",
+    width: 1808,
+    height: 1202,
+    alt: "Erika Medveczky at the Tokyo Olympic Games",
+  },
+  {
+    src: "/tokeletes.png",
+    width: 1672,
+    height: 941,
+    alt: "Erika Medveczky paddling on the water",
+  },
+  {
+    src: "/IMG_20180901_172542.jpg",
+    width: 3120,
+    height: 4160,
+    alt: "Erika Medveczky after a race",
+  },
+  {
+    src: "/gyerek.webp",
+    width: 1536,
+    height: 1024,
+    alt: "Young athlete paddling a kayak",
+  },
 ];
 
 /**
