@@ -9655,4 +9655,38 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* Why Work With Erika (mobile): the photograph continues behind the heading and
+   intro, fading out around the first list item, and the section closes on the
+   standard gold divider. */
+@media (max-width: 1023px) {
+  .why-erika-photo {
+    height: 62vh;
+  }
+
+  .why-erika-inner::before {
+    height: 62vh;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(3, 23, 20, 0.02) 8%,
+      rgba(3, 23, 20, 0.05) 16%,
+      rgba(3, 23, 20, 0.09) 24%,
+      rgba(3, 23, 20, 0.14) 32%,
+      rgba(3, 23, 20, 0.2) 40%,
+      rgba(3, 23, 20, 0.28) 48%,
+      rgba(3, 23, 20, 0.37) 56%,
+      rgba(3, 23, 20, 0.48) 64%,
+      rgba(3, 23, 20, 0.6) 72%,
+      rgba(3, 23, 20, 0.73) 80%,
+      rgba(3, 23, 20, 0.85) 88%,
+      rgba(3, 23, 20, 0.94) 95%,
+      rgb(3, 23, 20) 100%
+    );
+  }
+
+  .why-erika-section .premium-section-divider {
+    margin-top: 2.5rem;
+  }
+}
+
 

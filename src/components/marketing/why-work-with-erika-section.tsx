@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
+import { PremiumSectionDivider } from "@/components/marketing/premium-section-divider";
 
 const reasons = [
   {
@@ -83,6 +84,8 @@ export function WhyWorkWithErikaSection() {
           </Link>
         </div>
       </div>
+
+      <PremiumSectionDivider />
     </section>
   );
 }
