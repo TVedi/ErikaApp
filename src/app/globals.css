@@ -9786,4 +9786,26 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* A tapped collage card comes to the centre so edge cards cannot overflow. */
+@media (max-width: 1023px) {
+  .about-story-page .about-medal-card.is-lifted {
+    left: 50%;
+    top: 38%;
+    transform: translate(-50%, -50%) rotate(0deg) scale(1.7);
+  }
+}
+
+/* Autofilled apply fields keep the dark surface. Browsers ignore background-color
+   on autofill, so an inset box-shadow paints it instead. */
+.apply-field:-webkit-autofill,
+.apply-field:-webkit-autofill:hover,
+.apply-field:-webkit-autofill:focus,
+.apply-field:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #04211c inset !important;
+  box-shadow: 0 0 0 1000px #04211c inset !important;
+  -webkit-text-fill-color: #f7f1e6 !important;
+  caret-color: #f7f1e6;
+  transition: background-color 100000s ease-in-out 0s;
+}
+
 
