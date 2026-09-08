@@ -9832,4 +9832,14 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* The reveal divider sat 11px below the seam between the splash photo and the
+   green section. Shifted visually only — relative offset, not margin — so nothing
+   below it moves. */
+@media (max-width: 1023px) {
+  .mobile-splash-reveal-divider {
+    position: relative;
+    top: -11px;
+  }
+}
+
 
