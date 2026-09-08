@@ -9808,4 +9808,14 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   transition: background-color 100000s ease-in-out 0s;
 }
 
+/* Autofill uses the site canvas colour rather than a one-off hex. Opaque because a
+   translucent inset shadow would let the browser's own background show through. */
+.apply-field:-webkit-autofill,
+.apply-field:-webkit-autofill:hover,
+.apply-field:-webkit-autofill:focus,
+.apply-field:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px rgb(3, 23, 20) inset !important;
+  box-shadow: 0 0 0 1000px rgb(3, 23, 20) inset !important;
+}
+
 
