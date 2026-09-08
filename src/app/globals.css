@@ -9769,4 +9769,21 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* About collage (mobile): 2017.1 and Tokio5 sit on top of the pile, and tapping
+   any card lifts it noticeably larger. Positions are unchanged. */
+@media (max-width: 1023px) {
+  .about-story-page .about-medal-card--8 {
+    z-index: 20;
+  }
+
+  .about-story-page .about-medal-card--11 {
+    z-index: 21;
+  }
+
+  .about-story-page .about-medal-card.is-lifted {
+    z-index: 40;
+    transform: rotate(0deg) translateY(-22px) scale(1.7);
+  }
+}
+
 
