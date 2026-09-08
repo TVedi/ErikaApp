@@ -9818,4 +9818,18 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   box-shadow: 0 0 0 1000px rgb(3, 23, 20) inset !important;
 }
 
+/* Mobile splash: svh instead of lvh. lvh excludes the browser URL bar, so when the
+   bar is visible the splash overflowed the screen and the fixed 207px reveal was
+   clipped by exactly that amount — which is why the result differed depending on
+   the page navigated from. svh is also static, so the dvh scroll jank does not
+   return. */
+@media (max-width: 1023px) {
+  .mobile-home-splash {
+    height: 100vh;
+    height: 100svh;
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+}
+
 
