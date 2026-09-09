@@ -9832,4 +9832,34 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* Sub-pages (mobile): Programs, Video Course, Camps and Speaking carried the
+   apply message three times over - header CTA, fixed bottom bar, and the page
+   content itself. The header CTA and the bottom bar are hidden here so only
+   the page speaks. The header, wordmark and menu button stay. Every other
+   page and every desktop width is untouched. main keeps Tailwind's pb-20,
+   which would leave a dead 5rem gap above the footer once the bar is gone,
+   so it is zeroed too. */
+@media (max-width: 1023px) {
+  body:has(.programs-page-section) .site-header-premium .btn-cta-primary,
+  body:has(#video-course-headline) .site-header-premium .btn-cta-primary,
+  body:has(.camps-hero) .site-header-premium .btn-cta-primary,
+  body:has(.speaking-hero) .site-header-premium .btn-cta-primary {
+    display: none;
+  }
+
+  body:has(.programs-page-section) .sticky-mobile-cta,
+  body:has(#video-course-headline) .sticky-mobile-cta,
+  body:has(.camps-hero) .sticky-mobile-cta,
+  body:has(.speaking-hero) .sticky-mobile-cta {
+    display: none;
+  }
+
+  body:has(.programs-page-section) .main-scroll-surface,
+  body:has(#video-course-headline) .main-scroll-surface,
+  body:has(.camps-hero) .main-scroll-surface,
+  body:has(.speaking-hero) .main-scroll-surface {
+    padding-bottom: 0;
+  }
+}
+
 
