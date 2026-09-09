@@ -12,7 +12,7 @@ export const cta = {
   /** Primary coral CTA (header, hero, section CTAs). */
   startCoaching: "Apply Now",
   /** Starter Guidance card (Coaching Options + /pricing ProgramCard). */
-  bookTechniqueReview: "Book a Technique Review",
+  getStarted: "Get Started",
   requestEvaluation: "Request an Evaluation",
 };
 
