@@ -31,7 +31,7 @@ export function VideoCourseLoadingSection() {
           >
             <span className="video-course-heading-line1">
               {copy.headingLine1}
-            </span>
+            </span>{" "}
             <span className="video-course-heading-line2">
               {copy.headingLine2}
             </span>

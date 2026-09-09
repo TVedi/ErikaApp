@@ -70,7 +70,7 @@ export function CampsSection() {
                 id="camps-heading"
                 className="camps-premium-heading font-display"
               >
-                <span className="camps-heading-line1">Gainesville</span>
+                <span className="camps-heading-line1">Gainesville</span>{" "}
                 <span className="camps-heading-line2">Training Camps</span>
               </h2>
             </ScrollReveal>

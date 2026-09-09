@@ -54,7 +54,7 @@ function ProofChip({
         <Icon />
       </span>
       <span className="about-olympic-chip-label">
-        <ProofChipLine1 line1={line1} />
+        <ProofChipLine1 line1={line1} />{" "}
         <span className="about-olympic-chip-line2">{line2}</span>
       </span>
     </div>
@@ -101,7 +101,7 @@ export function AboutOlympicSection() {
                 id="about-olympic-heading"
                 className="about-olympic-premium-heading font-display"
               >
-                <span className="about-olympic-heading-line1">Coached by</span>
+                <span className="about-olympic-heading-line1">Coached by</span>{" "}
                 <span className="about-olympic-heading-line2">
                   Olympic Experience
                 </span>
