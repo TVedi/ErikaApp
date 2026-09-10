@@ -9890,4 +9890,23 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* Camps + Speaking (mobile): the space under the header lives on the inner
+   grid, not on the section. The section padding added in 18bd983 is removed
+   again here, and the grid's own padding and column gap are tightened so the
+   headline sits close to the header and the photo stays fully visible without
+   large voids around it. Desktop keeps the 1024px rules untouched. */
+@media (max-width: 1023px) {
+  .camps-hero.section-screen,
+  .speaking-hero.section-screen {
+    padding-top: 0;
+  }
+
+  .camps-hero-grid,
+  .speaking-hero-grid {
+    padding-top: clamp(0.75rem, 2vh, 1.25rem);
+    padding-bottom: clamp(1.25rem, 3vh, 2rem);
+    gap: clamp(1rem, 2.5vh, 1.5rem);
+  }
+}
+
 
