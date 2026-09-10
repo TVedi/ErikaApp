@@ -9862,4 +9862,32 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* Sub-pages (mobile): Camps, Speaking and Video Course centre their content
+   inside a full-viewport box, so the leftover space splits evenly above and
+   below and reads as a gap under the header. They are top-aligned here with a
+   small breathing pad. Programs is not centred - its gap is plain padding on
+   .programs-page-inner (~6420), reduced to match. The dynamic-viewport heights
+   at ~2149 and ~503 are replaced with static lvh, per the scroll-jank rule. */
+@media (max-width: 1023px) {
+  .camps-hero.section-screen,
+  .speaking-hero.section-screen {
+    justify-content: flex-start;
+    min-height: 100lvh;
+    padding-top: clamp(1rem, 3vh, 1.75rem);
+  }
+
+  section[aria-labelledby="video-course-headline"] > .section-screen-inner {
+    justify-content: flex-start;
+    min-height: 100lvh;
+  }
+
+  section[aria-labelledby="video-course-headline"].section-pad {
+    padding-top: clamp(1rem, 3vh, 1.75rem);
+  }
+
+  section[aria-labelledby="programs-heading"] .programs-page-inner {
+    padding-top: clamp(1rem, 3vh, 1.75rem);
+  }
+}
+
 
