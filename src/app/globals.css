@@ -9920,4 +9920,15 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* Speaking + Video Course (mobile): bound the portrait frame by viewport
+   height as well as width, so the whole 2:3 image fits on screen under the
+   text on short phones as well as tall ones. The home page portrait keeps its
+   own width through the higher-specificity compound selector at ~2797. */
+@media (max-width: 1023px) {
+  body:has(.speaking-hero) .speaking-portrait-frame,
+  section[aria-labelledby="video-course-headline"] .speaking-portrait-frame {
+    width: min(85vw, 300px, 24lvh);
+  }
+}
+
 
