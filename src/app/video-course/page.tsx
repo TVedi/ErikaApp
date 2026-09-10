@@ -37,7 +37,7 @@ export default function VideoCoursePage() {
 
           <ScrollReveal className="lg:hidden" delayMs={120}>
             <ComingSoonButton label={camps.ctaLabel} className="mt-6" />
-            <div className="mt-8 flex justify-center">
+            <div className="mt-8 flex justify-start">
               <div className="speaking-portrait-frame">
                 <Image
                   src="/DSC09930-videocourse.webp"

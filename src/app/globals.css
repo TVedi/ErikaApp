@@ -9909,4 +9909,15 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* Video Course page (mobile): adopt the shared page inset so the text edge
+   lines up with /speaking, /camps and the header wordmark. The page still
+   carries Tailwind's px-4, which is narrower than --page-left-inset, so it is
+   overridden here rather than in the component. */
+@media (max-width: 1023px) {
+  section[aria-labelledby="video-course-headline"] > .section-screen-inner {
+    padding-left: var(--page-left-inset);
+    padding-right: var(--page-left-inset);
+  }
+}
+
 
