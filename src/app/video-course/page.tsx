@@ -1,6 +1,8 @@
+import Image from "next/image";
 import { PublicLayout } from "@/components/layout/public-layout";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
-import { launch } from "@/content/copy";
+import { ComingSoonButton } from "@/components/marketing/coming-soon-button";
+import { camps, launch } from "@/content/copy";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -31,6 +33,22 @@ export default function VideoCoursePage() {
             />
             <p className="mt-5 text-lg sm:mt-6">{launch.videoCourse.body}</p>
             <p className="mt-4 opacity-80">{launch.videoCourse.secondary}</p>
+          </ScrollReveal>
+
+          <ScrollReveal className="lg:hidden" delayMs={120}>
+            <ComingSoonButton label={camps.ctaLabel} className="mt-6" />
+            <div className="mt-8 flex justify-center">
+              <div className="speaking-portrait-frame">
+                <Image
+                  src="/DSC09930-videocourse.webp"
+                  width={933}
+                  height={1400}
+                  alt="Erika Medveczky with kayak paddle"
+                  sizes="(max-width: 1023px) 85vw, 440px"
+                  className="speaking-portrait"
+                />
+              </div>
+            </div>
           </ScrollReveal>
         </div>
       </section>
