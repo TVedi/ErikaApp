@@ -58,6 +58,7 @@ function PremiumCheckRow({ text }: { text: string }) {
 export function ProgramCard({ tier }: { tier: ProgramKey }) {
   const program = launch.programs[tier];
   const Icon = CARD_ICONS[tier];
+  const badge = "badge" in program ? program.badge : undefined;
   const priceLabel =
     tier === "starter"
       ? getStarterPriceLabel()
@@ -67,6 +68,7 @@ export function ProgramCard({ tier }: { tier: ProgramKey }) {
     <article className="premium-card">
       <div className="premium-card-top">
         <span className="premium-card-number">{program.number}</span>
+        {badge ? <span className="premium-card-badge">{badge}</span> : null}
         <span className="premium-card-glyph" aria-hidden="true">
           <Icon strokeWidth={1.25} />
         </span>

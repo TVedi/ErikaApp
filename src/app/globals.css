@@ -9976,4 +9976,26 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* Programs page: tier badges on cards 02 and 03, sitting between the number
+   and the glyph in the card's top row so they never overlap the gold icon.
+   Coaching Options styles .premium-card-badge at ~5258, but only inside its
+   own mobile scope, so the Programs page needs its own rule. Approved to apply
+   on desktop as well; nothing else on the page changes. */
+section[aria-labelledby="programs-heading"] .premium-card-badge {
+  align-self: center;
+  margin: 0;
+  padding: 0.22rem 0.5rem;
+  border: 1px solid rgba(216, 185, 106, 0.38);
+  border-radius: 999px;
+  background: rgba(216, 185, 106, 0.1);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--premium-champagne);
+}
+
 

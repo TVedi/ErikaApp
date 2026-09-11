@@ -127,6 +127,7 @@ export const launch = {
       ],
       cta: "apply" as const,
       priceNote: "Pricing and availability confirmed after application review.",
+      badge: "BEST VALUE",
     },
   },
   videoSection: {
