@@ -9931,4 +9931,49 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
+/* Why Work With Erika (mobile): the Braca-sport wordmark on the paddle runs
+   down the left third of the photo and meets the gold eyebrow line, gold on
+   gold. A second scrim layer is added across the frame, heaviest at the left
+   edge and clear by the right, so the paddle dissolves into the canvas while
+   Erika stays lit. The vertical dissolve from ~9666 is repeated unchanged
+   underneath it, since background is replaced as a whole. */
+@media (max-width: 1023px) {
+  .why-erika-inner::before {
+    background:
+      linear-gradient(
+        to right,
+        rgba(3, 23, 20, 0.93) 0%,
+        rgba(3, 23, 20, 0.9) 8%,
+        rgba(3, 23, 20, 0.85) 16%,
+        rgba(3, 23, 20, 0.78) 24%,
+        rgba(3, 23, 20, 0.69) 32%,
+        rgba(3, 23, 20, 0.58) 40%,
+        rgba(3, 23, 20, 0.45) 48%,
+        rgba(3, 23, 20, 0.32) 56%,
+        rgba(3, 23, 20, 0.2) 64%,
+        rgba(3, 23, 20, 0.11) 72%,
+        rgba(3, 23, 20, 0.05) 80%,
+        rgba(3, 23, 20, 0.02) 88%,
+        transparent 96%
+      ),
+      linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(3, 23, 20, 0.02) 8%,
+        rgba(3, 23, 20, 0.05) 16%,
+        rgba(3, 23, 20, 0.09) 24%,
+        rgba(3, 23, 20, 0.14) 32%,
+        rgba(3, 23, 20, 0.2) 40%,
+        rgba(3, 23, 20, 0.28) 48%,
+        rgba(3, 23, 20, 0.37) 56%,
+        rgba(3, 23, 20, 0.48) 64%,
+        rgba(3, 23, 20, 0.6) 72%,
+        rgba(3, 23, 20, 0.73) 80%,
+        rgba(3, 23, 20, 0.85) 88%,
+        rgba(3, 23, 20, 0.94) 95%,
+        rgb(3, 23, 20) 100%
+      );
+  }
+}
+
 
