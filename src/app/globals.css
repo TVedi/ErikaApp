@@ -9998,4 +9998,86 @@ section[aria-labelledby="programs-heading"] .premium-card-badge {
   color: var(--premium-champagne);
 }
 
+/* Olympic diploma badge (mobile): the medallion that opens the diploma was
+   1.5em and pulsed only between 0.75 and 1 opacity, so it did not read as
+   tappable. It grows, gains a thin gold ring, and pulses with a stronger glow.
+   The reduced-motion override at ~7205 still switches the animation off. */
+@media (max-width: 1023px) {
+  .oly-diploma-badge-btn {
+    height: 2.2em;
+    margin-inline-start: 0.5em;
+    padding: 0.18em;
+    border: 1px solid rgba(216, 185, 106, 0.45);
+    border-radius: 999px;
+    background: rgba(216, 185, 106, 0.08);
+    animation: oly-badge-pulse-mobile 2.5s ease-in-out infinite;
+  }
+
+  .oly-diploma-badge-img {
+    height: 100%;
+  }
+}
+
+@keyframes oly-badge-pulse-mobile {
+  0%,
+  100% {
+    opacity: 0.82;
+    filter: drop-shadow(0 0 0 transparent);
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(
+      0 0 0.6em color-mix(in srgb, var(--brand-gold) 75%, transparent)
+    );
+  }
+}
+
+/* Stronger pulse (mobile): the diploma medallion's glow is widened and its
+   opacity swing deepened, and the Programs tier badges get the same treatment
+   so MOST POPULAR and BEST VALUE read as live. The 03 badge starts half a
+   second later so the two do not blink in lockstep. The diploma keeps its
+   existing timing; only the keyframes it points at change. Desktop badges
+   stay static - the desktop approval covered the badges, not animation. */
+@media (max-width: 1023px) {
+  .oly-diploma-badge-btn {
+    animation-name: oly-badge-pulse-strong;
+  }
+
+  section[aria-labelledby="programs-heading"] .premium-card-badge {
+    animation: oly-badge-pulse-strong 2.5s ease-in-out infinite;
+  }
+
+  /* The three cards are fixed children of .programs-page-grid in the order
+     starter, technique, elite, so :nth-child(3) is the BEST VALUE card. */
+  .programs-page-grid > .premium-card:nth-child(3) .premium-card-badge {
+    animation-delay: 0.5s;
+  }
+}
+
+@keyframes oly-badge-pulse-strong {
+  0%,
+  100% {
+    opacity: 0.7;
+    filter: drop-shadow(0 0 0 transparent);
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(
+      0 0 0.85em color-mix(in srgb, var(--brand-gold) 90%, transparent)
+    );
+  }
+}
+
+/* Re-assert reduced motion last: the rules above come after the block at
+   ~7205 with equal specificity, so they would otherwise switch the pulse back
+   on for anyone who has asked for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  .oly-diploma-badge-btn,
+  section[aria-labelledby="programs-heading"] .premium-card-badge {
+    animation: none;
+    opacity: 1;
+    filter: none;
+  }
+}
+
 
