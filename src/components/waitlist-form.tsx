@@ -11,26 +11,44 @@ export function WaitlistForm() {
   const [status, setStatus] = useState<"idle" | "success" | "error" | "duplicate">("idle");
   const [loading, setLoading] = useState(false);
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
     setStatus("idle");
 
-    const result = await joinWaitlist(email);
-    if (result.success) {
-      setStatus("success");
-      setEmail("");
-    } else if (result.error === "duplicate") {
-      setStatus("duplicate");
-    } else {
+    try {
+      const form = new FormData(e.currentTarget);
+      const website = form.get("website");
+      const result = await joinWaitlist(
+        email,
+        typeof website === "string" ? website : ""
+      );
+      if (result.success) {
+        setStatus("success");
+        setEmail("");
+      } else if (result.error === "duplicate") {
+        setStatus("duplicate");
+      } else {
+        setStatus("error");
+      }
+    } catch {
       setStatus("error");
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   }
 
   return (
     <div className="mx-auto max-w-md">
       <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:flex-row">
+        <input
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          className="absolute -left-[9999px] opacity-0"
+          aria-hidden="true"
+        />
         <Input
           type="email"
           placeholder={waitlist.placeholder}
