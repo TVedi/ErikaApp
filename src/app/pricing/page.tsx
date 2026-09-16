@@ -1,7 +1,6 @@
 import { PublicLayout } from "@/components/layout/public-layout";
 import { ProgramCard } from "@/components/marketing/program-card";
 import { PremiumSectionDivider } from "@/components/marketing/premium-section-divider";
-import { LinkButton } from "@/components/ui/link-button";
 import { pricing } from "@/content/copy";
 import type { Metadata } from "next";
 
@@ -32,32 +31,6 @@ export default function PricingPage() {
             <ProgramCard tier="starter" />
             <ProgramCard tier="technique" />
             <ProgramCard tier="elite" />
-          </div>
-        </div>
-        <PremiumSectionDivider />
-      </section>
-
-      <section
-        className="programs-notes-section w-full"
-        aria-label="Program notes"
-      >
-        <div className="programs-page-inner programs-notes-inner">
-          <div className="programs-note-block">
-            <h2 className="programs-note-title">Launch payment note</h2>
-            <p className="programs-note-body">{pricing.stripeNote}</p>
-            <p className="programs-note-body">{pricing.manualReviewNote}</p>
-          </div>
-
-          <div className="programs-note-block">
-            <h2 className="programs-note-title">{pricing.campsNote.title}</h2>
-            <ul className="programs-note-list">
-              {pricing.campsNote.items.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-            <LinkButton href="/camps" className="mt-6 btn-cta-primary">
-              View camps
-            </LinkButton>
           </div>
         </div>
         <PremiumSectionDivider />
