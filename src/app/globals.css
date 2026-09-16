@@ -10133,3 +10133,13 @@ section[aria-labelledby="programs-heading"] .premium-card-badge {
     transform: rotate(7deg);
   }
 }
+
+/* About collage (mobile): the cards are transparent with a gold border, so
+   until the eighteen photos decode the collage reads as a set of empty frames.
+   A faint champagne fill makes each one look like a card that is loading
+   rather than a hole. The photo covers it once decoded. */
+@media (max-width: 1023px) {
+  .about-story-page .about-medal-card {
+    background: rgba(216, 185, 106, 0.07);
+  }
+}
