@@ -10081,3 +10081,55 @@ section[aria-labelledby="programs-heading"] .premium-card-badge {
 }
 
 
+
+/* About collage: four more photos on mobile only, filling the empty left
+   column that runs down all five bands and the gap on the right edge of the
+   middle bands. Desktop keeps its original nine cards, as with cards 10-14.
+   Aspect ratios match the source files so object-fit: cover crops nothing. */
+.about-medal-card--15,
+.about-medal-card--16,
+.about-medal-card--17,
+.about-medal-card--18 {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .about-story-page .about-medal-card--15,
+  .about-story-page .about-medal-card--16,
+  .about-story-page .about-medal-card--17,
+  .about-story-page .about-medal-card--18 {
+    display: block;
+  }
+
+  .about-story-page .about-medal-card--15 {
+    width: 23%;
+    left: 2%;
+    top: 11%;
+    aspect-ratio: 3 / 2;
+    transform: rotate(5deg);
+  }
+
+  .about-story-page .about-medal-card--16 {
+    width: 18%;
+    left: 80%;
+    top: 48%;
+    aspect-ratio: 4 / 3;
+    transform: rotate(-6deg);
+  }
+
+  .about-story-page .about-medal-card--17 {
+    width: 24%;
+    left: 1%;
+    top: 46%;
+    aspect-ratio: 16 / 9;
+    transform: rotate(-4deg);
+  }
+
+  .about-story-page .about-medal-card--18 {
+    width: 15%;
+    left: 6%;
+    top: 69%;
+    aspect-ratio: 3 / 4;
+    transform: rotate(7deg);
+  }
+}

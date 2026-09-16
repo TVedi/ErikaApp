@@ -96,6 +96,30 @@ const MEDAL_PHOTOS: MedalPhoto[] = [
     height: 1024,
     alt: "Young athlete paddling a kayak",
   },
+  {
+    src: "/hero2.jpeg",
+    width: 1655,
+    height: 1103,
+    alt: "Erika Medveczky paddling past the lane markers on a race course",
+  },
+  {
+    src: "/IMG_20180518_135633.jpg",
+    width: 3264,
+    height: 2448,
+    alt: "Erika Medveczky beside her kayak at the water's edge",
+  },
+  {
+    src: "/piros kajak.png",
+    width: 1672,
+    height: 941,
+    alt: "Erika Medveczky paddling her red racing kayak",
+  },
+  {
+    src: "/FB_IMG_1504252591861.jpg",
+    width: 1578,
+    height: 2048,
+    alt: "Erika Medveczky in training kit",
+  },
 ];
 
 /**
