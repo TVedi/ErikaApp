@@ -10102,33 +10102,33 @@ section[aria-labelledby="programs-heading"] .premium-card-badge {
   }
 
   .about-story-page .about-medal-card--15 {
-    width: 23%;
-    left: 2%;
-    top: 11%;
+    width: 19%;
+    left: 16%;
+    top: 5%;
     aspect-ratio: 3 / 2;
     transform: rotate(5deg);
   }
 
   .about-story-page .about-medal-card--16 {
-    width: 18%;
-    left: 80%;
-    top: 48%;
+    width: 15%;
+    left: 69%;
+    top: 72%;
     aspect-ratio: 4 / 3;
     transform: rotate(-6deg);
   }
 
   .about-story-page .about-medal-card--17 {
-    width: 24%;
-    left: 1%;
-    top: 46%;
+    width: 20%;
+    left: 16%;
+    top: 36%;
     aspect-ratio: 16 / 9;
     transform: rotate(-4deg);
   }
 
   .about-story-page .about-medal-card--18 {
-    width: 15%;
-    left: 6%;
-    top: 69%;
+    width: 14%;
+    left: 17%;
+    top: 68%;
     aspect-ratio: 3 / 4;
     transform: rotate(7deg);
   }
