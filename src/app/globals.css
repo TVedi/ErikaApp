@@ -10145,3 +10145,12 @@ section[aria-labelledby="programs-heading"] .premium-card-badge {
     background: rgba(216, 185, 106, 0.07);
   }
 }
+
+/* FLAT SITE BASE, completed: the block at ~2065 flattened canvas, surface and
+   background but left --emerald-raised at #10544d. That green still backs
+   .video-course-portrait-card (~1630), .audience-card-quiet (~744) and the
+   achievement cards (~1535), and a container background paints before its
+   image decodes - which is the green flash seen at the photos. */
+:root {
+  --emerald-raised: var(--site-base);
+}
