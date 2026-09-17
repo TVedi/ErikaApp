@@ -10174,3 +10174,14 @@ section[aria-labelledby="programs-heading"] .premium-card-badge {
     transform: rotate(4deg);
   }
 }
+
+/* About story anchor (mobile): the header on this page is real - sticky top-0
+   with an h-16 row, 4rem tall - unlike the home page, where it is absolute and
+   the rule at ~8231 correctly zeroes the reservation. The target's 16px margin
+   from ~6958 left 48px of the first line behind the header, so it is raised
+   here to clear the header with a little breathing room. */
+@media (max-width: 1023px) {
+  #about-story-body {
+    scroll-margin-top: 4.75rem;
+  }
+}
