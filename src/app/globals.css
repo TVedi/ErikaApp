@@ -10104,7 +10104,8 @@ section[aria-labelledby="programs-heading"] .premium-card-badge {
   .about-story-page .about-medal-card--15 {
     width: 19%;
     left: 16%;
-    top: 5%;
+    top: 11%;
+    z-index: 6;
     aspect-ratio: 3 / 2;
     transform: rotate(5deg);
   }
@@ -10120,7 +10121,8 @@ section[aria-labelledby="programs-heading"] .premium-card-badge {
   .about-story-page .about-medal-card--17 {
     width: 20%;
     left: 16%;
-    top: 36%;
+    top: 30%;
+    z-index: 6;
     aspect-ratio: 16 / 9;
     transform: rotate(-4deg);
   }
