@@ -9716,37 +9716,37 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 
   /* Five bands, top to bottom, leaving room for the scroll cue below. */
-  .about-story-page .about-medal-card--9 { top: 1%; }
-  .about-story-page .about-medal-card--2 { top: 0%; }
-  .about-story-page .about-medal-card--6 { top: 3%; }
+  .about-story-page .about-medal-card--9 { top: 0%; }
+  .about-story-page .about-medal-card--2 { top: 24%; }
+  .about-story-page .about-medal-card--6 { top: 0%; }
 
-  .about-story-page .about-medal-card--1 { top: 19%; }
-  .about-story-page .about-medal-card--3 { top: 18%; }
+  .about-story-page .about-medal-card--1 { top: 18%; }
+  .about-story-page .about-medal-card--3 { top: 0%; }
   .about-story-page .about-medal-card--7 { top: 22%; }
 
-  .about-story-page .about-medal-card--4 { top: 38%; }
-  .about-story-page .about-medal-card--5 { top: 40%; }
-  .about-story-page .about-medal-card--8 { top: 36%; }
+  .about-story-page .about-medal-card--4 { top: 45%; }
+  .about-story-page .about-medal-card--5 { top: 36%; }
+  .about-story-page .about-medal-card--8 { top: 20%; }
 
   .about-story-page .about-medal-card--10 {
     width: 23%;
-    left: 17%;
-    top: 56%;
+    left: 16%;
+    top: 54%;
     aspect-ratio: 1.5;
     transform: rotate(-7deg);
   }
 
   .about-story-page .about-medal-card--11 {
     width: 24%;
-    left: 39%;
-    top: 58%;
+    left: 44%;
+    top: 69%;
     aspect-ratio: 1.5;
     transform: rotate(5deg);
   }
 
   .about-story-page .about-medal-card--12 {
     width: 22%;
-    left: 62%;
+    left: 64%;
     top: 55%;
     aspect-ratio: 1.78;
     transform: rotate(-4deg);
@@ -9754,16 +9754,16 @@ section[aria-labelledby="camps-heading"] .camps-photo {
 
   .about-story-page .about-medal-card--13 {
     width: 18%;
-    left: 26%;
-    top: 74%;
+    left: 28%;
+    top: 73%;
     aspect-ratio: 0.75;
     transform: rotate(6deg);
   }
 
   .about-story-page .about-medal-card--14 {
     width: 24%;
-    left: 50%;
-    top: 76%;
+    left: 60%;
+    top: 80%;
     aspect-ratio: 1.5;
     transform: rotate(-6deg);
   }
@@ -10104,7 +10104,7 @@ section[aria-labelledby="programs-heading"] .premium-card-badge {
   .about-story-page .about-medal-card--15 {
     width: 19%;
     left: 16%;
-    top: 11%;
+    top: 2%;
     z-index: 6;
     aspect-ratio: 3 / 2;
     transform: rotate(5deg);
@@ -10121,7 +10121,7 @@ section[aria-labelledby="programs-heading"] .premium-card-badge {
   .about-story-page .about-medal-card--17 {
     width: 20%;
     left: 16%;
-    top: 30%;
+    top: 43%;
     z-index: 6;
     aspect-ratio: 16 / 9;
     transform: rotate(-4deg);
@@ -10129,8 +10129,8 @@ section[aria-labelledby="programs-heading"] .premium-card-badge {
 
   .about-story-page .about-medal-card--18 {
     width: 14%;
-    left: 17%;
-    top: 68%;
+    left: 16%;
+    top: 75%;
     aspect-ratio: 3 / 4;
     transform: rotate(7deg);
   }
