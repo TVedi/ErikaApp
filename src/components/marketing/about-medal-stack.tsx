@@ -120,6 +120,12 @@ const MEDAL_PHOTOS: MedalPhoto[] = [
     height: 2048,
     alt: "Erika Medveczky in training kit",
   },
+  {
+    src: "/FB_IMG_1585573281651.jpg",
+    width: 1079,
+    height: 720,
+    alt: "Erika Medveczky racing in her red kayak",
+  },
 ];
 
 /**

@@ -9725,7 +9725,7 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   .about-story-page .about-medal-card--7 { top: 22%; }
 
   .about-story-page .about-medal-card--4 { top: 38%; }
-  .about-story-page .about-medal-card--5 { top: 40%; }
+  .about-story-page .about-medal-card--5 { top: 33%; }
   .about-story-page .about-medal-card--8 { top: 36%; }
 
   .about-story-page .about-medal-card--10 {
@@ -10153,4 +10153,24 @@ section[aria-labelledby="programs-heading"] .premium-card-badge {
    image decodes - which is the green flash seen at the photos. */
 :root {
   --emerald-raised: var(--site-base);
+}
+
+/* About collage: a nineteenth photo in the bottom-right corner, sitting on top
+   of the pile. Mobile only, like cards 10 to 18. z-index 25 clears card 11 at
+   21 and card 8 at 20 while staying under the 40 used by .is-lifted, so tapping
+   any card still raises it above this one. */
+.about-medal-card--19 {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .about-story-page .about-medal-card--19 {
+    display: block;
+    width: 22%;
+    left: 62%;
+    top: 85%;
+    z-index: 25;
+    aspect-ratio: 3 / 2;
+    transform: rotate(4deg);
+  }
 }
