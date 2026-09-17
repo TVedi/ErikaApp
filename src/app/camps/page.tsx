@@ -36,9 +36,9 @@ export default function CampsPage() {
           <ScrollReveal className="camps-hero-photo" delayMs={120}>
             <div className="camps-photo-frame">
               <Image
-                src="/Africa.png"
-                width={1672}
-                height={941}
+                src="/Africa.webp"
+                width={1600}
+                height={900}
                 alt={camps.imageAlt}
                 priority
                 sizes="(max-width: 1023px) 92vw, 600px"

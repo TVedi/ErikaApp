@@ -34,7 +34,7 @@ export const hero = {
  * badgeSrc: transparent OLY medallion (derived from public/OLY ikon.png).
  */
 export const olympicDiploma = {
-  badgeSrc: "/OLY-badge.png",
+  badgeSrc: "/OLY-badge-512.webp",
   /** Temporary placeholder; replace with the official diploma path later. */
   imageSrc: "/Medveczky100.webp",
   imageAlt: "Olympic diploma",

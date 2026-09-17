@@ -21,7 +21,7 @@ export type HeroSlide = {
 export const HERO_SLIDESHOW_IMAGES: HeroSlide[] = [
   { src: "/hero.webp", objectPosition: "right 25%", objectPositionMobile: "80% 25%" },
   { src: "/Tokio6.jpg", objectPosition: "center 28%", objectPositionMobile: "45% 28%" },
-  { src: "/tokeletes.png", objectPosition: "center 15%", objectPositionMobile: "50% 15%" },
+  { src: "/tokeletes.webp", objectPosition: "center 15%", objectPositionMobile: "50% 15%" },
 ];
 
 /** Per-slide Ken-Burns duration while the slide is active. */

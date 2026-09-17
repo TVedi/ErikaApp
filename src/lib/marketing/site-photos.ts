@@ -41,11 +41,11 @@ export const sitePhotos = {
     height: 869,
   },
   campsLake: {
-    src: "/camps-lake.jpg",
+    src: "/camps-lake.webp",
     alt: "Erika Medveczky with racing kayak at the lake",
     objectPosition: "left center",
-    width: 3264,
-    height: 2448,
+    width: 1600,
+    height: 1200,
   },
   campsRacing: {
     src: "/camps-racing.jpg",
@@ -55,12 +55,12 @@ export const sitePhotos = {
     height: 1241,
   },
   campsBackground: {
-    src: "/camp.webp",
+    src: "/camp-1920.webp",
     alt: "Kayak training camp on the water",
     objectPosition: "62% 40%",
     objectPositionMobile: "55% 38%",
-    width: 4000,
-    height: 2667,
+    width: 1920,
+    height: 1080,
   },
   coachedByOlympicBackground: {
     src: "/gyerek.webp",

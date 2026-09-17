@@ -5078,7 +5078,7 @@ section[aria-labelledby="coaching-options-heading"].section-coaching-fixed-bg::b
       rgba(3, 23, 20, 0.08) 45%,
       rgba(3, 23, 20, 0.1) 100%
     ),
-    url("/steg.png");
+    url("/steg.webp");
   background-size: 100% 100%, cover;
   /* Face + torso natural in right zone; head fully in frame */
   background-position: center, 48% 6%;

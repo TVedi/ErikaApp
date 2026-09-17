@@ -79,15 +79,15 @@ const MEDAL_PHOTOS: MedalPhoto[] = [
     alt: "Erika Medveczky at the Tokyo Olympic Games",
   },
   {
-    src: "/tokeletes.png",
-    width: 1672,
-    height: 941,
+    src: "/tokeletes.webp",
+    width: 1600,
+    height: 900,
     alt: "Erika Medveczky paddling on the water",
   },
   {
-    src: "/IMG_20180901_172542.jpg",
-    width: 3120,
-    height: 4160,
+    src: "/IMG_20180901_172542.webp",
+    width: 1200,
+    height: 1600,
     alt: "Erika Medveczky after a race",
   },
   {
@@ -103,15 +103,15 @@ const MEDAL_PHOTOS: MedalPhoto[] = [
     alt: "Erika Medveczky paddling past the lane markers on a race course",
   },
   {
-    src: "/IMG_20180518_135633.jpg",
-    width: 3264,
-    height: 2448,
+    src: "/IMG_20180518_135633.webp",
+    width: 1600,
+    height: 1200,
     alt: "Erika Medveczky beside her kayak at the water's edge",
   },
   {
-    src: "/piros kajak.png",
-    width: 1672,
-    height: 941,
+    src: "/piros-kajak.webp",
+    width: 1600,
+    height: 900,
     alt: "Erika Medveczky paddling her red racing kayak",
   },
   {
