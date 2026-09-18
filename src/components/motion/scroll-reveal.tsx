@@ -34,9 +34,14 @@ export function ScrollReveal({ children, className, delayMs = 0 }: ScrollRevealP
       el.style.transitionDelay = `${delayMs}ms`;
     }
 
-    const rect = el.getBoundingClientRect();
-    const inView =
-      rect.top < window.innerHeight * 0.92 && rect.bottom > 0;
+    /*
+     * Document-absolute, not viewport-relative: this effect runs before the
+     * router resets the scroll position on a client-side navigation, so a
+     * viewport-relative measurement would reflect the previous page's offset
+     * and misclassify the sections near the top of this page.
+     */
+    const absoluteTop = el.getBoundingClientRect().top + window.scrollY;
+    const inView = absoluteTop < window.innerHeight * 0.92;
 
     if (inView) {
       el.classList.add("scroll-reveal-visible");
