@@ -124,7 +124,7 @@ export function HeroSlideshowBackground() {
 
   return (
     <div
-      className="absolute inset-0 overflow-hidden bg-[var(--brand-base)]"
+      className="absolute inset-0 overflow-hidden bg-[var(--site-base)]"
       aria-hidden="true"
     >
       {HERO_SLIDESHOW_IMAGES.map((slide, index) => {
