@@ -78,11 +78,12 @@ function PremiumProgramCard({
     "accentFeature" in program ? program.accentFeature : undefined;
   const priceNote = "priceNote" in program ? program.priceNote : undefined;
   const badge = "badge" in program ? program.badge : undefined;
+  const ctaLabel = "ctaLabel" in program ? program.ctaLabel : undefined;
 
   return (
     <article className="premium-card">
       {badge ? (
-        <span className="premium-card-badge hidden">{badge}</span>
+        <span className="premium-card-badge">{badge}</span>
       ) : null}
       <div className="premium-card-top">
         <span className="premium-card-number">{program.number}</span>
@@ -94,7 +95,7 @@ function PremiumProgramCard({
       <div className="premium-card-title-row contents">
         <h3 className="premium-card-title">{program.name}</h3>
         {priceNote ? (
-          <p className="premium-card-price-slot hidden">{priceNote}</p>
+          <p className="premium-card-price-slot">{priceNote}</p>
         ) : null}
       </div>
       <p className="premium-card-desc">{program.description}</p>
@@ -115,15 +116,15 @@ function PremiumProgramCard({
           <StartCoachingButton
             size="sm"
             className="btn-cta-primary w-full"
-            label={cta.getStarted}
+            label={ctaLabel ?? cta.getStarted}
           />
         ) : (
           <LinkButton
             href="/apply"
             size="sm"
-            className="btn-cta-gold-outline w-full"
+            className="btn-cta-primary w-full"
           >
-            {cta.requestEvaluation}
+            {ctaLabel ?? cta.requestEvaluation}
             <CtaArrow />
           </LinkButton>
         )}
