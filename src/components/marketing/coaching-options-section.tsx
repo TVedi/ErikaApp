@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Check, Trophy } from "lucide-react";
+import { Check } from "lucide-react";
 import { LinkButton } from "@/components/ui/link-button";
 import { StartCoachingButton } from "@/components/marketing/start-coaching-button";
 import { PremiumSectionDivider } from "@/components/marketing/premium-section-divider";
@@ -54,16 +54,20 @@ function PremiumProgramCard({ tier }: { tier: ProgramTier }) {
 
   return (
     <article className="premium-card">
-      <div className="premium-card-top">
+      <div
+        className={
+          priceNote ? "premium-card-top premium-card-top--priced" : "premium-card-top"
+        }
+      >
         <span className="premium-card-number">{program.number}</span>
         {badge ? <span className="premium-card-badge">{badge}</span> : null}
+        {priceNote ? (
+          <span className="premium-card-price-badge">{priceNote}</span>
+        ) : null}
       </div>
 
       <div className="premium-card-title-row contents">
         <h3 className="premium-card-title">{program.name}</h3>
-        {priceNote ? (
-          <p className="premium-card-price-slot">{priceNote}</p>
-        ) : null}
       </div>
       <p className="premium-card-desc">{program.description}</p>
 
@@ -154,9 +158,6 @@ export function CoachingOptionsSection() {
 
           <ScrollReveal delayMs={280}>
             <div className="coaching-options-proof">
-              <span className="coaching-options-proof-icon" aria-hidden="true">
-                <Trophy strokeWidth={1.25} />
-              </span>
               <p className="coaching-options-proof-lead">
                 {programs.proofStrip.lead}
               </p>

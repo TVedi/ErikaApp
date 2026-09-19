@@ -54,13 +54,26 @@ export function ProgramCard({ tier }: { tier: ProgramKey }) {
 
   return (
     <article className="premium-card">
-      <div className="premium-card-top">
+      <div
+        className={
+          tier === "starter"
+            ? "premium-card-top"
+            : "premium-card-top premium-card-top--priced"
+        }
+      >
         <span className="premium-card-number">{program.number}</span>
         {badge ? <span className="premium-card-badge">{badge}</span> : null}
+        {tier !== "starter" ? (
+          <span className="premium-card-price-badge">{priceLabel}</span>
+        ) : null}
       </div>
 
-      <h3 className="premium-card-title">{program.name}</h3>
-      <p className="premium-card-price">{priceLabel}</p>
+      <div className="premium-card-heading">
+        <h3 className="premium-card-title">{program.name}</h3>
+        {tier === "starter" ? (
+          <p className="premium-card-price">{priceLabel}</p>
+        ) : null}
+      </div>
       <p className="premium-card-desc">{program.description}</p>
 
       <div className="premium-card-rule" aria-hidden="true" />
