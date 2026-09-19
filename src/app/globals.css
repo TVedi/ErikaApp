@@ -5490,9 +5490,9 @@ section[aria-labelledby="coaching-options-heading"] .coaching-options-grid {
 
 .premium-card-desc {
   margin: 0.45rem 0 0;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 400;
-  line-height: 1.45;
+  line-height: 1.38;
   color: var(--premium-soft-cream, rgba(247, 241, 230, 0.82));
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -9976,14 +9976,14 @@ section[aria-labelledby="camps-heading"] .camps-photo {
   }
 }
 
-/* Programs page: tier badges on cards 02 and 03, sitting between the number
-   and the glyph in the card's top row so they never overlap the gold icon.
+/* Programs page: tier badges sit opposite the number in the card's top row.
    Coaching Options styles .premium-card-badge at ~5258, but only inside its
    own mobile scope, so the Programs page needs its own rule. Approved to apply
    on desktop as well; nothing else on the page changes. */
 section[aria-labelledby="programs-heading"] .premium-card-badge {
-  align-self: center;
+  align-self: flex-end;
   margin: 0;
+  margin-left: auto;
   padding: 0.22rem 0.5rem;
   border: 1px solid rgba(216, 185, 106, 0.38);
   border-radius: 999px;
@@ -10186,15 +10186,15 @@ section[aria-labelledby="programs-heading"] .premium-card-badge {
   }
 }
 
-/* Coaching Options: show the tier pill and price at every width. Keep the pill
-   in normal flow so it cannot overlap the existing card glyph. Price rows and
-   CTA labels can wrap when the desktop columns or mobile viewport are narrow. */
-section[aria-labelledby="coaching-options-heading"] .premium-card-badge {
+/* Coaching cards: the tier pill replaces the glyph in the top row at every
+   width. Price rows and CTA labels can wrap in narrow cards. */
+section[aria-labelledby="coaching-options-heading"] .premium-card-badge,
+section[aria-labelledby="programs-heading"] .premium-card-badge {
   display: inline-block;
   position: static;
   align-self: flex-end;
   max-width: 100%;
-  margin: 0 0 0.35rem;
+  margin: 0 0 0 auto;
   padding: 0.22rem 0.5rem;
   border: 1px solid rgba(216, 185, 106, 0.38);
   border-radius: 999px;
@@ -10204,6 +10204,7 @@ section[aria-labelledby="coaching-options-heading"] .premium-card-badge {
   font-weight: 500;
   letter-spacing: 0.14em;
   line-height: 1.2;
+  white-space: normal;
   text-transform: uppercase;
   text-align: center;
   color: var(--premium-champagne);
@@ -10235,9 +10236,63 @@ section[aria-labelledby="coaching-options-heading"] .premium-card-price-slot {
   color: var(--premium-muted-cream, rgba(247, 241, 230, 0.66));
 }
 
-section[aria-labelledby="coaching-options-heading"] .premium-card-cta .btn-cta-primary {
+section[aria-labelledby="coaching-options-heading"] .premium-card-note {
+  margin: 0.4rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  color: var(--premium-muted-cream, rgba(247, 241, 230, 0.66));
+}
+
+section[aria-labelledby="coaching-options-heading"] .premium-card-cta .btn-cta-primary,
+section[aria-labelledby="programs-heading"] .premium-card-cta .btn-cta-primary,
+section[aria-labelledby="programs-heading"] .premium-card-cta .btn-cta-gold-outline {
   height: auto;
   padding-block: 0.65rem;
   white-space: normal;
   text-align: center;
+}
+
+/* Complete descriptions at both breakpoints. Desktop cards share content rows,
+   including each feature, so longer copy cannot push one card's CTA out of line. */
+section[aria-labelledby="coaching-options-heading"] .premium-card-desc,
+section[aria-labelledby="programs-heading"] .premium-card-desc {
+  display: block;
+  font-size: 0.8125rem;
+  line-height: 1.38;
+  -webkit-line-clamp: unset;
+  line-clamp: none;
+  overflow: visible;
+}
+
+section[aria-labelledby="coaching-options-heading"] .marketing-cta-reveal-inner {
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-grid,
+  section[aria-labelledby="programs-heading"] .programs-page-grid {
+    row-gap: 0;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-card-reveal,
+  section[aria-labelledby="coaching-options-heading"] .premium-card,
+  section[aria-labelledby="programs-heading"] .premium-card {
+    display: grid;
+    grid-row: span 9;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-checks,
+  section[aria-labelledby="programs-heading"] .premium-card-checks {
+    display: grid;
+    grid-row: span 3;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-check-row,
+  section[aria-labelledby="programs-heading"] .premium-card-check-row {
+    align-items: flex-start;
+  }
 }

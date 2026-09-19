@@ -1,20 +1,11 @@
 import Image from "next/image";
-import {
-  BarChart3,
-  Check,
-  Compass,
-  Star,
-  Trophy,
-  type LucideIcon,
-} from "lucide-react";
+import { Check, Trophy } from "lucide-react";
 import { LinkButton } from "@/components/ui/link-button";
 import { StartCoachingButton } from "@/components/marketing/start-coaching-button";
 import { PremiumSectionDivider } from "@/components/marketing/premium-section-divider";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import { MarketingCtaReveal } from "@/components/motion/marketing-cta-reveal";
 import { cta, launch } from "@/content/copy";
-
-const CARD_ICONS: LucideIcon[] = [Compass, BarChart3, Star];
 
 type ProgramTier = "starter" | "technique" | "elite";
 
@@ -42,21 +33,9 @@ function CtaArrow() {
   );
 }
 
-function PremiumCheckRow({
-  text,
-  accent = false,
-}: {
-  text: string;
-  accent?: boolean;
-}) {
+function PremiumCheckRow({ text }: { text: string }) {
   return (
-    <div
-      className={
-        accent
-          ? "premium-card-check-row premium-card-check-row-accent"
-          : "premium-card-check-row"
-      }
-    >
+    <div className="premium-card-check-row">
       <span className="premium-card-check-icon" aria-hidden="true">
         <Check strokeWidth={1.25} />
       </span>
@@ -65,15 +44,8 @@ function PremiumCheckRow({
   );
 }
 
-function PremiumProgramCard({
-  tier,
-  index,
-}: {
-  tier: ProgramTier;
-  index: number;
-}) {
+function PremiumProgramCard({ tier }: { tier: ProgramTier }) {
   const program = launch.programs[tier];
-  const Icon = CARD_ICONS[index];
   const accentFeature =
     "accentFeature" in program ? program.accentFeature : undefined;
   const priceNote = "priceNote" in program ? program.priceNote : undefined;
@@ -82,14 +54,9 @@ function PremiumProgramCard({
 
   return (
     <article className="premium-card">
-      {badge ? (
-        <span className="premium-card-badge">{badge}</span>
-      ) : null}
       <div className="premium-card-top">
         <span className="premium-card-number">{program.number}</span>
-        <span className="premium-card-glyph" aria-hidden="true">
-          <Icon strokeWidth={1.25} />
-        </span>
+        {badge ? <span className="premium-card-badge">{badge}</span> : null}
       </div>
 
       <div className="premium-card-title-row contents">
@@ -106,10 +73,8 @@ function PremiumProgramCard({
         {program.features.map((text) => (
           <PremiumCheckRow key={text} text={text} />
         ))}
-        {accentFeature ? (
-          <PremiumCheckRow text={accentFeature} accent />
-        ) : null}
       </div>
+      {accentFeature ? <p className="premium-card-note">{accentFeature}</p> : null}
 
       <MarketingCtaReveal className="premium-card-cta">
         {program.cta === "start" ? (
@@ -177,8 +142,12 @@ export function CoachingOptionsSection() {
 
           <div className="coaching-options-grid">
             {TIERS.map((tier, i) => (
-              <ScrollReveal key={tier} delayMs={i * 110}>
-                <PremiumProgramCard tier={tier} index={i} />
+              <ScrollReveal
+                key={tier}
+                className="coaching-options-card-reveal"
+                delayMs={i * 110}
+              >
+                <PremiumProgramCard tier={tier} />
               </ScrollReveal>
             ))}
           </div>

@@ -1,22 +1,10 @@
-import {
-  BarChart3,
-  Check,
-  Compass,
-  Star,
-  type LucideIcon,
-} from "lucide-react";
+import { Check } from "lucide-react";
 import { LinkButton } from "@/components/ui/link-button";
 import { StartCoachingButton } from "@/components/marketing/start-coaching-button";
 import { getStarterPriceLabel } from "@/lib/marketing/cta";
 import { cta, launch, pricing } from "@/content/copy";
 
 type ProgramKey = "starter" | "technique" | "elite";
-
-const CARD_ICONS: Record<ProgramKey, LucideIcon> = {
-  starter: Compass,
-  technique: BarChart3,
-  elite: Star,
-};
 
 /** Clean arrow — same mark used on Coaching Options gold CTAs */
 function CtaArrow() {
@@ -57,8 +45,8 @@ function PremiumCheckRow({ text }: { text: string }) {
  */
 export function ProgramCard({ tier }: { tier: ProgramKey }) {
   const program = launch.programs[tier];
-  const Icon = CARD_ICONS[tier];
   const badge = "badge" in program ? program.badge : undefined;
+  const ctaLabel = "ctaLabel" in program ? program.ctaLabel : undefined;
   const priceLabel =
     tier === "starter"
       ? getStarterPriceLabel()
@@ -69,9 +57,6 @@ export function ProgramCard({ tier }: { tier: ProgramKey }) {
       <div className="premium-card-top">
         <span className="premium-card-number">{program.number}</span>
         {badge ? <span className="premium-card-badge">{badge}</span> : null}
-        <span className="premium-card-glyph" aria-hidden="true">
-          <Icon strokeWidth={1.25} />
-        </span>
       </div>
 
       <h3 className="premium-card-title">{program.name}</h3>
@@ -91,7 +76,7 @@ export function ProgramCard({ tier }: { tier: ProgramKey }) {
           <StartCoachingButton
             size="sm"
             className="btn-cta-primary w-full"
-            label={cta.getStarted}
+            label={ctaLabel ?? cta.getStarted}
           />
         ) : (
           <LinkButton
@@ -99,7 +84,7 @@ export function ProgramCard({ tier }: { tier: ProgramKey }) {
             size="sm"
             className="btn-cta-gold-outline w-full"
           >
-            {cta.requestEvaluation}
+            {ctaLabel ?? cta.requestEvaluation}
             <CtaArrow />
           </LinkButton>
         )}

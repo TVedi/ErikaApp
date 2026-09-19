@@ -75,7 +75,7 @@ export const launch = {
     eyebrow: "COACHED BY OLYMPIC EXPERIENCE",
     title: "Coaching Options",
     intro:
-      "World-class coaching for every stage of your journey. Choose the support that fits your goals.",
+      "Personalized coaching built around the athlete, not a template. Choose the level of support that fits your goals.",
     proofStrip: {
       lead: "Proven excellence. Trusted by athletes worldwide.",
       items: [
