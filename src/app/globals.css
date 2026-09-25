@@ -10366,3 +10366,31 @@ section[aria-labelledby="programs-heading"] .premium-card-price-badge {
   color: var(--premium-soft-cream);
   opacity: 0.7;
 }
+
+/* Apply page (desktop): the photo column stretched to the height of the form,
+   so the rebuilt, much longer form scaled the picture up. It is now sized to
+   the viewport and pinned to the top, with the site canvas below it. The
+   grid's dynamic-viewport height is also replaced with a static one, per the
+   scroll-jank rule. */
+@media (min-width: 1024px) {
+  .apply-split {
+    min-height: calc(100lvh - 4rem);
+    align-items: start;
+  }
+
+  .apply-photo-col {
+    position: sticky;
+    top: 4rem;
+    min-height: 0;
+    height: calc(100lvh - 4rem);
+    align-self: start;
+    background-color: var(--site-base);
+  }
+
+  /* overflow-x: hidden at ~7763 makes this a scroll container, and a sticky
+     element pins to its nearest scroll container. clip gives the same
+     horizontal clipping without creating one, so the column can pin. */
+  .apply-page {
+    overflow-x: clip;
+  }
+}
