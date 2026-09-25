@@ -15,6 +15,16 @@ export function ApplyForm({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
   const [turnstileToken, setTurnstileToken] = useState("");
   const [showMinorNote, setShowMinorNote] = useState(false);
   const [interests, setInterests] = useState<string[]>([]);
+  const [interestsError, setInterestsError] = useState(false);
+
+  function englishPrompt(message: string) {
+    return {
+      onInvalid: (e: React.InvalidEvent<HTMLInputElement>) =>
+        e.currentTarget.setCustomValidity(message),
+      onInput: (e: React.FormEvent<HTMLInputElement>) =>
+        e.currentTarget.setCustomValidity(""),
+    };
+  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -23,6 +33,15 @@ export function ApplyForm({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
 
     const form = new FormData(e.currentTarget);
     const interests = form.getAll("interests") as string[];
+    if (interests.length === 0) {
+      setInterestsError(true);
+      setLoading(false);
+      document.getElementById("apply-interests")?.scrollIntoView({
+        block: "center",
+      });
+      return;
+    }
+    setInterestsError(false);
 
     const result = await submitCoachingInquiry({
       full_name: form.get("full_name"),
@@ -71,6 +90,7 @@ export function ApplyForm({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
             required
             maxLength={120}
             className="apply-field"
+            {...englishPrompt("Please enter your full name.")}
           />
         </div>
         <div className="space-y-2">
@@ -84,6 +104,7 @@ export function ApplyForm({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
             required
             maxLength={254}
             className="apply-field"
+            {...englishPrompt("Please enter a valid email address.")}
           />
         </div>
       </div>
@@ -112,6 +133,7 @@ export function ApplyForm({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
             max={100}
             required
             className="apply-field"
+            {...englishPrompt("Please enter the athlete's age.")}
             onChange={(e) => {
               const age = Number(e.target.value);
               setShowMinorNote(age > 0 && age < 18);
@@ -137,6 +159,7 @@ export function ApplyForm({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
           maxLength={254}
           required={showMinorNote}
           className="apply-field"
+          {...englishPrompt("A parent or guardian email is required for athletes under 18.")}
         />
       </div>
 
@@ -205,7 +228,7 @@ export function ApplyForm({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
         </div>
       </div>
 
-      <fieldset className="apply-fieldset">
+      <fieldset className="apply-fieldset" id="apply-interests">
         <legend className="apply-label">{applyCopy.fields.interests}</legend>
         {applyCopy.interestOptions.map((opt, index) => (
           <label key={opt.value} className="apply-check-row">
@@ -215,7 +238,6 @@ export function ApplyForm({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
                 name="interests"
                 value={opt.value}
                 className="apply-checkbox"
-                required={interests.length === 0}
                 onChange={(e) =>
                   setInterests((prev) =>
                     e.target.checked
@@ -242,6 +264,11 @@ export function ApplyForm({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
             {opt.label}
           </label>
         ))}
+        {interestsError && (
+          <p className="apply-field-error" role="alert">
+            Please select at least one area of interest.
+          </p>
+        )}
       </fieldset>
 
       <div className="space-y-2">
@@ -264,6 +291,7 @@ export function ApplyForm({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
             name="medical_disclaimer_accepted"
             required
             className="apply-checkbox"
+            {...englishPrompt("Please confirm you understand this is a coaching inquiry.")}
           />
           <span>{applyCopy.checkboxes.medical}</span>
         </label>
@@ -273,6 +301,7 @@ export function ApplyForm({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
             name="privacy_consent"
             required
             className="apply-checkbox"
+            {...englishPrompt("Please consent to us processing your information.")}
           />
           <span>
             {applyCopy.checkboxes.privacyPrefix}{" "}
