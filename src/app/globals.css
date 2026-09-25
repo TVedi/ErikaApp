@@ -7916,7 +7916,7 @@ section[aria-labelledby="camps-heading"] .camps-photo {
 
 .apply-fieldset {
   margin: 0;
-  padding: 0;
+  padding: 0 0 1.25rem;
   border: 0;
   display: flex;
   flex-direction: column;
@@ -10315,7 +10315,7 @@ section[aria-labelledby="programs-heading"] .premium-card-price-badge {
    cannot show a useful prompt for a checkbox group, so the message is rendered
    in place, in the same coral used by .apply-error at ~7990. */
 .apply-field-error {
-  margin: 0.5rem 0 1.25rem;
+  margin: 0.15rem 0 0;
   font-size: 0.8125rem;
   font-weight: 500;
   line-height: 1.4;
