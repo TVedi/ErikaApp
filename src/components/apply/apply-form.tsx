@@ -14,6 +14,7 @@ export function ApplyForm({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
   const [loading, setLoading] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState("");
   const [showMinorNote, setShowMinorNote] = useState(false);
+  const [interests, setInterests] = useState<string[]>([]);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -22,11 +23,6 @@ export function ApplyForm({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
 
     const form = new FormData(e.currentTarget);
     const interests = form.getAll("interests") as string[];
-    if (interests.length === 0) {
-      setError("Something went wrong. Please try again.");
-      setLoading(false);
-      return;
-    }
 
     const result = await submitCoachingInquiry({
       full_name: form.get("full_name"),
@@ -139,6 +135,7 @@ export function ApplyForm({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
           name="guardian_email"
           type="email"
           maxLength={254}
+          required={showMinorNote}
           className="apply-field"
         />
       </div>
@@ -210,14 +207,38 @@ export function ApplyForm({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
 
       <fieldset className="apply-fieldset">
         <legend className="apply-label">{applyCopy.fields.interests}</legend>
-        {applyCopy.interestOptions.map((opt) => (
+        {applyCopy.interestOptions.map((opt, index) => (
           <label key={opt.value} className="apply-check-row">
-            <input
-              type="checkbox"
-              name="interests"
-              value={opt.value}
-              className="apply-checkbox"
-            />
+            {index === 0 ? (
+              <input
+                type="checkbox"
+                name="interests"
+                value={opt.value}
+                className="apply-checkbox"
+                required={interests.length === 0}
+                onChange={(e) =>
+                  setInterests((prev) =>
+                    e.target.checked
+                      ? [...prev, e.target.value]
+                      : prev.filter((v) => v !== e.target.value)
+                  )
+                }
+              />
+            ) : (
+              <input
+                type="checkbox"
+                name="interests"
+                value={opt.value}
+                className="apply-checkbox"
+                onChange={(e) =>
+                  setInterests((prev) =>
+                    e.target.checked
+                      ? [...prev, e.target.value]
+                      : prev.filter((v) => v !== e.target.value)
+                  )
+                }
+              />
+            )}
             {opt.label}
           </label>
         ))}

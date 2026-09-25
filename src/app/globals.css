@@ -7965,14 +7965,14 @@ section[aria-labelledby="camps-heading"] .camps-photo {
 }
 
 .apply-minor-note {
-  margin: 0;
+  margin: 0.25rem 0;
   padding: 0.85rem 1rem;
   border-radius: 0.75rem;
-  border: 1px solid rgba(216, 185, 106, 0.22);
-  background: rgba(216, 185, 106, 0.06);
+  border: 1px solid color-mix(in srgb, var(--cta-primary) 34%, transparent);
+  background: color-mix(in srgb, var(--cta-primary) 8%, transparent);
   font-size: 0.875rem;
   line-height: 1.5;
-  color: var(--premium-soft-cream);
+  color: var(--cta-primary);
 }
 
 .apply-inline-link {

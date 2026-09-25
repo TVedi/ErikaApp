@@ -48,6 +48,7 @@ export const applyFormSchema = z.object({
     .max(254)
     .optional()
     .or(z.literal("")),
+  // Enforced against athlete_age by the superRefine below.
   athlete_level: z.enum(athleteLevels),
   main_goal: z.enum(mainGoals),
   event_focus: z.enum(eventFocuses),
@@ -58,6 +59,14 @@ export const applyFormSchema = z.object({
   privacy_consent: z.literal(true),
   website: z.string().optional(),
   turnstile_token: z.string().optional(),
+}).superRefine((data, ctx) => {
+  if (data.athlete_age < 18 && !data.guardian_email) {
+    ctx.addIssue({
+      code: "custom",
+      path: ["guardian_email"],
+      message: "Guardian email is required when the athlete is under 18.",
+    });
+  }
 });
 
 export type ApplyFormInput = z.infer<typeof applyFormSchema>;
