@@ -240,13 +240,14 @@ export function ApplyForm({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
                 name="interests"
                 value={opt.value}
                 className="apply-checkbox"
-                onChange={(e) =>
+                onChange={(e) => {
+                  setInterestsError(false);
                   setInterests((prev) =>
                     e.target.checked
                       ? [...prev, e.target.value]
                       : prev.filter((v) => v !== e.target.value)
-                  )
-                }
+                  );
+                }}
               />
             ) : (
               <input
@@ -254,13 +255,14 @@ export function ApplyForm({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
                 name="interests"
                 value={opt.value}
                 className="apply-checkbox"
-                onChange={(e) =>
+                onChange={(e) => {
+                  setInterestsError(false);
                   setInterests((prev) =>
                     e.target.checked
                       ? [...prev, e.target.value]
                       : prev.filter((v) => v !== e.target.value)
-                  )
-                }
+                  );
+                }}
               />
             )}
             {opt.label}
