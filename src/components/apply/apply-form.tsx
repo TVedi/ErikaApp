@@ -14,6 +14,7 @@ export function ApplyForm({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
   const [loading, setLoading] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState("");
   const [showMinorNote, setShowMinorNote] = useState(false);
+  const [guardianFilled, setGuardianFilled] = useState(false);
   const [interests, setInterests] = useState<string[]>([]);
   const [interestsError, setInterestsError] = useState(false);
 
@@ -144,7 +145,7 @@ export function ApplyForm({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
         </div>
       </div>
 
-      {showMinorNote && (
+      {showMinorNote && !guardianFilled && (
         <p className="apply-minor-note">
           {applyCopy.minorNote}
         </p>
@@ -162,6 +163,10 @@ export function ApplyForm({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
           required={showMinorNote}
           className="apply-field"
           {...englishPrompt("A parent or guardian email is required for athletes under 18.")}
+          onChange={(e) => {
+            e.currentTarget.setCustomValidity("");
+            setGuardianFilled(e.currentTarget.value.trim() !== "");
+          }}
         />
       </div>
 
