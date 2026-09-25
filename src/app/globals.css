@@ -7965,7 +7965,7 @@ section[aria-labelledby="camps-heading"] .camps-photo {
 }
 
 .apply-minor-note {
-  margin: 0;
+  margin: 1.5rem 0;
   padding: 0.85rem 1rem;
   border-radius: 0.75rem;
   border: 1px solid color-mix(in srgb, var(--cta-primary) 34%, transparent);

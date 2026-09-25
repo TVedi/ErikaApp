@@ -23,6 +23,8 @@ export function ApplyForm({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
         e.currentTarget.setCustomValidity(message),
       onInput: (e: React.FormEvent<HTMLInputElement>) =>
         e.currentTarget.setCustomValidity(""),
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+        e.currentTarget.setCustomValidity(""),
     };
   }
 
