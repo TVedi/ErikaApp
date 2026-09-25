@@ -602,3 +602,235 @@ export const speaking = {
   ctaLabel: "Booking details coming soon",
   imageAlt: "Erika Medveczky in a premium portrait for corporate speaking",
 };
+
+/**
+ * Rebuilt application form, to Erika's specification.
+ * Eleven sections; five fields appear conditionally. Not yet read by any
+ * component - the live form still uses the `apply` block above.
+ */
+export const applyV2 = {
+  requiredNote: "Fields marked with an asterisk (*) are required.",
+
+  contact: {
+    title: "Contact information",
+    fields: {
+      fullName: "Full name",
+      email: "Email address",
+      country: "Country",
+      age: "Age",
+      guardianName: "Parent / guardian name",
+      guardianEmail: "Parent / guardian email",
+    },
+  },
+
+  athleteLevel: {
+    title: "Athlete level",
+    question: "Which best describes your current level?",
+    options: [
+      { value: "elite_international", label: "Elite / International Level" },
+      { value: "national", label: "National Level" },
+      { value: "senior", label: "Senior Athlete" },
+      { value: "u23", label: "U23 Athlete" },
+      { value: "junior", label: "Junior Athlete" },
+      { value: "masters", label: "Masters Athlete" },
+      { value: "club", label: "Club-Level Athlete" },
+    ],
+  },
+
+  coachingInterest: {
+    title: "Coaching interest",
+    question: "Which service are you interested in?",
+    options: [
+      { value: "technique_review", label: "Technique Review" },
+      { value: "performance_coaching", label: "Performance Coaching" },
+      { value: "high_performance_coaching", label: "High Performance Coaching" },
+      { value: "gainesville_camp", label: "Gainesville Camp" },
+    ],
+  },
+
+  eventDistance: {
+    title: "Primary event / distance",
+    question: "What is your primary event or distance?",
+    options: [
+      { value: "200m", label: "200 m" },
+      { value: "500m", label: "500 m" },
+      { value: "1000m", label: "1000 m" },
+      { value: "multiple_sprint", label: "Multiple Sprint Distances" },
+      { value: "long_distance", label: "Long Distance" },
+      { value: "marathon", label: "Marathon" },
+      { value: "recreational", label: "Recreational" },
+      { value: "other", label: "Other" },
+    ],
+  },
+
+  performance: {
+    title: "Performance snapshot",
+    fields: {
+      best500m: "Best 500 m time",
+      best2000m: "Best 2000 m time",
+      timesContext: "When and where were these times achieved?",
+      recentResult: "Current or most recent race result / competitive level",
+    },
+  },
+
+  trainingBackground: {
+    title: "Training background",
+    fields: {
+      yearsPaddling: "How many years have you been paddling?",
+      sessionsPerWeek:
+        "How many training sessions do you currently complete per week?",
+      hoursPerWeek: "Approximately how many hours do you train per week?",
+      structuredPlan: "Do you currently follow a structured training plan?",
+      hasCoach: "Do you currently work with a coach?",
+      additionalSupport:
+        "What type of support are you looking for in addition to your current coaching?",
+    },
+  },
+
+  trainingEnvironment: {
+    title: "Training environment",
+    fields: {
+      waterAccess: "Do you have regular access to water for training?",
+      gymAccess: "Do you have access to a gym?",
+      usesDevice:
+        "Do you use a GPS watch, heart-rate monitor or other training device to record your workouts?",
+      devicePlatform: "Which device or platform do you currently use?",
+      sharesData:
+        "Are you able and willing to share your training data with me for coaching and progress tracking?",
+      trainingCompany: "Do you train mostly:",
+      hasVideo: "Do you currently have paddling video available?",
+    },
+    waterAccessOptions: [
+      { value: "yes", label: "Yes" },
+      { value: "no", label: "No" },
+      { value: "seasonal", label: "Seasonal" },
+    ],
+    deviceOptions: [
+      { value: "garmin", label: "Garmin" },
+      { value: "polar", label: "Polar" },
+      { value: "coros", label: "COROS" },
+      { value: "suunto", label: "Suunto" },
+      { value: "apple_watch", label: "Apple Watch" },
+      { value: "wahoo", label: "Wahoo" },
+      { value: "trainingpeaks", label: "TrainingPeaks" },
+      { value: "strava", label: "Strava" },
+      { value: "other", label: "Other" },
+    ],
+    companyOptions: [
+      { value: "alone", label: "Alone" },
+      { value: "group", label: "With a group" },
+      { value: "both", label: "Both" },
+    ],
+  },
+
+  goals: {
+    title: "Your goals",
+    fields: {
+      improvementGoal:
+        "What would you most like to improve over the next 6-12 months?",
+      hasTargetRace:
+        "Do you have a specific race or competition you are preparing for?",
+      targetRace: "Event name and date",
+    },
+  },
+
+  challenge: {
+    title: "Your current challenge",
+    fields: {
+      currentChallenge:
+        "What do you feel is currently holding your performance back the most, if anything?",
+    },
+  },
+
+  commitment: {
+    title: "Commitment & communication",
+    fields: {
+      committedSessions:
+        "How many training sessions per week can you realistically commit to?",
+      willingFeedback:
+        "Are you willing to provide regular and honest training feedback so your program can be adjusted?",
+    },
+  },
+
+  finalQuestions: {
+    title: "Final questions",
+    fields: {
+      whyInterested: "Why are you interested in working with me?",
+      anythingElse:
+        "Is there anything else you think I should know about you or your training?",
+    },
+  },
+
+  consents: {
+    medical:
+      "I understand this is a coaching inquiry and not medical, injury, physical therapy, or emergency advice.",
+    privacy:
+      "I consent to Elite Paddle Coaching processing my information to respond to this inquiry. See our Privacy Policy.",
+  },
+
+  noGuaranteeNotice:
+    "Submitting an application does not guarantee a coaching place. Applications are reviewed individually to make sure the coaching relationship is the right fit for both athlete and coach.",
+
+  yesNo: [
+    { value: "yes", label: "Yes" },
+    { value: "no", label: "No" },
+  ],
+
+  /**
+   * Field names that must be filled. The form renders the asterisk from this
+   * list and sets the required attribute from it, so the two cannot disagree.
+   * The five conditional names are required only while their condition holds:
+   * guardian_name and guardian_email under 18, additional_support when the
+   * athlete has a coach, device_platform when a device is used, and
+   * target_race when a race is named.
+   */
+  requiredFields: [
+    "full_name",
+    "email",
+    "location",
+    "athlete_age",
+    "guardian_name",
+    "guardian_email",
+    "athlete_level",
+    "service_interest",
+    "event_focus",
+    "best_500m",
+    "best_2000m",
+    "times_context",
+    "recent_result",
+    "years_paddling",
+    "sessions_per_week",
+    "hours_per_week",
+    "structured_plan",
+    "has_coach",
+    "additional_support",
+    "water_access",
+    "gym_access",
+    "uses_device",
+    "device_platform",
+    "shares_data",
+    "improvement_goal",
+    "has_target_race",
+    "target_race",
+    "current_challenge",
+    "committed_sessions",
+    "willing_feedback",
+    "why_interested",
+    "medical_disclaimer_accepted",
+    "privacy_consent",
+  ] as const,
+
+  conditionalFields: {
+    guardian_name: "athlete_age_under_18",
+    guardian_email: "athlete_age_under_18",
+    additional_support: "has_coach_yes",
+    device_platform: "uses_device_yes",
+    target_race: "has_target_race_yes",
+  },
+
+  optionalFields: [
+    "training_company",
+    "has_video",
+    "message",
+  ] as const,
+} as const;
