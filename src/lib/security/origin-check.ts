@@ -24,7 +24,16 @@ function buildAllowedHosts(headers: Headers): Set<string> {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
   if (siteUrl) {
     try {
-      allowed.add(new URL(siteUrl).host);
+      const host = new URL(siteUrl).host;
+      allowed.add(host);
+      // The apex and the www host are the same site and both resolve to this
+      // project. A page opened at one spelling must not be rejected because
+      // NEXT_PUBLIC_SITE_URL names the other.
+      if (host.startsWith("www.")) {
+        allowed.add(host.slice(4));
+      } else {
+        allowed.add(`www.${host}`);
+      }
     } catch {
       // ignore invalid NEXT_PUBLIC_SITE_URL
     }
