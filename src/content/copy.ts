@@ -834,3 +834,26 @@ export const applyV2 = {
     "message",
   ] as const,
 } as const;
+
+/**
+ * Transactional email copy. Placeholders in braces are filled by
+ * src/lib/email/notify.ts.
+ */
+export const emails = {
+  applicant: {
+    subject: "Your application has been received",
+    greeting: "Hi {name},",
+    body: [
+      "Thank you for your application. It has arrived safely, and Erika reviews every application personally.",
+      "She will be in touch to discuss whether the programme is the right fit, and what the next step would look like.",
+      "If anything needs correcting, simply reply to this message.",
+    ],
+    signOff: "Erika Medveczky OLY",
+    signOffTitle: "Olympian and World Champion",
+  },
+  coach: {
+    subjectPrefix: "New application",
+    intro: "A new coaching application has arrived.",
+    replyHint: "Reply to this email to reach the applicant directly.",
+  },
+} as const;

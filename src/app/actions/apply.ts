@@ -7,6 +7,7 @@ import { isAllowedRequestOrigin } from "@/lib/security/origin-check";
 import { checkRateLimit } from "@/lib/security/rate-limit";
 import { isTurnstileEnabled, verifyTurnstileToken } from "@/lib/security/turnstile";
 import { applyFormSchema } from "@/lib/validation/apply-form";
+import { sendApplicationEmails } from "@/lib/email/notify";
 
 const GENERIC_ERROR = "Something went wrong. Please try again.";
 
@@ -102,6 +103,8 @@ export async function submitCoachingInquiry(
       });
       return { error: GENERIC_ERROR };
     }
+
+    await sendApplicationEmails(parsed.data);
   } catch (err) {
     console.error("coaching_inquiry threw", {
       message: err instanceof Error ? err.message : String(err),
