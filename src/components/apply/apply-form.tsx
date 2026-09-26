@@ -511,11 +511,11 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
 
       <p className="apply-no-guarantee">{applyV2.noGuaranteeNotice}</p>
 
+      {error && <p className="apply-error">{error}</p>}
+
       <Button type="submit" disabled={loading} className="w-full btn-cta-primary apply-submit">
         {loading ? applyCopy.submitting : applyCopy.submit}
       </Button>
-
-      {error && <p className="apply-error">{error}</p>}
     </form>
   );
 }
