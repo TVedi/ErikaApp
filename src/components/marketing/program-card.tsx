@@ -47,12 +47,14 @@ function PremiumCheckRow({ text }: { text: string }) {
 
 /**
  * /programs card — Coaching Options premium-card shell.
- * Copy + CTA targets match the prior ProgramCard (price line kept; no accentFeature).
+ * Copy + CTA targets match the prior ProgramCard (price line kept).
  */
 export function ProgramCard({ tier }: { tier: ProgramKey }) {
   const program = launch.programs[tier];
   const badge = "badge" in program ? program.badge : undefined;
   const ctaLabel = "ctaLabel" in program ? program.ctaLabel : undefined;
+  const accentFeature =
+    "accentFeature" in program ? program.accentFeature : undefined;
   const serviceParam = SERVICE_PARAM[tier] ?? "";
   const priceLabel =
     tier === "starter"
@@ -90,6 +92,8 @@ export function ProgramCard({ tier }: { tier: ProgramKey }) {
           <PremiumCheckRow key={text} text={text} />
         ))}
       </div>
+
+      {accentFeature ? <p className="premium-card-note">{accentFeature}</p> : null}
 
       <div className="premium-card-cta">
         {program.cta === "start" ? (

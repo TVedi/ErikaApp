@@ -10413,3 +10413,42 @@ section[aria-labelledby="programs-heading"] .premium-card-price-badge {
     object-fit: cover;
   }
 }
+
+/* Pricing and Coaching Options cards: the price pill sat on a different
+   baseline from the tier badge because two align-self rules disagreed, and at
+   0.5625rem in champagne the number was hard to read. It lines up with the
+   badge, grows, and takes the coral used for prices elsewhere. The pill pulse
+   was mobile-only; it now runs at every width. */
+section[aria-labelledby="coaching-options-heading"] .premium-card-price-badge,
+section[aria-labelledby="programs-heading"] .premium-card-price-badge {
+  align-self: flex-end;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--cta-primary);
+  border-color: color-mix(in srgb, var(--cta-primary) 38%, transparent);
+  background: color-mix(in srgb, var(--cta-primary) 9%, transparent);
+}
+
+section[aria-labelledby="coaching-options-heading"] .premium-card-badge,
+section[aria-labelledby="programs-heading"] .premium-card-badge {
+  align-self: flex-end;
+  animation: oly-badge-pulse-strong 2.5s ease-in-out infinite;
+}
+
+.programs-page-grid > .premium-card:nth-child(3) .premium-card-badge,
+.coaching-options-grid > *:nth-child(3) .premium-card-badge {
+  animation-delay: 0.5s;
+}
+
+/* Re-assert reduced motion last: the rules above come later in the file than
+   the earlier override, so without this they would switch the pulse back on
+   for anyone who has asked for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  .oly-diploma-badge-btn,
+  section[aria-labelledby="coaching-options-heading"] .premium-card-badge,
+  section[aria-labelledby="programs-heading"] .premium-card-badge {
+    animation: none;
+    opacity: 1;
+    filter: none;
+  }
+}
