@@ -44,10 +44,6 @@ export async function submitCoachingInquiry(
 
   const data = parsed.data;
 
-  if (data.athlete_age < 18 && !data.guardian_email) {
-    return { error: GENERIC_ERROR };
-  }
-
   if (isTurnstileEnabled()) {
     const valid = await verifyTurnstileToken(data.turnstile_token ?? "");
     if (!valid) {
@@ -60,14 +56,37 @@ export async function submitCoachingInquiry(
     const { error } = await supabase.from("coaching_inquiries").insert({
       full_name: data.full_name,
       email: data.email,
-      location: data.location || null,
+      location: data.location,
       athlete_age: data.athlete_age,
+      guardian_name: data.guardian_name || null,
       guardian_email: data.guardian_email || null,
       athlete_level: data.athlete_level,
-      main_goal: data.main_goal,
+      service_interest: data.service_interest,
       event_focus: data.event_focus,
-      has_video: data.has_video === "yes",
-      interests: data.interests,
+      best_500m: data.best_500m,
+      best_2000m: data.best_2000m,
+      times_context: data.times_context,
+      recent_result: data.recent_result,
+      years_paddling: data.years_paddling,
+      sessions_per_week: data.sessions_per_week,
+      hours_per_week: data.hours_per_week,
+      structured_plan: data.structured_plan === "yes",
+      has_coach: data.has_coach === "yes",
+      additional_support: data.additional_support || null,
+      water_access: data.water_access,
+      gym_access: data.gym_access === "yes",
+      uses_device: data.uses_device === "yes",
+      device_platform: data.device_platform || null,
+      shares_data: data.shares_data === "yes",
+      training_company: data.training_company || null,
+      has_video: data.has_video ? data.has_video === "yes" : null,
+      improvement_goal: data.improvement_goal,
+      has_target_race: data.has_target_race === "yes",
+      target_race: data.target_race || null,
+      current_challenge: data.current_challenge,
+      committed_sessions: data.committed_sessions,
+      willing_feedback: data.willing_feedback === "yes",
+      why_interested: data.why_interested,
       message: data.message || null,
       medical_disclaimer_accepted: true,
       privacy_consent: true,

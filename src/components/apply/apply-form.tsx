@@ -3,6 +3,7 @@
 import { Suspense, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { submitCoachingInquiry } from "@/app/actions/apply";
 import { TurnstileWidget } from "@/components/apply/turnstile-widget";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -133,7 +134,8 @@ export function ApplyForm(props: { turnstileSiteKey?: string }) {
 function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
   const searchParams = useSearchParams();
   const presetService = searchParams.get("service") ?? "";
-  const [loading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
   const [age, setAge] = useState("");
   const [hasCoach, setHasCoach] = useState("");
   const [usesDevice, setUsesDevice] = useState("");
@@ -154,8 +156,27 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
     };
   }
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setLoading(true);
+    setError(null);
+    try {
+      const form = new FormData(e.currentTarget);
+      const result = await submitCoachingInquiry({
+        ...Object.fromEntries(form.entries()),
+        medical_disclaimer_accepted:
+          form.get("medical_disclaimer_accepted") === "on",
+        privacy_consent: form.get("privacy_consent") === "on",
+        turnstile_token: turnstileToken,
+      });
+      if (result?.error) {
+        setError(result.error);
+        setLoading(false);
+      }
+    } catch {
+      setError("Something went wrong. Please try again.");
+      setLoading(false);
+    }
   }
 
   const { contact, performance, trainingBackground, trainingEnvironment } = applyV2;
@@ -493,6 +514,8 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
       <Button type="submit" disabled={loading} className="w-full btn-cta-primary apply-submit">
         {loading ? applyCopy.submitting : applyCopy.submit}
       </Button>
+
+      {error && <p className="apply-error">{error}</p>}
     </form>
   );
 }
