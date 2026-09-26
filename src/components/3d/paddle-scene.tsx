@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState, type RefObject } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { ContactShadows, Environment, Lightformer } from "@react-three/drei";
+import { ContactShadows } from "@react-three/drei";
 import * as THREE from "three";
 import { mergeVertices } from "three/examples/jsm/utils/BufferGeometryUtils.js";
 
@@ -10,35 +10,30 @@ import { mergeVertices } from "three/examples/jsm/utils/BufferGeometryUtils.js";
 
 const SHAFT_LENGTH = 4.2;
 const SHAFT_HALF = SHAFT_LENGTH / 2;
-const SHAFT_RADIUS_MID = 0.055;
-const SHAFT_RADIUS_END = 0.042;
-const SHAFT_RADIAL_SEGMENTS = 48;
+const SHAFT_RADIUS_MID = 0.035;
+const SHAFT_RADIUS_END = 0.028;
 
-const BLADE_LENGTH = 1.75;
-const BLADE_MAX_WIDTH = 0.62;
-const BLADE_NECK_HALF_WIDTH = 0.048;
-const BLADE_THICKNESS = 0.014;
-/** Across-width dish: offset in z = BLADE_DISH * x^2 (about 0.058 at the edge). */
+const BLADE_LENGTH = 1.1;
+const BLADE_MAX_WIDTH = 0.42;
+const BLADE_NECK_HALF_WIDTH = 0.035;
+const BLADE_THICKNESS = 0.012;
+/** Across-width dish: offset in z = BLADE_DISH * x^2 (about 0.026 at the edge). */
 const BLADE_DISH = 0.6;
 /** Gentle curve along the length, reaching this z offset at the tip. */
 const BLADE_LENGTH_CURVE = 0.03;
 /** The blade root sits slightly inside the shaft end; a ring covers the joint. */
 const BLADE_OFFSET = SHAFT_HALF - 0.05;
-const FEATHER_ANGLE = Math.PI / 3;
+const FEATHER_ANGLE = THREE.MathUtils.degToRad(70);
 
-const RING_DEPTH = 0.045;
+const RING_DEPTH = 0.02;
 const RING_CLEARANCE = 0.004;
 
-const RIM_RADIUS = 0.012;
-const SPINE_WIDTH = 0.02;
-
 /**
- * Tip-to-tip is SHAFT_LENGTH + 2 * (BLADE_LENGTH - 0.05) = 7.6.
- * At the 0.60 rad tilt the projected height is 7.6 * cos(0.60) ≈ 6.27.
- * Camera fov 30 at distance 5.8 sees 2 * 5.8 * tan(15°) ≈ 3.11 vertically.
- * 80% of that is 2.49, so the whole tilted paddle is scaled by 2.49 / 6.27.
+ * The paddle is about 6.3 units tip to tip, but at fov 30 and distance 5.8 the
+ * camera sees only about 3.1 units vertically. Scaling the whole model keeps it
+ * fully in frame at the diagonal angle without changing any proportion.
  */
-const PADDLE_SCALE = 0.397;
+const PADDLE_SCALE = 0.46;
 
 /* ---------- Presentation and motion ---------- */
 
@@ -131,11 +126,6 @@ function shaftRadiusAt(y: number): number {
   return SHAFT_RADIUS_END + (SHAFT_RADIUS_MID - SHAFT_RADIUS_END) * (1 - u * u);
 }
 
-function dishZ(x: number, y: number): number {
-  const along = y / BLADE_LENGTH;
-  return BLADE_DISH * x * x + BLADE_LENGTH_CURVE * along * along;
-}
-
 function createShaft(): THREE.LatheGeometry {
   const steps = 32;
   const profile: THREE.Vector2[] = [];
@@ -143,11 +133,14 @@ function createShaft(): THREE.LatheGeometry {
     const y = -SHAFT_HALF + (i / steps) * SHAFT_LENGTH;
     profile.push(new THREE.Vector2(shaftRadiusAt(y), y));
   }
-  return new THREE.LatheGeometry(profile, SHAFT_RADIAL_SEGMENTS);
+  return new THREE.LatheGeometry(profile, 48);
 }
 
-/** Elongated teardrop along +Y, root at y = 0, widest two thirds of the way up. */
-function createBladeShape(): THREE.Shape {
+/**
+ * Elongated teardrop along +Y, root at y = 0, widest two thirds of the way up
+ * (a third from the outer tip), then dished across its width.
+ */
+function createBlade(): THREE.BufferGeometry {
   const length = BLADE_LENGTH;
   const half = BLADE_MAX_WIDTH / 2;
   const neck = BLADE_NECK_HALF_WIDTH;
@@ -160,11 +153,8 @@ function createBladeShape(): THREE.Shape {
   shape.bezierCurveTo(half * 0.55, length, half, widest + length * 0.2, half, widest);
   shape.bezierCurveTo(half, widest - length * 0.18, neck * 1.6, length * 0.25, neck, 0);
   shape.closePath();
-  return shape;
-}
 
-function createBlade(): THREE.BufferGeometry {
-  const extruded = new THREE.ExtrudeGeometry(createBladeShape(), {
+  const extruded = new THREE.ExtrudeGeometry(shape, {
     depth: BLADE_THICKNESS,
     bevelEnabled: true,
     bevelThickness: 0.004,
@@ -182,39 +172,14 @@ function createBlade(): THREE.BufferGeometry {
 
   const position = blade.getAttribute("position");
   for (let i = 0; i < position.count; i++) {
-    position.setZ(i, position.getZ(i) + dishZ(position.getX(i), position.getY(i)));
+    const x = position.getX(i);
+    const y = position.getY(i);
+    const along = y / length;
+    position.setZ(i, position.getZ(i) + BLADE_DISH * x * x + BLADE_LENGTH_CURVE * along * along);
   }
   position.needsUpdate = true;
   blade.computeVertexNormals();
   return blade;
-}
-
-function createBladeRim(): THREE.TubeGeometry {
-  const outline = createBladeShape().getPoints(80);
-  if (
-    outline.length > 1 &&
-    outline[0].distanceToSquared(outline[outline.length - 1]) < 1e-8
-  ) {
-    outline.pop();
-  }
-
-  const points = outline.map((point) => new THREE.Vector3(point.x, point.y, dishZ(point.x, point.y)));
-  const curve = new THREE.CatmullRomCurve3(points, true);
-  return new THREE.TubeGeometry(curve, 160, RIM_RADIUS, 8, true);
-}
-
-function createBladeSpine(): THREE.BufferGeometry {
-  const length = BLADE_LENGTH * 0.78;
-  const spine = new THREE.BoxGeometry(SPINE_WIDTH, length, BLADE_THICKNESS + 0.006, 1, 24, 1);
-  spine.translate(0, 0.08 + length / 2, 0);
-
-  const position = spine.getAttribute("position");
-  for (let i = 0; i < position.count; i++) {
-    position.setZ(i, position.getZ(i) + dishZ(position.getX(i), position.getY(i)));
-  }
-  position.needsUpdate = true;
-  spine.computeVertexNormals();
-  return spine;
 }
 
 function createRing(y: number): THREE.CylinderGeometry {
@@ -223,28 +188,6 @@ function createRing(y: number): THREE.CylinderGeometry {
 }
 
 /* ---------- The paddle ---------- */
-
-function BladeAssembly({
-  blade,
-  rim,
-  spine,
-  carbon,
-  gold,
-}: {
-  blade: THREE.BufferGeometry;
-  rim: THREE.BufferGeometry;
-  spine: THREE.BufferGeometry;
-  carbon: THREE.Material;
-  gold: THREE.Material;
-}) {
-  return (
-    <group>
-      <mesh geometry={blade} material={carbon} />
-      <mesh geometry={rim} material={gold} />
-      <mesh geometry={spine} material={gold} />
-    </group>
-  );
-}
 
 function Paddle({
   env,
@@ -266,21 +209,17 @@ function Paddle({
     () => ({
       shaft: createShaft(),
       blade: createBlade(),
-      rim: createBladeRim(),
-      spine: createBladeSpine(),
       ringEnd: createRing(BLADE_OFFSET),
       ringMid: createRing(0),
       carbon: new THREE.MeshStandardMaterial({
         color: "#0d0f0e",
-        roughness: 0.24,
-        metalness: 0.10,
-        envMapIntensity: 1.1,
+        roughness: 0.26,
+        metalness: 0.08,
       }),
       gold: new THREE.MeshStandardMaterial({
         color: "#D8B96A",
-        roughness: 0.22,
-        metalness: 0.95,
-        envMapIntensity: 1.6,
+        roughness: 0.27,
+        metalness: 0.88,
       }),
     }),
     []
@@ -290,8 +229,6 @@ function Paddle({
     () => () => {
       parts.shaft.dispose();
       parts.blade.dispose();
-      parts.rim.dispose();
-      parts.spine.dispose();
       parts.ringEnd.dispose();
       parts.ringMid.dispose();
       parts.carbon.dispose();
@@ -351,25 +288,9 @@ function Paddle({
         <group scale={PADDLE_SCALE}>
           <mesh geometry={parts.shaft} material={parts.carbon} />
 
-          <group position={[0, BLADE_OFFSET, 0]}>
-            <BladeAssembly
-              blade={parts.blade}
-              rim={parts.rim}
-              spine={parts.spine}
-              carbon={parts.carbon}
-              gold={parts.gold}
-            />
-          </group>
+          <mesh geometry={parts.blade} material={parts.carbon} position={[0, BLADE_OFFSET, 0]} />
           <group position={[0, -BLADE_OFFSET, 0]} rotation={[0, FEATHER_ANGLE, 0]}>
-            <group rotation={[0, 0, Math.PI]}>
-              <BladeAssembly
-                blade={parts.blade}
-                rim={parts.rim}
-                spine={parts.spine}
-                carbon={parts.carbon}
-                gold={parts.gold}
-              />
-            </group>
+            <mesh geometry={parts.blade} material={parts.carbon} rotation={[0, 0, Math.PI]} />
           </group>
 
           <mesh geometry={parts.ringEnd} material={parts.gold} position={[0, BLADE_OFFSET, 0]} />
@@ -414,33 +335,20 @@ export default function PaddleScene() {
         <Canvas
           dpr={env.isMobile ? [1, 1.5] : [1, 2]}
           camera={{ position: CAMERA_POSITION, fov: CAMERA_FOV }}
-          gl={{
-            antialias: true,
-            alpha: true,
-            toneMapping: THREE.ACESFilmicToneMapping,
-            toneMappingExposure: 1.15,
-          }}
+          gl={{ antialias: true, alpha: true }}
           frameloop={env.reducedMotion ? "demand" : visible ? "always" : "never"}
         >
           <ambientLight intensity={0.18} />
-          <directionalLight position={[-3.5, 4, 5]} intensity={1.6} color="#FFEFD0" />
+          <directionalLight position={[-3.5, 4, 5]} intensity={2.2} color="#FFEFD0" />
           <directionalLight position={[4, 0.5, 4]} intensity={0.8} color="#CFE8DF" />
-          <directionalLight position={[1.5, 2.5, -5]} intensity={1.2} color="#D8B96A" />
-
-          <Environment resolution={256} frames={1}>
-            <Lightformer form="rect" intensity={3.2} color="#FFF6E4" position={[0, 6, 1]} scale={[10, 3, 1]} />
-            <Lightformer form="rect" intensity={2.4} color="#FFEFD0" position={[-5, 2, 3]} scale={[4, 6, 1]} />
-            <Lightformer form="rect" intensity={1.6} color="#CFE8DF" position={[5, 1, 2]} scale={[3, 7, 1]} />
-            <Lightformer form="rect" intensity={2.2} color="#D8B96A" position={[0, 2, -6]} scale={[8, 4, 1]} />
-            <Lightformer form="ring" intensity={1.4} color="#FFFFFF" position={[0, 0, 5]} scale={4} />
-          </Environment>
+          <directionalLight position={[1.5, 2.5, -5]} intensity={1.8} color="#D8B96A" />
 
           <Paddle env={env} startAtRef={startAtRef} />
 
           <ContactShadows
-            position={[-0.86, -1.32, 0]}
-            scale={1.8}
-            far={0.5}
+            position={[-0.72, -1.38, 0]}
+            scale={1.4}
+            far={0.45}
             blur={2.6}
             opacity={0.22}
             resolution={256}
