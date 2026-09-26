@@ -1,8 +1,7 @@
 import { Check } from "lucide-react";
 import { LinkButton } from "@/components/ui/link-button";
 import { StartCoachingButton } from "@/components/marketing/start-coaching-button";
-import { getStarterPriceLabel } from "@/lib/marketing/cta";
-import { cta, launch, pricing } from "@/content/copy";
+import { cta, launch } from "@/content/copy";
 
 type ProgramKey = "starter" | "technique" | "elite";
 
@@ -56,32 +55,20 @@ export function ProgramCard({ tier }: { tier: ProgramKey }) {
   const accentFeature =
     "accentFeature" in program ? program.accentFeature : undefined;
   const serviceParam = SERVICE_PARAM[tier] ?? "";
-  const priceLabel =
-    tier === "starter"
-      ? getStarterPriceLabel()
-      : (program as { priceNote?: string }).priceNote ?? pricing.manualReviewNote;
+  const priceLabel = (program as { priceNote?: string }).priceNote ?? "";
 
   return (
     <article className="premium-card">
-      <div
-        className={
-          tier === "starter"
-            ? "premium-card-top"
-            : "premium-card-top premium-card-top--priced"
-        }
-      >
+      <div className="premium-card-top premium-card-top--priced">
         <span className="premium-card-number">{program.number}</span>
         {badge ? <span className="premium-card-badge">{badge}</span> : null}
-        {tier !== "starter" ? (
+        {priceLabel ? (
           <span className="premium-card-price-badge">{priceLabel}</span>
         ) : null}
       </div>
 
       <div className="premium-card-heading">
         <h3 className="premium-card-title">{program.name}</h3>
-        {tier === "starter" ? (
-          <p className="premium-card-price">{priceLabel}</p>
-        ) : null}
       </div>
       <p className="premium-card-desc">{program.description}</p>
 

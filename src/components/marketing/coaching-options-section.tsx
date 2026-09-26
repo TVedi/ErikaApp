@@ -54,22 +54,18 @@ function PremiumProgramCard({ tier }: { tier: ProgramTier }) {
   const program = launch.programs[tier];
   const accentFeature =
     "accentFeature" in program ? program.accentFeature : undefined;
-  const priceNote = "priceNote" in program ? program.priceNote : undefined;
+  const priceLabel = (program as { priceNote?: string }).priceNote ?? "";
   const badge = "badge" in program ? program.badge : undefined;
   const ctaLabel = "ctaLabel" in program ? program.ctaLabel : undefined;
   const serviceParam = SERVICE_PARAM[tier] ?? "";
 
   return (
     <article className="premium-card">
-      <div
-        className={
-          priceNote ? "premium-card-top premium-card-top--priced" : "premium-card-top"
-        }
-      >
+      <div className="premium-card-top premium-card-top--priced">
         <span className="premium-card-number">{program.number}</span>
         {badge ? <span className="premium-card-badge">{badge}</span> : null}
-        {priceNote ? (
-          <span className="premium-card-price-badge">{priceNote}</span>
+        {priceLabel ? (
+          <span className="premium-card-price-badge">{priceLabel}</span>
         ) : null}
       </div>
 

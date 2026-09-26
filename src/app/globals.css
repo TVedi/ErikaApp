@@ -10452,3 +10452,52 @@ section[aria-labelledby="programs-heading"] .premium-card-badge {
     filter: none;
   }
 }
+
+/* Price pills, the condition line and the subgrid row count.
+   The pill returned to champagne - coral read as an alert rather than a price
+   - and is set not to wrap so all three sit on one baseline. The condition
+   line was styled for the home page only, so on /pricing it inherited the
+   default size and colour. And the cards' subgrid row counts were fixed
+   before that line existed, so the extra element overflowed behind the
+   button; each count goes up by one. */
+section[aria-labelledby="coaching-options-heading"] .premium-card-price-badge,
+section[aria-labelledby="programs-heading"] .premium-card-price-badge {
+  align-self: center;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--premium-champagne);
+  border-color: rgba(216, 185, 106, 0.38);
+  background: rgba(216, 185, 106, 0.1);
+}
+
+section[aria-labelledby="programs-heading"] .premium-card-note {
+  margin: 0.4rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  color: var(--premium-muted-cream, rgba(247, 241, 230, 0.66));
+}
+
+@media (min-width: 1024px) {
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-card-reveal,
+  section[aria-labelledby="coaching-options-heading"] .premium-card {
+    grid-row: span 10;
+  }
+
+  section[aria-labelledby="programs-heading"] .premium-card {
+    grid-row: span 9;
+  }
+}
+
+/* Re-assert reduced motion last: the rules above come later in the file than
+   the earlier override, so without this they would switch the pulse back on
+   for anyone who has asked for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  .oly-diploma-badge-btn,
+  section[aria-labelledby="coaching-options-heading"] .premium-card-badge,
+  section[aria-labelledby="programs-heading"] .premium-card-badge {
+    animation: none;
+    opacity: 1;
+    filter: none;
+  }
+}
