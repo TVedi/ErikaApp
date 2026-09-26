@@ -5,6 +5,7 @@ import { createAdminClient } from "@/lib/supabase/admin";
 import { isAllowedRequestOrigin } from "@/lib/security/origin-check";
 import { checkRateLimit } from "@/lib/security/rate-limit";
 import { revalidatePath } from "next/cache";
+import { sendWaitlistEmail } from "@/lib/email/notify";
 
 function getClientIp(headerStore: Headers): string {
   return (
@@ -54,6 +55,8 @@ export async function joinWaitlist(email: string, website?: string): Promise<{
       });
       return { success: false, error: "server" };
     }
+
+    await sendWaitlistEmail(trimmed);
 
     revalidatePath("/");
     return { success: true };

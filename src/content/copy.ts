@@ -856,4 +856,11 @@ export const emails = {
     intro: "A new coaching application has arrived.",
     replyHint: "Reply to this email to reach the applicant directly.",
   },
+  waitlist: {
+    subject: "You're on the list",
+    body: [
+      "Thank you for joining the waiting list.",
+      "You will be among the first to hear when coaching places open, and when the video course becomes available.",
+    ],
+  },
 } as const;

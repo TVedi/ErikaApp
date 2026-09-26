@@ -122,6 +122,44 @@ function coachText(data: Record<string, unknown>): string {
   return [emails.coach.intro, "", ...lines, "", emails.coach.replyHint].join("\n");
 }
 
+type EmailPayload = {
+  to: string;
+  subject: string;
+  text: string;
+  replyTo: string;
+};
+
+/** The single Resend request every message goes through. */
+function createSender(apiKey: string, from: string, notifyEmail: string) {
+  return async (payload: EmailPayload): Promise<void> => {
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from,
+        to: [payload.to],
+        subject: payload.subject,
+        text: payload.text,
+        reply_to: payload.replyTo,
+        headers: {
+          "List-Unsubscribe": `<mailto:${notifyEmail}>`,
+          "Auto-Submitted": "auto-generated",
+        },
+      }),
+      signal: AbortSignal.timeout(SEND_TIMEOUT_MS),
+    });
+    if (!res.ok) {
+      console.error("resend send failed", {
+        status: res.status,
+        body: await res.text(),
+      });
+    }
+  };
+}
+
 async function attempt(label: string, task: () => Promise<void>): Promise<void> {
   try {
     await task();
@@ -154,34 +192,7 @@ export async function sendApplicationEmails(
       return;
     }
 
-    const send = async (payload: {
-      to: string;
-      subject: string;
-      text: string;
-      replyTo: string;
-    }): Promise<void> => {
-      const res = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          from,
-          to: [payload.to],
-          subject: payload.subject,
-          text: payload.text,
-          reply_to: payload.replyTo,
-        }),
-        signal: AbortSignal.timeout(SEND_TIMEOUT_MS),
-      });
-      if (!res.ok) {
-        console.error("resend send failed", {
-          status: res.status,
-          body: await res.text(),
-        });
-      }
-    };
+    const send = createSender(apiKey, from, notifyEmail);
 
     const fullName = String(data.full_name ?? "").trim();
     const applicantEmail = typeof data.email === "string" ? data.email.trim() : "";
@@ -211,6 +222,44 @@ export async function sendApplicationEmails(
     ]);
   } catch (err) {
     console.error("application emails failed", {
+      message: err instanceof Error ? err.message : String(err),
+    });
+  }
+}
+
+function waitlistText(): string {
+  const { signOff, signOffTitle } = emails.applicant;
+  return [emails.waitlist.body.join("\n\n"), "", signOff, signOffTitle].join("\n");
+}
+
+/**
+ * Confirms a waitlist join to the subscriber only; Erika is not notified.
+ * Never throws: the address is already saved when this runs.
+ */
+export async function sendWaitlistEmail(to: string): Promise<void> {
+  try {
+    const apiKey = process.env.RESEND_API_KEY?.trim();
+    const notifyEmail = process.env.NOTIFY_EMAIL?.trim();
+    if (!apiKey || !notifyEmail) {
+      console.warn("waitlist email skipped: RESEND_API_KEY or NOTIFY_EMAIL is not set");
+      return;
+    }
+
+    const from = senderAddress();
+    if (!from) {
+      console.warn("waitlist email skipped: NEXT_PUBLIC_SITE_URL is missing or invalid");
+      return;
+    }
+
+    const send = createSender(apiKey, from, notifyEmail);
+    await send({
+      to,
+      subject: emails.waitlist.subject,
+      text: waitlistText(),
+      replyTo: notifyEmail,
+    });
+  } catch (err) {
+    console.error("waitlist email failed", {
       message: err instanceof Error ? err.message : String(err),
     });
   }
