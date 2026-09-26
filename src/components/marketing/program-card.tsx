@@ -103,7 +103,7 @@ export function ProgramCard({ tier }: { tier: ProgramKey }) {
           <LinkButton
             href={`/apply?service=${serviceParam}`}
             size="sm"
-            className="btn-cta-gold-outline w-full"
+            className="btn-cta-primary w-full"
           >
             {ctaLabel ?? cta.requestEvaluation}
             <CtaArrow />
