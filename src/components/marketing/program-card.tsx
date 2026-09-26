@@ -6,6 +6,12 @@ import { cta, launch, pricing } from "@/content/copy";
 
 type ProgramKey = "starter" | "technique" | "elite";
 
+const SERVICE_PARAM: Record<string, string> = {
+  starter: "technique_review",
+  technique: "performance_coaching",
+  elite: "high_performance_coaching",
+};
+
 /** Clean arrow — same mark used on Coaching Options gold CTAs */
 function CtaArrow() {
   return (
@@ -47,6 +53,7 @@ export function ProgramCard({ tier }: { tier: ProgramKey }) {
   const program = launch.programs[tier];
   const badge = "badge" in program ? program.badge : undefined;
   const ctaLabel = "ctaLabel" in program ? program.ctaLabel : undefined;
+  const serviceParam = SERVICE_PARAM[tier] ?? "";
   const priceLabel =
     tier === "starter"
       ? getStarterPriceLabel()
@@ -93,7 +100,7 @@ export function ProgramCard({ tier }: { tier: ProgramKey }) {
           />
         ) : (
           <LinkButton
-            href="/apply"
+            href={`/apply?service=${serviceParam}`}
             size="sm"
             className="btn-cta-gold-outline w-full"
           >

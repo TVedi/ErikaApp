@@ -10394,3 +10394,23 @@ section[aria-labelledby="programs-heading"] .premium-card-price-badge {
     overflow-x: clip;
   }
 }
+
+/* Apply page (desktop): the column began below the grid's top padding but
+   pinned at 4rem, so it travelled that gap before catching - which read as a
+   jump. The padding moves to the text column, so the photo starts where it
+   pins. cover was cropping the figure's legs; contain fits the whole picture,
+   and the column's canvas background hides the space it leaves. */
+@media (min-width: 1024px) {
+  .apply-split {
+    padding-top: 0;
+  }
+
+  .apply-content {
+    padding-top: clamp(2rem, 5vh, 3.25rem);
+  }
+
+  .apply-photo {
+    object-fit: contain;
+    object-position: center top;
+  }
+}

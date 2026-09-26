@@ -11,6 +11,12 @@ type ProgramTier = "starter" | "technique" | "elite";
 
 const TIERS: ProgramTier[] = ["starter", "technique", "elite"];
 
+const SERVICE_PARAM: Record<string, string> = {
+  starter: "technique_review",
+  technique: "performance_coaching",
+  elite: "high_performance_coaching",
+};
+
 /** Clean arrow -- never paste raw unicode into CSS content */
 function CtaArrow() {
   return (
@@ -51,6 +57,7 @@ function PremiumProgramCard({ tier }: { tier: ProgramTier }) {
   const priceNote = "priceNote" in program ? program.priceNote : undefined;
   const badge = "badge" in program ? program.badge : undefined;
   const ctaLabel = "ctaLabel" in program ? program.ctaLabel : undefined;
+  const serviceParam = SERVICE_PARAM[tier] ?? "";
 
   return (
     <article className="premium-card">
@@ -89,7 +96,7 @@ function PremiumProgramCard({ tier }: { tier: ProgramTier }) {
           />
         ) : (
           <LinkButton
-            href="/apply"
+            href={`/apply?service=${serviceParam}`}
             size="sm"
             className="btn-cta-primary w-full"
           >

@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { TurnstileWidget } from "@/components/apply/turnstile-widget";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -117,7 +118,21 @@ function SelectField({
   );
 }
 
-export function ApplyForm({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
+/**
+ * useSearchParams on a prerendered route must sit inside a Suspense boundary,
+ * otherwise `next build` fails on /apply.
+ */
+export function ApplyForm(props: { turnstileSiteKey?: string }) {
+  return (
+    <Suspense fallback={null}>
+      <ApplyFormInner {...props} />
+    </Suspense>
+  );
+}
+
+function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
+  const searchParams = useSearchParams();
+  const presetService = searchParams.get("service") ?? "";
   const [loading] = useState(false);
   const [age, setAge] = useState("");
   const [hasCoach, setHasCoach] = useState("");
@@ -271,11 +286,25 @@ export function ApplyForm({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
 
       <section className="apply-section">
         <h2 className="apply-section-title">{applyV2.coachingInterest.title}</h2>
-        <SelectField
-          name="service_interest"
-          label={applyV2.coachingInterest.question}
-          options={applyV2.coachingInterest.options}
-        />
+        <div className="space-y-2">
+          <FieldLabel htmlFor="service_interest" required={isRequired("service_interest")}>
+            {applyV2.coachingInterest.question}
+          </FieldLabel>
+          <select
+            id="service_interest"
+            name="service_interest"
+            required={isRequired("service_interest")}
+            className="apply-select"
+            defaultValue={applyV2.coachingInterest.options.some((o) => o.value === presetService) ? presetService : ""}
+          >
+            <option value="">{SELECT_PLACEHOLDER}</option>
+            {applyV2.coachingInterest.options.map((opt) => (
+              <option key={opt.value} value={opt.value}>
+                {opt.label}
+              </option>
+            ))}
+          </select>
+        </div>
       </section>
 
       <section className="apply-section">
