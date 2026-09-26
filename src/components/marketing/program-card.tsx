@@ -97,6 +97,7 @@ export function ProgramCard({ tier }: { tier: ProgramKey }) {
             size="sm"
             className="btn-cta-primary w-full"
             label={ctaLabel ?? cta.getStarted}
+            service={serviceParam}
           />
         ) : (
           <LinkButton

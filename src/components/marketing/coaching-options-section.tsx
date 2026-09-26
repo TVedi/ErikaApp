@@ -93,6 +93,7 @@ function PremiumProgramCard({ tier }: { tier: ProgramTier }) {
             size="sm"
             className="btn-cta-primary w-full"
             label={ctaLabel ?? cta.getStarted}
+            service={serviceParam}
           />
         ) : (
           <LinkButton

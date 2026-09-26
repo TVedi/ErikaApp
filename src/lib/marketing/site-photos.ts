@@ -24,6 +24,14 @@ export const sitePhotos = {
     width: 979,
     height: 1462,
   },
+  /** Same photo as aboutPortrait, cropped lower for the tall /apply column. */
+  applyPortrait: {
+    src: "/about-portrait.jpg",
+    alt: "Erika Medveczky with kayak paddle",
+    objectPosition: "center 32%",
+    width: 979,
+    height: 1462,
+  },
   videoTechnique: {
     src: "/video-technique.jpg",
     alt: "Erika Medveczky paddling in training",

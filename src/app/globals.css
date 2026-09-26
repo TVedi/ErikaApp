@@ -10410,7 +10410,6 @@ section[aria-labelledby="programs-heading"] .premium-card-price-badge {
   }
 
   .apply-photo {
-    object-fit: contain;
-    object-position: center top;
+    object-fit: cover;
   }
 }

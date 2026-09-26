@@ -5,7 +5,7 @@ import { apply, nav } from "@/content/copy";
 import { sitePhotos } from "@/lib/marketing/site-photos";
 import type { Metadata } from "next";
 
-const photo = sitePhotos.aboutPortrait;
+const photo = sitePhotos.applyPortrait;
 
 export const metadata: Metadata = {
   title: "Apply",

@@ -10,6 +10,7 @@ export function StartCoachingButton({
   className,
   label = cta.startCoaching,
   variant = "default",
+  service,
 }: {
   size?: "default" | "sm" | "lg";
   className?: string;
@@ -17,8 +18,12 @@ export function StartCoachingButton({
   label?: string;
   /** Pass "outline" for gold-outline CTAs (avoids coral default fill). */
   variant?: "default" | "outline" | "secondary" | "ghost" | "destructive" | "link";
+  /** Preselects the tier on /apply; ignored when a Stripe checkout link is set. */
+  service?: string;
 }) {
-  const href = getStartCoachingHref();
+  const baseHref = getStartCoachingHref();
+  const href =
+    service && baseHref === "/apply" ? `/apply?service=${service}` : baseHref;
   const external = isExternalCheckout();
 
   return (
