@@ -10413,24 +10413,3 @@ section[aria-labelledby="programs-heading"] .premium-card-price-badge {
     object-fit: cover;
   }
 }
-
-/* Paddle showcase: the canvas fills its section and sits on the site canvas.
-   The radial wash is a background, not a glowing ring - it must stay subtle. */
-.paddle-stage {
-  position: relative;
-  width: 100%;
-  height: min(70lvh, 34rem);
-  background:
-    radial-gradient(
-      circle at 48% 48%,
-      rgba(24, 87, 67, 0.23) 0%,
-      rgba(2, 43, 35, 0.08) 38%,
-      rgba(0, 29, 24, 0) 72%
-    );
-}
-
-@media (max-width: 767px) {
-  .paddle-stage {
-    height: min(58lvh, 26rem);
-  }
-}
