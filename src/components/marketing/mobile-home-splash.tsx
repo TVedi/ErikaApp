@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { BrandMark } from "@/components/layout/brand-mark";
@@ -8,6 +11,20 @@ import { hero } from "@/content/copy";
  * cream motto, coral scroll chevron (anchor only; no JS scroll controller).
  */
 export function MobileHomeSplash() {
+  const [alreadyPlayed, setAlreadyPlayed] = useState(false);
+
+  useEffect(() => {
+    try {
+      if (sessionStorage.getItem("splash-played") === "1") {
+        setAlreadyPlayed(true);
+      } else {
+        sessionStorage.setItem("splash-played", "1");
+      }
+    } catch {
+      // Private mode or storage disabled: fall through and animate as normal.
+    }
+  }, []);
+
   return (
     <div className="mobile-home-splash lg:hidden" data-mobile-home-splash="">
       <div className="mobile-home-splash-photo-slot" aria-hidden="false">
@@ -32,7 +49,7 @@ export function MobileHomeSplash() {
         <BrandMark className="mobile-home-splash-mark" aria-hidden="true" />
       </Link>
 
-      <div className="mobile-home-splash-bottom">
+      <div className={`mobile-home-splash-bottom ${alreadyPlayed ? "splash-settled" : ""}`}>
         <span className="mobile-home-splash-rule" aria-hidden="true" />
         <p className="mobile-home-splash-slogan">{hero.mobileOpeningSlogan}</p>
         <a

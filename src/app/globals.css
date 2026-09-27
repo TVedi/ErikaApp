@@ -10530,3 +10530,66 @@ section[aria-labelledby="programs-heading"] .premium-card-top--priced .premium-c
     filter: none;
   }
 }
+
+/* Mobile splash: the motto lift is a CSS animation, so it replays every time
+   React recreates the element - which happens on every client-side return to
+   the home page, leaving the motto 207px low for two and a half seconds. When
+   the splash has already played this session, the motto is rendered in its
+   final position with no animation. */
+@media (max-width: 1023px) {
+  .splash-settled {
+    animation: none !important;
+    transform: translateY(calc(-1 * var(--mobile-splash-lift)));
+  }
+}
+
+/* Programs page: the paddle fills the empty space to the right of the cards
+   on desktop. Decorative, so it is hidden where the cards already use the
+   full width. */
+.programs-page-photo {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .programs-page-section {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .programs-page-photo {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 46%;
+    max-width: 44rem;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .programs-page-photo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: right center;
+  }
+
+  .programs-page-inner {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* Re-assert reduced motion last: the rules above come later in the file than
+   the earlier override, so without this they would switch the pulse back on
+   for anyone who has asked for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  .oly-diploma-badge-btn,
+  section[aria-labelledby="coaching-options-heading"] .premium-card-badge,
+  section[aria-labelledby="programs-heading"] .premium-card-badge {
+    animation: none;
+    opacity: 1;
+    filter: none;
+  }
+}
