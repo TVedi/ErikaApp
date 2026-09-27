@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { PublicLayout } from "@/components/layout/public-layout";
 import { ProgramCard } from "@/components/marketing/program-card";
 import { PremiumSectionDivider } from "@/components/marketing/premium-section-divider";
@@ -33,16 +32,6 @@ export default function PricingPage() {
             <ProgramCard tier="technique" />
             <ProgramCard tier="elite" />
           </div>
-        </div>
-        <div className="programs-page-photo" aria-hidden="true">
-          <Image
-            src="/Lapat.png"
-            alt=""
-            width={1254}
-            height={1254}
-            className="programs-page-photo-img"
-            priority={false}
-          />
         </div>
         <PremiumSectionDivider />
       </section>
