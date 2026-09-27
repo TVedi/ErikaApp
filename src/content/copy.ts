@@ -98,7 +98,7 @@ export const launch = {
       accentFeature: "One-time service · No monthly commitment",
       cta: "start" as const,
       ctaLabel: "Book a Technique Review",
-      priceNote: "ONE-TIME · $225",
+      priceNote: "$225 / ONE-TIME",
     },
     technique: {
       number: "02",

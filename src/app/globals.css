@@ -10501,3 +10501,32 @@ section[aria-labelledby="programs-heading"] .premium-card-note {
     filter: none;
   }
 }
+
+/* Priced card header: the price pill was given white-space: nowrap but sat in
+   a shrinkable column, so it spilled past the card edge. Its column now sizes
+   to content and the badge column absorbs the slack. The pill is also pinned
+   to the last column, so on card 01 - which has no badge - it stays on the
+   right instead of dropping into the badge slot. */
+section[aria-labelledby="coaching-options-heading"] .premium-card-top--priced,
+section[aria-labelledby="programs-heading"] .premium-card-top--priced {
+  grid-template-columns: auto minmax(0, 1fr) auto;
+}
+
+section[aria-labelledby="coaching-options-heading"] .premium-card-top--priced .premium-card-price-badge,
+section[aria-labelledby="programs-heading"] .premium-card-top--priced .premium-card-price-badge {
+  grid-column: 3;
+  justify-self: end;
+}
+
+/* Re-assert reduced motion last: the rules above come later in the file than
+   the earlier override, so without this they would switch the pulse back on
+   for anyone who has asked for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  .oly-diploma-badge-btn,
+  section[aria-labelledby="coaching-options-heading"] .premium-card-badge,
+  section[aria-labelledby="programs-heading"] .premium-card-badge {
+    animation: none;
+    opacity: 1;
+    filter: none;
+  }
+}
