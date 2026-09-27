@@ -79,9 +79,6 @@ export function WhyWorkWithErikaSection() {
           <Link href="/apply" className="why-erika-cta">
             Apply for Coaching
           </Link>
-          <Link href="#video-analysis-heading" className="why-erika-next">
-            Continue to Video Analysis
-          </Link>
         </div>
       </div>
 
