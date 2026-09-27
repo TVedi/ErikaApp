@@ -10543,10 +10543,6 @@ section[aria-labelledby="programs-heading"] .premium-card-top--priced .premium-c
     height: 100lvh;
     min-height: 100lvh;
   }
-
-  .mobile-home-splash-bottom {
-    padding-bottom: calc(100lvh - 100svh);
-  }
 }
 
 /* Re-assert reduced motion last: the rules above come later in the file than
