@@ -56,20 +56,28 @@ export function WaitlistForm() {
           onChange={(e) => setEmail(e.target.value)}
           required
           className="flex-1"
+          aria-describedby={status !== "idle" ? "waitlist-status" : undefined}
         />
         <Button type="submit" disabled={loading} className="btn-cta-primary">
           {waitlist.button}
         </Button>
       </form>
-      {status === "success" && (
-        <p className="mt-3 text-sm text-green-700">{waitlist.success}</p>
-      )}
-      {status === "duplicate" && (
-        <p className="mt-3 text-sm text-muted-foreground">{waitlist.duplicate}</p>
-      )}
-      {status === "error" && (
-        <p className="mt-3 text-sm text-destructive">{waitlist.error}</p>
-      )}
+      <div
+        id="waitlist-status"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        {status === "success" && (
+          <p className="mt-3 text-sm text-green-700">{waitlist.success}</p>
+        )}
+        {status === "duplicate" && (
+          <p className="mt-3 text-sm text-muted-foreground">{waitlist.duplicate}</p>
+        )}
+        {status === "error" && (
+          <p className="mt-3 text-sm text-destructive">{waitlist.error}</p>
+        )}
+      </div>
     </div>
   );
 }

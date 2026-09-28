@@ -185,8 +185,8 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
     <form onSubmit={handleSubmit} className="apply-form space-y-6">
       <p className="apply-required-note">{applyV2.requiredNote}</p>
 
-      <section className="apply-section">
-        <h2 className="apply-section-title">{contact.title}</h2>
+      <section className="apply-section" aria-labelledby="apply-contact-heading">
+        <h2 id="apply-contact-heading" className="apply-section-title">{contact.title}</h2>
 
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="space-y-2">
@@ -257,11 +257,11 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
         </div>
 
         {isMinor && !guardianFilled && (
-          <p className="apply-minor-note">{applyCopy.minorNote}</p>
+          <p id="apply-minor-note" className="apply-minor-note">{applyCopy.minorNote}</p>
         )}
 
         {isMinor && (
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-4 sm:grid-cols-2" role="group" aria-live="polite">
             <div className="space-y-2">
               <FieldLabel htmlFor="guardian_name" required={isRequired("guardian_name")}>
                 {contact.fields.guardianName}
@@ -285,6 +285,7 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
                 required={isRequired("guardian_email")}
                 maxLength={254}
                 className="apply-field"
+                aria-describedby={isMinor && !guardianFilled ? "apply-minor-note" : undefined}
                 {...englishPrompt("A parent or guardian email is required for athletes under 18.")}
                 onChange={(e) => {
                   e.currentTarget.setCustomValidity("");
@@ -296,8 +297,8 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
         )}
       </section>
 
-      <section className="apply-section">
-        <h2 className="apply-section-title">{applyV2.athleteLevel.title}</h2>
+      <section className="apply-section" aria-labelledby="apply-athlete-level-heading">
+        <h2 id="apply-athlete-level-heading" className="apply-section-title">{applyV2.athleteLevel.title}</h2>
         <SelectField
           name="athlete_level"
           label={applyV2.athleteLevel.question}
@@ -305,8 +306,8 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
         />
       </section>
 
-      <section className="apply-section">
-        <h2 className="apply-section-title">{applyV2.coachingInterest.title}</h2>
+      <section className="apply-section" aria-labelledby="apply-coaching-interest-heading">
+        <h2 id="apply-coaching-interest-heading" className="apply-section-title">{applyV2.coachingInterest.title}</h2>
         <div className="space-y-2">
           <FieldLabel htmlFor="service_interest" required={isRequired("service_interest")}>
             {applyV2.coachingInterest.question}
@@ -328,8 +329,8 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
         </div>
       </section>
 
-      <section className="apply-section">
-        <h2 className="apply-section-title">{applyV2.eventDistance.title}</h2>
+      <section className="apply-section" aria-labelledby="apply-event-distance-heading">
+        <h2 id="apply-event-distance-heading" className="apply-section-title">{applyV2.eventDistance.title}</h2>
         <SelectField
           name="event_focus"
           label={applyV2.eventDistance.question}
@@ -337,16 +338,16 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
         />
       </section>
 
-      <section className="apply-section">
-        <h2 className="apply-section-title">{performance.title}</h2>
+      <section className="apply-section" aria-labelledby="apply-performance-heading">
+        <h2 id="apply-performance-heading" className="apply-section-title">{performance.title}</h2>
         <TextField name="best_500m" label={performance.fields.best500m} />
         <TextField name="best_2000m" label={performance.fields.best2000m} />
         <TextField name="times_context" label={performance.fields.timesContext} />
         <TextField name="recent_result" label={performance.fields.recentResult} />
       </section>
 
-      <section className="apply-section">
-        <h2 className="apply-section-title">{trainingBackground.title}</h2>
+      <section className="apply-section" aria-labelledby="apply-training-background-heading">
+        <h2 id="apply-training-background-heading" className="apply-section-title">{trainingBackground.title}</h2>
         <TextField name="years_paddling" label={trainingBackground.fields.yearsPaddling} />
         <TextField
           name="sessions_per_week"
@@ -365,15 +366,17 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
           onChange={(e) => setHasCoach(e.target.value)}
         />
         {hasCoach === "yes" && (
-          <TextareaField
-            name="additional_support"
-            label={trainingBackground.fields.additionalSupport}
-          />
+          <div role="group" aria-live="polite">
+            <TextareaField
+              name="additional_support"
+              label={trainingBackground.fields.additionalSupport}
+            />
+          </div>
         )}
       </section>
 
-      <section className="apply-section">
-        <h2 className="apply-section-title">{trainingEnvironment.title}</h2>
+      <section className="apply-section" aria-labelledby="apply-training-environment-heading">
+        <h2 id="apply-training-environment-heading" className="apply-section-title">{trainingEnvironment.title}</h2>
         <SelectField
           name="water_access"
           label={trainingEnvironment.fields.waterAccess}
@@ -391,11 +394,13 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
           onChange={(e) => setUsesDevice(e.target.value)}
         />
         {usesDevice === "yes" && (
-          <SelectField
-            name="device_platform"
-            label={trainingEnvironment.fields.devicePlatform}
-            options={trainingEnvironment.deviceOptions}
-          />
+          <div role="group" aria-live="polite">
+            <SelectField
+              name="device_platform"
+              label={trainingEnvironment.fields.devicePlatform}
+              options={trainingEnvironment.deviceOptions}
+            />
+          </div>
         )}
         <SelectField
           name="shares_data"
@@ -414,8 +419,8 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
         />
       </section>
 
-      <section className="apply-section">
-        <h2 className="apply-section-title">{applyV2.goals.title}</h2>
+      <section className="apply-section" aria-labelledby="apply-goals-heading">
+        <h2 id="apply-goals-heading" className="apply-section-title">{applyV2.goals.title}</h2>
         <TextareaField
           name="improvement_goal"
           label={applyV2.goals.fields.improvementGoal}
@@ -427,20 +432,22 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
           onChange={(e) => setHasTargetRace(e.target.value)}
         />
         {hasTargetRace === "yes" && (
-          <TextField name="target_race" label={applyV2.goals.fields.targetRace} />
+          <div role="group" aria-live="polite">
+            <TextField name="target_race" label={applyV2.goals.fields.targetRace} />
+          </div>
         )}
       </section>
 
-      <section className="apply-section">
-        <h2 className="apply-section-title">{applyV2.challenge.title}</h2>
+      <section className="apply-section" aria-labelledby="apply-challenge-heading">
+        <h2 id="apply-challenge-heading" className="apply-section-title">{applyV2.challenge.title}</h2>
         <TextareaField
           name="current_challenge"
           label={applyV2.challenge.fields.currentChallenge}
         />
       </section>
 
-      <section className="apply-section">
-        <h2 className="apply-section-title">{applyV2.commitment.title}</h2>
+      <section className="apply-section" aria-labelledby="apply-commitment-heading">
+        <h2 id="apply-commitment-heading" className="apply-section-title">{applyV2.commitment.title}</h2>
         <TextField
           name="committed_sessions"
           label={applyV2.commitment.fields.committedSessions}
@@ -452,8 +459,8 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
         />
       </section>
 
-      <section className="apply-section">
-        <h2 className="apply-section-title">{applyV2.finalQuestions.title}</h2>
+      <section className="apply-section" aria-labelledby="apply-final-questions-heading">
+        <h2 id="apply-final-questions-heading" className="apply-section-title">{applyV2.finalQuestions.title}</h2>
         <TextareaField
           name="why_interested"
           label={applyV2.finalQuestions.fields.whyInterested}
@@ -511,7 +518,9 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
 
       <p className="apply-no-guarantee">{applyV2.noGuaranteeNotice}</p>
 
-      {error && <p className="apply-error">{error}</p>}
+      <div role="alert" aria-live="assertive">
+        {error && <p className="apply-error">{error}</p>}
+      </div>
 
       <Button type="submit" disabled={loading} className="w-full btn-cta-primary apply-submit">
         {loading ? applyCopy.submitting : applyCopy.submit}

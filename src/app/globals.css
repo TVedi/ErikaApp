@@ -10557,3 +10557,26 @@ section[aria-labelledby="programs-heading"] .premium-card-top--priced .premium-c
     filter: none;
   }
 }
+
+/* The medal collage drifts continuously. For anyone who has asked their
+   system for less motion - often because moving content causes migraine or
+   nausea - it holds still instead. The layout and the photographs are
+   unchanged; only the movement stops. */
+@media (prefers-reduced-motion: reduce) {
+  .about-medal-card,
+  .about-medal-stack {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Re-assert the existing reduced-motion overrides last, unchanged. */
+@media (prefers-reduced-motion: reduce) {
+  .oly-diploma-badge-btn,
+  section[aria-labelledby="coaching-options-heading"] .premium-card-badge,
+  section[aria-labelledby="programs-heading"] .premium-card-badge {
+    animation: none;
+    opacity: 1;
+    filter: none;
+  }
+}
