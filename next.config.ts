@@ -7,7 +7,24 @@ const securityHeaders = [
   {
     key: "Content-Security-Policy",
     value:
-      "frame-ancestors 'none'; default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com https://checkout.stripe.com; connect-src 'self' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'",
+      [
+        "frame-ancestors 'none'",
+        "default-src 'self'",
+        // 'unsafe-inline' stays: Next inlines its bootstrap scripts, and
+        // removing it needs a per-request nonce threaded through the
+        // framework. 'unsafe-eval' is development-only.
+        `script-src 'self' 'unsafe-inline'${
+          process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""
+        } https://challenges.cloudflare.com`,
+        "style-src 'self' 'unsafe-inline'",
+        "img-src 'self' data: blob:",
+        "font-src 'self' data:",
+        "frame-src https://challenges.cloudflare.com https://checkout.stripe.com",
+        "connect-src 'self' https://challenges.cloudflare.com",
+        "object-src 'none'",
+        "base-uri 'self'",
+        "form-action 'self'",
+      ].join("; "),
   },
   {
     key: "Permissions-Policy",
