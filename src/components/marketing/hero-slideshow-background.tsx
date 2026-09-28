@@ -38,32 +38,46 @@ export function HeroSlideshowBackground() {
   useEffect(() => {
     let cancelled = false;
 
-    async function preloadSlides() {
-      await Promise.all(
-        HERO_SLIDESHOW_IMAGES.map(async (slide) => {
-          const img = new window.Image();
-          img.src = slide.src;
-          if (typeof img.decode === "function") {
-            try {
-              await img.decode();
-            } catch {
-              // decode() can fail for missing assets; still allow slideshow to start
-            }
-          } else {
-            await new Promise<void>((resolve) => {
-              img.onload = () => resolve();
-              img.onerror = () => resolve();
-            });
-          }
-        })
-      );
-
-      if (!cancelled) {
-        setImagesReady(true);
+    async function loadSlide(src: string) {
+      const img = new window.Image();
+      img.src = src;
+      if (typeof img.decode === "function") {
+        try {
+          await img.decode();
+        } catch {
+          // decode() can fail for missing assets; still allow the
+          // slideshow to start
+        }
+      } else {
+        await new Promise<void>((resolve) => {
+          img.onload = () => resolve();
+          img.onerror = () => resolve();
+        });
       }
     }
 
-    preloadSlides();
+    async function preloadSlides() {
+      const [first, ...rest] = HERO_SLIDESHOW_IMAGES;
+      if (first) {
+        await loadSlide(first.src);
+      }
+      if (cancelled) return;
+      setImagesReady(true);
+
+      const idle =
+        typeof window.requestIdleCallback === "function"
+          ? window.requestIdleCallback
+          : (cb: () => void) => window.setTimeout(cb, 1200);
+
+      idle(() => {
+        if (cancelled) return;
+        rest.forEach((slide) => {
+          void loadSlide(slide.src);
+        });
+      });
+    }
+
+    void preloadSlides();
 
     return () => {
       cancelled = true;
