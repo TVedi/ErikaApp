@@ -114,6 +114,23 @@ function applicantText(fullName: string): string {
   ].join("\n");
 }
 
+function guardianText(guardianName: string, athleteName: string): string {
+  const greeting = guardianName
+    ? emails.guardian.greeting.replace("{name}", guardianName)
+    : "Hello,";
+  const paragraphs = emails.guardian.body.map((paragraph) =>
+    paragraph.replace("{athlete}", athleteName)
+  );
+  return [
+    greeting,
+    "",
+    paragraphs.join("\n\n"),
+    "",
+    emails.applicant.signOff,
+    emails.applicant.signOffTitle,
+  ].join("\n");
+}
+
 function coachText(data: Record<string, unknown>): string {
   const lines = FIELDS.flatMap((field) => {
     const value = displayValue(field, data[field.name]);
@@ -220,6 +237,25 @@ export async function sendApplicationEmails(
         })
       ),
     ]);
+
+    const guardianEmail =
+      typeof data.guardian_email === "string" ? data.guardian_email.trim() : "";
+    const guardianName =
+      typeof data.guardian_name === "string" ? data.guardian_name.trim() : "";
+
+    if (guardianEmail) {
+      await attempt("guardian notification", async () => {
+        await send({
+          to: guardianEmail,
+          subject: emails.guardian.subject.replace(
+            "{athlete}",
+            String(data.full_name ?? "")
+          ),
+          text: guardianText(guardianName, String(data.full_name ?? "")),
+          replyTo: notifyEmail,
+        });
+      });
+    }
   } catch (err) {
     console.error("application emails failed", {
       message: err instanceof Error ? err.message : String(err),

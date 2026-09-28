@@ -863,4 +863,13 @@ export const emails = {
       "You will be among the first to hear when coaching places open, and when the video course becomes available.",
     ],
   },
+  guardian: {
+    subject: "An application has been submitted for {athlete}",
+    greeting: "Hi {name},",
+    body: [
+      "{athlete} has submitted an application for coaching with Erika Medveczky.",
+      "Because the athlete is under 18, you are named as the parent or guardian. Erika will be in touch to discuss whether the programme is the right fit, and nothing begins without your involvement.",
+      "If this was not expected, simply reply to this message and let us know.",
+    ],
+  },
 } as const;
