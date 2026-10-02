@@ -11,7 +11,7 @@ export const brand = {
 export const cta = {
   /** Primary coral CTA (header, hero, section CTAs). */
   startCoaching: "Apply Now",
-  /** Starter Guidance card (Coaching Options + /pricing ProgramCard). */
+  /** Technique Review card (Coaching Options + /pricing ProgramCard). */
   getStarted: "Get Started",
   requestEvaluation: "Request an Evaluation",
 };
@@ -307,7 +307,7 @@ export const faq = {
     {
       question: "Are payments available now?",
       answer:
-        "Starter Guidance may be purchased through a secure Stripe checkout link. Technique Review and Elite Coaching are reviewed manually before onboarding. Full automatic subscription access is planned for a later phase.",
+        "Technique Review may be purchased through a secure Stripe checkout link. Performance Coaching and High Performance Coaching are reviewed manually before onboarding. Full automatic subscription access is planned for a later phase.",
     },
     {
       question: "Where are training camps held?",
@@ -389,9 +389,9 @@ export const about = {
 export const pricing = {
   title: "Programs",
   subtitle:
-    "Choose the level of coaching that fits your goals. Starter may use secure Stripe checkout at launch; other programs are reviewed manually.",
+    "Choose the level of coaching that fits your goals. Technique Review may use secure Stripe checkout at launch; other programs are reviewed manually.",
   stripeNote:
-    "Starter payments may be handled through secure Stripe checkout links during launch. Technique Review and Elite Coaching are reviewed manually before onboarding.",
+    "Technique Review payments may be handled through secure Stripe checkout links during launch. Performance Coaching and High Performance Coaching are reviewed manually before onboarding.",
   manualReviewNote: "Pricing and availability confirmed after application review.",
   campsNote: {
     title: "Training camps",
