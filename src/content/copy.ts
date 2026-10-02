@@ -617,6 +617,9 @@ export const applyV2 = {
     email: "erika@medveczkyperformance.com",
   },
 
+  guardianEmailMustDiffer:
+    "The parent or guardian email must be different from the athlete's, so we can reach a parent directly.",
+
   contact: {
     title: "Contact information",
     fields: {

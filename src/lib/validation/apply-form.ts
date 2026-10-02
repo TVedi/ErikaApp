@@ -106,6 +106,20 @@ export const applyFormSchema = z
         message: "Guardian email is required when the athlete is under 18.",
       });
     }
+    if (
+      isMinor &&
+      data.guardian_email &&
+      data.email &&
+      data.guardian_email.trim().toLowerCase() ===
+        data.email.trim().toLowerCase()
+    ) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["guardian_email"],
+        message:
+          "The parent or guardian email must be different from the athlete's.",
+      });
+    }
     if (data.has_coach === "yes" && !data.additional_support) {
       ctx.addIssue({
         code: "custom",

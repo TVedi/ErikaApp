@@ -141,6 +141,8 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
   const [usesDevice, setUsesDevice] = useState("");
   const [hasTargetRace, setHasTargetRace] = useState("");
   const [guardianFilled, setGuardianFilled] = useState(false);
+  const [applicantEmail, setApplicantEmail] = useState("");
+  const [guardianEmail, setGuardianEmail] = useState("");
   const [turnstileToken, setTurnstileToken] = useState("");
 
   const isMinor = age !== "" && Number(age) < 18;
@@ -149,6 +151,11 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
   const ageGiven = age !== "" && Number.isFinite(Number(age));
   const isUnderThirteen = ageGiven && Number(age) < 13;
   const ageAllowsForm = ageGiven && Number(age) >= 13;
+  const guardianEmailClashes =
+    isMinor &&
+    guardianEmail.trim() !== "" &&
+    guardianEmail.trim().toLowerCase() ===
+      applicantEmail.trim().toLowerCase();
 
   function englishPrompt(message: string) {
     return {
@@ -259,6 +266,10 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
               maxLength={254}
               className="apply-field"
               {...englishPrompt("Please enter a valid email address.")}
+              onChange={(e) => {
+                e.currentTarget.setCustomValidity("");
+                setApplicantEmail(e.currentTarget.value);
+              }}
             />
           </div>
         </div>
@@ -311,9 +322,15 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
                 {...englishPrompt("A parent or guardian email is required for athletes under 18.")}
                 onChange={(e) => {
                   e.currentTarget.setCustomValidity("");
+                  setGuardianEmail(e.currentTarget.value);
                   setGuardianFilled(e.currentTarget.value.trim() !== "");
                 }}
               />
+              {guardianEmailClashes && (
+                <p className="apply-field-error" role="alert">
+                  {applyV2.guardianEmailMustDiffer}
+                </p>
+              )}
             </div>
           </div>
         )}
@@ -548,7 +565,7 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
         {error && <p className="apply-error">{error}</p>}
       </div>
 
-      <Button type="submit" disabled={loading} className="w-full btn-cta-primary apply-submit">
+      <Button type="submit" disabled={loading || guardianEmailClashes} className="w-full btn-cta-primary apply-submit">
         {loading ? applyCopy.submitting : applyCopy.submit}
       </Button>
         </>
