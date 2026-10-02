@@ -225,12 +225,9 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
             <p className="apply-under-13-body">
               {applyV2.underThirteenNotice.body}
             </p>
-            <a
-              className="apply-under-13-link"
-              href={`mailto:${applyV2.underThirteenNotice.email}?subject=${encodeURIComponent(applyV2.underThirteenNotice.emailSubject)}&body=${encodeURIComponent(applyV2.underThirteenNotice.emailBody)}`}
-            >
-              {applyV2.underThirteenNotice.linkLabel}
-            </a>
+            <p className="apply-under-13-link">
+              {applyV2.underThirteenNotice.email}
+            </p>
           </div>
         )}
 
