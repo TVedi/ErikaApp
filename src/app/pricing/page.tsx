@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Programs",
   description:
-    "Starter Guidance, Technique Review, and Elite Coaching programs with Olympic kayak coach Erika Medveczky.",
+    "Technique Review, Performance Coaching, and High Performance Coaching programs with Olympic kayak coach Erika Medveczky.",
 };
 
 export default function PricingPage() {
