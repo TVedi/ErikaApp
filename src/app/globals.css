@@ -10570,6 +10570,40 @@ section[aria-labelledby="programs-heading"] .premium-card-top--priced .premium-c
   }
 }
 
+/* Under-13 notice. Styled like the minor note so it reads as information,
+   not as an error the visitor made. */
+.apply-page .apply-under-13 {
+  margin: 1.5rem 0;
+  padding: 1.1rem 1.2rem;
+  border-radius: 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--premium-champagne) 32%, transparent);
+  background: color-mix(in srgb, var(--premium-champagne) 7%, transparent);
+}
+
+.apply-page .apply-under-13-heading {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--premium-champagne);
+}
+
+.apply-page .apply-under-13-body {
+  margin: 0 0 0.9rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--premium-soft-cream);
+}
+
+.apply-page .apply-under-13-link {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--cta-primary);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
 /* Re-assert the existing reduced-motion overrides last, unchanged. */
 @media (prefers-reduced-motion: reduce) {
   .oly-diploma-badge-btn,

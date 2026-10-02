@@ -144,6 +144,7 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
   const [turnstileToken, setTurnstileToken] = useState("");
 
   const isMinor = age !== "" && Number(age) < 18;
+  const isUnderThirteen = age !== "" && Number(age) < 13;
 
   function englishPrompt(message: string) {
     return {
@@ -188,6 +189,49 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
       <section className="apply-section" aria-labelledby="apply-contact-heading">
         <h2 id="apply-contact-heading" className="apply-section-title">{contact.title}</h2>
 
+        <div className="space-y-2">
+          <FieldLabel htmlFor="athlete_age" required={isRequired("athlete_age")}>
+            {contact.fields.age}
+          </FieldLabel>
+          <Input
+            id="athlete_age"
+            name="athlete_age"
+            type="number"
+            min={5}
+            max={99}
+            required={isRequired("athlete_age")}
+            className="apply-field"
+            {...englishPrompt("Please enter the athlete's age.")}
+            onChange={(e) => {
+              e.currentTarget.setCustomValidity("");
+              const next = e.currentTarget.value;
+              setAge(next);
+              if (next === "" || Number(next) >= 18) {
+                setGuardianFilled(false);
+              }
+            }}
+          />
+        </div>
+
+        {isUnderThirteen && (
+          <div className="apply-under-13" role="status" aria-live="polite">
+            <h3 className="apply-under-13-heading">
+              {applyV2.underThirteenNotice.heading}
+            </h3>
+            <p className="apply-under-13-body">
+              {applyV2.underThirteenNotice.body}
+            </p>
+            <a
+              className="apply-under-13-link"
+              href={`mailto:${applyV2.underThirteenNotice.email}`}
+            >
+              {applyV2.underThirteenNotice.linkLabel}
+            </a>
+          </div>
+        )}
+
+        {!isUnderThirteen && (
+          <>
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="space-y-2">
             <FieldLabel htmlFor="full_name" required={isRequired("full_name")}>
@@ -231,29 +275,6 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
               className="apply-field"
             />
           </div>
-          <div className="space-y-2">
-            <FieldLabel htmlFor="athlete_age" required={isRequired("athlete_age")}>
-              {contact.fields.age}
-            </FieldLabel>
-            <Input
-              id="athlete_age"
-              name="athlete_age"
-              type="number"
-              min={5}
-              max={99}
-              required={isRequired("athlete_age")}
-              className="apply-field"
-              {...englishPrompt("Please enter the athlete's age.")}
-              onChange={(e) => {
-                e.currentTarget.setCustomValidity("");
-                const next = e.currentTarget.value;
-                setAge(next);
-                if (next === "" || Number(next) >= 18) {
-                  setGuardianFilled(false);
-                }
-              }}
-            />
-          </div>
         </div>
 
         {isMinor && !guardianFilled && (
@@ -295,8 +316,12 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
             </div>
           </div>
         )}
+          </>
+        )}
       </section>
 
+      {!isUnderThirteen && (
+        <>
       <section className="apply-section" aria-labelledby="apply-athlete-level-heading">
         <h2 id="apply-athlete-level-heading" className="apply-section-title">{applyV2.athleteLevel.title}</h2>
         <SelectField
@@ -525,6 +550,8 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
       <Button type="submit" disabled={loading} className="w-full btn-cta-primary apply-submit">
         {loading ? applyCopy.submitting : applyCopy.submit}
       </Button>
+        </>
+      )}
     </form>
   );
 }

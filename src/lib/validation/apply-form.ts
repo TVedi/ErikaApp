@@ -53,7 +53,7 @@ export const applyFormSchema = z
   full_name: z.string().trim().min(1).max(120),
   email: z.string().trim().email().max(254).transform((v) => v.toLowerCase()),
   location: z.string().trim().min(1).max(120),
-  athlete_age: z.coerce.number().int().min(5).max(99),
+  athlete_age: z.coerce.number().int().min(13).max(99),
   guardian_name: z.string().trim().max(120).optional().or(z.literal("")),
   guardian_email: z.string().trim().email().max(254).optional().or(z.literal("")),
   athlete_level: z.enum(athleteLevels),

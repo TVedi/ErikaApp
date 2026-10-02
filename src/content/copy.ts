@@ -611,6 +611,13 @@ export const speaking = {
 export const applyV2 = {
   requiredNote: "Fields marked with an asterisk (*) are required.",
 
+  underThirteenNotice: {
+    heading: "Athletes under 13",
+    body: "Athletes under 13 cannot apply through this form. A parent or legal guardian must contact us directly, from their own email address, and we will take it from there.",
+    email: "erika@medveczkyperformance.com",
+    linkLabel: "Contact us about an athlete under 13",
+  },
+
   contact: {
     title: "Contact information",
     fields: {
