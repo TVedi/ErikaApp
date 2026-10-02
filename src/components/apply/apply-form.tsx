@@ -144,7 +144,11 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
   const [turnstileToken, setTurnstileToken] = useState("");
 
   const isMinor = age !== "" && Number(age) < 18;
-  const isUnderThirteen = age !== "" && Number(age) < 13;
+  // The gate is closed until an age is given, not only when a low one is.
+  // An empty field must not reveal the rest of the form.
+  const ageGiven = age !== "" && Number.isFinite(Number(age));
+  const isUnderThirteen = ageGiven && Number(age) < 13;
+  const ageAllowsForm = ageGiven && Number(age) >= 13;
 
   function englishPrompt(message: string) {
     return {
@@ -223,14 +227,14 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
             </p>
             <a
               className="apply-under-13-link"
-              href={`mailto:${applyV2.underThirteenNotice.email}`}
+              href={`mailto:${applyV2.underThirteenNotice.email}?subject=${encodeURIComponent(applyV2.underThirteenNotice.emailSubject)}&body=${encodeURIComponent(applyV2.underThirteenNotice.emailBody)}`}
             >
               {applyV2.underThirteenNotice.linkLabel}
             </a>
           </div>
         )}
 
-        {!isUnderThirteen && (
+        {ageAllowsForm && (
           <>
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="space-y-2">
@@ -320,7 +324,7 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
         )}
       </section>
 
-      {!isUnderThirteen && (
+      {ageAllowsForm && (
         <>
       <section className="apply-section" aria-labelledby="apply-athlete-level-heading">
         <h2 id="apply-athlete-level-heading" className="apply-section-title">{applyV2.athleteLevel.title}</h2>

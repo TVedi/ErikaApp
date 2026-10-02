@@ -616,6 +616,9 @@ export const applyV2 = {
     body: "Athletes under 13 cannot apply through this form. A parent or legal guardian must contact us directly, from their own email address, and we will take it from there.",
     email: "erika@medveczkyperformance.com",
     linkLabel: "Contact us about an athlete under 13",
+    emailSubject: "Coaching enquiry for an athlete under 13",
+    emailBody:
+      "Hello,\n\nI am the parent or legal guardian of an athlete under 13 and I would like to ask about coaching.\n\nAthlete's first name:\nAge:\nPaddling experience:\nWhat we are hoping for:\n\nThank you,\n",
   },
 
   contact: {
