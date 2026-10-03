@@ -6,7 +6,7 @@ import { camps, launch } from "@/content/copy";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Video Course | Elite Paddle Coaching",
+  title: "Video Course | Medveczky Performance",
   description: launch.videoCourse.body,
 };
 

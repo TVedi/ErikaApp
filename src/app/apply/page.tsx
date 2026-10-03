@@ -9,7 +9,7 @@ const photo = sitePhotos.applyPortrait;
 
 export const metadata: Metadata = {
   title: "Apply",
-  description: "Request an evaluation for Elite Paddle Coaching with Erika Medveczky.",
+  description: "Request an evaluation for Medveczky Performance with Erika Medveczky.",
 };
 
 export default function ApplyPage() {

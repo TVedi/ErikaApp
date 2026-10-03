@@ -20,11 +20,11 @@ import {
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Elite Paddle Coaching | Olympic Kayak Coaching by Erika Medveczky",
+  title: "Medveczky Performance | Olympic Kayak Coaching by Erika Medveczky",
   description:
     "Online kayak coaching, expert video technique analysis, and training camp opportunities with Olympic sprint kayaker and World Champion Erika Medveczky.",
   openGraph: {
-    title: "Elite Paddle Coaching | Olympic Kayak Coaching by Erika Medveczky",
+    title: "Medveczky Performance | Olympic Kayak Coaching by Erika Medveczky",
     description:
       "Online kayak coaching, expert video technique analysis, and training camps in Gainesville, Georgia with Erika Medveczky.",
     type: "website",

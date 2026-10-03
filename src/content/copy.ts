@@ -4,7 +4,7 @@
  */
 
 export const brand = {
-  name: "Elite Paddle Coaching",
+  name: "Medveczky Performance",
   tagline: "Olympic and World Champion kayak coaching",
 };
 
@@ -21,7 +21,7 @@ export const hero = {
   titleAccentWord: "experience",
   titleSweepPhrase: "Olympian and World Champion",
   subtitle:
-    "Elite Paddle Coaching helps motivated kayakers improve technique, training structure, and race preparation through Erika Medveczky’s world-class paddling experience.",
+    "Medveczky Performance helps motivated kayakers improve technique, training structure, and race preparation through Erika Medveczky’s world-class paddling experience.",
   locationLabel: "Gainesville, Georgia",
   /** Mobile opening screen slogan. */
   mobileOpeningSlogan: "Your choice, your chance.",
@@ -405,7 +405,7 @@ export const pricing = {
 };
 
 export const camps = {
-  metaTitle: "Training Camps | Elite Paddle Coaching",
+  metaTitle: "Training Camps | Medveczky Performance",
   metaDescription:
     "Future small-group kayak training camps in Gainesville, Georgia with Olympic sprint kayaker and World Champion Erika Medveczky. Details coming soon.",
   eyebrow: "Future in-person training",
@@ -554,7 +554,7 @@ export const apply = {
   checkboxes: {
     medical:
       "I understand this is a coaching inquiry and not medical, injury, physical therapy, or emergency advice.",
-    privacyPrefix: "I consent to Elite Paddle Coaching processing my information to respond to this inquiry. See our",
+    privacyPrefix: "I consent to Medveczky Performance processing my information to respond to this inquiry. See our",
   },
   submit: "Submit application",
   submitting: "Submitting…",
@@ -774,7 +774,7 @@ export const applyV2 = {
     medical:
       "I understand this is a coaching inquiry and not medical, injury, physical therapy, or emergency advice.",
     privacy:
-      "I consent to Elite Paddle Coaching processing my information to respond to this inquiry. See our Privacy Policy.",
+      "I consent to Medveczky Performance processing my information to respond to this inquiry. See our Privacy Policy.",
   },
 
   noGuaranteeNotice:
