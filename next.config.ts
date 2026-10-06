@@ -12,10 +12,8 @@ const securityHeaders = [
         "default-src 'self'",
         // 'unsafe-inline' stays: Next inlines its bootstrap scripts, and
         // removing it needs a per-request nonce threaded through the
-        // framework. 'unsafe-eval' is development-only.
-        `script-src 'self' 'unsafe-inline'${
-          process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""
-        } https://challenges.cloudflare.com https://app.termly.io`,
+        // framework. 'unsafe-eval' is required by Termly's embedded policies.
+        "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com https://app.termly.io",
         "style-src 'self' 'unsafe-inline' https://app.termly.io",
         "img-src 'self' data: blob: https://app.termly.io",
         "font-src 'self' data:",
