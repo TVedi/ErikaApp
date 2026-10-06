@@ -15,12 +15,12 @@ const securityHeaders = [
         // framework. 'unsafe-eval' is development-only.
         `script-src 'self' 'unsafe-inline'${
           process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""
-        } https://challenges.cloudflare.com`,
-        "style-src 'self' 'unsafe-inline'",
-        "img-src 'self' data: blob:",
+        } https://challenges.cloudflare.com https://app.termly.io`,
+        "style-src 'self' 'unsafe-inline' https://app.termly.io",
+        "img-src 'self' data: blob: https://app.termly.io",
         "font-src 'self' data:",
-        "frame-src https://challenges.cloudflare.com https://checkout.stripe.com",
-        "connect-src 'self' https://challenges.cloudflare.com",
+        "frame-src https://challenges.cloudflare.com https://checkout.stripe.com https://app.termly.io",
+        "connect-src 'self' https://challenges.cloudflare.com https://app.termly.io",
         "object-src 'none'",
         "base-uri 'self'",
         "form-action 'self'",

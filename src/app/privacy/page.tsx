@@ -1,5 +1,5 @@
 import { PublicLayout } from "@/components/layout/public-layout";
-import { DraftLegalBanner } from "@/components/legal/draft-legal-banner";
+import { TermlyEmbed } from "@/components/legal/termly-embed";
 import { legal } from "@/content/copy";
 import type { Metadata } from "next";
 
@@ -11,9 +11,8 @@ export default function PrivacyPage() {
   return (
     <PublicLayout>
       <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
-        <DraftLegalBanner />
-        <h1 className="text-3xl font-bold text-foreground">{legal.privacy.title}</h1>
-        <p className="mt-6 text-muted-foreground leading-relaxed">{legal.privacy.body}</p>
+        <h1 className="sr-only">{legal.privacy.title}</h1>
+        <TermlyEmbed policyId="888b889d-50c2-4cd9-96d1-9adfe8c2b2b2" />
       </div>
     </PublicLayout>
   );
