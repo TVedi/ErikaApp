@@ -11,6 +11,7 @@ import { WhoItsForSection } from "@/components/marketing/who-its-for-section";
 import { VideoCourseLoadingSection } from "@/components/marketing/video-course-loading-section";
 import { CoachingOptionsSection } from "@/components/marketing/coaching-options-section";
 import { PremiumSectionDivider } from "@/components/marketing/premium-section-divider";
+import { HomeStructuredData } from "@/components/seo/home-structured-data";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import {
   launch,
@@ -34,6 +35,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <PublicLayout>
+      <HomeStructuredData />
       <HomeHero />
 
       <WhoItsForSection />
