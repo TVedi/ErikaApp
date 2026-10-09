@@ -8,6 +8,8 @@ import { checkRateLimit } from "@/lib/security/rate-limit";
 import { isTurnstileEnabled, verifyTurnstileToken } from "@/lib/security/turnstile";
 import { applyFormSchema } from "@/lib/validation/apply-form";
 import { sendApplicationEmails } from "@/lib/email/notify";
+import { areApplicationsOpen } from "@/lib/enrollment";
+import { apply } from "@/content/copy";
 
 const GENERIC_ERROR = "Something went wrong. Please try again.";
 
@@ -31,6 +33,10 @@ export async function submitCoachingInquiry(
   const ip = getClientIp(headerStore);
   if (!checkRateLimit(`apply:${ip}`, 5, 60_000)) {
     return { error: GENERIC_ERROR };
+  }
+
+  if (!areApplicationsOpen()) {
+    return { error: apply.closedError };
   }
 
   // Honeypot — silent success path (no insert)

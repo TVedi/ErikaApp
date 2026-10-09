@@ -13,6 +13,7 @@ import { CoachingOptionsSection } from "@/components/marketing/coaching-options-
 import { PremiumSectionDivider } from "@/components/marketing/premium-section-divider";
 import { HomeStructuredData } from "@/components/seo/home-structured-data";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
+import { areApplicationsOpen, isWaitlistOpen } from "@/lib/enrollment";
 import {
   launch,
   faq,
@@ -33,6 +34,8 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
+  const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY?.trim();
+
   return (
     <PublicLayout>
       <HomeStructuredData />
@@ -107,7 +110,11 @@ export default function HomePage() {
             <p className="mt-2 text-muted-foreground">{waitlist.subtitle}</p>
           </ScrollReveal>
           <ScrollReveal className="mt-8" delayMs={100}>
-            <WaitlistForm />
+            <WaitlistForm
+              isOpen={isWaitlistOpen()}
+              applicationsOpen={areApplicationsOpen()}
+              turnstileSiteKey={turnstileSiteKey || undefined}
+            />
           </ScrollReveal>
         </div>
       </section>

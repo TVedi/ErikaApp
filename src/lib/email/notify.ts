@@ -263,39 +263,87 @@ export async function sendApplicationEmails(
   }
 }
 
-function waitlistText(): string {
+function waitlistText(fullName: string): string {
+  const { greeting, body } = emails.waitlist;
   const { signOff, signOffTitle } = emails.applicant;
-  return [emails.waitlist.body.join("\n\n"), "", signOff, signOffTitle].join("\n");
+  return [
+    greeting.replace("{name}", fullName),
+    "",
+    body.join("\n\n"),
+    "",
+    signOff,
+    signOffTitle,
+  ].join("\n");
 }
 
+function waitlistGuardianText(guardianName: string, athleteName: string): string {
+  const greeting = guardianName
+    ? emails.waitlistGuardian.greeting.replace("{name}", guardianName)
+    : "Hello,";
+  const paragraphs = emails.waitlistGuardian.body.map((paragraph) =>
+    paragraph.replace("{athlete}", athleteName)
+  );
+  return [
+    greeting,
+    "",
+    paragraphs.join("\n\n"),
+    "",
+    emails.applicant.signOff,
+    emails.applicant.signOffTitle,
+  ].join("\n");
+}
+
+type WaitlistEmailData = {
+  email: string;
+  full_name: string;
+  guardian_name: string | null;
+  guardian_email: string | null;
+};
+
 /**
- * Confirms a waitlist join to the subscriber only; Erika is not notified.
- * Never throws: the address is already saved when this runs.
+ * Confirms a waitlist join to the athlete and, for an athlete under 18, tells
+ * the named parent or guardian. Erika is not notified.
+ * Never throws: the entry is already saved when this runs.
  */
-export async function sendWaitlistEmail(to: string): Promise<void> {
+export async function sendWaitlistEmails(data: WaitlistEmailData): Promise<void> {
   try {
     const apiKey = process.env.RESEND_API_KEY?.trim();
     const notifyEmail = process.env.NOTIFY_EMAIL?.trim();
     if (!apiKey || !notifyEmail) {
-      console.warn("waitlist email skipped: RESEND_API_KEY or NOTIFY_EMAIL is not set");
+      console.warn("waitlist emails skipped: RESEND_API_KEY or NOTIFY_EMAIL is not set");
       return;
     }
 
     const from = senderAddress();
     if (!from) {
-      console.warn("waitlist email skipped: NEXT_PUBLIC_SITE_URL is missing or invalid");
+      console.warn("waitlist emails skipped: NEXT_PUBLIC_SITE_URL is missing or invalid");
       return;
     }
 
     const send = createSender(apiKey, from, notifyEmail);
-    await send({
-      to,
-      subject: emails.waitlist.subject,
-      text: waitlistText(),
-      replyTo: notifyEmail,
-    });
+
+    await attempt("waitlist confirmation", () =>
+      send({
+        to: data.email,
+        subject: emails.waitlist.subject,
+        text: waitlistText(data.full_name),
+        replyTo: notifyEmail,
+      })
+    );
+
+    const guardianEmail = data.guardian_email?.trim() ?? "";
+    if (guardianEmail) {
+      await attempt("waitlist guardian notification", () =>
+        send({
+          to: guardianEmail,
+          subject: emails.waitlistGuardian.subject.replace("{athlete}", data.full_name),
+          text: waitlistGuardianText(data.guardian_name?.trim() ?? "", data.full_name),
+          replyTo: notifyEmail,
+        })
+      );
+    }
   } catch (err) {
-    console.error("waitlist email failed", {
+    console.error("waitlist emails failed", {
       message: err instanceof Error ? err.message : String(err),
     });
   }

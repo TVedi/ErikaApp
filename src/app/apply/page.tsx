@@ -1,7 +1,9 @@
 import Image from "next/image";
 import { PublicLayout } from "@/components/layout/public-layout";
 import { ApplyForm } from "@/components/apply/apply-form";
+import { LinkButton } from "@/components/ui/link-button";
 import { apply, nav } from "@/content/copy";
+import { areApplicationsOpen, isWaitlistOpen } from "@/lib/enrollment";
 import { sitePhotos } from "@/lib/marketing/site-photos";
 import type { Metadata } from "next";
 
@@ -26,7 +28,24 @@ export default function ApplyPage() {
             </h1>
             <p className="apply-intro">{apply.subtitle}</p>
             <div className="premium-card apply-form-card">
-              <ApplyForm turnstileSiteKey={turnstileSiteKey || undefined} />
+              {areApplicationsOpen() ? (
+                <ApplyForm turnstileSiteKey={turnstileSiteKey || undefined} />
+              ) : (
+                <div className="apply-closed" role="status">
+                  <h2 className="apply-closed-heading">{apply.closed.heading}</h2>
+                  <p className="apply-closed-body">{apply.closed.body}</p>
+                  {isWaitlistOpen() ? (
+                    <>
+                      <p className="apply-closed-body">{apply.closed.waitlistBody}</p>
+                      <LinkButton href="/#waitlist" className="btn-cta-primary apply-closed-cta">
+                        {apply.closed.waitlistCta}
+                      </LinkButton>
+                    </>
+                  ) : (
+                    <p className="apply-closed-body">{apply.closed.checkBack}</p>
+                  )}
+                </div>
+              )}
             </div>
           </div>
 

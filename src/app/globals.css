@@ -10604,6 +10604,319 @@ section[aria-labelledby="programs-heading"] .premium-card-top--priced .premium-c
   text-underline-offset: 0.2em;
 }
 
+/* Waitlist: age-first sign-up card on the homepage, desktop and mobile.
+   Field styling mirrors the application form (.apply-page .apply-field). */
+.waitlist-card {
+  width: 100%;
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border-radius: 1rem;
+  border: 1px solid rgba(216, 185, 106, 0.22);
+  background: linear-gradient(180deg, rgba(5, 42, 36, 0.88), rgba(3, 23, 20, 0.84));
+  box-shadow:
+    0 18px 48px rgba(0, 0, 0, 0.32),
+    inset 0 1px 0 rgba(255, 248, 234, 0.06);
+  text-align: left;
+}
+
+.waitlist-card .waitlist-field {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  height: 44px;
+  box-sizing: border-box;
+  padding: 0.65rem 0.85rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(216, 185, 106, 0.32);
+  background-color: rgba(3, 23, 20, 0.55);
+  color: var(--premium-cream);
+  -webkit-text-fill-color: var(--premium-cream);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.4;
+  box-shadow: none;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.waitlist-card .waitlist-field:focus,
+.waitlist-card .waitlist-field:focus-visible {
+  border-color: var(--premium-champagne);
+  box-shadow: 0 0 0 3px rgba(216, 185, 106, 0.28);
+  background-color: rgba(3, 23, 20, 0.72);
+}
+
+.waitlist-card .waitlist-field:user-invalid {
+  border-color: var(--cta-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--cta-primary) 28%, transparent);
+}
+
+.waitlist-card .waitlist-age-input {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.waitlist-card .waitlist-age-input::-webkit-outer-spin-button,
+.waitlist-card .waitlist-age-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.waitlist-hint {
+  margin: 0 0 0.85rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--premium-muted-cream);
+}
+
+.waitlist-age-row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.waitlist-card .waitlist-age-row .waitlist-age-input {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.waitlist-card .waitlist-continue,
+.waitlist-card .waitlist-submit {
+  height: auto;
+  min-height: 44px;
+  padding: 0 1.5rem;
+  font-size: 0.9375rem;
+}
+
+.waitlist-card .waitlist-continue {
+  flex: 0 0 auto;
+}
+
+.waitlist-card .waitlist-submit {
+  width: 100%;
+}
+
+.waitlist-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.waitlist-age-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 0.85rem;
+  border-radius: 0.6rem;
+  border: 1px solid rgba(216, 185, 106, 0.18);
+  background: rgba(3, 23, 20, 0.35);
+}
+
+.waitlist-card .waitlist-age-summary-label {
+  margin: 0;
+}
+
+.waitlist-age-summary-value {
+  font-size: 1rem;
+  color: var(--premium-cream);
+}
+
+.waitlist-edit {
+  margin-left: auto;
+  padding: 0.35rem 0.25rem;
+  border: 0;
+  background: none;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--premium-champagne);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+
+.waitlist-grid {
+  display: grid;
+  gap: 1.1rem;
+}
+
+@media (min-width: 640px) {
+  .waitlist-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.waitlist-field-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.waitlist-minor-note {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--premium-champagne) 32%, transparent);
+  background: color-mix(in srgb, var(--premium-champagne) 7%, transparent);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--premium-soft-cream);
+}
+
+.waitlist-card .waitlist-consent {
+  padding: 0.6rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(216, 185, 106, 0.18);
+  background: rgba(3, 23, 20, 0.35);
+  font-size: 0.875rem;
+}
+
+.waitlist-notice {
+  padding: 0.25rem 0;
+}
+
+.waitlist-notice-heading {
+  margin: 0 0 0.6rem;
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--premium-champagne);
+}
+
+.waitlist-notice-body {
+  margin: 0 0 0.9rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--premium-soft-cream);
+}
+
+.waitlist-notice-email {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--premium-cream);
+}
+
+.waitlist-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 0;
+  text-align: center;
+}
+
+.waitlist-success-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--premium-champagne) 55%, transparent);
+  background: color-mix(in srgb, var(--premium-champagne) 10%, transparent);
+  color: var(--premium-champagne);
+}
+
+.waitlist-success-title {
+  margin: 0.25rem 0 0;
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--premium-cream);
+}
+
+.waitlist-success-body {
+  margin: 0;
+  max-width: 26rem;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--premium-soft-cream);
+}
+
+.waitlist-closed-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin-bottom: 1.25rem;
+}
+
+.waitlist-closed-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--premium-champagne) 45%, transparent);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--premium-champagne);
+}
+
+.waitlist-closed-badge::before {
+  content: "";
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 999px;
+  background: var(--premium-champagne);
+  opacity: 0.85;
+}
+
+.waitlist-closed-text {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--premium-soft-cream);
+}
+
+.waitlist-preview {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  opacity: 0.38;
+  filter: saturate(0.55);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Apply page: shown in place of the form while applications are closed. */
+.apply-closed {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.apply-closed-heading {
+  margin: 0;
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--premium-champagne);
+}
+
+.apply-closed-body {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--premium-soft-cream);
+}
+
+.apply-closed .apply-closed-cta {
+  align-self: flex-start;
+  height: auto;
+  min-height: 44px;
+  margin-top: 0.35rem;
+  padding: 0 1.5rem;
+  font-size: 0.9375rem;
+}
+
 /* Re-assert the existing reduced-motion overrides last, unchanged. */
 @media (prefers-reduced-motion: reduce) {
   .oly-diploma-badge-btn,

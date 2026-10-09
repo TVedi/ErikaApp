@@ -320,11 +320,40 @@ export const faq = {
 export const waitlist = {
   title: "Join the waitlist",
   subtitle: "Be the first to know when full coaching features launch.",
-  placeholder: "Your email address",
+  ageLabel: "Athlete's age",
+  ageHint: "We ask this first so we can follow the right steps for every athlete.",
+  continue: "Continue",
+  editAge: "Edit",
+  fullName: "Full name",
+  email: "Email address",
+  guardianName: "Parent / guardian name",
+  guardianEmail: "Parent / guardian email",
+  minorNote:
+    "Athletes under 18 join together with a parent or guardian. We will send them a short note, and nothing begins without their involvement.",
+  guardianEmailMustDiffer:
+    "The parent or guardian email must be different from the athlete's.",
+  consent:
+    "I agree to be contacted by email about coaching places, and I have read the Privacy Policy.",
   button: "Join Waitlist",
-  success: "You're on the list. We'll be in touch soon.",
+  submitting: "Joining…",
+  successTitle: "You're on the list",
+  successBody:
+    "Places are offered in the order people joined. We will be in touch as soon as one opens.",
   error: "Something went wrong. Please try again.",
   duplicate: "This email is already on the waitlist.",
+  closedError: "The waitlist is currently closed.",
+  underThirteen: {
+    heading: "Athletes under 13",
+    body: "Athletes under 13 cannot join the waitlist. A parent or legal guardian is welcome to contact us directly, from their own email address.",
+    email: "erika@medveczkyperformance.com",
+  },
+  closed: {
+    badge: "Currently closed",
+    applicationsOpen: "Coaching applications are open right now, so the waitlist is paused.",
+    applyLink: "Apply now",
+    allClosed: "The waitlist is paused at the moment. Please check back soon.",
+    button: "Waitlist closed",
+  },
 };
 
 export const aboutStory = {
@@ -558,6 +587,15 @@ export const apply = {
   },
   submit: "Submit application",
   submitting: "Submitting…",
+  closed: {
+    heading: "Coaching is currently full",
+    body: "Erika works with a small number of athletes so that each one gets her full attention, and every place is taken right now.",
+    waitlistBody:
+      "Join the waitlist and we will contact you in the order people joined as soon as a place opens.",
+    waitlistCta: "Join the waitlist",
+    checkBack: "Please check back soon.",
+  },
+  closedError: "Applications are currently closed.",
 };
 
 export const thankYou = {
@@ -867,9 +905,20 @@ export const emails = {
   },
   waitlist: {
     subject: "You're on the list",
+    greeting: "Hi {name},",
     body: [
       "Thank you for joining the waiting list.",
       "You will be among the first to hear when coaching places open, and when the video course becomes available.",
+      "Places are offered in the order people joined. If you would like to be removed from the list, simply reply to this message.",
+    ],
+  },
+  waitlistGuardian: {
+    subject: "{athlete} has joined the coaching waitlist",
+    greeting: "Hi {name},",
+    body: [
+      "{athlete} has joined the waiting list for coaching with Erika Medveczky.",
+      "Because the athlete is under 18, you are named as the parent or guardian. When a place opens, Erika will contact you as well, and nothing begins without your involvement.",
+      "If this was not expected, or you would like the athlete removed from the list, simply reply to this message and we will delete the details.",
     ],
   },
   guardian: {
