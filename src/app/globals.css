@@ -11192,6 +11192,13 @@ section[aria-labelledby="who-its-for-heading"] #who-its-for-heading.proof-headin
   }
 }
 
+/* Who This Is For: the longer audience lines can push the button down onto the
+   section's bottom divider on shorter screens. Keep 2rem of breathing room
+   under it, on desktop and on phones. */
+section[aria-labelledby="how-it-works-heading"] .split-screen-content-col {
+  padding-bottom: 2rem;
+}
+
 /* Re-assert the existing reduced-motion overrides last, unchanged. */
 @media (prefers-reduced-motion: reduce) {
   .oly-diploma-badge-btn,

@@ -67,15 +67,16 @@ export const launch = {
     eyebrow: "WHO IT SERVES",
     title: "Who This Is For",
     intro:
-      "Built for athletes, parents, coaches, and teams who want serious technical direction.",
+      "Built for sprint kayakers who are serious about performance and want individualized direction.",
     audiences: [
-      "Competitive junior kayakers",
-      "Ambitious club athletes",
-      "Masters paddlers",
-      "Parents and coaches seeking expert technical feedback",
-      "Athletes preparing for races or selection events",
-      "Individual and team preparation for international races and the Olympic Games",
+      "National & international-level athletes",
+      "Senior and U23 athletes preparing for higher-level competition",
+      "Competitive Masters paddlers",
+      "Athletes without consistent access to an experienced sprint kayak coach",
+      "Athletes preparing for major races, championships or selection events",
+      "Athletes ready to take an active role in their development",
     ],
+    ctaLabel: "Apply for Coaching",
   },
   programs: {
     eyebrow: "COACHED BY OLYMPIC EXPERIENCE",

@@ -77,6 +77,7 @@ export function HowItWorksSection() {
           <MarketingCtaReveal className="how-it-works-cta flex justify-start">
             <StartCoachingButton
               size="lg"
+              label={launch.howItWorks.ctaLabel}
               className="btn-cta-primary w-full sm:w-auto"
             />
           </MarketingCtaReveal>
