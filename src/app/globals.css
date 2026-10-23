@@ -11066,39 +11066,56 @@ section[aria-labelledby="who-its-for-heading"] .proof-statement-row {
 }
 
 @media (max-width: 1023px) {
+  /* --programs-photo-band: the photo-only space above the "Programs" heading.
+     It takes the room left above the first card, so the whole first card
+     (frame included) fits on the first screen: 100svh is the visible height
+     on load; 18lvh + --programs-photo-fit is the header, heading, intro and
+     first card plus a 16px breathing gap. Never below 5.5rem, never above
+     the original 30lvh.
+     --programs-photo-extend: how far the photo continues behind the heading
+     and intro, ending where the first card begins. */
+  section[aria-labelledby="programs-heading"] {
+    --programs-photo-fit: 438px;
+    --programs-photo-extend: 10rem;
+    --programs-photo-band: clamp(
+      min(5.5rem, 30lvh),
+      calc(100svh - 18lvh - var(--programs-photo-fit)),
+      30lvh
+    );
+  }
+
   section[aria-labelledby="programs-heading"] .programs-mobile-photo {
     display: block;
     position: relative;
     width: 100%;
-    height: 30lvh;
-    overflow: hidden;
+    height: var(--programs-photo-band);
+    overflow: visible;
+    pointer-events: none;
   }
 
+  /* The photo layer runs from the top of the band down behind the heading
+     and intro, then fades out just above the first card. */
   section[aria-labelledby="programs-heading"] .programs-mobile-photo-mask {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: calc(-1 * var(--programs-photo-extend));
+    overflow: hidden;
     -webkit-mask-image: linear-gradient(
       to bottom,
-      black 0%,
-      black 38%,
-      rgba(0, 0, 0, 0.96) 48%,
-      rgba(0, 0, 0, 0.86) 58%,
-      rgba(0, 0, 0, 0.68) 68%,
-      rgba(0, 0, 0, 0.42) 78%,
-      rgba(0, 0, 0, 0.18) 88%,
-      rgba(0, 0, 0, 0.06) 94%,
+      black 0,
+      black calc(100% - var(--programs-photo-extend) + 3rem),
+      rgba(0, 0, 0, 0.78) calc(100% - var(--programs-photo-extend) + 6rem),
+      rgba(0, 0, 0, 0.36) calc(100% - 2.25rem),
       transparent 100%
     );
     mask-image: linear-gradient(
       to bottom,
-      black 0%,
-      black 38%,
-      rgba(0, 0, 0, 0.96) 48%,
-      rgba(0, 0, 0, 0.86) 58%,
-      rgba(0, 0, 0, 0.68) 68%,
-      rgba(0, 0, 0, 0.42) 78%,
-      rgba(0, 0, 0, 0.18) 88%,
-      rgba(0, 0, 0, 0.06) 94%,
+      black 0,
+      black calc(100% - var(--programs-photo-extend) + 3rem),
+      rgba(0, 0, 0, 0.78) calc(100% - var(--programs-photo-extend) + 6rem),
+      rgba(0, 0, 0, 0.36) calc(100% - 2.25rem),
       transparent 100%
     );
     -webkit-mask-size: 100% 100%;
@@ -11107,22 +11124,41 @@ section[aria-labelledby="who-its-for-heading"] .proof-statement-row {
     mask-repeat: no-repeat;
   }
 
+  /* Canvas-colour veil: light over the photo-only band, deepening behind
+     the heading and intro so the text stays easy to read. */
   section[aria-labelledby="programs-heading"] .programs-mobile-photo-mask::before {
     content: "";
     position: absolute;
     inset: 0;
     z-index: 1;
     pointer-events: none;
-    background: rgba(3, 23, 20, 0.22);
+    background: linear-gradient(
+      to bottom,
+      rgba(3, 23, 20, 0.12) 0,
+      rgba(3, 23, 20, 0.2) calc(100% - var(--programs-photo-extend) - 2.5rem),
+      rgba(3, 23, 20, 0.55) calc(100% - var(--programs-photo-extend) + 0.5rem),
+      rgba(3, 23, 20, 0.68) calc(100% - var(--programs-photo-extend) + 2.5rem),
+      rgba(3, 23, 20, 0.76) calc(100% - var(--programs-photo-extend) + 5.5rem),
+      rgba(3, 23, 20, 0.84) 100%
+    );
   }
 
   section[aria-labelledby="programs-heading"] .programs-mobile-photo-img {
-    object-position: 47% 22%;
+    object-position: 47% 11%;
   }
 
   section[aria-labelledby="programs-heading"] > .programs-page-inner {
     position: relative;
     margin-top: -1.75rem;
+  }
+}
+
+/* From 410px wide the intro and first card wrap onto fewer lines, so less
+   room is needed below the photo band and the photo ends a little sooner. */
+@media (min-width: 410px) and (max-width: 1023px) {
+  section[aria-labelledby="programs-heading"] {
+    --programs-photo-fit: 415px;
+    --programs-photo-extend: 8.75rem;
   }
 }
 
