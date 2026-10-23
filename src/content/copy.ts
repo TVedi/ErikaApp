@@ -17,9 +17,15 @@ export const cta = {
 };
 
 export const hero = {
-  title: "Train with the experience of an Olympian and World Champion.",
+  /** Desktop hero eyebrow (shown uppercase by .eyebrow-label). */
+  eyebrow: "Olympian & 8× World Champion",
+  title: "World-class experience. Coaching built around you.",
   titleAccentWord: "experience",
-  titleSweepPhrase: "Olympian and World Champion",
+  titleSweepPhrase: "Coaching built around you",
+  /** Desktop hero line under the headline. */
+  lead: "Personalized sprint kayak coaching",
+  /** Desktop hero button label; the header keeps cta.startCoaching. */
+  ctaLabel: "Apply",
   subtitle:
     "Medveczky Performance helps motivated kayakers improve technique, training structure, and race preparation through Erika Medveczky’s world-class paddling experience.",
   locationLabel: "Gainesville, Georgia",

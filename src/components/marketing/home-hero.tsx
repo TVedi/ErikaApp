@@ -3,7 +3,7 @@ import { HeroHeadline } from "@/components/marketing/hero-headline";
 import { MobileHomeSplash } from "@/components/marketing/mobile-home-splash";
 import { PremiumSectionDivider } from "@/components/marketing/premium-section-divider";
 import { StartCoachingButton } from "@/components/marketing/start-coaching-button";
-import { brand, hero } from "@/content/copy";
+import { hero } from "@/content/copy";
 
 /**
  * Homepage hero — mobile opening splash (egyeni portrait) + desktop slideshow.
@@ -33,7 +33,7 @@ export function HomeHero() {
 
         <div className="hero-text-shell section-screen relative z-10 w-full">
           <div className="hero-text-column pt-[11vh] pb-12 sm:pt-[12vh] sm:pb-14 lg:pt-[13vh] lg:pb-0 lg:max-w-[min(44%,36rem)]">
-            <p className="eyebrow-label">{brand.tagline}</p>
+            <p className="eyebrow-label">{hero.eyebrow}</p>
             <h1
               className="mt-3 font-display text-[2rem] font-semibold leading-[1.08] tracking-[-0.025em] text-balance sm:mt-4 sm:text-4xl sm:leading-[1.07] lg:text-6xl lg:leading-[1.05] xl:text-7xl xl:leading-[1.04]"
               style={{ color: "var(--hero-headline)" }}
@@ -48,10 +48,17 @@ export function HomeHero() {
               className="mt-4 h-0.5 w-12 bg-accent-gold lg:mt-5"
               aria-hidden="true"
             />
+            <p
+              className="mt-4 font-display text-base font-medium leading-relaxed tracking-[-0.015em] sm:text-lg lg:mt-5 lg:text-xl"
+              style={{ color: "var(--hero-headline)" }}
+            >
+              {hero.lead}
+            </p>
             <div className="mt-5 flex flex-col gap-3 sm:mt-6 sm:flex-row sm:flex-wrap">
               <StartCoachingButton
                 size="lg"
-                className="btn-cta-primary w-full sm:w-auto"
+                label={hero.ctaLabel}
+                className="btn-cta-primary w-full sm:w-auto lg:min-w-24"
               />
             </div>
           </div>
