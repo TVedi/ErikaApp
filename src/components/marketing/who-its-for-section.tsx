@@ -23,26 +23,18 @@ function ProofAchievementText({ text }: { text: string }) {
   );
 }
 
-function ProofAchievementRow({ text, num }: { text: string; num: string }) {
+function ProofAchievementRow({ text }: { text: string }) {
   return (
     <div className="proof-achievement-row">
-      <span className="proof-achievement-num" aria-hidden="true">
-        {num}
-      </span>
       <ProofAchievementText text={text} />
     </div>
   );
 }
 
-/** Two-digit list number: 1 -> "01". */
-function listNumber(n: number): string {
-  return String(n).padStart(2, "0");
-}
-
 /**
- * Split-screen "Where Experience Comes From" — editorial proof: a numbered
- * list (01-07). 01 is the Olympic statement; 02-07 are the achievement rows
- * (no card grid).
+ * Split-screen "Where Experience Comes From" — editorial proof: the Olympic
+ * statement, then the achievement rows separated by gold hairlines (no card
+ * grid, no numbers or icons). The heading carries the hero's gold sweep.
  */
 export function WhoItsForSection() {
   return (
@@ -80,7 +72,7 @@ export function WhoItsForSection() {
           <ScrollReveal>
             <h2
               id="who-its-for-heading"
-              className="proof-editorial-heading font-display font-bold"
+              className="proof-editorial-heading proof-heading-sweep font-display font-bold"
             >
               <span className="proof-heading-line1">Where Experience</span>
               <span className="proof-heading-line2"> Comes From</span>
@@ -88,29 +80,24 @@ export function WhoItsForSection() {
           </ScrollReveal>
 
           <ScrollReveal className="proof-olympic-statement">
-            <div className="proof-statement-row">
-              <span className="proof-achievement-num" aria-hidden="true">
-                {listNumber(1)}
-              </span>
-              <p className="proof-statement-text">
-                {launch.whoItsFor.featuredAchievement}
-                <OlympicDiplomaBadge />
-              </p>
-            </div>
+            <p className="proof-statement-text">
+              {launch.whoItsFor.featuredAchievement}
+              <OlympicDiplomaBadge />
+            </p>
           </ScrollReveal>
 
           <div className="proof-achievement-grid">
             <div className="proof-achievement-col">
               {launch.whoItsFor.titleAchievements.map((text, i) => (
                 <ScrollReveal key={text} delayMs={70 + i * 60}>
-                  <ProofAchievementRow text={text} num={listNumber(i + 2)} />
+                  <ProofAchievementRow text={text} />
                 </ScrollReveal>
               ))}
             </div>
             <div className="proof-achievement-col">
               {launch.whoItsFor.experienceAchievements.map((text, i) => (
                 <ScrollReveal key={text} delayMs={140 + i * 60}>
-                  <ProofAchievementRow text={text} num={listNumber(i + 5)} />
+                  <ProofAchievementRow text={text} />
                 </ScrollReveal>
               ))}
             </div>

@@ -10917,22 +10917,10 @@ section[aria-labelledby="programs-heading"] .premium-card-top--priced .premium-c
   font-size: 0.9375rem;
 }
 
-/* Where Experience Comes From: numbered list 01-07 in the same editorial
-   style as Who This Is For - a small mono champagne index and a gold
-   hairline under every row. Each row fills its grid cell and centres its
-   content, so every text sits midway between two hairlines. */
-section[aria-labelledby="who-its-for-heading"] .proof-achievement-num {
-  flex-shrink: 0;
-  width: 2rem;
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 0.75rem;
-  font-weight: 500;
-  font-variant-numeric: tabular-nums;
-  line-height: 1.55;
-  letter-spacing: 0.04em;
-  color: var(--proof-champagne);
-}
-
+/* Where Experience Comes From: editorial list in the Who This Is For style -
+   no numbers and no icons, a gold hairline under every row, and each text
+   sitting midway between two hairlines. Each row fills its grid cell and
+   centres its content. */
 section[aria-labelledby="who-its-for-heading"] .proof-achievement-grid {
   margin-top: 0;
 }
@@ -10940,7 +10928,7 @@ section[aria-labelledby="who-its-for-heading"] .proof-achievement-grid {
 section[aria-labelledby="who-its-for-heading"] .proof-achievement-row {
   position: relative;
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   align-items: start;
   align-content: center;
   height: 100%;
@@ -10957,16 +10945,10 @@ section[aria-labelledby="who-its-for-heading"] .proof-achievement-row::after {
   pointer-events: none;
 }
 
-section[aria-labelledby="who-its-for-heading"] .proof-statement-row {
-  display: flex;
-  align-items: flex-start;
-  /* Same gap as .proof-achievement-row, so every text starts on one line. */
-  gap: clamp(0.75rem, 1.2vw, 1rem);
-}
-
 @media (min-width: 1024px) {
-  /* Desktop: flatten both columns into one grid (02-04 left, 05-07 right),
-     so facing rows share a height and the hairlines line up across. */
+  /* Desktop: flatten both columns into one grid (left: world, European,
+     Hungarian titles; right: experience), so facing rows share a height and
+     the hairlines line up across. */
   section[aria-labelledby="who-its-for-heading"] .proof-achievement-col {
     display: contents;
   }
@@ -10974,6 +10956,54 @@ section[aria-labelledby="who-its-for-heading"] .proof-statement-row {
   section[aria-labelledby="who-its-for-heading"] .proof-achievement-grid {
     grid-template-rows: repeat(3, auto);
     grid-auto-flow: column;
+  }
+}
+
+/* Heading: italic display face (like the hero's "experience") with the same
+   gold light sweep as the hero headline. The heading and its two line spans
+   carry older id-level colour rules, so these selectors are scoped to the
+   .proof-heading-sweep class to win over them. */
+section[aria-labelledby="who-its-for-heading"] #who-its-for-heading.proof-heading-sweep,
+section[aria-labelledby="who-its-for-heading"] #who-its-for-heading.proof-heading-sweep .proof-heading-line1,
+section[aria-labelledby="who-its-for-heading"] #who-its-for-heading.proof-heading-sweep .proof-heading-line2 {
+  font-style: italic;
+}
+
+section[aria-labelledby="who-its-for-heading"] #who-its-for-heading.proof-heading-sweep {
+  color: var(--hero-headline);
+  background-image: linear-gradient(
+    110deg,
+    var(--hero-headline) 0%,
+    var(--hero-headline) 38%,
+    color-mix(in srgb, var(--brand-gold) 85%, var(--hero-headline)) 48%,
+    color-mix(in srgb, var(--accent-coral) 55%, var(--brand-gold)) 52%,
+    color-mix(in srgb, var(--brand-gold) 85%, var(--hero-headline)) 56%,
+    var(--hero-headline) 66%,
+    var(--hero-headline) 100%
+  );
+  background-size: 250% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gold-sweep 7s linear infinite;
+}
+
+section[aria-labelledby="who-its-for-heading"] #who-its-for-heading.proof-heading-sweep .proof-heading-line1,
+section[aria-labelledby="who-its-for-heading"] #who-its-for-heading.proof-heading-sweep .proof-heading-line2 {
+  -webkit-text-fill-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  section[aria-labelledby="who-its-for-heading"] #who-its-for-heading.proof-heading-sweep {
+    animation: none;
+    background-image: none;
+    -webkit-text-fill-color: var(--hero-headline);
+  }
+
+  section[aria-labelledby="who-its-for-heading"] #who-its-for-heading.proof-heading-sweep .proof-heading-line1,
+  section[aria-labelledby="who-its-for-heading"] #who-its-for-heading.proof-heading-sweep .proof-heading-line2 {
+    -webkit-text-fill-color: var(--hero-headline);
   }
 }
 
