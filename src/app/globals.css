@@ -10917,25 +10917,64 @@ section[aria-labelledby="programs-heading"] .premium-card-top--priced .premium-c
   font-size: 0.9375rem;
 }
 
-/* Where Experience Comes From: an editorial numbered list (01-07) in the
-   display serif, champagne gold, in place of the old icon circles. */
+/* Where Experience Comes From: numbered list 01-07 in the same editorial
+   style as Who This Is For - a small mono champagne index and a gold
+   hairline under every row. Each row fills its grid cell and centres its
+   content, so every text sits midway between two hairlines. */
 section[aria-labelledby="who-its-for-heading"] .proof-achievement-num {
   flex-shrink: 0;
-  width: 3rem;
-  font-family: var(--font-display), ui-serif, Georgia, serif;
-  font-size: 2.25rem;
-  font-weight: 300;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  font-variant-numeric: lining-nums tabular-nums;
+  width: 2rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.55;
+  letter-spacing: 0.04em;
   color: var(--proof-champagne);
+}
+
+section[aria-labelledby="who-its-for-heading"] .proof-achievement-grid {
+  margin-top: 0;
+}
+
+section[aria-labelledby="who-its-for-heading"] .proof-achievement-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  align-content: center;
+  height: 100%;
+}
+
+section[aria-labelledby="who-its-for-heading"] .proof-achievement-row::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--proof-line-gold);
+  pointer-events: none;
 }
 
 section[aria-labelledby="who-its-for-heading"] .proof-statement-row {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   /* Same gap as .proof-achievement-row, so every text starts on one line. */
   gap: clamp(0.75rem, 1.2vw, 1rem);
+}
+
+@media (min-width: 1024px) {
+  /* Desktop: flatten both columns into one grid (02-04 left, 05-07 right),
+     so facing rows share a height and the hairlines line up across. */
+  section[aria-labelledby="who-its-for-heading"] .proof-achievement-col {
+    display: contents;
+  }
+
+  section[aria-labelledby="who-its-for-heading"] .proof-achievement-grid {
+    grid-template-rows: repeat(3, auto);
+    grid-auto-flow: column;
+  }
 }
 
 /* Programs page: Erika's championship photo, matching the homepage Coaching
