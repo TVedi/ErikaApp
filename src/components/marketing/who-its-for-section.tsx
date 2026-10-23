@@ -1,17 +1,8 @@
 import Image from "next/image";
-import type { ComponentType, SVGProps } from "react";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import { MarketingCtaReveal } from "@/components/motion/marketing-cta-reveal";
 import { CountUpQty } from "@/components/motion/count-up-qty";
 import { PremiumSectionDivider } from "@/components/marketing/premium-section-divider";
-import {
-  PremiumCrown,
-  PremiumFlag,
-  PremiumGlobe,
-  PremiumMedal,
-  PremiumStar,
-  PremiumTrophy,
-} from "@/components/marketing/premium-icons";
 import { StartCoachingButton } from "@/components/marketing/start-coaching-button";
 import { OlympicDiplomaBadge } from "@/components/marketing/diploma-lightbox";
 import { launch } from "@/content/copy";
@@ -19,18 +10,8 @@ import { sitePhotos } from "@/lib/marketing/site-photos";
 
 const photo = sitePhotos.whoItsFor;
 
-type PremiumIcon = ComponentType<SVGProps<SVGSVGElement>>;
-
-/* Trophy / Medal / Crown titles; Star / Globe / Flag experience */
-const TITLE_ICONS: PremiumIcon[] = [PremiumTrophy, PremiumMedal, PremiumCrown];
-const EXPERIENCE_ICONS: PremiumIcon[] = [
-  PremiumStar,
-  PremiumGlobe,
-  PremiumFlag,
-];
-
 function ProofAchievementText({ text }: { text: string }) {
-  const match = text.match(/^(\d+x|\d+\+|\d+)\s+(.+)$/);
+  const match = text.match(/^(\d+[x×]|\d+\+|\d+)\s+(.+)$/);
   if (!match) {
     return <span className="proof-achievement-text">{text}</span>;
   }
@@ -42,26 +23,26 @@ function ProofAchievementText({ text }: { text: string }) {
   );
 }
 
-function ProofAchievementRow({
-  text,
-  icon: Icon,
-}: {
-  text: string;
-  icon: PremiumIcon;
-}) {
+function ProofAchievementRow({ text, num }: { text: string; num: string }) {
   return (
     <div className="proof-achievement-row">
-      <span className="proof-achievement-icon" aria-hidden="true">
-        <Icon />
+      <span className="proof-achievement-num" aria-hidden="true">
+        {num}
       </span>
       <ProofAchievementText text={text} />
     </div>
   );
 }
 
+/** Two-digit list number: 1 -> "01". */
+function listNumber(n: number): string {
+  return String(n).padStart(2, "0");
+}
+
 /**
- * Split-screen "Where Experience Comes From" — editorial proof: Olympic statement
- * + icon achievement rows (no card grid).
+ * Split-screen "Where Experience Comes From" — editorial proof: a numbered
+ * list (01-07). 01 is the Olympic statement; 02-07 are the achievement rows
+ * (no card grid).
  */
 export function WhoItsForSection() {
   return (
@@ -107,24 +88,29 @@ export function WhoItsForSection() {
           </ScrollReveal>
 
           <ScrollReveal className="proof-olympic-statement">
-            <p className="proof-statement-text">
-              {launch.whoItsFor.featuredAchievement}
-              <OlympicDiplomaBadge />
-            </p>
+            <div className="proof-statement-row">
+              <span className="proof-achievement-num" aria-hidden="true">
+                {listNumber(1)}
+              </span>
+              <p className="proof-statement-text">
+                {launch.whoItsFor.featuredAchievement}
+                <OlympicDiplomaBadge />
+              </p>
+            </div>
           </ScrollReveal>
 
           <div className="proof-achievement-grid">
             <div className="proof-achievement-col">
               {launch.whoItsFor.titleAchievements.map((text, i) => (
                 <ScrollReveal key={text} delayMs={70 + i * 60}>
-                  <ProofAchievementRow text={text} icon={TITLE_ICONS[i]} />
+                  <ProofAchievementRow text={text} num={listNumber(i + 2)} />
                 </ScrollReveal>
               ))}
             </div>
             <div className="proof-achievement-col">
               {launch.whoItsFor.experienceAchievements.map((text, i) => (
                 <ScrollReveal key={text} delayMs={140 + i * 60}>
-                  <ProofAchievementRow text={text} icon={EXPERIENCE_ICONS[i]} />
+                  <ProofAchievementRow text={text} num={listNumber(i + 5)} />
                 </ScrollReveal>
               ))}
             </div>

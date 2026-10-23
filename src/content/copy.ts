@@ -53,12 +53,12 @@ export const launch = {
     title: "Where Experience Comes From",
     featuredAchievement: "Olympic 4th place (Tokyo 2020)",
     titleAchievements: [
-      "8x World Champion",
-      "6x European Champion",
-      "21x Hungarian Champion",
+      "8× World Champion",
+      "6× European Champion",
+      "21× Hungarian Champion",
     ],
     experienceAchievements: [
-      "30+ years in elite sport",
+      "Nearly 3 decades in the sport",
       "20 years on the international stage",
       "6+ years in sport leadership",
     ],

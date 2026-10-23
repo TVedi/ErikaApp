@@ -3,13 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 
 type CountUpQtyProps = {
-  /** Final qty string, byte-identical when settled (e.g. "8x", "30+", "20"). */
+  /** Final qty string, byte-identical when settled (e.g. "8x", "8×", "30+", "20"). */
   finalText: string;
   className?: string;
 };
 
 function parseQty(finalText: string): { value: number; suffix: string } | null {
-  const m = finalText.match(/^(\d+)(x|\+)?$/);
+  const m = finalText.match(/^(\d+)(x|×|\+)?$/);
   if (!m) return null;
   return { value: Number(m[1]), suffix: m[2] ?? "" };
 }

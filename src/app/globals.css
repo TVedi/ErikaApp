@@ -10917,6 +10917,27 @@ section[aria-labelledby="programs-heading"] .premium-card-top--priced .premium-c
   font-size: 0.9375rem;
 }
 
+/* Where Experience Comes From: an editorial numbered list (01-07) in the
+   display serif, champagne gold, in place of the old icon circles. */
+section[aria-labelledby="who-its-for-heading"] .proof-achievement-num {
+  flex-shrink: 0;
+  width: 3rem;
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  font-size: 2.25rem;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--proof-champagne);
+}
+
+section[aria-labelledby="who-its-for-heading"] .proof-statement-row {
+  display: flex;
+  align-items: center;
+  /* Same gap as .proof-achievement-row, so every text starts on one line. */
+  gap: clamp(0.75rem, 1.2vw, 1rem);
+}
+
 /* Re-assert the existing reduced-motion overrides last, unchanged. */
 @media (prefers-reduced-motion: reduce) {
   .oly-diploma-badge-btn,
