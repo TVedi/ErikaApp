@@ -142,15 +142,17 @@ export const launch = {
   },
   videoSection: {
     eyebrow: "VIDEO ANALYSIS",
-    title: "Expert video technique analysis",
-    body: "Athletes can share paddling footage for manual review by Erika. Feedback may address catch, posture, rotation, leg drive, rhythm, boat stability, race preparation, drills, and next training focus. This is not automated AI scoring.",
+    title: "Expert Technique Analysis",
+    lead: "Every video is personally reviewed by Erika.",
+    body: "Your technique is assessed as a complete movement to identify what is limiting your performance, what should change first, and where your attention will make the greatest difference.",
     points: [
       "Catch and posture",
       "Rotation and leg drive",
-      "Rhythm and boat stability",
-      "Race preparation",
-      "Priority drills and next focus",
+      "Power transfer and timing",
+      "Rhythm and boat movement",
+      "Priority corrections and drills",
     ],
+    ctaLabel: "Book a Technique Review",
   },
   campsPreview: {
     eyebrow: "FUTURE CAMPS",

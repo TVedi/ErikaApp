@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useLayoutEffect, useRef } from "react";
-import { Check } from "lucide-react";
 import { StartCoachingButton } from "@/components/marketing/start-coaching-button";
 import { MarketingCtaReveal } from "@/components/motion/marketing-cta-reveal";
 import { PremiumSectionDivider } from "@/components/marketing/premium-section-divider";
@@ -11,11 +10,12 @@ import { sitePhotos } from "@/lib/marketing/site-photos";
 
 const photo = sitePhotos.videoAnalysis1Kep;
 
-function VideoAnalysisCheckRow({ text }: { text: string }) {
+function VideoAnalysisCheckRow({ text, index }: { text: string; index: number }) {
+  const indexLabel = String(index + 1).padStart(2, "0");
   return (
     <div className="video-analysis-check-row">
-      <span className="video-analysis-check-icon" aria-hidden="true">
-        <Check strokeWidth={1.25} />
+      <span className="video-analysis-check-num" aria-hidden="true">
+        {indexLabel}
       </span>
       <p className="video-analysis-check-text">{text}</p>
     </div>
@@ -117,17 +117,21 @@ export function VideoAnalysisSection() {
               {launch.videoSection.title}
             </h2>
 
+            <p className="video-analysis-body video-analysis-lead">
+              {launch.videoSection.lead}
+            </p>
             <p className="video-analysis-body">{launch.videoSection.body}</p>
 
             <div className="video-analysis-check-list">
-              {launch.videoSection.points.map((text) => (
-                <VideoAnalysisCheckRow key={text} text={text} />
+              {launch.videoSection.points.map((text, i) => (
+                <VideoAnalysisCheckRow key={text} text={text} index={i} />
               ))}
             </div>
 
             <MarketingCtaReveal className="video-analysis-cta flex justify-start">
               <StartCoachingButton
                 size="sm"
+                label={launch.videoSection.ctaLabel}
                 className="btn-cta-primary w-full sm:w-auto"
               />
             </MarketingCtaReveal>

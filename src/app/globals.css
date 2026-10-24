@@ -11224,6 +11224,30 @@ section[aria-labelledby="how-it-works-heading"] .split-screen-content-col {
   }
 }
 
+/* Video Analysis: the intro is a short lead line plus a paragraph; the
+   paragraph after the lead sits close to it so the two read as one block. */
+section[aria-labelledby="video-analysis-heading"] .video-analysis-lead + .video-analysis-body {
+  margin-top: 0.625rem;
+}
+
+/* Video Analysis list: the check icons give way to the Who This Is For
+   numbering (01-05) - small mono champagne index, top-aligned with the text. */
+section[aria-labelledby="video-analysis-heading"] .video-analysis-check-row {
+  align-items: flex-start;
+}
+
+section[aria-labelledby="video-analysis-heading"] .video-analysis-check-num {
+  flex-shrink: 0;
+  width: 2rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.55;
+  letter-spacing: 0.04em;
+  color: var(--premium-champagne);
+}
+
 /* Re-assert the existing reduced-motion overrides last, unchanged. */
 @media (prefers-reduced-motion: reduce) {
   .oly-diploma-badge-btn,
