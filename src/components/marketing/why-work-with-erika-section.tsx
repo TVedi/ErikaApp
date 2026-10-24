@@ -6,23 +6,23 @@ import { PremiumSectionDivider } from "@/components/marketing/premium-section-di
 const reasons = [
   {
     n: "01",
-    title: "Experience you can actually use",
-    body: "20+ years of international racing translated into practical training, technique and race-preparation decisions.",
+    title: "World-class experience, applied to you",
+    body: "20 years of international racing translated into practical decisions about training, technique and race preparation.",
   },
   {
     n: "02",
     title: "Coaching built around you",
-    body: "Your goals, training history, current level, time available, strengths and limitations shape everything we do.",
+    body: "Your goals, training history, current level, available time, strengths and individual needs shape the way we train.",
   },
   {
     n: "03",
     title: "I look at the whole movement",
-    body: "Connection through the body, power transfer, timing, rotation, release, boat movement, and what happens under fatigue.",
+    body: "Connection through the body, power transfer, timing, rotation, release, boat movement — and what changes as fatigue sets in.",
   },
   {
     n: "04",
     title: "You learn the why, not just the what",
-    body: "Understand what you are working on, why it matters, and how to recognise progress.",
+    body: "Understand what you are working on, why it matters, and how to recognize meaningful progress yourself.",
   },
 ];
 
@@ -50,9 +50,9 @@ export function WhyWorkWithErikaSection() {
             More than a training plan.
           </h2>
           <p className="why-erika-intro">
-            Good coaching starts with understanding you, knowing what should
-            change next, and using experience to make better performance
-            decisions.
+            Good coaching starts with understanding the athlete in front of
+            you: what they need, what should change next, and what will
+            actually move their performance forward.
           </p>
         </ScrollReveal>
 
