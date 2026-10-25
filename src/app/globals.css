@@ -11517,6 +11517,113 @@ section[aria-labelledby="programs-heading"] .premium-card-check-icon {
   }
 }
 
+/* Meet Your Coach: the intro is now two paragraphs; the second sits closer
+   to the first than the heading-to-text gap, so they read as one block. */
+section[aria-labelledby="about-olympic-heading"] .about-olympic-body + .about-olympic-body {
+  margin-top: 0.75rem;
+}
+
+@media (min-width: 1024px) {
+  /* Desktop: the two paragraphs get a touch tighter leading so the longer copy
+     fits the screen, and the four achievements sit in a tidy 2 x 2 grid
+     instead of three-plus-one. */
+  section[aria-labelledby="about-olympic-heading"] .about-olympic-body {
+    line-height: 1.6;
+    max-width: 36rem;
+  }
+
+  section[aria-labelledby="about-olympic-heading"] .about-olympic-chip-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 30rem;
+  }
+
+  section[aria-labelledby="about-olympic-heading"] .about-olympic-chip {
+    min-width: 0;
+  }
+
+  section[aria-labelledby="about-olympic-heading"] .about-olympic-chip:nth-child(2n)::after {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) and (max-height: 740px) {
+  /* Small, short laptop windows: the same compact spacing that 1280 px+ short
+     screens already use, plus slightly tighter leading, so the button stays on
+     screen with the longer copy. */
+  section[aria-labelledby="about-olympic-heading"] #about-olympic-heading,
+  section[aria-labelledby="about-olympic-heading"] .about-olympic-premium-heading {
+    margin-top: clamp(0.65rem, 1.6vh, 1.1rem);
+  }
+
+  section[aria-labelledby="about-olympic-heading"] .about-olympic-body {
+    line-height: 1.5;
+    margin-top: clamp(0.75rem, 1.6vh, 1.15rem);
+  }
+
+  section[aria-labelledby="about-olympic-heading"] .about-olympic-body + .about-olympic-body {
+    margin-top: 0.6rem;
+  }
+
+  section[aria-labelledby="about-olympic-heading"] .about-olympic-chip-row {
+    margin-top: clamp(0.75rem, 1.8vh, 1.25rem);
+  }
+
+  section[aria-labelledby="about-olympic-heading"] .about-olympic-chip {
+    padding: 0.4rem 0.65rem;
+  }
+
+  section[aria-labelledby="about-olympic-heading"] .about-olympic-chip-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  section[aria-labelledby="about-olympic-heading"] .about-olympic-chip-icon svg {
+    width: calc(2.5rem * 0.48);
+    height: calc(2.5rem * 0.48);
+  }
+
+  section[aria-labelledby="about-olympic-heading"] .about-olympic-cta-row {
+    margin-top: clamp(0.75rem, 2vh, 1.35rem);
+  }
+
+  section[aria-labelledby="about-olympic-heading"] .split-screen-content-col {
+    padding-top: clamp(1rem, 3vh, 3rem);
+    padding-bottom: clamp(1rem, 3vh, 3rem);
+  }
+}
+
+@media (max-width: 1023px) {
+  /* Tablets: the text starts a little lower than before, as the copy is longer.
+     The photo itself is unchanged. */
+  section[aria-labelledby="about-olympic-heading"] .split-screen-content-col {
+    margin-top: calc(-24vh - 2rem);
+  }
+}
+
+@media (max-width: 767px) {
+  /* Phones: the eyebrow always starts just below the medal, on every phone size.
+     The photo is cover-scaled by the screen width, so the medal's lower edge
+     sits at 75vw + 3.2vh from the top of the photo column (64vh tall); the text
+     starts 1.25rem below that edge. The photo itself is unchanged. */
+  section[aria-labelledby="about-olympic-heading"] .split-screen-content-col {
+    margin-top: clamp(
+      -34vh,
+      calc(75vw - 60.8vh + 1.25rem - clamp(1.25rem, 4vh, 2rem)),
+      -12vh
+    );
+  }
+}
+
+@media (max-width: 359px) {
+  /* Very narrow phones (under 360 px): the two heading lines take the section's
+     standard small-phone heading size, so they no longer run off the screen. */
+  section[aria-labelledby="about-olympic-heading"] #about-olympic-heading .about-olympic-heading-line1,
+  section[aria-labelledby="about-olympic-heading"] #about-olympic-heading .about-olympic-heading-line2 {
+    font-size: inherit;
+  }
+}
+
 /* Re-assert the existing reduced-motion overrides last, unchanged. */
 @media (prefers-reduced-motion: reduce) {
   .oly-diploma-badge-btn,

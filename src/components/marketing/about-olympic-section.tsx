@@ -27,8 +27,8 @@ const CHIP_ICONS: PremiumIcon[] = [
 ];
 
 function ProofChipLine1({ line1 }: { line1: string }) {
-  /* Animate clear counts only (8x / 21x / 20+). "Olympic 4th Place" stays static. */
-  const match = line1.match(/^(\d+x|\d+\+)\s+(.+)$/);
+  /* Animate clear counts only (8× / 21× / 20). "Olympic 4th Place" stays static. */
+  const match = line1.match(/^(\d+[x×]|\d+\+|\d+)\s+(.+)$/);
   if (!match) {
     return <span className="about-olympic-chip-line1">{line1}</span>;
   }
@@ -62,7 +62,7 @@ function ProofChip({
 }
 
 /**
- * Coached by Olympic Experience — premium split: gyerek.webp dissolve + proof chips.
+ * Meet Your Coach — premium split: gyerek.webp dissolve + proof chips.
  */
 export function AboutOlympicSection() {
   return (
@@ -101,15 +101,18 @@ export function AboutOlympicSection() {
                 id="about-olympic-heading"
                 className="about-olympic-premium-heading font-display"
               >
-                <span className="about-olympic-heading-line1">Coached by</span>{" "}
+                <span className="about-olympic-heading-line1">
+                  {launch.aboutPreview.titleLine1}
+                </span>{" "}
                 <span className="about-olympic-heading-line2">
-                  Olympic Experience
+                  {launch.aboutPreview.titleLine2}
                 </span>
               </h2>
             </ScrollReveal>
 
             <ScrollReveal>
               <p className="about-olympic-body">{launch.aboutPreview.body}</p>
+              <p className="about-olympic-body">{launch.aboutPreview.body2}</p>
             </ScrollReveal>
 
             <ScrollReveal className="about-olympic-chip-row" delayMs={80}>

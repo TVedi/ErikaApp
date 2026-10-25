@@ -172,15 +172,19 @@ export const launch = {
     ],
   },
   aboutPreview: {
-    eyebrow: "COACHED BY OLYMPIC EXPERIENCE",
-    title: "Coached by Olympic Experience",
+    eyebrow: "MEET YOUR COACH",
+    title: "Experience earned. Knowledge shared.",
+    titleLine1: "Experience earned.",
+    titleLine2: "Knowledge shared.",
     body:
-      "Hungarian Olympic sprint kayaker and elite coach Erika Medveczky brings world-class kayak knowledge to athletes in the U.S. and worldwide.",
+      "Erika Medveczky is an Olympian, 8× World Champion and sprint kayak coach whose approach has been shaped by nearly three decades in the sport and 20 years of international racing at the highest level.",
+    body2:
+      "Today, she brings that experience to athletes who want more than a generic plan — combining technical insight, individualized training and the perspective that comes from years spent competing and learning alongside some of the world’s most successful athletes and coaches.",
     proofChips: [
       { line1: "Olympic 4th Place", line2: "Tokyo 2020" },
-      { line1: "8x World", line2: "Champion" },
-      { line1: "21x Hungarian", line2: "Champion" },
-      { line1: "20+ Years", line2: "International Experience" },
+      { line1: "8× World", line2: "Champion" },
+      { line1: "21× Hungarian", line2: "Champion" },
+      { line1: "20 Years", line2: "International Racing" },
     ],
     cta: "Learn More About Erika",
     credentialNote:
