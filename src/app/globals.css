@@ -11624,6 +11624,17 @@ section[aria-labelledby="about-olympic-heading"] .about-olympic-body + .about-ol
   }
 }
 
+/* Mobile splash: the faint anti-banding noise layer now fades in from its top
+   edge instead of starting at a hard line. Over the dark blue backdrop that hard
+   edge showed as a thin horizontal stripe about a fifth of the way down the
+   screen. The photo, the veil and the noise itself are unchanged. */
+@media (max-width: 1023px) {
+  .mobile-home-splash-dither {
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 35%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 35%);
+  }
+}
+
 /* Re-assert the existing reduced-motion overrides last, unchanged. */
 @media (prefers-reduced-motion: reduce) {
   .oly-diploma-badge-btn,
