@@ -145,7 +145,11 @@ export function SiteFooter() {
               <BrandMark className="footer-brand-mark" aria-hidden="true" />
               <span className="footer-brand-wordmark">Erika Medveczky OLY</span>
             </Link>
-            <p className="footer-tagline">{brand.tagline}</p>
+            <p className="footer-tagline">
+              {brand.tagline}
+              <br />
+              {brand.taglineLine2}
+            </p>
           </div>
 
           <div className="footer-col-nav">

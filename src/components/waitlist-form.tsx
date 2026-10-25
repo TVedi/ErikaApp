@@ -130,7 +130,11 @@ function WaitlistOpenForm({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
             {waitlist.ageLabel}
           </label>
           <p id="waitlist-age-hint" className="waitlist-hint">
-            {waitlist.ageHint}
+            {waitlist.ageHint.map((line) => (
+              <span key={line} className="waitlist-hint-line">
+                {line}
+              </span>
+            ))}
           </p>
           <div className="waitlist-age-row">
             <Input
@@ -351,7 +355,13 @@ function WaitlistClosed({ applicationsOpen }: { applicationsOpen: boolean }) {
       </div>
       <fieldset className="waitlist-preview" disabled aria-hidden="true" inert>
         <span className="apply-label">{waitlist.ageLabel}</span>
-        <p className="waitlist-hint">{waitlist.ageHint}</p>
+        <p className="waitlist-hint">
+          {waitlist.ageHint.map((line) => (
+            <span key={line} className="waitlist-hint-line">
+              {line}
+            </span>
+          ))}
+        </p>
         <div className="waitlist-age-row">
           <Input type="number" tabIndex={-1} className="waitlist-field waitlist-age-input" />
           <Button type="button" tabIndex={-1} className="btn-cta-primary waitlist-continue">

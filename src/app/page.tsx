@@ -94,7 +94,11 @@ export default function HomePage() {
               <ScrollReveal key={item.question} delayMs={i * 70}>
                 <div className="program-card-glass rounded-xl p-6">
                   <h3 className="font-semibold text-foreground">{item.question}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{item.answer}</p>
+                  <div className="mt-2 space-y-2 text-sm text-muted-foreground">
+                    {item.answer.map((paragraph) => (
+                      <p key={paragraph}>{paragraph}</p>
+                    ))}
+                  </div>
                 </div>
               </ScrollReveal>
             ))}
@@ -106,6 +110,7 @@ export default function HomePage() {
       <section id="waitlist" className="section-navy-soft section-screen section-screen-center section-pad w-full">
         <div className="section-screen-inner mx-auto max-w-6xl px-4 sm:px-6">
           <ScrollReveal className="text-center">
+            <p className="waitlist-eyebrow">{waitlist.eyebrow}</p>
             <h2 className="text-2xl font-bold text-foreground sm:text-3xl">{waitlist.title}</h2>
             <p className="mt-2 text-muted-foreground">{waitlist.subtitle}</p>
           </ScrollReveal>

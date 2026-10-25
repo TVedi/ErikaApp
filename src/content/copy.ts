@@ -5,7 +5,8 @@
 
 export const brand = {
   name: "Medveczky Performance",
-  tagline: "Olympic and World Champion kayak coaching",
+  tagline: "Olympian & 8× World Champion",
+  taglineLine2: "Sprint Kayak Coach",
 };
 
 export const cta = {
@@ -303,38 +304,56 @@ export const faq = {
   title: "Frequently asked questions",
   items: [
     {
-      question: "Who is this platform for?",
-      answer:
-        "Sprint kayak athletes at all levels who want structured coaching from an Olympic-level expert — from developing paddlers to competitive racers.",
+      question: "Who is this coaching for?",
+      answer: [
+        "This coaching is designed for serious sprint kayak athletes, from competitive club and Masters paddlers to national and international-level racers.",
+        "You do not need to be at the highest level yet, but you do need to be committed to your development.",
+      ],
     },
     {
       question: "Is coaching automated or AI-generated?",
-      answer:
-        "No. All coaching feedback comes from Erika's direct expertise. AI may be added later only as a helper for summaries or formatting — never as a replacement for human coaching.",
+      answer: [
+        "No. Every training plan, technical review and coaching decision is personally created or reviewed by Erika.",
+        "Technology may support the process, but it never replaces the coach-athlete relationship.",
+      ],
     },
     {
-      question: "Can minors sign up?",
-      answer:
-        "Athletes under 18 may register with a guardian email and verified parental consent. Access to the dashboard requires guardian approval.",
+      question: "Can minors apply?",
+      answer: [
+        "Yes. Athletes aged 13–17 may apply with parent or guardian consent.",
+        "A parent or guardian name and email address are required during the registration process.",
+        "Athletes under 13 are not eligible to register.",
+      ],
     },
     {
-      question: "Are payments available now?",
-      answer:
-        "Technique Review may be purchased through a secure Stripe checkout link. Performance Coaching and High Performance Coaching are reviewed manually before onboarding. Full automatic subscription access is planned for a later phase.",
+      question: "How does the application process work?",
+      answer: [
+        "Submit the coaching application with information about your training, goals and current level.",
+        "Erika reviews each application personally to make sure the coaching relationship is the right fit.",
+        "Performance Coaching and High Performance Coaching have limited availability.",
+      ],
     },
     {
       question: "Where are training camps held?",
-      answer:
-        "In-person camps are planned in Gainesville, Georgia. See the Camps page for upcoming dates and details.",
+      answer: [
+        "In-person training camps are based in Gainesville, Georgia.",
+        "Upcoming dates, availability and camp details are published on the Camps page.",
+      ],
     },
   ],
 };
 
 export const waitlist = {
-  title: "Join the waitlist",
-  subtitle: "Be the first to know when full coaching features launch.",
+  eyebrow: "STAY CONNECTED",
+  title: "Be first to know what’s next.",
+  subtitle:
+    "Get updates on coaching availability, Gainesville training camps, technical resources and upcoming courses.",
   ageLabel: "Athlete's age",
-  ageHint: "We ask this first so we can follow the right steps for every athlete.",
+  ageHint: [
+    "Your age determines the correct registration and parental consent process.",
+    "Athletes under 13 are not eligible to register.",
+    "Athletes aged 13–17 will be asked to provide parent or guardian information before continuing.",
+  ],
   continue: "Continue",
   editAge: "Edit",
   fullName: "Full name",

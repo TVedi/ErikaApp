@@ -11635,6 +11635,49 @@ section[aria-labelledby="about-olympic-heading"] .about-olympic-body + .about-ol
   }
 }
 
+/* Waitlist: the "Stay connected" eyebrow above the heading, in the same gold
+   letter-spaced style as the other homepage eyebrows, centred with its rule.
+   The padding balances the trailing letter-spacing so the word sits centred. */
+#waitlist .waitlist-eyebrow {
+  margin: 0 0 clamp(0.85rem, 2vh, 1.15rem);
+  padding-left: 0.42em;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: #d8b96a;
+  line-height: 1.2;
+}
+
+#waitlist .waitlist-eyebrow::after {
+  content: "";
+  position: relative;
+  left: -0.21em;
+  display: block;
+  width: clamp(4.375rem, 6vw, 6.875rem);
+  height: 2px;
+  margin: 0.625rem auto 0;
+  background: rgba(216, 185, 106, 0.32);
+}
+
+/* Waitlist heading and intro, FAQ questions: when they wrap on narrow screens
+   the lines are balanced, so no single word is left alone on the last line. */
+#waitlist h2,
+#waitlist h2 + p,
+#faq h3 {
+  text-wrap: balance;
+}
+
+/* Waitlist age step: the three short notes each start on their own line. */
+.waitlist-hint .waitlist-hint-line {
+  display: block;
+}
+
+.waitlist-hint .waitlist-hint-line + .waitlist-hint-line {
+  margin-top: 0.3rem;
+}
+
 /* Re-assert the existing reduced-motion overrides last, unchanged. */
 @media (prefers-reduced-motion: reduce) {
   .oly-diploma-badge-btn,

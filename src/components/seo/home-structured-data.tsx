@@ -88,7 +88,7 @@ export function HomeStructuredData() {
         mainEntity: faq.items.map((item) => ({
           "@type": "Question",
           name: item.question,
-          acceptedAnswer: { "@type": "Answer", text: item.answer },
+          acceptedAnswer: { "@type": "Answer", text: item.answer.join(" ") },
         })),
       },
     ],
