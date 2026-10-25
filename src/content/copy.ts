@@ -79,24 +79,24 @@ export const launch = {
     ctaLabel: "Apply for Coaching",
   },
   programs: {
-    eyebrow: "COACHED BY OLYMPIC EXPERIENCE",
+    eyebrow: "BUILT ON WORLD-CLASS EXPERIENCE",
     title: "Coaching Options",
     intro:
-      "Personalized coaching built around the athlete, not a template. Choose the level of support that fits your goals.",
+      "Personalized coaching built around the athlete, not a formula. Choose the level of support and access that matches your goals.",
     proofStrip: {
-      lead: "Proven excellence. Trusted by athletes worldwide.",
+      lead: "Experience earned at the highest level of the sport.",
       items: [
-        "8x World Champion",
-        "6x European Champion",
-        "21x Hungarian Champion",
-        "30+ Years in Elite Sport",
+        "8× World Champion",
+        "6× European Champion",
+        "21× Hungarian Champion",
+        "Nearly 3 Decades in the Sport",
       ],
     },
     starter: {
       number: "01",
       name: "Technique Review",
       description:
-        "A focused technical analysis to identify what is holding you back and what to work on next.",
+        "A focused technical assessment designed to identify the changes that can make the greatest difference to your paddling.",
       features: [
         "Personal video technique analysis",
         "Clear technical priorities & corrections",
@@ -111,33 +111,33 @@ export const launch = {
       number: "02",
       name: "Performance Coaching",
       description:
-        "Fully individualized coaching for athletes who want structure, technical development and ongoing feedback.",
+        "Fully individualized coaching for athletes who want structure, technical development and an experienced coach actively guiding their progress.",
       features: [
         "Personalized training plan & regular adjustments",
         "Weekly feedback + monthly technique review",
         "Direct messaging + monthly coaching call",
       ],
-      accentFeature: "Limited to 8 athletes · 3-month minimum",
+      accentFeature: "Limited to 8 athletes · 3-month coaching commitment",
       cta: "apply" as const,
-      ctaLabel: "Apply for Coaching",
+      ctaLabel: "Apply for Performance Coaching",
       priceNote: "$425 / MONTH",
-      badge: "MOST POPULAR",
+      badge: "LIMITED TO 8",
     },
     elite: {
       number: "03",
       name: "High Performance Coaching",
       description:
-        "High-touch coaching for competitive athletes who want closer support throughout training, racing and season development.",
+        "My highest level of coaching access for competitive athletes who want close support throughout training, racing and season development.",
       features: [
         "Full training & season planning with ongoing adjustments",
         "Priority feedback, technique analysis & biweekly calls",
         "Race preparation, tapering & competition support",
       ],
-      accentFeature: "Limited to 4 athletes · 3-month minimum",
+      accentFeature: "Limited to 4 athletes · Application only · 3-month coaching commitment",
       cta: "apply" as const,
       ctaLabel: "Apply for High Performance",
       priceNote: "$695 / MONTH",
-      badge: "LIMITED ACCESS",
+      badge: "LIMITED TO 4",
     },
   },
   videoSection: {
@@ -427,7 +427,7 @@ export const about = {
 export const pricing = {
   title: "Programs",
   subtitle:
-    "Choose the level of coaching that fits your goals. Technique Review may use secure Stripe checkout at launch; other programs are reviewed manually.",
+    "Personalized coaching built around the athlete, not a formula. Choose the level of support and access that matches your goals.",
   stripeNote:
     "Technique Review payments may be handled through secure Stripe checkout links during launch. Performance Coaching and High Performance Coaching are reviewed manually before onboarding.",
   manualReviewNote: "Pricing and availability confirmed after application review.",

@@ -11248,6 +11248,252 @@ section[aria-labelledby="video-analysis-heading"] .video-analysis-check-num {
   color: var(--premium-champagne);
 }
 
+/* Coaching cards - the homepage Coaching Options and the Programs page show
+   the same three cards. Alignment and fit pass, desktop and phones:
+   - Every element starts at the same height in all three cards on desktop:
+     titles rest on their descriptions, then divider, features, note and
+     button; the three buttons are always the same height.
+   - Card header: one row (number, tier pill, price) wherever it fits - phones
+     from 360px and desktops from 1260px. On narrower desktops and the
+     smallest phones the two pills stack at the right (price on top), so a
+     pill never breaks into two lines.
+   - On 1024-1535px desktops the cards are narrow, so card text is set a
+     little smaller and the card padding a little tighter; the content wraps
+     onto fewer lines and the whole section - heading, cards and the
+     credentials line - fits on one screen, including 1366x768 laptops and
+     scaled 1536px screens. On short desktop screens (720px tall or less)
+     the homepage heading is slightly smaller and the feature rows tighter.
+   - Check icons are centred on the first line of their text.
+   - Homepage credentials line on phones and tablets: two tidy rows of two
+     with one thin gold rule between the columns (one column under 360px),
+     instead of "|" marks dangling at line ends. */
+section[aria-labelledby="coaching-options-heading"] .premium-card-badge,
+section[aria-labelledby="programs-heading"] .premium-card-badge,
+section[aria-labelledby="coaching-options-heading"] .premium-card-price-badge,
+section[aria-labelledby="programs-heading"] .premium-card-price-badge {
+  white-space: nowrap;
+}
+
+section[aria-labelledby="coaching-options-heading"] .premium-card-check-row,
+section[aria-labelledby="programs-heading"] .premium-card-check-row {
+  align-items: flex-start;
+}
+
+section[aria-labelledby="coaching-options-heading"] .premium-card-check-icon,
+section[aria-labelledby="programs-heading"] .premium-card-check-icon {
+  margin-top: -0.14rem;
+}
+
+@media (min-width: 1024px) {
+  section[aria-labelledby="coaching-options-heading"] .premium-card-title-row,
+  section[aria-labelledby="programs-heading"] .premium-card-title-row,
+  section[aria-labelledby="coaching-options-heading"] .premium-card-heading,
+  section[aria-labelledby="programs-heading"] .premium-card-heading {
+    align-self: end;
+    margin-top: 0.2rem;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-cta,
+  section[aria-labelledby="programs-heading"] .premium-card-cta {
+    display: flex;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-cta .marketing-cta-reveal-inner {
+    display: flex;
+    flex: 1 1 auto;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-cta .btn-cta-primary,
+  section[aria-labelledby="programs-heading"] .premium-card-cta .btn-cta-primary {
+    flex: 1 1 auto;
+    gap: 0.35rem;
+    padding-inline: 0.625rem;
+    letter-spacing: 0.02em;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1535px) {
+  section[aria-labelledby="coaching-options-heading"] .premium-card,
+  section[aria-labelledby="programs-heading"] .premium-card {
+    padding-inline: 0.875rem;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-desc,
+  section[aria-labelledby="programs-heading"] .premium-card-desc {
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-check-text,
+  section[aria-labelledby="programs-heading"] .premium-card-check-text {
+    font-size: 0.75rem;
+    line-height: 1.35;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-check-icon,
+  section[aria-labelledby="programs-heading"] .premium-card-check-icon {
+    margin-top: -0.18rem;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-note,
+  section[aria-labelledby="programs-heading"] .premium-card-note {
+    font-size: 0.71875rem;
+    line-height: 1.35;
+  }
+}
+
+/* Header, stacked: narrow desktops and the smallest phones. */
+@media (min-width: 1024px) and (max-width: 1259px), (max-width: 359px) {
+  section[aria-labelledby="coaching-options-heading"] .premium-card-top--priced,
+  section[aria-labelledby="programs-heading"] .premium-card-top--priced {
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    align-content: start;
+    row-gap: 0.2rem;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-top--priced .premium-card-number,
+  section[aria-labelledby="programs-heading"] .premium-card-top--priced .premium-card-number {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    align-self: start;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-top--priced .premium-card-price-badge,
+  section[aria-labelledby="programs-heading"] .premium-card-top--priced .premium-card-price-badge {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-top--priced .premium-card-badge,
+  section[aria-labelledby="programs-heading"] .premium-card-top--priced .premium-card-badge {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: end;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-top--priced .premium-card-badge,
+  section[aria-labelledby="programs-heading"] .premium-card-top--priced .premium-card-badge,
+  section[aria-labelledby="coaching-options-heading"] .premium-card-top--priced .premium-card-price-badge,
+  section[aria-labelledby="programs-heading"] .premium-card-top--priced .premium-card-price-badge {
+    padding-block: 0.18rem;
+  }
+}
+
+/* Header, one row on desktop: slightly tighter pills so all three fit. */
+@media (min-width: 1260px) {
+  section[aria-labelledby="coaching-options-heading"] .premium-card-top--priced .premium-card-badge,
+  section[aria-labelledby="programs-heading"] .premium-card-top--priced .premium-card-badge {
+    padding-inline: 0.4rem;
+    letter-spacing: 0.08em;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-top--priced .premium-card-price-badge,
+  section[aria-labelledby="programs-heading"] .premium-card-top--priced .premium-card-price-badge {
+    padding-inline: 0.45rem;
+    letter-spacing: 0.05em;
+  }
+}
+
+@media (min-width: 1260px) and (max-width: 1365px) {
+  section[aria-labelledby="coaching-options-heading"] .premium-card,
+  section[aria-labelledby="programs-heading"] .premium-card {
+    padding-inline: 0.75rem;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-top--priced,
+  section[aria-labelledby="programs-heading"] .premium-card-top--priced {
+    column-gap: 0.3rem;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-top--priced .premium-card-badge,
+  section[aria-labelledby="programs-heading"] .premium-card-top--priced .premium-card-badge {
+    padding-inline: 0.35rem;
+    letter-spacing: 0.06em;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-top--priced .premium-card-price-badge,
+  section[aria-labelledby="programs-heading"] .premium-card-top--priced .premium-card-price-badge {
+    padding-inline: 0.4rem;
+    font-size: 0.6875rem;
+    letter-spacing: 0.04em;
+  }
+}
+
+/* Short desktop screens (homepage section): slightly smaller heading and
+   tighter feature rows so heading, cards and credentials fit on one screen. */
+@media (min-width: 1024px) and (max-height: 720px) {
+  section[aria-labelledby="coaching-options-heading"] #coaching-options-heading,
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-heading {
+    font-size: clamp(2.5rem, 7vh, 3.5rem);
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .premium-card-check-row {
+    padding-block: 0.15rem;
+  }
+}
+
+/* Homepage credentials line, phones and tablets. */
+@media (max-width: 1023px) {
+  section[aria-labelledby="coaching-options-heading"] .premium-card-check-icon {
+    margin-top: -0.18rem;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-proof-items {
+    display: grid;
+    grid-template-columns: max-content minmax(0, max-content);
+    column-gap: 1.25rem;
+    row-gap: 0.35rem;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-proof-items li:not(:last-child)::after {
+    content: none;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-proof-items li:nth-child(even) {
+    position: relative;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-proof-items li:nth-child(even)::before {
+    content: "";
+    position: absolute;
+    top: 0.15em;
+    bottom: 0.15em;
+    left: -0.625rem;
+    width: 1px;
+    background: rgba(216, 185, 106, 0.4);
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-eyebrow {
+    letter-spacing: 0.34em;
+  }
+}
+
+@media (max-width: 399px) {
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-proof-items {
+    column-gap: 1.125rem;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-proof-items li {
+    font-size: 0.6875rem;
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-proof-items li:nth-child(even)::before {
+    left: -0.5625rem;
+  }
+}
+
+@media (max-width: 359px) {
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-proof-items {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  section[aria-labelledby="coaching-options-heading"] .coaching-options-proof-items li:nth-child(even)::before {
+    content: none;
+  }
+}
+
 /* Re-assert the existing reduced-motion overrides last, unchanged. */
 @media (prefers-reduced-motion: reduce) {
   .oly-diploma-badge-btn,
