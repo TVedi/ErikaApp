@@ -11494,6 +11494,29 @@ section[aria-labelledby="programs-heading"] .premium-card-check-icon {
   }
 }
 
+/* Programs page, desktop: the intro line is hidden, so the "Programs"
+   heading leads straight into the cards, and the cards are a little wider -
+   up to 70% of the row, still clear of Erika in the photo - so all three
+   titles sit on one line. Between 1260px and 1535px the card titles scale
+   with the screen so "High Performance Coaching" still fits on one line; on
+   narrower screens the titles keep their shared bottom line. Phones keep the
+   intro and the current cards. */
+@media (min-width: 1024px) {
+  section[aria-labelledby="programs-heading"] .programs-page-intro {
+    display: none;
+  }
+
+  section[aria-labelledby="programs-heading"] .programs-page-grid {
+    max-width: min(70%, 64rem);
+  }
+}
+
+@media (min-width: 1260px) and (max-width: 1535px) {
+  section[aria-labelledby="programs-heading"] .premium-card-title {
+    font-size: 1.33vw;
+  }
+}
+
 /* Re-assert the existing reduced-motion overrides last, unchanged. */
 @media (prefers-reduced-motion: reduce) {
   .oly-diploma-badge-btn,
