@@ -83,7 +83,7 @@ export default function HomePage() {
       <section
         id="faq"
         data-home-section="faq"
-        className="section-cream section-atmo-glow-none section-screen section-screen-center section-pad w-full"
+        className="section-cream section-atmo-glow-none section-screen section-screen-center section-pad relative w-full"
       >
         <div className="section-screen-inner mx-auto max-w-6xl px-4 sm:px-6">
           <ScrollReveal>
@@ -104,6 +104,7 @@ export default function HomePage() {
             ))}
           </div>
         </div>
+        <PremiumSectionDivider />
       </section>
 
       {/* Waitlist */}

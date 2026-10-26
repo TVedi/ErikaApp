@@ -118,7 +118,7 @@ export const launch = {
         "Weekly feedback + monthly technique review",
         "Direct messaging + monthly coaching call",
       ],
-      accentFeature: "Limited to 8 athletes · 3-month coaching commitment",
+      accentFeature: "Limited to 8 athletes · Application only · 3-month coaching commitment",
       cta: "apply" as const,
       ctaLabel: "Apply for Performance Coaching",
       priceNote: "$425 / MONTH",

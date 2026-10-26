@@ -11918,6 +11918,133 @@ section[aria-labelledby="about-olympic-heading"] .about-olympic-body + .about-ol
   }
 }
 
+/* Speaking page: the About page's coral scroll arrow, centred at the bottom of
+   the first screen; it leads to the talk themes. */
+.speaking-hero > .about-scroll-cue {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: clamp(0.75rem, 2.5vh, 1.5rem);
+  margin: 0 auto;
+}
+
+@media (max-width: 1023px) {
+  /* Phones: the arrow is in the flow and pushed to the bottom of the first
+     screen; on a short screen it simply follows the text. The hero is one
+     screen tall minus the header (svh: the height with the browser bar shown),
+     so the arrow is visible without scrolling. */
+  .speaking-hero.section-screen {
+    min-height: calc(100vh - 4rem);
+    min-height: calc(100svh - 4rem);
+  }
+
+  .speaking-hero > .about-scroll-cue {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    margin: auto auto clamp(0.75rem, 2vh, 1.25rem);
+  }
+
+  /* Phones: the portrait moves from under the text to the top-right corner,
+     beside the eyebrow and the headline, dissolving into the canvas the same
+     way as on /speaking/invite. The eyebrow and the headline keep to the left
+     so they never sit on the photo. */
+  .speaking-hero .speaking-hero-photo {
+    display: none;
+  }
+
+  .speaking-hero .speaking-hero-text {
+    position: relative;
+  }
+
+  .speaking-hero .speaking-hero-text > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .speaking-hero .speaking-hero-text .eyebrow-label,
+  .speaking-hero .speaking-hero-text .speaking-headline {
+    max-width: 58%;
+  }
+
+  .speaking-hero .speaking-hero-text::after {
+    content: "";
+    position: absolute;
+    top: -1.25rem;
+    right: calc(-1 * var(--page-left-inset));
+    width: 52%;
+    height: 16.5rem;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(
+        to right,
+        rgb(3, 23, 20) 0%,
+        rgba(3, 23, 20, 0.94) 9%,
+        rgba(3, 23, 20, 0.82) 18%,
+        rgba(3, 23, 20, 0.66) 27%,
+        rgba(3, 23, 20, 0.48) 37%,
+        rgba(3, 23, 20, 0.32) 47%,
+        rgba(3, 23, 20, 0.18) 57%,
+        rgba(3, 23, 20, 0.08) 68%,
+        rgba(3, 23, 20, 0.02) 80%,
+        transparent 90%
+      ),
+      linear-gradient(
+        to bottom,
+        rgb(3, 23, 20) 0%,
+        rgba(3, 23, 20, 0.7) 6%,
+        rgba(3, 23, 20, 0.38) 12%,
+        rgba(3, 23, 20, 0.16) 19%,
+        rgba(3, 23, 20, 0.04) 26%,
+        transparent 34%,
+        transparent 52%,
+        rgba(3, 23, 20, 0.06) 60%,
+        rgba(3, 23, 20, 0.2) 69%,
+        rgba(3, 23, 20, 0.42) 78%,
+        rgba(3, 23, 20, 0.66) 87%,
+        rgba(3, 23, 20, 0.88) 95%,
+        rgb(3, 23, 20) 100%
+      ),
+      url("/images/erika-speaking.jpg");
+    background-size: 100% 100%, 100% 100%, 170% auto;
+    background-position: 0 0, 0 0, 38% 18%;
+    background-repeat: no-repeat;
+  }
+}
+
+@media (max-width: 639px) {
+  /* Phones: the footer links sit in tidy columns, so no line starts or ends
+     with a separator dot. Wider screens keep the single dotted row. */
+  .footer-site-nav {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    column-gap: 1.5rem;
+    row-gap: 0.15rem;
+  }
+
+  .footer-site-nav-link {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .footer-site-nav-link:not(:last-child)::after {
+    content: none;
+  }
+
+  .footer-legal-links {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    column-gap: 1.5rem;
+    row-gap: 0.2rem;
+  }
+
+  .footer-legal-sep {
+    display: none;
+  }
+}
+
 /* Re-assert the existing reduced-motion overrides last, unchanged. */
 @media (prefers-reduced-motion: reduce) {
   .oly-diploma-badge-btn,

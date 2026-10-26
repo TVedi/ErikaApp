@@ -6,7 +6,13 @@ import { useEffect, useRef, useState } from "react";
  * Coral scroll cue — CSS fade-in + bob; JS only toggles hide-on-scroll class.
  * Navigation is the anchor href + CSS smooth scrolling (no imperative scroll APIs).
  */
-export function AboutScrollCue({ href }: { href: string }) {
+export function AboutScrollCue({
+  href,
+  label = "Scroll to story",
+}: {
+  href: string;
+  label?: string;
+}) {
   const [hidden, setHidden] = useState(false);
   const armedRef = useRef(false);
 
@@ -45,7 +51,7 @@ export function AboutScrollCue({ href }: { href: string }) {
     <a
       href={href}
       className={hidden ? "about-scroll-cue is-hidden" : "about-scroll-cue"}
-      aria-label="Scroll to story"
+      aria-label={label}
     >
       <svg
         className="about-scroll-cue-icon"

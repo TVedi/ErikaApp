@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { PublicLayout } from "@/components/layout/public-layout";
+import { AboutScrollCue } from "@/components/marketing/about-scroll-cue";
 import { PremiumSectionDivider } from "@/components/marketing/premium-section-divider";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import { LinkButton } from "@/components/ui/link-button";
@@ -52,6 +53,7 @@ export default function SpeakingPage() {
             </div>
           </ScrollReveal>
         </div>
+        <AboutScrollCue href="#speaking-themes-heading" label="Scroll to talk themes" />
         <PremiumSectionDivider />
       </section>
 
