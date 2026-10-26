@@ -12074,6 +12074,21 @@ section[aria-labelledby="about-olympic-heading"] .about-olympic-body + .about-ol
   }
 }
 
+/* Speaking page: the scroll arrow lands on the talk themes heading with some
+   air below the sticky header, instead of tucking the heading under it.
+   Desktop: html already reserves the 4rem header (scroll-padding-top), so
+   only the air is added. Phones: that reservation is 0 (see ~8216), while the
+   header here is a real 4rem sticky bar, so the margin covers both. */
+#speaking-themes-heading {
+  scroll-margin-top: 1.75rem;
+}
+
+@media (max-width: 1023px) {
+  #speaking-themes-heading {
+    scroll-margin-top: calc(4rem + 1.75rem);
+  }
+}
+
 /* Re-assert the existing reduced-motion overrides last, unchanged. */
 @media (prefers-reduced-motion: reduce) {
   .oly-diploma-badge-btn,
