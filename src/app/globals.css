@@ -12045,6 +12045,35 @@ section[aria-labelledby="about-olympic-heading"] .about-olympic-body + .about-ol
   }
 }
 
+/* Programs page (desktop): the section fills the screen under the header, so
+   the footer starts below the fold, and the three cards grow into the extra
+   height. The grid stretches its rows evenly, giving every part of the card a
+   little more air; the buttons keep their size and sit at the bottom. On very
+   tall screens the section stops growing at 56rem, so the cards never look
+   empty. The photo keeps its framing. */
+@media (min-width: 1024px) {
+  section[aria-labelledby="programs-heading"] {
+    display: flex;
+    flex-direction: column;
+    min-height: min(calc(100lvh - 4rem), 56rem);
+  }
+
+  section[aria-labelledby="programs-heading"] > .programs-page-inner {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+  }
+
+  section[aria-labelledby="programs-heading"] .programs-page-grid {
+    flex: 1 1 auto;
+    align-content: stretch;
+  }
+
+  section[aria-labelledby="programs-heading"] .premium-card-cta {
+    align-self: end;
+  }
+}
+
 /* Re-assert the existing reduced-motion overrides last, unchanged. */
 @media (prefers-reduced-motion: reduce) {
   .oly-diploma-badge-btn,
