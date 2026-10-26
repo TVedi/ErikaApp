@@ -1,4 +1,4 @@
-import { applyV2, emails } from "@/content/copy";
+import { applyV2, emails, speakingInvite } from "@/content/copy";
 
 type Option = { readonly value: string; readonly label: string };
 type FieldSpec = { name: string; label: string; options?: readonly Option[] };
@@ -344,6 +344,88 @@ export async function sendWaitlistEmails(data: WaitlistEmailData): Promise<void>
     }
   } catch (err) {
     console.error("waitlist emails failed", {
+      message: err instanceof Error ? err.message : String(err),
+    });
+  }
+}
+
+/** Speaking inquiry, in form order. Every label is read from speakingInvite. */
+const SPEAKING_FIELDS: readonly FieldSpec[] = [
+  { name: "full_name", label: speakingInvite.fields.fullName },
+  { name: "organization", label: speakingInvite.fields.organization },
+  { name: "email", label: speakingInvite.fields.email },
+  { name: "event_name", label: speakingInvite.fields.eventName },
+  { name: "event_date", label: speakingInvite.fields.eventDate },
+  { name: "location", label: speakingInvite.fields.location },
+  { name: "audience_size", label: speakingInvite.fields.audienceSize },
+  {
+    name: "event_format",
+    label: speakingInvite.fields.format,
+    options: speakingInvite.formatOptions,
+  },
+  { name: "looking_for", label: speakingInvite.fields.lookingFor },
+  { name: "details", label: speakingInvite.fields.details },
+];
+
+function speakingCoachText(data: Record<string, unknown>): string {
+  const lines = SPEAKING_FIELDS.flatMap((field) => {
+    const value = displayValue(field, data[field.name]);
+    return value === null ? [] : [`${field.label}: ${value}`];
+  });
+  return [emails.speakingCoach.intro, "", ...lines, "", emails.speakingCoach.replyHint].join(
+    "\n"
+  );
+}
+
+/**
+ * Sends the person who asked the same confirmation a coaching applicant gets
+ * (emails.applicant, to be rewritten later), and Erika the full inquiry.
+ * Never throws: the inquiry is already saved when this runs.
+ */
+export async function sendSpeakingInquiryEmails(
+  data: Record<string, unknown>
+): Promise<void> {
+  try {
+    const apiKey = process.env.RESEND_API_KEY?.trim();
+    const notifyEmail = process.env.NOTIFY_EMAIL?.trim();
+    if (!apiKey || !notifyEmail) {
+      console.warn("speaking emails skipped: RESEND_API_KEY or NOTIFY_EMAIL is not set");
+      return;
+    }
+
+    const from = senderAddress();
+    if (!from) {
+      console.warn("speaking emails skipped: NEXT_PUBLIC_SITE_URL is missing or invalid");
+      return;
+    }
+
+    const send = createSender(apiKey, from, notifyEmail);
+
+    const fullName = String(data.full_name ?? "").trim();
+    const organization = String(data.organization ?? "").trim();
+    const senderEmail = typeof data.email === "string" ? data.email.trim() : "";
+
+    await Promise.all([
+      attempt("speaking confirmation", async () => {
+        if (!senderEmail) return;
+        await send({
+          to: senderEmail,
+          subject: emails.applicant.subject,
+          text: applicantText(fullName),
+          replyTo: notifyEmail,
+        });
+      }),
+      attempt("speaking notification", () =>
+        send({
+          to: notifyEmail,
+          subject: `${emails.speakingCoach.subjectPrefix} - ${fullName}, ${organization}`,
+          text: speakingCoachText(data),
+          replyTo: senderEmail || notifyEmail,
+        })
+      ),
+    ]);
+  } catch (err) {
+    console.error("speaking emails failed", {
       message: err instanceof Error ? err.message : String(err),
     });
   }

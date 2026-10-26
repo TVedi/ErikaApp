@@ -661,16 +661,79 @@ export const nav = {
 export const speaking = {
   metaTitle: "Corporate Speaking | Erika Medveczky",
   metaDescription:
-    "Corporate speaking and performance inspiration from Olympic sprint kayaker and World Champion Erika Medveczky. Coming soon.",
+    "World-class performance speaking for companies, leadership teams and events, from Olympian and 8× World Champion Erika Medveczky.",
   eyebrow: "For companies, leadership teams, and events",
   headline: "World-Class Performance Speaking",
-  subheadline:
-    "Corporate inspiration from an Olympian and World Champion — built around resilience, leadership, preparation, and performing under pressure.",
-  comingSoon: "Corporate speaking experiences are coming soon.",
-  supportingCopy:
-    "Erika Medveczky brings nearly three decades of elite sport, Olympic finals experience, world championship success, and sports leadership into powerful talks for teams, leaders, and organizations.",
-  ctaLabel: "Booking details coming soon",
+  /** First paragraph is the lead line; the rest are the supporting copy. */
+  paragraphs: [
+    "The most valuable lessons from elite sport are not really about sport.",
+    "They are about performing when the pressure is real, making decisions when the outcome matters, responding to setbacks, and continuing to move forward when the original plan no longer works.",
+    "Erika brings these lessons to life through personal stories, honest perspective, and practical ideas that audiences can connect to their own work, leadership, and challenges.",
+    "The goal is to create talks that are relevant, memorable, and grounded in real experience — not just stories from sport, but ideas people can take back into their own lives and work.",
+  ],
+  themesTitle: "Talks can be tailored around themes such as:",
+  themes: [
+    {
+      title: "Performance Under Pressure",
+      body: "How preparation, decision-making, and focus shape performance when the stakes are high.",
+    },
+    {
+      title: "Your Choice. Your Chance.",
+      body: "The role of courage, responsibility, and everyday decisions in creating meaningful change.",
+    },
+    {
+      title: "Beyond the Finish Line",
+      body: "Identity, resilience, and rebuilding when success, failure, or major transitions change the path ahead.",
+    },
+    {
+      title: "Leadership Through Experience",
+      body: "What elite sport and sports leadership teach us about standards, accountability, trust, and team culture.",
+    },
+  ],
+  invite: {
+    title: "Invite Erika to Speak",
+    body: "Bring a world-class performance perspective to your next company event, leadership session, conference, or team experience.",
+    cta: "Invite Erika to Speak",
+    href: "/speaking/invite",
+  },
   imageAlt: "Erika Medveczky in a premium portrait for corporate speaking",
+};
+
+export const speakingInvite = {
+  metaTitle: "Invite Erika to Speak | Erika Medveczky",
+  metaDescription:
+    "Tell Erika Medveczky about your event: company events, leadership sessions, conferences and team experiences.",
+  eyebrow: "Speaking",
+  title: "Invite Erika to Speak",
+  /** The title in two halves: phones show them on two lines, desktop on one. */
+  titleLine1: "Invite Erika",
+  titleLine2: "to Speak",
+  intro: "Tell me a little about your event and what you are looking for.",
+  requiredNote: "Fields marked with an asterisk (*) are required.",
+  fields: {
+    fullName: "Full Name",
+    organization: "Company / Organization",
+    email: "Email Address",
+    eventName: "Event Name",
+    eventDate: "Event Date",
+    location: "Location",
+    audienceSize: "Estimated Audience Size",
+    format: "In-Person / Virtual",
+    lookingFor: "What are you looking for from the event?",
+    details: "Additional Details",
+  },
+  formatOptions: [
+    { value: "in_person", label: "In Person" },
+    { value: "virtual", label: "Virtual" },
+    { value: "not_confirmed", label: "Not Yet Confirmed" },
+  ],
+  /** Small grey line under the Company / Organization field. */
+  organizationHint: "Company, school, club or association — or ‘Private’ for a personal event.",
+  submit: "Submit Inquiry",
+  submitting: "Submitting…",
+  notice:
+    "Submitting an inquiry does not confirm a booking. Availability, format, travel requirements and speaking fee will be discussed before the engagement is finalized.",
+  imageAlt: "Erika Medveczky, Olympian and speaker",
 };
 
 /**
@@ -934,6 +997,13 @@ export const emails = {
     subjectPrefix: "New application",
     intro: "A new coaching application has arrived.",
     replyHint: "Reply to this email to reach the applicant directly.",
+  },
+  /** Erika's notification for an "Invite Erika to Speak" inquiry. The sender
+   *  gets the same confirmation as a coaching applicant (emails.applicant). */
+  speakingCoach: {
+    subjectPrefix: "New speaking inquiry",
+    intro: "A new speaking inquiry has arrived.",
+    replyHint: "Reply to this email to reach the organizer directly.",
   },
   waitlist: {
     subject: "You're on the list",

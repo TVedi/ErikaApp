@@ -11678,6 +11678,212 @@ section[aria-labelledby="about-olympic-heading"] .about-olympic-body + .about-ol
   margin-top: 0.3rem;
 }
 
+/* ===== Speaking page: themes list + invite band (UNLAYERED) =====
+   Below the existing hero. Same palette and inset as the homepage premium
+   sections; the themes use the numbered hairline rows of Who This Is For. */
+.speaking-themes,
+.speaking-invite-band {
+  --sp-cream: #f7f1e6;
+  --sp-soft-cream: rgba(247, 241, 230, 0.78);
+  --sp-champagne: #d8b96a;
+  --sp-line: rgba(216, 185, 106, 0.26);
+  background-color: var(--site-base);
+}
+
+.speaking-themes-inner {
+  width: 100%;
+  box-sizing: border-box;
+  padding: clamp(3rem, 9vh, 5.5rem) var(--page-left-inset) clamp(3.25rem, 9vh, 5.75rem);
+}
+
+.speaking-section-heading {
+  margin: 0;
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  font-size: clamp(1.75rem, 2.6vw, 2.5rem);
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--sp-cream);
+  -webkit-text-fill-color: var(--sp-cream);
+  text-wrap: balance;
+}
+
+.speaking-themes-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  margin: clamp(1.75rem, 4vh, 2.75rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.speaking-theme {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(0.875rem, 1.4vw, 1.25rem);
+  padding: clamp(1.1rem, 2.4vh, 1.5rem) 0;
+  border-top: 1px solid var(--sp-line);
+}
+
+.speaking-theme:last-child {
+  border-bottom: 1px solid var(--sp-line);
+}
+
+.speaking-theme-index {
+  flex-shrink: 0;
+  width: 2rem;
+  padding-top: 0.42rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  color: var(--sp-champagne);
+}
+
+.speaking-theme-text {
+  min-width: 0;
+}
+
+.speaking-theme-title {
+  margin: 0;
+  font-size: clamp(1.25rem, 1.6vw, 1.5rem);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--sp-cream);
+}
+
+.speaking-theme-body {
+  margin: 0.45rem 0 0;
+  max-width: 34rem;
+  font-size: clamp(0.9375rem, 1vw, 1.0625rem);
+  line-height: 1.6;
+  color: var(--sp-soft-cream);
+}
+
+@media (min-width: 1024px) {
+  /* Desktop: a 2 x 2 grid; each cell has its hairline on top, and the second
+     row also closes with one underneath. */
+  .speaking-themes-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(2.5rem, 5vw, 5rem);
+  }
+
+  .speaking-theme:last-child {
+    border-bottom: 0;
+  }
+
+  .speaking-theme:nth-child(n + 3) {
+    border-bottom: 1px solid var(--sp-line);
+  }
+}
+
+.speaking-invite-band {
+  padding: clamp(3.25rem, 10vh, 6rem) var(--page-left-inset);
+  text-align: center;
+}
+
+.speaking-invite-inner {
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.speaking-invite-body {
+  margin: clamp(0.85rem, 2vh, 1.25rem) auto 0;
+  font-size: clamp(1rem, 1.05vw, 1.125rem);
+  line-height: 1.7;
+  color: var(--sp-soft-cream);
+  text-wrap: balance;
+}
+
+.speaking-invite-cta {
+  min-height: 44px;
+  margin-top: clamp(1.5rem, 3.5vh, 2.25rem);
+  padding: 0 1.5rem;
+  font-size: 0.9375rem;
+}
+
+/* ===== Speaking inquiry page (/speaking/invite) (UNLAYERED) =====
+   Reuses the /apply layout and form styling one to one (.apply-page). Only the
+   date field, the notice under the button and the mobile photo differ. */
+.speaking-invite-page input[type="date"] {
+  color-scheme: dark;
+}
+
+/* Empty date field: the mm/dd/yyyy hint is muted, like an empty field. */
+.speaking-invite-page input[type="date"]:invalid::-webkit-datetime-edit {
+  color: rgba(247, 241, 230, 0.4);
+  -webkit-text-fill-color: rgba(247, 241, 230, 0.4);
+}
+
+.speaking-invite-page .apply-form > .speaking-invite-notice {
+  margin: 0;
+}
+
+/* The small grey line under Company / Organization. */
+.speaking-invite-page .speaking-invite-hint {
+  margin: 0.4rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--premium-soft-cream);
+  opacity: 0.7;
+}
+
+@media (min-width: 1024px) {
+  /* Desktop: a slightly narrower photo column, so the pinned portrait shows
+     the whole figure while it fills the right side from header to screen
+     bottom. The column itself stays pinned (sticky) as the form scrolls. */
+  .speaking-invite-page .apply-split {
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.72fr);
+  }
+}
+
+@media (max-width: 1023px) {
+  /* Phones: "Invite Erika / to Speak" on two lines, clear of the photo. */
+  .speaking-invite-page .apply-heading .speaking-invite-title-line {
+    display: block;
+  }
+
+  /* Phones: the speaking portrait in the top-right vignette instead of the
+     racing photo used on /apply; same canvas-colour dissolves. */
+  .speaking-invite-page .apply-content::after {
+    background-image:
+      linear-gradient(
+        to right,
+        rgb(3, 23, 20) 0%,
+        rgba(3, 23, 20, 0.94) 9%,
+        rgba(3, 23, 20, 0.82) 18%,
+        rgba(3, 23, 20, 0.66) 27%,
+        rgba(3, 23, 20, 0.48) 37%,
+        rgba(3, 23, 20, 0.32) 47%,
+        rgba(3, 23, 20, 0.18) 57%,
+        rgba(3, 23, 20, 0.08) 68%,
+        rgba(3, 23, 20, 0.02) 80%,
+        transparent 90%
+      ),
+      linear-gradient(
+        to bottom,
+        rgb(3, 23, 20) 0%,
+        rgba(3, 23, 20, 0.7) 6%,
+        rgba(3, 23, 20, 0.38) 12%,
+        rgba(3, 23, 20, 0.16) 19%,
+        rgba(3, 23, 20, 0.04) 26%,
+        transparent 34%,
+        transparent 52%,
+        rgba(3, 23, 20, 0.06) 60%,
+        rgba(3, 23, 20, 0.2) 69%,
+        rgba(3, 23, 20, 0.42) 78%,
+        rgba(3, 23, 20, 0.66) 87%,
+        rgba(3, 23, 20, 0.88) 95%,
+        rgb(3, 23, 20) 100%
+      ),
+      url("/images/erika-speaking.jpg");
+    background-size: 100% 100%, 100% 100%, 150% auto;
+    background-position: 0 0, 0 0, 30% 22%;
+  }
+}
+
 /* Re-assert the existing reduced-motion overrides last, unchanged. */
 @media (prefers-reduced-motion: reduce) {
   .oly-diploma-badge-btn,

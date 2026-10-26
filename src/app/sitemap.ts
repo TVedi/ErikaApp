@@ -8,6 +8,7 @@ const PUBLIC_PATHS = [
   "/pricing",
   "/camps",
   "/speaking",
+  "/speaking/invite",
   "/video-course",
   "/privacy",
   "/terms",
