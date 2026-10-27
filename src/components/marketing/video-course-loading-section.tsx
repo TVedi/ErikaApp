@@ -1,7 +1,8 @@
 import Image from "next/image";
-import { ComingSoonButton } from "@/components/marketing/coming-soon-button";
+import { MarketingCtaReveal } from "@/components/motion/marketing-cta-reveal";
 import { PremiumSectionDivider } from "@/components/marketing/premium-section-divider";
-import { camps, launch } from "@/content/copy";
+import { LinkButton } from "@/components/ui/link-button";
+import { launch } from "@/content/copy";
 
 const photo = {
   src: "/DSC09930-videocourse.webp",
@@ -11,7 +12,7 @@ const photo = {
 };
 
 /**
- * Video Course teaser — editorial copy + gold-framed portrait (speaking frame).
+ * Video Course teaser — editorial copy + gold-framed portrait (speaking frame) + waitlist CTA.
  */
 export function VideoCourseLoadingSection() {
   const copy = launch.videoCourse;
@@ -40,10 +41,15 @@ export function VideoCourseLoadingSection() {
           <p className="video-course-body">{copy.body}</p>
           <p className="video-course-secondary">{copy.secondary}</p>
 
-          <ComingSoonButton
-            label={camps.ctaLabel}
-            className="video-course-coming-soon"
-          />
+          <MarketingCtaReveal className="video-course-cta">
+            <LinkButton
+              href={copy.ctaHref}
+              size="lg"
+              className="btn-cta-primary w-full sm:w-auto"
+            >
+              {copy.cta}
+            </LinkButton>
+          </MarketingCtaReveal>
         </div>
 
         <div className="video-course-image-wrap">

@@ -1,41 +1,19 @@
 import Image from "next/image";
-import { Mountain, Waves, type LucideIcon } from "lucide-react";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
-import { ComingSoonButton } from "@/components/marketing/coming-soon-button";
+import { MarketingCtaReveal } from "@/components/motion/marketing-cta-reveal";
 import { PremiumSectionDivider } from "@/components/marketing/premium-section-divider";
-import { camps, launch } from "@/content/copy";
+import { LinkButton } from "@/components/ui/link-button";
+import { launch } from "@/content/copy";
 import { sitePhotos } from "@/lib/marketing/site-photos";
 
 const photo = sitePhotos.campsBackground;
 
-const FEATURE_ICONS: LucideIcon[] = [Waves, Mountain];
-
-function CampFeature({
-  label,
-  text,
-  icon: Icon,
-}: {
-  label: string;
-  text: string;
-  icon: LucideIcon;
-}) {
-  return (
-    <div className="camps-feature">
-      <span className="camps-feature-icon" aria-hidden="true">
-        <Icon strokeWidth={1.25} />
-      </span>
-      <div className="camps-feature-copy">
-        <p className="camps-feature-label">{label}</p>
-        <p className="camps-feature-text">{text}</p>
-      </div>
-    </div>
-  );
-}
-
 /**
- * Gainesville Training Camps — premium split: camp.webp dissolve + coming-soon CTA.
+ * Gainesville Training Camps — premium split: camp.webp dissolve + interest-list CTA.
  */
 export function CampsSection() {
+  const copy = launch.campsPreview;
+
   return (
     <section
       className="section-camps section-cream section-screen section-screen-center w-full"
@@ -62,7 +40,7 @@ export function CampsSection() {
         <div className="split-screen-content-col relative order-2 lg:order-1">
           <div className="camps-content w-full">
             <ScrollReveal>
-              <p className="camps-eyebrow">{launch.campsPreview.eyebrow}</p>
+              <p className="camps-eyebrow">{copy.eyebrow}</p>
             </ScrollReveal>
 
             <ScrollReveal>
@@ -70,39 +48,25 @@ export function CampsSection() {
                 id="camps-heading"
                 className="camps-premium-heading font-display"
               >
-                <span className="camps-heading-line1">Gainesville</span>{" "}
-                <span className="camps-heading-line2">Training Camps</span>
+                <span className="camps-heading-line1">{copy.titleLine1}</span>{" "}
+                <span className="camps-heading-line2">{copy.titleLine2}</span>
               </h2>
             </ScrollReveal>
 
             <ScrollReveal>
-              <p className="camps-coming-soon">
-                <span className="camps-coming-soon-rule" aria-hidden="true" />
-                <span className="camps-coming-soon-text">
-                  {launch.campsPreview.comingSoon}
-                </span>
-                <span className="camps-coming-soon-rule" aria-hidden="true" />
-              </p>
+              <p className="camps-body">{copy.body}</p>
+              <p className="camps-body">{copy.body2}</p>
             </ScrollReveal>
 
-            <ScrollReveal>
-              <p className="camps-body">{launch.campsPreview.body}</p>
-            </ScrollReveal>
-
-            <ScrollReveal className="camps-feature-row" delayMs={70}>
-              {launch.campsPreview.features.map((feature, i) => (
-                <CampFeature
-                  key={feature.label}
-                  label={feature.label}
-                  text={feature.text}
-                  icon={FEATURE_ICONS[i]}
-                />
-              ))}
-            </ScrollReveal>
-
-            <ScrollReveal className="camps-home-cta">
-              <ComingSoonButton label={camps.ctaLabel} />
-            </ScrollReveal>
+            <MarketingCtaReveal className="camps-home-cta">
+              <LinkButton
+                href={copy.ctaHref}
+                size="lg"
+                className="btn-cta-primary w-full sm:w-auto"
+              >
+                {copy.cta}
+              </LinkButton>
+            </MarketingCtaReveal>
           </div>
         </div>
       </div>

@@ -12089,6 +12089,145 @@ section[aria-labelledby="about-olympic-heading"] .about-olympic-body + .about-ol
   }
 }
 
+/* Homepage Camps (desktop): Erika's shorter copy - two paragraphs and a button
+   instead of the "Coming Soon" line and the two features - sits in the middle
+   of the screen beside the photo rather than at the top. */
+section[aria-labelledby="camps-heading"] .camps-body + .camps-body {
+  margin-top: 0.75rem;
+}
+
+@media (min-width: 1024px) {
+  section[aria-labelledby="camps-heading"] .split-screen-content-col {
+    justify-content: center;
+  }
+}
+
+/* Homepage Video Course: the button sits clear of the second paragraph. */
+section[aria-labelledby="video-course-heading"] .video-course-cta {
+  margin-top: clamp(1.25rem, 3vh, 2rem);
+}
+
+/* /camps (desktop): the landscape photo fills its column (up to 560px) so it
+   balances the text, instead of a small card in the corner. */
+@media (min-width: 1024px) {
+  .camps-hero:not(.video-course-hero) .camps-photo-frame {
+    width: min(560px, 100%);
+  }
+}
+
+/* /camps and /video-course (phones): the photo moves from under the text to
+   the top of the page, so it is the first thing seen.
+   - /video-course (a portrait): in the top-right corner beside the eyebrow and
+     the headline, dissolving into the canvas - the same treatment as /speaking.
+     The eyebrow and the headline keep to the left, off the photo.
+   - /camps (a wide sunset): a full-width band at the top, the whole picture in
+     view, fading into the canvas behind the eyebrow. */
+@media (max-width: 1023px) {
+  /* The text column is narrower than the screen on tablets, so the photo is
+     pinned to the screen's right edge, not to the column's (on phones the two
+     are the same: one page inset). Percentages here are of the text column. */
+  .camps-hero,
+  .speaking-hero {
+    --hero-photo-to-screen-edge: calc(100% + var(--page-left-inset) - 100vw);
+  }
+
+  .speaking-hero .speaking-hero-text::after {
+    right: var(--hero-photo-to-screen-edge);
+  }
+
+  .camps-hero .camps-hero-photo {
+    display: none;
+  }
+
+  .camps-hero .camps-hero-text {
+    position: relative;
+  }
+
+  .camps-hero .camps-hero-text > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .camps-hero .camps-hero-text::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    background-repeat: no-repeat;
+  }
+
+  .camps-hero.video-course-hero .camps-hero-text .eyebrow-label,
+  .camps-hero.video-course-hero .camps-hero-text .camps-headline {
+    max-width: 58%;
+  }
+
+  .camps-hero.video-course-hero .camps-hero-text::after {
+    top: -1.25rem;
+    right: var(--hero-photo-to-screen-edge);
+    width: 52%;
+    height: 15rem;
+    background-image:
+      linear-gradient(
+        to right,
+        rgb(3, 23, 20) 0%,
+        rgba(3, 23, 20, 0.94) 9%,
+        rgba(3, 23, 20, 0.82) 18%,
+        rgba(3, 23, 20, 0.66) 27%,
+        rgba(3, 23, 20, 0.48) 37%,
+        rgba(3, 23, 20, 0.32) 47%,
+        rgba(3, 23, 20, 0.18) 57%,
+        rgba(3, 23, 20, 0.08) 68%,
+        rgba(3, 23, 20, 0.02) 80%,
+        transparent 90%
+      ),
+      linear-gradient(
+        to bottom,
+        rgb(3, 23, 20) 0%,
+        rgba(3, 23, 20, 0.7) 6%,
+        rgba(3, 23, 20, 0.38) 12%,
+        rgba(3, 23, 20, 0.16) 19%,
+        rgba(3, 23, 20, 0.04) 26%,
+        transparent 34%,
+        transparent 52%,
+        rgba(3, 23, 20, 0.06) 60%,
+        rgba(3, 23, 20, 0.2) 69%,
+        rgba(3, 23, 20, 0.42) 78%,
+        rgba(3, 23, 20, 0.66) 87%,
+        rgba(3, 23, 20, 0.88) 95%,
+        rgb(3, 23, 20) 100%
+      ),
+      url("/DSC09930-videocourse.webp");
+    background-size: 100% 100%, 100% 100%, 170% auto;
+    background-position: 0 0, 0 0, 52% 12%;
+  }
+
+  /* /camps: the band is the picture's own 16:9 shape at full width; the text
+     starts on its dark lower edge. */
+  .camps-hero:not(.video-course-hero) .camps-hero-text {
+    padding-top: calc(min(56.25vw, 26rem) - 3rem);
+  }
+
+  .camps-hero:not(.video-course-hero) .camps-hero-text::after {
+    top: calc(-1 * clamp(0.75rem, 2vh, 1.25rem));
+    left: calc(-1 * var(--page-left-inset));
+    right: var(--hero-photo-to-screen-edge);
+    height: min(56.25vw, 26rem);
+    background-image:
+      linear-gradient(
+        to bottom,
+        rgba(3, 23, 20, 0.35) 0%,
+        rgba(3, 23, 20, 0) 18%,
+        rgba(3, 23, 20, 0) 55%,
+        rgba(3, 23, 20, 0.45) 75%,
+        rgba(3, 23, 20, 0.85) 90%,
+        rgb(3, 23, 20) 100%
+      ),
+      url("/Africa.webp");
+    background-size: 100% 100%, cover;
+    background-position: 0 0, 50% 50%;
+  }
+}
+
 /* Re-assert the existing reduced-motion overrides last, unchanged. */
 @media (prefers-reduced-motion: reduce) {
   .oly-diploma-badge-btn,

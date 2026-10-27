@@ -156,21 +156,15 @@ export const launch = {
     ctaLabel: "Book a Technique Review",
   },
   campsPreview: {
-    eyebrow: "FUTURE CAMPS",
-    title: "Gainesville Training Camps",
-    comingSoon: "Coming Soon",
-    body:
-      "Immersive training experiences in a world-class setting. On-water sessions, expert coaching, and a community built for champions.",
-    features: [
-      {
-        label: "ON-WATER TRAINING",
-        text: "High-performance sessions in a championship setting.",
-      },
-      {
-        label: "FUTURE EXPERIENCES",
-        text: "New camps, advanced training, and unforgettable moments.",
-      },
-    ],
+    eyebrow: "FUTURE IN-PERSON TRAINING",
+    title: "Training Camps in Gainesville",
+    titleLine1: "Training Camps",
+    titleLine2: "in Gainesville",
+    body: "Small-group sprint kayak camps focused on technical development, high-quality on-water training, and individualized coaching.",
+    body2:
+      "Camps will be based in Gainesville, Georgia, with limited capacity to allow for personal feedback and focused work.",
+    cta: "Join the Camp Interest List",
+    ctaHref: "/#waitlist",
   },
   aboutPreview: {
     eyebrow: "MEET YOUR COACH",
@@ -197,12 +191,14 @@ export const launch = {
   videoCourseLoading: "Video Course loading ...",
   videoCourse: {
     eyebrow: "VIDEO COURSE",
-    headingLine1: "Video Course",
-    headingLine2: "Coming Soon",
-    body:
-      "A focused video library is being prepared for athletes who want Erika's technical fundamentals, training perspective, and race-proven coaching insight in a structured format.",
-    secondary: "Details will be announced later.",
-    pill: "COMING SOON",
+    title: "Learn the principles behind better paddling.",
+    headingLine1: "Learn the principles",
+    headingLine2: "behind better paddling.",
+    body: "A focused video course is being developed around sprint kayak technique, training principles, and race preparation.",
+    secondary:
+      "Built from Erika’s experience in the sport, it will turn high-level concepts into practical ideas athletes can understand and apply.",
+    cta: "Join the Course Waitlist",
+    ctaHref: "/#waitlist",
   },
   finalCta: {
     title: "Ready to improve your paddling with world-class eyes on your technique?",
@@ -468,15 +464,15 @@ export const pricing = {
 export const camps = {
   metaTitle: "Training Camps | Medveczky Performance",
   metaDescription:
-    "Future small-group kayak training camps in Gainesville, Georgia with Olympic sprint kayaker and World Champion Erika Medveczky. Details coming soon.",
+    "Small-group sprint kayak camps in Gainesville, Georgia, with Olympian and 8× World Champion Erika Medveczky.",
   eyebrow: "Future in-person training",
-  headline: "Training Camps Are Coming",
+  headline: "Training Camps in Gainesville",
   subheadline:
-    "A future home for small-group kayak camps, technical water sessions, and elite coaching experiences in Gainesville, Georgia.",
+    "Small-group sprint kayak camps focused on technical development, high-quality on-water training, and individualized coaching.",
   supportingCopy:
-    "Dates, formats, and registration details will be announced later. For now, this page is a preview of the direction: focused, personal, high-quality training built around Erika’s Olympic and world championship experience.",
-  statusLabel: "Camp registration is not open yet.",
-  ctaLabel: "Details coming soon",
+    "Camps will be based in Gainesville, Georgia, with limited capacity to allow for personal feedback and focused work.",
+  cta: "Join the Camp Interest List",
+  ctaHref: "/#waitlist",
   imageAlt: "Kayaker paddling into the sunset on calm water",
 };
 
