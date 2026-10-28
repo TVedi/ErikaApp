@@ -12228,6 +12228,121 @@ section[aria-labelledby="video-course-heading"] .video-course-cta {
   }
 }
 
+/* /speaking and /video-course (phones and tablets): no text on the photo.
+   The hero text becomes a two-column grid:
+   - the eyebrow runs across the full width, so it no longer wraps into three
+     squeezed lines;
+   - the headline, its accent rule and the lead sentence sit in the left column;
+   - the portrait sits in the right column beside them, bleeding to the screen
+     edge and dissolving into the canvas on its left and bottom (same photo,
+     crop and veils as before);
+   - the remaining paragraphs and the button start below the photo, full width.
+   If the photo is taller than the left column, the last left row takes up the
+   difference, so the text below never runs onto the photo. */
+@media (max-width: 1023px) {
+  .speaking-hero .speaking-hero-text,
+  .camps-hero.video-course-hero .camps-hero-text {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 42%;
+    grid-template-rows: auto auto auto auto 1fr;
+    align-items: start;
+    align-self: stretch;
+    width: 100%;
+  }
+
+  .speaking-hero .speaking-hero-text > *,
+  .camps-hero.video-course-hero .camps-hero-text > * {
+    grid-column: 1 / -1;
+  }
+
+  .speaking-hero .speaking-hero-text > .eyebrow-label,
+  .camps-hero.video-course-hero .camps-hero-text > .eyebrow-label {
+    grid-row: 1;
+    max-width: none;
+  }
+
+  .speaking-hero .speaking-hero-text > .speaking-headline,
+  .camps-hero.video-course-hero .camps-hero-text > .camps-headline {
+    grid-column: 1;
+    grid-row: 2;
+    max-width: none;
+    padding-right: 0.75rem;
+  }
+
+  .speaking-hero .speaking-hero-text > .bg-accent-gold,
+  .camps-hero.video-course-hero .camps-hero-text > .bg-accent-gold {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .speaking-hero .speaking-hero-text > .speaking-subheadline,
+  .camps-hero.video-course-hero .camps-hero-text > .camps-subheadline {
+    grid-column: 1;
+    grid-row: 4;
+    padding-right: 0.75rem;
+  }
+
+  .speaking-hero .speaking-hero-text::after,
+  .camps-hero.video-course-hero .camps-hero-text::after {
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    width: auto;
+    grid-column: 2;
+    grid-row: 2 / 6;
+    align-self: start;
+    height: clamp(13rem, 54vw, 15.5rem);
+    margin: -0.5rem calc(-1 * var(--page-left-inset)) 0 -2.5rem;
+    background-size: 100% 100%, 100% 100%, 170% auto;
+    background-position: 0 0, 0 0, 38% 18%;
+  }
+
+  .camps-hero.video-course-hero .camps-hero-text::after {
+    background-position: 0 0, 0 0, 52% 12%;
+  }
+
+  /* /speaking: the hero is as tall as its content; the arrow follows the text
+     with an even gap instead of being pushed to the bottom of the screen. */
+  .speaking-hero.section-screen {
+    min-height: 0;
+  }
+
+  .speaking-hero > .about-scroll-cue {
+    margin: 0.5rem auto 1.25rem;
+  }
+
+  /* /camps: the text starts just below the sunset band, on the solid canvas,
+     instead of over the photo's lower edge. */
+  .camps-hero:not(.video-course-hero) .camps-hero-text {
+    padding-top: calc(min(56.25vw, 26rem) - 1rem);
+  }
+
+  /* /camps and /video-course: the page is as tall as its content, so the
+     footer follows the button after a calm gap instead of half an empty
+     screen. */
+  .camps-hero.section-screen {
+    min-height: 0;
+    padding-bottom: clamp(2.5rem, 7vh, 4rem);
+  }
+}
+
+@media (min-width: 600px) and (max-width: 1023px) {
+  /* Tablets: the photo column is wider, so the whole portrait fits (cover),
+     a little shorter to match the shorter text beside it; the button keeps
+     its own width instead of spanning the page. */
+  .speaking-hero .speaking-hero-text::after,
+  .camps-hero.video-course-hero .camps-hero-text::after {
+    height: 13.5rem;
+    background-size: 100% 100%, 100% 100%, cover;
+    background-position: 0 0, 0 0, 50% 18%;
+  }
+
+  .camps-hero .camps-hero-text > .camps-page-cta {
+    justify-self: start;
+  }
+}
+
 /* Re-assert the existing reduced-motion overrides last, unchanged. */
 @media (prefers-reduced-motion: reduce) {
   .oly-diploma-badge-btn,
