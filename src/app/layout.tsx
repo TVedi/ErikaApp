@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist_Mono } from "next/font/google";
 import { fraunces, inter } from "@/lib/fonts";
+import { getSiteUrl } from "@/lib/seo/site-url";
 import "./globals.css";
 
 const geistMono = Geist_Mono({
@@ -9,6 +10,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  /* Absolute base for the share image and other metadata URLs. */
+  metadataBase: new URL(getSiteUrl()),
   title: {
     default: "Medveczky Performance | Olympic Kayak Coaching by Erika Medveczky",
     template: "%s | Medveczky Performance",
@@ -20,6 +23,7 @@ export const metadata: Metadata = {
     description:
       "Online kayak coaching, expert video technique analysis, and training camps in Gainesville, Georgia.",
     type: "website",
+    siteName: "Medveczky Performance",
   },
 };
 
