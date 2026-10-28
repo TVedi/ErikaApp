@@ -12428,6 +12428,15 @@ section[aria-labelledby="video-course-heading"] .video-course-cta {
   }
 }
 
+/* /speaking (phones and tablets): the scroll arrow sits closer to the text, so
+   on a typical phone it shows whole on the first screen, bounce included,
+   instead of its tip touching the bottom edge. */
+@media (max-width: 1023px) {
+  .speaking-hero > .about-scroll-cue {
+    margin-top: -1.25rem;
+  }
+}
+
 /* Re-assert the existing reduced-motion overrides last, unchanged. */
 @media (prefers-reduced-motion: reduce) {
   .oly-diploma-badge-btn,
