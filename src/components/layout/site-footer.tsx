@@ -129,10 +129,10 @@ const siteNavLinks = [
 ] as const;
 
 const legalLinks = [
-  { href: "/medical-disclaimer", label: footer.medical },
-  { href: "/privacy", label: footer.privacy },
   { href: "/terms", label: footer.terms },
+  { href: "/privacy", label: footer.privacy },
   { href: "/refund-policy", label: footer.refund },
+  { href: "/medical-disclaimer", label: footer.medical },
 ] as const;
 
 export function SiteFooter() {

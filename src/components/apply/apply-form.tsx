@@ -19,6 +19,8 @@ function isRequired(name: string) {
 const SELECT_PLACEHOLDER = "Select an option";
 const PRIVACY_LINK_TEXT = "Privacy Policy";
 const privacyParts = applyV2.consents.privacy.split(PRIVACY_LINK_TEXT);
+const MEDICAL_LINK_TEXT = "Medical Disclaimer";
+const medicalParts = applyV2.consents.medical.split(MEDICAL_LINK_TEXT);
 
 type Option = { readonly value: string; readonly label: string };
 
@@ -523,9 +525,20 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
             name="medical_disclaimer_accepted"
             required={isRequired("medical_disclaimer_accepted")}
             className="apply-checkbox"
-            {...englishPrompt("Please confirm you understand this is a coaching inquiry.")}
+            {...englishPrompt("Please confirm you have read the Medical Disclaimer.")}
           />
-          <span>{applyV2.consents.medical}</span>
+          <span>
+            {medicalParts[0]}
+            <Link
+              href="/medical-disclaimer"
+              className="apply-inline-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {MEDICAL_LINK_TEXT}
+            </Link>
+            {medicalParts.slice(1).join(MEDICAL_LINK_TEXT)}
+          </span>
         </label>
         <label className="apply-check-row apply-check-row-start">
           <input
@@ -537,7 +550,12 @@ function ApplyFormInner({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
           />
           <span>
             {privacyParts[0]}
-            <Link href="/privacy" className="apply-inline-link">
+            <Link
+              href="/privacy"
+              className="apply-inline-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {PRIVACY_LINK_TEXT}
             </Link>
             {privacyParts.slice(1).join(PRIVACY_LINK_TEXT)}

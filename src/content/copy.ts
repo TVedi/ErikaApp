@@ -546,8 +546,45 @@ export const legal = {
   },
   refund: {
     title: "Refund Policy",
-    body:
-      "DRAFT placeholder — Refund terms for coaching programs and camps will be defined before live payments. Real legal copy must be supplied/reviewed by a human before taking live payments.",
+    lastUpdated: "Last updated: November 1, 2026",
+    intro: [
+      "This policy applies to services offered by Medveczky Performance LLC through medveczkyperformance.com.",
+    ],
+    sections: [
+      {
+        heading: "Technique Review (one-time service)",
+        paragraphs: [
+          "You may request a full refund if you have not yet submitted your video and we receive your request within 14 days of payment.",
+          "Once you have submitted your video and Erika has begun the analysis, the fee is non-refundable, because work on the service has already started.",
+          "If we are unable to deliver the service for reasons on our side (for example, if we cannot take it on, or if the submitted video cannot be assessed and cannot be replaced), we will refund the full fee.",
+        ],
+      },
+      {
+        heading: "Performance Coaching and High Performance Coaching",
+        paragraphs: [
+          "These programs begin after an individual application review. Fees, billing, cancellation and refunds for these programs are set out in your individual coaching agreement, which you receive for signature before coaching begins.",
+        ],
+      },
+      {
+        heading: "Training Camps",
+        paragraphs: [
+          "Payment and cancellation terms for training camps will be provided at the time of registration.",
+        ],
+      },
+      {
+        heading: "How to Request a Refund",
+        paragraphs: [
+          "Email erika@medveczkyperformance.com from the email address you used for your purchase, and include your name, the service, and the date of payment. We will respond within 5 business days.",
+          "Approved refunds are issued to the original payment method. When the funds appear in your account depends on your bank or card issuer.",
+        ],
+      },
+      {
+        heading: "Your Legal Rights",
+        paragraphs: [
+          "This policy does not limit any rights you have that cannot be excluded or limited under applicable law.",
+        ],
+      },
+    ],
   },
   medical: {
     title: "Medical Disclaimer",
@@ -900,8 +937,7 @@ export const applyV2 = {
   },
 
   consents: {
-    medical:
-      "I understand this is a coaching inquiry and not medical, injury, physical therapy, or emergency advice.",
+    medical: "I have read and understand the Medical Disclaimer.",
     privacy:
       "I consent to Medveczky Performance processing my information to respond to this inquiry. See our Privacy Policy.",
   },
