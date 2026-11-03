@@ -1,4 +1,5 @@
-import { applyV2, emails, speakingInvite } from "@/content/copy";
+import { applyV2, brand, emails, speakingInvite } from "@/content/copy";
+import { confirmationHtml } from "@/lib/email/confirmation-html";
 
 type Option = { readonly value: string; readonly label: string };
 type FieldSpec = { name: string; label: string; options?: readonly Option[] };
@@ -102,33 +103,40 @@ function senderAddress(): string | null {
   }
 }
 
-function applicantText(fullName: string): string {
-  const { greeting, body, signOff, signOffTitle } = emails.applicant;
-  return [
-    greeting.replace("{name}", fullName),
-    "",
-    body.join("\n\n"),
-    "",
-    signOff,
-    signOffTitle,
-  ].join("\n");
+/** The words of one confirmation email, shared by its text and HTML versions. */
+type Message = { greeting: string; paragraphs: readonly string[] };
+
+function messageText({ greeting, paragraphs }: Message): string {
+  const { signOff, signOffTitle } = emails.applicant;
+  return [greeting, "", paragraphs.join("\n\n"), "", signOff, signOffTitle].join("\n");
 }
 
-function guardianText(guardianName: string, athleteName: string): string {
-  const greeting = guardianName
-    ? emails.guardian.greeting.replace("{name}", guardianName)
-    : "Hello,";
-  const paragraphs = emails.guardian.body.map((paragraph) =>
-    paragraph.replace("{athlete}", athleteName)
-  );
-  return [
+/** Same words, with Erika's signature band (name, titles, portrait) at the bottom. */
+function messageHtml({ greeting, paragraphs }: Message): string {
+  return confirmationHtml({
     greeting,
-    "",
-    paragraphs.join("\n\n"),
-    "",
-    emails.applicant.signOff,
-    emails.applicant.signOffTitle,
-  ].join("\n");
+    paragraphs,
+    signOff: emails.applicant.signOff,
+    titleLines: [brand.tagline, brand.taglineLine2],
+  });
+}
+
+function applicantMessage(fullName: string): Message {
+  return {
+    greeting: emails.applicant.greeting.replace("{name}", fullName),
+    paragraphs: emails.applicant.body,
+  };
+}
+
+function guardianMessage(guardianName: string, athleteName: string): Message {
+  return {
+    greeting: guardianName
+      ? emails.guardian.greeting.replace("{name}", guardianName)
+      : "Hello,",
+    paragraphs: emails.guardian.body.map((paragraph) =>
+      paragraph.replace("{athlete}", athleteName)
+    ),
+  };
 }
 
 function coachText(data: Record<string, unknown>): string {
@@ -143,6 +151,8 @@ type EmailPayload = {
   to: string;
   subject: string;
   text: string;
+  /** Confirmations to the public also get an HTML version with Erika's picture. */
+  html?: string;
   replyTo: string;
 };
 
@@ -160,6 +170,7 @@ function createSender(apiKey: string, from: string, notifyEmail: string) {
         to: [payload.to],
         subject: payload.subject,
         text: payload.text,
+        html: payload.html,
         reply_to: payload.replyTo,
         headers: {
           "List-Unsubscribe": `<mailto:${notifyEmail}>`,
@@ -221,10 +232,12 @@ export async function sendApplicationEmails(
     await Promise.all([
       attempt("applicant confirmation", async () => {
         if (!applicantEmail) return;
+        const message = applicantMessage(fullName);
         await send({
           to: applicantEmail,
           subject: emails.applicant.subject,
-          text: applicantText(fullName),
+          text: messageText(message),
+          html: messageHtml(message),
           replyTo: notifyEmail,
         });
       }),
@@ -245,13 +258,15 @@ export async function sendApplicationEmails(
 
     if (guardianEmail) {
       await attempt("guardian notification", async () => {
+        const message = guardianMessage(guardianName, String(data.full_name ?? ""));
         await send({
           to: guardianEmail,
           subject: emails.guardian.subject.replace(
             "{athlete}",
             String(data.full_name ?? "")
           ),
-          text: guardianText(guardianName, String(data.full_name ?? "")),
+          text: messageText(message),
+          html: messageHtml(message),
           replyTo: notifyEmail,
         });
       });
@@ -263,34 +278,22 @@ export async function sendApplicationEmails(
   }
 }
 
-function waitlistText(fullName: string): string {
-  const { greeting, body } = emails.waitlist;
-  const { signOff, signOffTitle } = emails.applicant;
-  return [
-    greeting.replace("{name}", fullName),
-    "",
-    body.join("\n\n"),
-    "",
-    signOff,
-    signOffTitle,
-  ].join("\n");
+function waitlistMessage(fullName: string): Message {
+  return {
+    greeting: emails.waitlist.greeting.replace("{name}", fullName),
+    paragraphs: emails.waitlist.body,
+  };
 }
 
-function waitlistGuardianText(guardianName: string, athleteName: string): string {
-  const greeting = guardianName
-    ? emails.waitlistGuardian.greeting.replace("{name}", guardianName)
-    : "Hello,";
-  const paragraphs = emails.waitlistGuardian.body.map((paragraph) =>
-    paragraph.replace("{athlete}", athleteName)
-  );
-  return [
-    greeting,
-    "",
-    paragraphs.join("\n\n"),
-    "",
-    emails.applicant.signOff,
-    emails.applicant.signOffTitle,
-  ].join("\n");
+function waitlistGuardianMessage(guardianName: string, athleteName: string): Message {
+  return {
+    greeting: guardianName
+      ? emails.waitlistGuardian.greeting.replace("{name}", guardianName)
+      : "Hello,",
+    paragraphs: emails.waitlistGuardian.body.map((paragraph) =>
+      paragraph.replace("{athlete}", athleteName)
+    ),
+  };
 }
 
 type WaitlistEmailData = {
@@ -322,22 +325,29 @@ export async function sendWaitlistEmails(data: WaitlistEmailData): Promise<void>
 
     const send = createSender(apiKey, from, notifyEmail);
 
+    const message = waitlistMessage(data.full_name);
     await attempt("waitlist confirmation", () =>
       send({
         to: data.email,
         subject: emails.waitlist.subject,
-        text: waitlistText(data.full_name),
+        text: messageText(message),
+        html: messageHtml(message),
         replyTo: notifyEmail,
       })
     );
 
     const guardianEmail = data.guardian_email?.trim() ?? "";
     if (guardianEmail) {
+      const guardianNote = waitlistGuardianMessage(
+        data.guardian_name?.trim() ?? "",
+        data.full_name
+      );
       await attempt("waitlist guardian notification", () =>
         send({
           to: guardianEmail,
           subject: emails.waitlistGuardian.subject.replace("{athlete}", data.full_name),
-          text: waitlistGuardianText(data.guardian_name?.trim() ?? "", data.full_name),
+          text: messageText(guardianNote),
+          html: messageHtml(guardianNote),
           replyTo: notifyEmail,
         })
       );
@@ -408,10 +418,12 @@ export async function sendSpeakingInquiryEmails(
     await Promise.all([
       attempt("speaking confirmation", async () => {
         if (!senderEmail) return;
+        const message = applicantMessage(fullName);
         await send({
           to: senderEmail,
           subject: emails.applicant.subject,
-          text: applicantText(fullName),
+          text: messageText(message),
+          html: messageHtml(message),
           replyTo: notifyEmail,
         });
       }),
