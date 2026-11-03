@@ -684,6 +684,7 @@ export const nav = {
   home: "Home",
   about: "About Erika",
   programs: "Programs",
+  videoCourse: "Video Course",
   camps: "Camps",
   apply: "Apply",
   speaking: "Speaking",

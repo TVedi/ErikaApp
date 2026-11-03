@@ -24,6 +24,9 @@ export function SiteHeader() {
           <Link href="/pricing" className="text-link-coral">
             {nav.programs}
           </Link>
+          <Link href="/video-course" className="text-link-coral">
+            {nav.videoCourse}
+          </Link>
           <Link href="/camps" className="text-link-coral">
             {nav.camps}
           </Link>

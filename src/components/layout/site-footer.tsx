@@ -124,6 +124,7 @@ const siteNavLinks = [
   { href: "/", label: nav.home },
   { href: "/about", label: nav.about },
   { href: "/pricing", label: nav.programs },
+  { href: "/video-course", label: nav.videoCourse },
   { href: "/camps", label: nav.camps },
   { href: "/speaking", label: nav.speaking },
 ] as const;
