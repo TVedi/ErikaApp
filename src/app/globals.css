@@ -12437,6 +12437,38 @@ section[aria-labelledby="video-course-heading"] .video-course-cta {
   }
 }
 
+/* Waitlist: a field the browser fills in by itself (a saved name or email
+   picked from the suggestion list) keeps the dark field and the cream text.
+   Browsers paint their own light autofill background and ignore
+   background-color, so an inset box-shadow covers it, and the border is made
+   opaque so the light colour cannot show through it either. Without this the
+   cream text sat on a light field and could not be read until a letter was
+   typed. Same fix as the application form (.apply-field), with the waitlist
+   field's own colours; the focused field keeps its gold border and ring. */
+.waitlist-card .waitlist-field:-webkit-autofill,
+.waitlist-card .waitlist-field:-webkit-autofill:hover,
+.waitlist-card .waitlist-field:-webkit-autofill:active {
+  border-color: rgb(71, 78, 50) !important;
+  -webkit-box-shadow: 0 0 0 1000px rgb(3, 28, 24) inset !important;
+  box-shadow: 0 0 0 1000px rgb(3, 28, 24) inset !important;
+  -webkit-text-fill-color: var(--premium-cream) !important;
+  caret-color: var(--premium-cream);
+  transition: background-color 100000s ease-in-out 0s;
+}
+
+.waitlist-card .waitlist-field:-webkit-autofill:focus {
+  border-color: var(--premium-champagne) !important;
+  -webkit-box-shadow:
+    0 0 0 1000px rgb(3, 25, 21) inset,
+    0 0 0 3px rgba(216, 185, 106, 0.28) !important;
+  box-shadow:
+    0 0 0 1000px rgb(3, 25, 21) inset,
+    0 0 0 3px rgba(216, 185, 106, 0.28) !important;
+  -webkit-text-fill-color: var(--premium-cream) !important;
+  caret-color: var(--premium-cream);
+  transition: background-color 100000s ease-in-out 0s;
+}
+
 /* Re-assert the existing reduced-motion overrides last, unchanged. */
 @media (prefers-reduced-motion: reduce) {
   .oly-diploma-badge-btn,
