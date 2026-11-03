@@ -25,7 +25,12 @@ function getClientIp(headerStore: Headers): string {
 export async function joinWaitlist(
   raw: Record<string, unknown>
 ): Promise<WaitlistResult> {
+  // Honeypot: looks like success to a bot, nothing is saved. Logged so a
+  // dropped sign-up is visible in the Vercel runtime logs.
   if (typeof raw.website === "string" && raw.website.trim() !== "") {
+    console.warn("waitlist honeypot filled, nothing saved", {
+      length: raw.website.trim().length,
+    });
     return { success: true };
   }
 

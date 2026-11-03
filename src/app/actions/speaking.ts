@@ -39,8 +39,12 @@ export async function submitSpeakingInquiry(
     return { error: GENERIC_ERROR };
   }
 
-  // Honeypot — silent success path (no insert)
+  // Honeypot: looks like success to a bot, nothing is saved. Logged so a
+  // dropped submission is visible in the Vercel runtime logs.
   if (typeof raw.website === "string" && raw.website.trim() !== "") {
+    console.warn("speaking inquiry honeypot filled, nothing saved", {
+      length: raw.website.trim().length,
+    });
     redirect("/thank-you");
   }
 

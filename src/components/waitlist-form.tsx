@@ -288,14 +288,18 @@ function WaitlistOpenForm({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
             </span>
           </label>
 
-          <input
-            type="text"
-            name="website"
-            tabIndex={-1}
-            autoComplete="off"
-            className="absolute -left-[9999px] opacity-0"
-            aria-hidden="true"
-          />
+          {/* Honeypot for bots. Fully hidden (display: none), so browser
+              autofill and password managers never fill it in for a person. */}
+          <div hidden>
+            <input
+              type="text"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              className="absolute -left-[9999px] opacity-0"
+              aria-hidden="true"
+            />
+          </div>
 
           {turnstileSiteKey && (
             <TurnstileWidget siteKey={turnstileSiteKey} onToken={setTurnstileToken} />
