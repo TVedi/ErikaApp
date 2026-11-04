@@ -157,7 +157,7 @@ type EmailPayload = {
 };
 
 /** The single Resend request every message goes through. */
-function createSender(apiKey: string, from: string, notifyEmail: string) {
+function createSender(apiKey: string, from: string) {
   return async (payload: EmailPayload): Promise<void> => {
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -172,8 +172,9 @@ function createSender(apiKey: string, from: string, notifyEmail: string) {
         text: payload.text,
         html: payload.html,
         reply_to: payload.replyTo,
+        // Transactional mail only: no List-Unsubscribe header, which marks
+        // newsletters and pushes a message into Gmail's Promotions tab.
         headers: {
-          "List-Unsubscribe": `<mailto:${notifyEmail}>`,
           "Auto-Submitted": "auto-generated",
         },
       }),
@@ -220,7 +221,7 @@ export async function sendApplicationEmails(
       return;
     }
 
-    const send = createSender(apiKey, from, notifyEmail);
+    const send = createSender(apiKey, from);
 
     const fullName = String(data.full_name ?? "").trim();
     const applicantEmail = typeof data.email === "string" ? data.email.trim() : "";
@@ -323,7 +324,7 @@ export async function sendWaitlistEmails(data: WaitlistEmailData): Promise<void>
       return;
     }
 
-    const send = createSender(apiKey, from, notifyEmail);
+    const send = createSender(apiKey, from);
 
     const message = waitlistMessage(data.full_name);
     await attempt("waitlist confirmation", () =>
@@ -409,7 +410,7 @@ export async function sendSpeakingInquiryEmails(
       return;
     }
 
-    const send = createSender(apiKey, from, notifyEmail);
+    const send = createSender(apiKey, from);
 
     const fullName = String(data.full_name ?? "").trim();
     const organization = String(data.organization ?? "").trim();
