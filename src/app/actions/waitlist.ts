@@ -2,12 +2,13 @@
 
 import { headers } from "next/headers";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { isWaitlistOpen } from "@/lib/enrollment";
+import { openWaitlistInterests } from "@/lib/enrollment";
 import { isAllowedRequestOrigin } from "@/lib/security/origin-check";
 import { checkRateLimit } from "@/lib/security/rate-limit";
 import { isTurnstileEnabled, verifyTurnstileToken } from "@/lib/security/turnstile";
 import { waitlistFormSchema } from "@/lib/validation/waitlist-form";
 import { sendWaitlistEmails } from "@/lib/email/notify";
+import type { WaitlistInterest } from "@/lib/waitlist-interests";
 
 export type WaitlistResult = {
   success: boolean;
@@ -46,7 +47,8 @@ export async function joinWaitlist(
       return { success: false, error: "server" };
     }
 
-    if (!isWaitlistOpen()) {
+    const openLists = openWaitlistInterests();
+    if (!Object.values(openLists).some(Boolean)) {
       return { success: false, error: "closed" };
     }
 
@@ -56,6 +58,11 @@ export async function joinWaitlist(
     }
 
     const data = parsed.data;
+
+    // A list that was closed after the page loaded is refused on the server too.
+    if (data.interests.some((interest) => !openLists[interest])) {
+      return { success: false, error: "closed" };
+    }
 
     if (isTurnstileEnabled()) {
       const valid = await verifyTurnstileToken(data.turnstile_token ?? "");
@@ -68,35 +75,55 @@ export async function joinWaitlist(
     const guardianName = isMinor ? data.guardian_name || null : null;
     const guardianEmail = isMinor ? data.guardian_email || null : null;
 
+    // One row per list (column "interest"). A list the email is already on
+    // is skipped (unique email + interest); only new lists are confirmed.
     const supabase = createAdminClient();
-    const { error } = await supabase.from("waitlist").insert({
-      email: data.email,
-      full_name: data.full_name,
-      athlete_age: data.athlete_age,
-      guardian_name: guardianName,
-      guardian_email: guardianEmail,
-      privacy_consent: true,
-      consent_at: new Date().toISOString(),
-    });
+    const consentAt = new Date().toISOString();
+    const added: WaitlistInterest[] = [];
 
-    if (error) {
+    for (const interest of data.interests) {
+      const { error } = await supabase.from("waitlist").insert({
+        email: data.email,
+        full_name: data.full_name,
+        athlete_age: data.athlete_age,
+        guardian_name: guardianName,
+        guardian_email: guardianEmail,
+        privacy_consent: true,
+        consent_at: consentAt,
+        interest,
+      });
+
+      if (!error) {
+        added.push(interest);
+        continue;
+      }
       if (error.code === "23505") {
-        return { success: false, error: "duplicate" };
+        continue;
       }
       console.error("waitlist insert failed", {
+        interest,
         code: error.code,
         message: error.message,
         details: error.details,
         hint: error.hint,
       });
-      return { success: false, error: "server" };
+      if (added.length === 0) {
+        return { success: false, error: "server" };
+      }
+      break;
+    }
+
+    if (added.length === 0) {
+      return { success: false, error: "duplicate" };
     }
 
     await sendWaitlistEmails({
       email: data.email,
       full_name: data.full_name,
+      athlete_age: data.athlete_age,
       guardian_name: guardianName,
       guardian_email: guardianEmail,
+      interests: added,
     });
 
     return { success: true };

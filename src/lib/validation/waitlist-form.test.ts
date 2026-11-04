@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { waitlistFormSchema } from "@/lib/validation/waitlist-form";
 
 const adult = {
+  interests: ["coaching"],
   athlete_age: "24",
   full_name: "Test Athlete",
   email: "Athlete@Example.com",
@@ -52,5 +53,25 @@ describe("waitlistFormSchema", () => {
 
   it("rejects a missing name", () => {
     expect(waitlistFormSchema.safeParse({ ...adult, full_name: " " }).success).toBe(false);
+  });
+
+  it("accepts several lists and counts a repeated one once", () => {
+    const result = waitlistFormSchema.safeParse({
+      ...adult,
+      interests: ["camp", "video_course", "camp"],
+    });
+    expect(result.success && result.data.interests).toEqual(["camp", "video_course"]);
+  });
+
+  it("rejects a sign-up without any list", () => {
+    expect(waitlistFormSchema.safeParse({ ...adult, interests: [] }).success).toBe(false);
+    const { interests: _omit, ...withoutLists } = adult;
+    expect(waitlistFormSchema.safeParse(withoutLists).success).toBe(false);
+  });
+
+  it("rejects an unknown list", () => {
+    expect(
+      waitlistFormSchema.safeParse({ ...adult, interests: ["speaking"] }).success
+    ).toBe(false);
   });
 });

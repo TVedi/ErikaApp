@@ -1,12 +1,23 @@
 import { afterEach, describe, expect, it } from "vitest";
-import { areApplicationsOpen, isWaitlistOpen } from "@/lib/enrollment";
+import {
+  areApplicationsOpen,
+  isCampListOpen,
+  isCourseListOpen,
+  isWaitlistOpen,
+  openWaitlistInterests,
+} from "@/lib/enrollment";
 
 const original = {
   waitlist: process.env.WAITLIST_OPEN,
   applications: process.env.APPLICATIONS_OPEN,
+  course: process.env.COURSE_LIST_OPEN,
+  camp: process.env.CAMP_LIST_OPEN,
 };
 
-function setEnv(name: "WAITLIST_OPEN" | "APPLICATIONS_OPEN", value?: string) {
+function setEnv(
+  name: "WAITLIST_OPEN" | "APPLICATIONS_OPEN" | "COURSE_LIST_OPEN" | "CAMP_LIST_OPEN",
+  value?: string
+) {
   if (value === undefined) {
     delete process.env[name];
   } else {
@@ -17,6 +28,8 @@ function setEnv(name: "WAITLIST_OPEN" | "APPLICATIONS_OPEN", value?: string) {
 afterEach(() => {
   setEnv("WAITLIST_OPEN", original.waitlist);
   setEnv("APPLICATIONS_OPEN", original.applications);
+  setEnv("COURSE_LIST_OPEN", original.course);
+  setEnv("CAMP_LIST_OPEN", original.camp);
 });
 
 describe("enrollment switches", () => {
@@ -41,5 +54,23 @@ describe("enrollment switches", () => {
     setEnv("APPLICATIONS_OPEN", "false");
     expect(isWaitlistOpen()).toBe(true);
     expect(areApplicationsOpen()).toBe(false);
+  });
+
+  it("keeps the course and camp lists open when nothing is set", () => {
+    setEnv("COURSE_LIST_OPEN");
+    setEnv("CAMP_LIST_OPEN");
+    expect(isCourseListOpen()).toBe(true);
+    expect(isCampListOpen()).toBe(true);
+  });
+
+  it("closes each list on its own switch", () => {
+    setEnv("WAITLIST_OPEN", "false");
+    setEnv("COURSE_LIST_OPEN", "true");
+    setEnv("CAMP_LIST_OPEN", "FALSE");
+    expect(openWaitlistInterests()).toEqual({
+      coaching: false,
+      video_course: true,
+      camp: false,
+    });
   });
 });

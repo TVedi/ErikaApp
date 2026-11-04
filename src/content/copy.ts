@@ -164,7 +164,7 @@ export const launch = {
     body2:
       "Camps will be based in Gainesville, Georgia, with limited capacity to allow for personal feedback and focused work.",
     cta: "Join the Camp Interest List",
-    ctaHref: "/#waitlist",
+    ctaHref: "/?interest=camp#waitlist",
   },
   aboutPreview: {
     eyebrow: "MEET YOUR COACH",
@@ -198,7 +198,7 @@ export const launch = {
     secondary:
       "Built from Erika’s experience in the sport, it will turn high-level concepts into practical ideas athletes can understand and apply.",
     cta: "Join the Course Waitlist",
-    ctaHref: "/#waitlist",
+    ctaHref: "/?interest=video_course#waitlist",
   },
   finalCta: {
     title: "Ready to improve your paddling with world-class eyes on your technique?",
@@ -352,6 +352,15 @@ export const waitlist = {
   ],
   continue: "Continue",
   editAge: "Edit",
+  interestsLabel: "What would you like to hear about?",
+  interests: [
+    { value: "coaching", label: "Coaching places" },
+    { value: "video_course", label: "Video course" },
+    { value: "camp", label: "Training camps" },
+  ] as const,
+  interestClosed: "currently closed",
+  interestRequired: "Please choose at least one list.",
+  coachingApplyHint: "Coaching applications are open right now:",
   fullName: "Full name",
   email: "Email address",
   guardianName: "Parent / guardian name",
@@ -361,14 +370,13 @@ export const waitlist = {
   guardianEmailMustDiffer:
     "The parent or guardian email must be different from the athlete's.",
   consent:
-    "I agree to be contacted by email about coaching places, and I have read the Privacy Policy.",
+    "I agree to be contacted by email about the lists I selected, and I have read the Privacy Policy.",
   button: "Join Waitlist",
   submitting: "Joining…",
   successTitle: "You're on the list",
-  successBody:
-    "Places are offered in the order people joined. We will be in touch as soon as one opens.",
+  successBody: "A confirmation is on its way to your inbox.",
   error: "Something went wrong. Please try again.",
-  duplicate: "This email is already on the waitlist.",
+  duplicate: "This email is already on the lists you selected.",
   closedError: "The waitlist is currently closed.",
   underThirteen: {
     heading: "Athletes under 13",
@@ -472,7 +480,7 @@ export const camps = {
   supportingCopy:
     "Camps will be based in Gainesville, Georgia, with limited capacity to allow for personal feedback and focused work.",
   cta: "Join the Camp Interest List",
-  ctaHref: "/#waitlist",
+  ctaHref: "/?interest=camp#waitlist",
   imageAlt: "Kayaker paddling into the sunset on calm water",
 };
 
@@ -1031,30 +1039,53 @@ export const emails = {
     intro: "A new coaching application has arrived.",
     replyHint: "Reply to this email to reach the applicant directly.",
   },
-  /** Erika's notification for an "Invite Erika to Speak" inquiry. The sender
-   *  gets the same confirmation as a coaching applicant (emails.applicant). */
+  /** Erika's notification for an "Invite Erika to Speak" inquiry. */
   speakingCoach: {
     subjectPrefix: "New speaking inquiry",
     intro: "A new speaking inquiry has arrived.",
     replyHint: "Reply to this email to reach the organizer directly.",
   },
+  /** The confirmation of a sender's speaking inquiry. {event} is the event name. */
+  speakingSender: {
+    subject: "Your speaking inquiry has been received",
+    greeting: "Hi {name},",
+    body: [
+      "Thank you for your interest in inviting Erika to speak at {event}. Your inquiry has arrived safely, and Erika reviews every request personally.",
+      "She will be in touch to discuss availability, format and the details of your event.",
+      "If anything needs correcting, simply reply to this message.",
+    ],
+  },
+  /** "Stay connected" sign-up. Only the lines for the lists the person joined are sent. */
   waitlist: {
     subject: "You're on the list",
     greeting: "Hi {name},",
-    body: [
-      "Thank you for joining the waiting list.",
-      "You will be among the first to hear when coaching places open, and when the video course becomes available.",
-      "Places are offered in the order people joined. If you would like to be removed from the list, simply reply to this message.",
-    ],
+    intro: "Thank you for signing up. You're on the list for:",
+    lists: {
+      coaching:
+        "• Coaching places: places are offered in the order people joined, and Erika will contact you as soon as one opens.",
+      video_course:
+        "• Video course: you'll be among the first to hear when the course launches.",
+      camp: "• Training camps: you'll hear first when dates and details for the Gainesville camps are announced.",
+    },
+    outro: "If you'd like to be removed from a list, simply reply to this message.",
   },
+  /** {lists} is the joined list names, e.g. "Coaching places, Training camps". */
   waitlistGuardian: {
-    subject: "{athlete} has joined the coaching waitlist",
+    subject: "{athlete} has signed up for updates from Erika Medveczky",
     greeting: "Hi {name},",
-    body: [
-      "{athlete} has joined the waiting list for coaching with Erika Medveczky.",
-      "Because the athlete is under 18, you are named as the parent or guardian. When a place opens, Erika will contact you as well, and nothing begins without your involvement.",
-      "If this was not expected, or you would like the athlete removed from the list, simply reply to this message and we will delete the details.",
-    ],
+    signedUp: "{athlete} has signed up for: {lists}.",
+    guardianNote: "Because the athlete is under 18, you are named as the parent or guardian.",
+    coachingNote:
+      "When a coaching place opens, Erika will contact you as well, and nothing begins without your involvement.",
+    outro:
+      "If this was not expected, or you would like the details removed, simply reply to this message.",
+  },
+  /** Erika's notification of every "Stay connected" sign-up. */
+  waitlistCoach: {
+    subjectPrefix: "New sign-up",
+    intro: "A new sign-up has arrived.",
+    listsLabel: "Lists",
+    replyHint: "Reply to this email to reach the person directly.",
   },
   guardian: {
     subject: "An application has been submitted for {athlete}",

@@ -13,7 +13,7 @@ import { CoachingOptionsSection } from "@/components/marketing/coaching-options-
 import { PremiumSectionDivider } from "@/components/marketing/premium-section-divider";
 import { HomeStructuredData } from "@/components/seo/home-structured-data";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
-import { areApplicationsOpen, isWaitlistOpen } from "@/lib/enrollment";
+import { areApplicationsOpen, openWaitlistInterests } from "@/lib/enrollment";
 import {
   launch,
   faq,
@@ -117,7 +117,7 @@ export default function HomePage() {
           </ScrollReveal>
           <ScrollReveal className="mt-8" delayMs={100}>
             <WaitlistForm
-              isOpen={isWaitlistOpen()}
+              openLists={openWaitlistInterests()}
               applicationsOpen={areApplicationsOpen()}
               turnstileSiteKey={turnstileSiteKey || undefined}
             />

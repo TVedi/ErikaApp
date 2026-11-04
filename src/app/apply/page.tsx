@@ -37,7 +37,7 @@ export default function ApplyPage() {
                   {isWaitlistOpen() ? (
                     <>
                       <p className="apply-closed-body">{apply.closed.waitlistBody}</p>
-                      <LinkButton href="/#waitlist" className="btn-cta-primary apply-closed-cta">
+                      <LinkButton href="/?interest=coaching#waitlist" className="btn-cta-primary apply-closed-cta">
                         {apply.closed.waitlistCta}
                       </LinkButton>
                     </>

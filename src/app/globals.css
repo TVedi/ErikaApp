@@ -12469,6 +12469,52 @@ section[aria-labelledby="video-course-heading"] .video-course-cta {
   transition: background-color 100000s ease-in-out 0s;
 }
 
+/* Waitlist: "What would you like to hear about?" lists the coaching places,
+   the video course and the training camps as checkboxes, in the same panel
+   style as the consent box below. A list switched off in Vercel is dimmed and
+   cannot be ticked. */
+.waitlist-card .waitlist-interests {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.waitlist-card .waitlist-interests > legend {
+  padding: 0;
+}
+
+.waitlist-card .waitlist-interest-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.25rem;
+  padding: 0.3rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(216, 185, 106, 0.18);
+  background: rgba(3, 23, 20, 0.35);
+}
+
+.waitlist-card .waitlist-interest {
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.waitlist-card .waitlist-interest.is-closed {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.waitlist-card .waitlist-interest-closed {
+  font-size: 0.8125rem;
+}
+
+.waitlist-card .waitlist-interest-hint {
+  margin: 0.5rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--premium-soft-cream);
+}
+
 /* Re-assert the existing reduced-motion overrides last, unchanged. */
 @media (prefers-reduced-motion: reduce) {
   .oly-diploma-badge-btn,

@@ -1,5 +1,6 @@
-import { applyV2, brand, emails, speakingInvite } from "@/content/copy";
+import { applyV2, brand, emails, speakingInvite, waitlist } from "@/content/copy";
 import { confirmationHtml } from "@/lib/email/confirmation-html";
+import type { WaitlistInterest } from "@/lib/waitlist-interests";
 
 type Option = { readonly value: string; readonly label: string };
 type FieldSpec = { name: string; label: string; options?: readonly Option[] };
@@ -279,35 +280,71 @@ export async function sendApplicationEmails(
   }
 }
 
-function waitlistMessage(fullName: string): Message {
+/** "Coaching places, Training camps": the names shown on the form. */
+function listNames(interests: readonly WaitlistInterest[]): string {
+  return interests
+    .map(
+      (interest) =>
+        waitlist.interests.find((option) => option.value === interest)?.label ?? interest
+    )
+    .join(", ");
+}
+
+function waitlistMessage(fullName: string, interests: readonly WaitlistInterest[]): Message {
   return {
     greeting: emails.waitlist.greeting.replace("{name}", fullName),
-    paragraphs: emails.waitlist.body,
+    paragraphs: [
+      emails.waitlist.intro,
+      ...interests.map((interest) => emails.waitlist.lists[interest]),
+      emails.waitlist.outro,
+    ],
   };
 }
 
-function waitlistGuardianMessage(guardianName: string, athleteName: string): Message {
+function waitlistGuardianMessage(
+  guardianName: string,
+  athleteName: string,
+  interests: readonly WaitlistInterest[]
+): Message {
+  const { greeting, signedUp, guardianNote, coachingNote, outro } = emails.waitlistGuardian;
   return {
-    greeting: guardianName
-      ? emails.waitlistGuardian.greeting.replace("{name}", guardianName)
-      : "Hello,",
-    paragraphs: emails.waitlistGuardian.body.map((paragraph) =>
-      paragraph.replace("{athlete}", athleteName)
-    ),
+    greeting: guardianName ? greeting.replace("{name}", guardianName) : "Hello,",
+    paragraphs: [
+      signedUp.replace("{athlete}", athleteName).replace("{lists}", listNames(interests)),
+      interests.includes("coaching") ? `${guardianNote} ${coachingNote}` : guardianNote,
+      outro,
+    ],
   };
 }
 
 type WaitlistEmailData = {
   email: string;
   full_name: string;
+  athlete_age: number;
   guardian_name: string | null;
   guardian_email: string | null;
+  /** The lists this sign-up added (not the ones the person was already on). */
+  interests: readonly WaitlistInterest[];
 };
 
+function waitlistCoachText(data: WaitlistEmailData): string {
+  const lines = [
+    `${waitlist.fullName}: ${data.full_name}`,
+    `${waitlist.email}: ${data.email}`,
+    `${waitlist.ageLabel}: ${data.athlete_age}`,
+    ...(data.guardian_name ? [`${waitlist.guardianName}: ${data.guardian_name}`] : []),
+    ...(data.guardian_email ? [`${waitlist.guardianEmail}: ${data.guardian_email}`] : []),
+    `${emails.waitlistCoach.listsLabel}: ${listNames(data.interests)}`,
+  ];
+  return [emails.waitlistCoach.intro, "", ...lines, "", emails.waitlistCoach.replyHint].join(
+    "\n"
+  );
+}
+
 /**
- * Confirms a waitlist join to the athlete and, for an athlete under 18, tells
- * the named parent or guardian. Erika is not notified.
- * Never throws: the entry is already saved when this runs.
+ * Confirms a "Stay connected" sign-up to the athlete, tells the named parent
+ * or guardian for an athlete under 18, and sends Erika the details.
+ * Never throws: the sign-up is already saved when this runs.
  */
 export async function sendWaitlistEmails(data: WaitlistEmailData): Promise<void> {
   try {
@@ -326,22 +363,33 @@ export async function sendWaitlistEmails(data: WaitlistEmailData): Promise<void>
 
     const send = createSender(apiKey, from);
 
-    const message = waitlistMessage(data.full_name);
-    await attempt("waitlist confirmation", () =>
-      send({
-        to: data.email,
-        subject: emails.waitlist.subject,
-        text: messageText(message),
-        html: messageHtml(message),
-        replyTo: notifyEmail,
-      })
-    );
+    const message = waitlistMessage(data.full_name, data.interests);
+    await Promise.all([
+      attempt("waitlist confirmation", () =>
+        send({
+          to: data.email,
+          subject: emails.waitlist.subject,
+          text: messageText(message),
+          html: messageHtml(message),
+          replyTo: notifyEmail,
+        })
+      ),
+      attempt("waitlist notification", () =>
+        send({
+          to: notifyEmail,
+          subject: `${emails.waitlistCoach.subjectPrefix} - ${data.full_name}: ${listNames(data.interests)}`,
+          text: waitlistCoachText(data),
+          replyTo: data.email,
+        })
+      ),
+    ]);
 
     const guardianEmail = data.guardian_email?.trim() ?? "";
     if (guardianEmail) {
       const guardianNote = waitlistGuardianMessage(
         data.guardian_name?.trim() ?? "",
-        data.full_name
+        data.full_name,
+        data.interests
       );
       await attempt("waitlist guardian notification", () =>
         send({
@@ -388,9 +436,18 @@ function speakingCoachText(data: Record<string, unknown>): string {
   );
 }
 
+function speakingSenderMessage(fullName: string, eventName: string): Message {
+  return {
+    greeting: emails.speakingSender.greeting.replace("{name}", fullName),
+    paragraphs: emails.speakingSender.body.map((paragraph) =>
+      paragraph.replace("{event}", eventName)
+    ),
+  };
+}
+
 /**
- * Sends the person who asked the same confirmation a coaching applicant gets
- * (emails.applicant, to be rewritten later), and Erika the full inquiry.
+ * Sends the person who asked a confirmation of the speaking inquiry, and Erika
+ * the full inquiry.
  * Never throws: the inquiry is already saved when this runs.
  */
 export async function sendSpeakingInquiryEmails(
@@ -414,15 +471,16 @@ export async function sendSpeakingInquiryEmails(
 
     const fullName = String(data.full_name ?? "").trim();
     const organization = String(data.organization ?? "").trim();
+    const eventName = String(data.event_name ?? "").trim();
     const senderEmail = typeof data.email === "string" ? data.email.trim() : "";
 
     await Promise.all([
       attempt("speaking confirmation", async () => {
         if (!senderEmail) return;
-        const message = applicantMessage(fullName);
+        const message = speakingSenderMessage(fullName, eventName);
         await send({
           to: senderEmail,
-          subject: emails.applicant.subject,
+          subject: emails.speakingSender.subject,
           text: messageText(message),
           html: messageHtml(message),
           replyTo: notifyEmail,

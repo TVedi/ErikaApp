@@ -1,12 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useState } from "react";
 import { joinWaitlist } from "@/app/actions/waitlist";
 import { TurnstileWidget } from "@/components/apply/turnstile-widget";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { waitlist } from "@/content/copy";
+import {
+  WAITLIST_INTERESTS,
+  isWaitlistInterest,
+  type WaitlistInterest,
+} from "@/lib/waitlist-interests";
 
 const PRIVACY_LINK_TEXT = "Privacy Policy";
 const consentParts = waitlist.consent.split(PRIVACY_LINK_TEXT);
@@ -44,22 +50,42 @@ function englishPrompt(message: string) {
   };
 }
 
-export function WaitlistForm({
-  isOpen,
-  applicationsOpen,
-  turnstileSiteKey,
-}: {
-  isOpen: boolean;
+type OpenFormProps = {
+  /** Which lists take sign-ups (WAITLIST_OPEN, COURSE_LIST_OPEN, CAMP_LIST_OPEN). */
+  openLists: Record<WaitlistInterest, boolean>;
   applicationsOpen: boolean;
   turnstileSiteKey?: string;
-}) {
-  if (!isOpen) {
-    return <WaitlistClosed applicationsOpen={applicationsOpen} />;
+};
+
+export function WaitlistForm(props: OpenFormProps) {
+  if (!WAITLIST_INTERESTS.some((interest) => props.openLists[interest])) {
+    return <WaitlistClosed applicationsOpen={props.applicationsOpen} />;
   }
-  return <WaitlistOpenForm turnstileSiteKey={turnstileSiteKey} />;
+  // useSearchParams on a prerendered route must sit inside a Suspense
+  // boundary; until it resolves the form shows with nothing pre-ticked.
+  return (
+    <Suspense fallback={<WaitlistOpenForm {...props} preset={null} />}>
+      <WaitlistOpenFormWithPreset {...props} />
+    </Suspense>
+  );
 }
 
-function WaitlistOpenForm({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
+/** "/?interest=camp#waitlist" (Camps and Video Course buttons) pre-ticks that list. */
+function WaitlistOpenFormWithPreset(props: OpenFormProps) {
+  const value = useSearchParams().get("interest");
+  return <WaitlistOpenForm {...props} preset={isWaitlistInterest(value) ? value : null} />;
+}
+
+function WaitlistOpenForm({
+  openLists,
+  applicationsOpen,
+  turnstileSiteKey,
+  preset,
+}: OpenFormProps & { preset: WaitlistInterest | null }) {
+  const presetOpen = preset !== null && openLists[preset];
+  const [selected, setSelected] = useState<WaitlistInterest[]>(() =>
+    preset !== null && presetOpen ? [preset] : []
+  );
   const [step, setStep] = useState<Step>("age");
   const [age, setAge] = useState("");
   const [applicantEmail, setApplicantEmail] = useState("");
@@ -71,6 +97,23 @@ function WaitlistOpenForm({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
   useEffect(() => {
     if (readAgeGateLock()) setStep("under13");
   }, []);
+
+  // A Camps or Video Course button clicked while already on this page.
+  useEffect(() => {
+    if (preset === null || !presetOpen) return;
+    setSelected((prev) => (prev.includes(preset) ? prev : [...prev, preset]));
+  }, [preset, presetOpen]);
+
+  function toggleInterest(interest: WaitlistInterest, checked: boolean) {
+    setError(null);
+    setSelected((prev) =>
+      checked
+        ? prev.includes(interest)
+          ? prev
+          : [...prev, interest]
+        : prev.filter((item) => item !== interest)
+    );
+  }
 
   const isMinor = step === "details" && Number(age) < 18;
   const guardianEmailClashes =
@@ -94,12 +137,19 @@ function WaitlistOpenForm({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (guardianEmailClashes) return;
+    const interests = WAITLIST_INTERESTS.filter((interest) => selected.includes(interest));
+    if (interests.length === 0) {
+      setError(waitlist.interestRequired);
+      return;
+    }
     setLoading(true);
     setError(null);
     try {
       const form = new FormData(e.currentTarget);
+      form.delete("interest");
       const result = await joinWaitlist({
         ...Object.fromEntries(form.entries()),
+        interests,
         athlete_age: age,
         privacy_consent: form.get("privacy_consent") === "on",
         turnstile_token: turnstileToken,
@@ -188,6 +238,49 @@ function WaitlistOpenForm({ turnstileSiteKey }: { turnstileSiteKey?: string }) {
               {waitlist.editAge}
             </button>
           </div>
+
+          <fieldset className="waitlist-interests">
+            <legend className="apply-label">{waitlist.interestsLabel}</legend>
+            <div className="waitlist-interest-options">
+              {waitlist.interests.map((option) => {
+                const isOpen = openLists[option.value];
+                return (
+                  <label
+                    key={option.value}
+                    className={
+                      isOpen
+                        ? "apply-check-row waitlist-interest"
+                        : "apply-check-row waitlist-interest is-closed"
+                    }
+                  >
+                    <input
+                      type="checkbox"
+                      name="interest"
+                      value={option.value}
+                      className="apply-checkbox"
+                      checked={isOpen && selected.includes(option.value)}
+                      disabled={!isOpen}
+                      onChange={(e) => toggleInterest(option.value, e.currentTarget.checked)}
+                    />
+                    <span>
+                      {option.label}
+                      {!isOpen && (
+                        <span className="waitlist-interest-closed"> · {waitlist.interestClosed}</span>
+                      )}
+                    </span>
+                  </label>
+                );
+              })}
+            </div>
+            {!openLists.coaching && applicationsOpen && (
+              <p className="waitlist-interest-hint">
+                {waitlist.coachingApplyHint}{" "}
+                <Link href="/apply" className="apply-inline-link">
+                  {waitlist.closed.applyLink}
+                </Link>
+              </p>
+            )}
+          </fieldset>
 
           <div className="waitlist-grid">
             <div className="waitlist-field-group">

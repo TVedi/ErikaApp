@@ -1,7 +1,13 @@
 import { z } from "zod";
+import { WAITLIST_INTERESTS } from "@/lib/waitlist-interests";
 
 export const waitlistFormSchema = z
   .object({
+    /** At least one list; a list ticked twice counts once. */
+    interests: z
+      .array(z.enum(WAITLIST_INTERESTS))
+      .min(1)
+      .transform((list) => [...new Set(list)]),
     athlete_age: z.coerce.number().int().min(13).max(99),
     full_name: z.string().trim().min(1).max(120),
     email: z.string().trim().email().max(254).transform((v) => v.toLowerCase()),
