@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { joinWaitlist } from "@/app/actions/waitlist";
 import { TurnstileWidget } from "@/components/apply/turnstile-widget";
 import { Button } from "@/components/ui/button";
@@ -70,6 +70,48 @@ export function WaitlistForm(props: OpenFormProps) {
   );
 }
 
+/**
+ * In-app browsers (Messenger, Instagram) shrink the whole page while the
+ * keyboard is open, so the screen-height sections above the form shrink too,
+ * and grow back when the keyboard closes. The form then jumped off the screen
+ * towards the FAQ, typically when a checkbox was tapped right after typing.
+ * When the screen gets taller with the same width (keyboard closing), the card
+ * is put back where it was on the screen. Ordinary browsers do not resize the
+ * page for the keyboard, so nothing changes there.
+ */
+function useStayPutWhenKeyboardCloses(ref: React.RefObject<HTMLDivElement | null>) {
+  useEffect(() => {
+    const card = ref.current;
+    if (!card) return;
+    let lastWidth = window.innerWidth;
+    let lastHeight = window.innerHeight;
+    let lastTop = card.getBoundingClientRect().top;
+
+    const remember = () => {
+      lastTop = card.getBoundingClientRect().top;
+    };
+    const onResize = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      const wasOnScreen = lastTop < lastHeight && lastTop + card.offsetHeight > 0;
+      if (width === lastWidth && height > lastHeight && wasOnScreen) {
+        const shift = card.getBoundingClientRect().top - lastTop;
+        if (shift !== 0) window.scrollBy(0, shift);
+      }
+      lastWidth = width;
+      lastHeight = height;
+      remember();
+    };
+
+    window.addEventListener("scroll", remember, { passive: true });
+    window.addEventListener("resize", onResize);
+    return () => {
+      window.removeEventListener("scroll", remember);
+      window.removeEventListener("resize", onResize);
+    };
+  }, [ref]);
+}
+
 /** "/?interest=camp#waitlist" (Camps and Video Course buttons) pre-ticks that list. */
 function WaitlistOpenFormWithPreset(props: OpenFormProps) {
   const value = useSearchParams().get("interest");
@@ -82,6 +124,8 @@ function WaitlistOpenForm({
   turnstileSiteKey,
   preset,
 }: OpenFormProps & { preset: WaitlistInterest | null }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  useStayPutWhenKeyboardCloses(cardRef);
   const presetOpen = preset !== null && openLists[preset];
   const [selected, setSelected] = useState<WaitlistInterest[]>(() =>
     preset !== null && presetOpen ? [preset] : []
@@ -173,7 +217,7 @@ function WaitlistOpenForm({
   }
 
   return (
-    <div className="waitlist-card">
+    <div className="waitlist-card" ref={cardRef}>
       {step === "age" && (
         <form onSubmit={handleAgeContinue} className="waitlist-age-step">
           <label htmlFor="waitlist-age" className="apply-label">

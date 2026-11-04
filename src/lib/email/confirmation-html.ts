@@ -1,12 +1,13 @@
 import { getSiteUrl } from "@/lib/seo/site-url";
 
 /**
- * Erika's picture for the signature band at the bottom of the email: the
- * portrait from the share image (the Facebook / Messenger link preview), and
- * the gold EM monogram. The "-v1" in the names lets new pictures be published
- * under new names later, because email apps keep old images cached.
+ * Erika's picture for the signature band at the bottom of the email: her
+ * portrait (from public/egyeni.jpg, centred with both shoulders, fading into
+ * the green on the left) and the gold EM monogram. The version in the names
+ * (-v1, -v2) lets a new picture be published under a new name, because email
+ * apps keep old images cached; v1 stays in place for emails already sent.
  */
-export const EMAIL_PORTRAIT_PATH = "/email/erika-portrait-v1.jpg";
+export const EMAIL_PORTRAIT_PATH = "/email/erika-portrait-v2.jpg";
 export const EMAIL_MONOGRAM_PATH = "/email/em-monogram-v1.png";
 
 const CANVAS = "#031714";
