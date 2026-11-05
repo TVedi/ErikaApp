@@ -76,10 +76,12 @@ export async function joinWaitlist(
     const guardianEmail = isMinor ? data.guardian_email || null : null;
 
     // One row per list (column "interest"). A list the email is already on
-    // is skipped (unique email + interest); only new lists are confirmed.
+    // is skipped (unique email + interest). The confirmation names every
+    // ticked list the person is now on; Erika's note says which ones are new.
     const supabase = createAdminClient();
     const consentAt = new Date().toISOString();
     const added: WaitlistInterest[] = [];
+    const alreadyOn: WaitlistInterest[] = [];
 
     for (const interest of data.interests) {
       const { error } = await supabase.from("waitlist").insert({
@@ -98,6 +100,7 @@ export async function joinWaitlist(
         continue;
       }
       if (error.code === "23505") {
+        alreadyOn.push(interest);
         continue;
       }
       console.error("waitlist insert failed", {
@@ -123,7 +126,10 @@ export async function joinWaitlist(
       athlete_age: data.athlete_age,
       guardian_name: guardianName,
       guardian_email: guardianEmail,
-      interests: added,
+      interests: data.interests.filter(
+        (interest) => added.includes(interest) || alreadyOn.includes(interest)
+      ),
+      newInterests: added,
     });
 
     return { success: true };

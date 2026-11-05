@@ -323,8 +323,10 @@ type WaitlistEmailData = {
   athlete_age: number;
   guardian_name: string | null;
   guardian_email: string | null;
-  /** The lists this sign-up added (not the ones the person was already on). */
+  /** Every ticked list the person is on now, including ones joined before. */
   interests: readonly WaitlistInterest[];
+  /** The lists this sign-up added. */
+  newInterests: readonly WaitlistInterest[];
 };
 
 function waitlistCoachText(data: WaitlistEmailData): string {
@@ -334,8 +336,12 @@ function waitlistCoachText(data: WaitlistEmailData): string {
     `${waitlist.ageLabel}: ${data.athlete_age}`,
     ...(data.guardian_name ? [`${waitlist.guardianName}: ${data.guardian_name}`] : []),
     ...(data.guardian_email ? [`${waitlist.guardianEmail}: ${data.guardian_email}`] : []),
-    `${emails.waitlistCoach.listsLabel}: ${listNames(data.interests)}`,
+    `${emails.waitlistCoach.listsLabel}: ${listNames(data.newInterests)}`,
   ];
+  const alreadyOn = data.interests.filter((interest) => !data.newInterests.includes(interest));
+  if (alreadyOn.length > 0) {
+    lines.push(`${emails.waitlistCoach.alreadyOnLabel}: ${listNames(alreadyOn)}`);
+  }
   return [emails.waitlistCoach.intro, "", ...lines, "", emails.waitlistCoach.replyHint].join(
     "\n"
   );
@@ -377,7 +383,7 @@ export async function sendWaitlistEmails(data: WaitlistEmailData): Promise<void>
       attempt("waitlist notification", () =>
         send({
           to: notifyEmail,
-          subject: `${emails.waitlistCoach.subjectPrefix} - ${data.full_name}: ${listNames(data.interests)}`,
+          subject: `${emails.waitlistCoach.subjectPrefix} - ${data.full_name}: ${listNames(data.newInterests)}`,
           text: waitlistCoachText(data),
           replyTo: data.email,
         })

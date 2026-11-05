@@ -1085,6 +1085,7 @@ export const emails = {
     subjectPrefix: "New sign-up",
     intro: "A new sign-up has arrived.",
     listsLabel: "Lists",
+    alreadyOnLabel: "Already on",
     replyHint: "Reply to this email to reach the person directly.",
   },
   guardian: {
