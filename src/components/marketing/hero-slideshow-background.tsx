@@ -17,7 +17,16 @@ import {
  * Uniform opacity cross-fade: one activeIndex, all layers always mounted with always-on transitions.
  * Ken-Burns stays on outgoing slides until the crossfade finishes (transform reset while invisible).
  * prefers-reduced-motion: first image only, static.
+ *
+ * Loading: the slideshow starts once the first slide's own <Image> has loaded
+ * (no separate preload of the full-size originals). The desktop hero is hidden
+ * below lg (64rem), so on phones each <picture> picks a 1x1 blank instead and
+ * none of the slideshow photos are downloaded there.
  */
+const HIDDEN_BELOW_LG_MEDIA = "(width < 64rem)";
+const BLANK_PIXEL_SRC =
+  "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+
 export function HeroSlideshowBackground() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [motionEnabled, setMotionEnabled] = useState(false);
@@ -35,54 +44,8 @@ export function HeroSlideshowBackground() {
     activeIndexRef.current = activeIndex;
   }, [activeIndex]);
 
-  useEffect(() => {
-    let cancelled = false;
-
-    async function loadSlide(src: string) {
-      const img = new window.Image();
-      img.src = src;
-      if (typeof img.decode === "function") {
-        try {
-          await img.decode();
-        } catch {
-          // decode() can fail for missing assets; still allow the
-          // slideshow to start
-        }
-      } else {
-        await new Promise<void>((resolve) => {
-          img.onload = () => resolve();
-          img.onerror = () => resolve();
-        });
-      }
-    }
-
-    async function preloadSlides() {
-      const [first, ...rest] = HERO_SLIDESHOW_IMAGES;
-      if (first) {
-        await loadSlide(first.src);
-      }
-      if (cancelled) return;
-      setImagesReady(true);
-
-      const idle =
-        typeof window.requestIdleCallback === "function"
-          ? window.requestIdleCallback
-          : (cb: () => void) => window.setTimeout(cb, 1200);
-
-      idle(() => {
-        if (cancelled) return;
-        rest.forEach((slide) => {
-          void loadSlide(slide.src);
-        });
-      });
-    }
-
-    void preloadSlides();
-
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+  /** First slide loaded (or failed): the slideshow may start. */
+  const markImagesReady = () => setImagesReady(true);
 
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -172,22 +135,28 @@ export function HeroSlideshowBackground() {
                   : undefined
               }
             >
-              <Image
-                src={slide.src}
-                alt=""
-                fill
-                loading="eager"
-                sizes="100vw"
-                className={cn(
-                  "img-pos-mobile",
-                  slide.objectFit === "contain" ? "object-contain" : "object-cover"
-                )}
-                style={{
-                  objectPosition: slide.objectPosition,
-                  ["--op-mobile" as string]:
-                    slide.objectPositionMobile ?? slide.objectPosition,
-                }}
-              />
+              <picture className="absolute inset-0">
+                <source media={HIDDEN_BELOW_LG_MEDIA} srcSet={BLANK_PIXEL_SRC} />
+                <Image
+                  src={slide.src}
+                  alt=""
+                  fill
+                  loading="eager"
+                  fetchPriority={index === 0 ? "high" : "low"}
+                  sizes="100vw"
+                  onLoad={index === 0 ? markImagesReady : undefined}
+                  onError={index === 0 ? markImagesReady : undefined}
+                  className={cn(
+                    "img-pos-mobile",
+                    slide.objectFit === "contain" ? "object-contain" : "object-cover"
+                  )}
+                  style={{
+                    objectPosition: slide.objectPosition,
+                    ["--op-mobile" as string]:
+                      slide.objectPositionMobile ?? slide.objectPosition,
+                  }}
+                />
+              </picture>
             </div>
           </div>
         );
